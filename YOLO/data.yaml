@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 8
+names: ['adho mukh svanasana', 'ashtanga namaskara', 'ashwa sanchalanasana', 'bhujangasana', 'hasta utthanasana', 'kumbhakasana', 'padahastasana', 'pranamasana']
+
+# roboflow:
+#   workspace: lalitha-uruu5
+#   project: surya-namaskar
+#   version: 4
+#   license: Public Domain
+#   url: https://universe.roboflow.com/lalitha-uruu5/surya-namaskar/dataset/4
