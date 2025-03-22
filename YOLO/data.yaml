@@ -2,12 +2,6 @@ train: ../train/images
 val: ../valid/images
 test: ../test/images
 
-nc: 8
-names: ['adho mukh svanasana', 'ashtanga namaskara', 'ashwa sanchalanasana', 'bhujangasana', 'hasta utthanasana', 'kumbhakasana', 'padahastasana', 'pranamasana']
+nc: 10
+names: ['Downward-Facing_Dog', 'Warrior_I', 'Warrior_II', 'Cow_Pose', 'Plank_Pose', 'Staff_Pose', 'Squat_Pose', 'Low_Lunge_Pose', 'Triangle_Pose', 'Bridge_Pose']
 
-# roboflow:
-#   workspace: lalitha-uruu5
-#   project: surya-namaskar
-#   version: 4
-#   license: Public Domain
-#   url: https://universe.roboflow.com/lalitha-uruu5/surya-namaskar/dataset/4
