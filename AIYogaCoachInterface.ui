@@ -1,0 +1,2204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1661</width>
+    <height>837</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/icons/icons/yoga-icon.png</normaloff>:/icons/icons/yoga-icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#title_frame {
+	border-top-left-radius: 10px;
+	background-color: rgb(170, 255, 255);
+}
+
+#main_frame {
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
+                            stop:0 #E3F2FD, stop:1 #BBDEFB);
+}
+
+#icon_label {
+	min-width: 30px;
+	min-height: 30px;
+	max-height: 30px;
+	max-width: 30px;
+}
+
+#title_frame QPushButton {
+	border: none;
+	width: 50px;
+	height: 40px;
+}
+
+#maximize_btn:hover, #minimize_btn:hover {
+background-color:  #BBDEFB;
+}
+
+#close_btn:hover {
+	background-color: #c42b1c;
+}
+
+#close_btn, #title_frame {
+	border-top-right-radius: 10px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_7">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="title_frame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="icon_label">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/icons/icons/yoga-logo.png</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="title_label">
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>AI  Yoga  Coach</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="minimize_btn">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/icons/icons/icons8-minimize-window-48.png</normaloff>:/icons/icons/icons8-minimize-window-48.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="maximize_btn">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/icons/icons/icons8-full-screen-48.png</normaloff>:/icons/icons/icons8-full-screen-48.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="close_btn">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/icons/icons/icons8-close-48.png</normaloff>:/icons/icons/icons8-close-48.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="main_frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="icon_only_frame">
+         <property name="styleSheet">
+          <string notr="true">	#icon_only_frame {
+		background-color: #b1dcef;
+		width:50px;
+	}
+
+	#icon_only_frame QPushButton {
+		height:50px;
+		border:none;
+	}
+
+	#icon_only_frame QPushButton:hover {
+		background-color: rgba( 86, 101, 115, 0.5);
+	}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="home_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-home-page-48.png</normaloff>:/icons/icons/icons8-home-page-48.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="music_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-musical-note-48.png</normaloff>:/icons/icons/icons8-musical-note-48.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="progress_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-chart-50.png</normaloff>:/icons/icons/icons8-chart-50.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="share_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-share-50.png</normaloff>:/icons/icons/icons8-share-50.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="account_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-account-24.png</normaloff>:/icons/icons/icons8-account-24.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="info_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-info-50.png</normaloff>:/icons/icons/icons8-info-50.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="login_out_btn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icons/icons8-logout-50.png</normaloff>:/icons/icons/icons8-logout-50.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="full_menu_frame">
+         <property name="styleSheet">
+          <string notr="true">
+	#full_menu_frame {
+		background-color:  #b1dcef;
+	}
+
+	/* style for QPushButton */
+	#full_menu_frame QPushButton {
+		border:none;
+		height: 50px;
+		text-align: left;
+	}
+
+	#full_menu_frame QPushButton:hover {
+		background-color: rgba( 86, 101, 115, 0.5);
+	}
+
+	#full_menu_frame QPushButton:checked {
+		color: #fff;
+	}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="full_home_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Home</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-home-page-48.png</normaloff>:/icons/icons/icons8-home-page-48.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="full_music_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Music</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-musical-note-48.png</normaloff>:/icons/icons/icons8-musical-note-48.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="full_progress_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Progress</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-chart-50.png</normaloff>:/icons/icons/icons8-chart-50.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="full_share_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Share</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-share-50.png</normaloff>:/icons/icons/icons8-share-50.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="full_account_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Account</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-account-24.png</normaloff>:/icons/icons/icons8-account-24.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="full_info_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Information</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-info-50.png</normaloff>:/icons/icons/icons8-info-50.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="full_login_out_btn">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Log In/Out</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/icons/icons/icons8-logout-50.png</normaloff>:/icons/icons/icons8-logout-50.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="menu_btn">
+                 <property name="styleSheet">
+                  <string notr="true">padding: 5px;
+border: none;
+width: 35px;
+height: 35px</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resource.qrc">
+                   <normaloff>:/icons/icons/icons8-hamburger-button-50.png</normaloff>:/icons/icons/icons8-hamburger-button-50.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="camera_btn">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    width: 35px;
+    height: 35px;
+    background-color: transparent; 
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+
+
+QPushButton:checked {
+    background-color: #ff6c7b;
+	 border-radius: 5px;
+	 border: 1px solid;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resource.qrc">
+                   <normaloff>:/icons/icons/icons8-camera-50.png</normaloff>:/icons/icons/icons8-camera-50.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="account_status_label">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Visitor</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QStackedWidget" name="stackedWidget">
+            <widget class="QWidget" name="home_page">
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+    background-color: #D1E9E9; /* 淺綠色 */
+}
+</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item>
+               <widget class="QWidget" name="widget_1" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="cursor">
+                 <cursorShape>ArrowCursor</cursorShape>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>720</width>
+                       <height>405</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>720</width>
+                       <height>405</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>16</pointsize>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    background-color: gray;  /* 設定背景顏色為灰色 */
+    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
+    color: white;            /* 設定文字顏色為白色，讓字更清楚 */
+    text-align: center;      /* 水平置中，Qt 不支援此屬性，要用對齊方式 */
+    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>Lens screen not found</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="demo_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>440</width>
+                       <height>405</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>400</width>
+                       <height>405</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>16</pointsize>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    background-color: gray;  /* 設定背景顏色為灰色 */
+    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
+    color: white;            /* 設定文字顏色為白色，讓字更清楚 */
+    text-align: center;      /* 水平置中，Qt 不支援此屬性，要用對齊方式 */
+    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>Demo</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QListWidget" name="deom_list">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>405</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>300</width>
+                       <height>405</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QListWidget {
+    background-color: gray;  /* 設定背景顏色為灰色 */
+    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
+    color: white;            /* 設定文字顏色為白色 */
+    font-size: 15px;         /* 設定字體大小為 15px */
+    text-align: center;      /* 水平置中，Qt 不支援此屬性 */
+    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */
+}
+</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_10">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="widget_3" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>711</width>
+                       <height>311</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>711</width>
+                       <height>311</height>
+                      </size>
+                     </property>
+                     <widget class="QPushButton" name="pushButton_5">
+                      <property name="geometry">
+                       <rect>
+                        <x>520</x>
+                        <y>220</y>
+                        <width>51</width>
+                        <height>51</height>
+                       </rect>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="mouseTracking">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton {
+    color: #333;
+    border: none;               /* 取消邊框 */
+    border-radius: 25px;        /* 邊角圓滑 */
+    text-align: center;
+    background: #ffffff;       /* 白底 */
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: #e0e0e0;        /* 淺灰色 */
+}
+
+QPushButton:pressed {
+    background: #bdbdbd;        /* 深一點的淺灰色 */
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="resource.qrc">
+                        <normaloff>:/icons/icons/icons8-voice-50.png</normaloff>:/icons/icons/icons8-voice-50.png</iconset>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                     <widget class="QWidget" name="layoutWidget">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>10</y>
+                        <width>501</width>
+                        <height>281</height>
+                       </rect>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_9">
+                       <item>
+                        <widget class="QTextEdit" name="pos_reg_label">
+                         <property name="minimumSize">
+                          <size>
+                           <width>491</width>
+                           <height>71</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>491</width>
+                           <height>71</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>14</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
+	qproperty-readOnly: true; 
+}
+
+</string>
+                         </property>
+                         <property name="html">
+                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;姿勢辨識&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="gesture_reg_label">
+                         <property name="minimumSize">
+                          <size>
+                           <width>491</width>
+                           <height>71</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>491</width>
+                           <height>71</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>14</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
+	qproperty-readOnly: true; 
+}
+
+</string>
+                         </property>
+                         <property name="html">
+                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;手勢辨識&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="gesture_reg_label_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>491</width>
+                           <height>101</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>491</width>
+                           <height>101</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>14</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
+	qproperty-readOnly: true; 
+}
+
+</string>
+                         </property>
+                         <property name="html">
+                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;建議&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_2" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>461</width>
+                       <height>311</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>461</width>
+                       <height>311</height>
+                      </size>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_10">
+                      <item>
+                       <widget class="QLabel" name="timer_label">
+                        <property name="minimumSize">
+                         <size>
+                          <width>431</width>
+                          <height>171</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>431</width>
+                          <height>171</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>48</pointsize>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QLabel {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
+                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* 稍微深一點的藍色 */
+    color: black;               /* 文字顏色為黑色 */
+    border-radius: 10px;        /* 邊角圓滑 */
+    padding: 5px;               /* 內邊距，讓文字不會緊貼邊緣 */
+    qproperty-alignment: AlignCenter;  /* 文字置中 */
+    border: 2px solid #90caf9;  /* 細邊框，顏色為淡藍色 */
+}
+</string>
+                        </property>
+                        <property name="text">
+                         <string>00:00.00</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_9">
+                        <item>
+                         <widget class="QPushButton" name="set_time_btn">
+                          <property name="minimumSize">
+                           <size>
+                            <width>121</width>
+                            <height>61</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>121</width>
+                            <height>61</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #555;
+    border-radius: 25px;
+    text-align: center;
+    border-style: outset;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 #bbb
+    );
+    padding: 5px;
+}
+
+/* 滑鼠移上去時變成稍微深一點的灰色 */
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 #999
+    );
+}
+
+/* 按下時變成更深的灰色 */
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 #888
+    );
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Set Time</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-stopwatch-50.png</normaloff>:/icons/icons/icons8-stopwatch-50.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="start_btn">
+                          <property name="minimumSize">
+                           <size>
+                            <width>121</width>
+                            <height>61</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>121</width>
+                            <height>61</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #388E3C; /* 綠色邊框 */
+    border-radius: 25px;
+    text-align: center;
+    border-style: outset;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #a8e6a3, stop: 1 #4caf50
+    );
+    padding: 5px;
+}
+
+/* 滑鼠移上去時，顏色介於原按鈕（#4caf50）和按下（#2e7d32）之間 */
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #81c784, stop: 1 #388e3c
+    );
+}
+
+/* 按下時變成最深的顏色 */
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #4caf50, stop: 1 #2e7d32
+    );
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Start</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-start-60.png</normaloff>:/icons/icons/icons8-start-60.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="rst_btn">
+                          <property name="minimumSize">
+                           <size>
+                            <width>121</width>
+                            <height>61</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>121</width>
+                            <height>61</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #d32f2f; /* 紅色邊框 */
+    border-radius: 25px;
+    text-align: center;
+    border-style: outset;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #f28b82, stop: 1 #d32f2f
+    );
+    padding: 5px;
+}
+
+/* 滑鼠移上去時，顏色介於原按鈕（#d32f2f）和按下（#b71c1c）之間 */
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #e57373, stop: 1 #c62828
+    );
+}
+
+/* 按下時變成最深的顏色 */
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #d32f2f, stop: 1 #b71c1c
+    );
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Reset</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-reset-50.png</normaloff>:/icons/icons/icons8-reset-50.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>311</width>
+                       <height>311</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>311</width>
+                       <height>311</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QWidget {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
+                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* 稍微深一點的藍色 */
+}
+</string>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout">
+                      <item row="0" column="0">
+                       <widget class="QLabel" name="label">
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>12</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QLabel {
+	font-weight: bold;
+	padding: 4px 15px;
+}</string>
+                        </property>
+                        <property name="text">
+                         <string>Mode Selection: </string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <layout class="QGridLayout" name="gridLayout_3">
+                        <item row="0" column="0">
+                         <widget class="QPushButton" name="pushButton">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #0288d1; /* 藍色邊框 */
+    border-radius: 25px;
+    border-style: outset;
+	text-align: left;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #81d4fa, stop: 1 #0288d1
+    );
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #4fc3f7, stop: 1 #0277bd
+    );
+}
+
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #0288d1, stop: 1 #01579b
+    );
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string> PRACTICE</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-1-key-80.png</normaloff>:/icons/icons/icons8-1-key-80.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QPushButton" name="pushButton_2">
+                          <property name="minimumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #388E3C; /* 綠色邊框 */
+    border-radius: 25px;
+    border-style: outset;
+	text-align: left;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #a8e6a3, stop: 1 #4caf50
+    );
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #81c784, stop: 1 #388e3c
+    );
+}
+
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #4caf50, stop: 1 #2e7d32
+    );
+}
+
+</string>
+                          </property>
+                          <property name="text">
+                           <string> EASY</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-2-key-80.png</normaloff>:/icons/icons/icons8-2-key-80.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>false</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QPushButton" name="pushButton_3">
+                          <property name="minimumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #f57c00; /* 橘色邊框 */
+    border-radius: 25px;
+    border-style: outset;
+	text-align: left;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #ffcc80, stop: 1 #f57c00
+    );
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #ffb74d, stop: 1 #ef6c00
+    );
+}
+
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #f57c00, stop: 1 #e65100
+    );
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string> NORMAL</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-3-key-80.png</normaloff>:/icons/icons/icons8-3-key-80.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QPushButton" name="pushButton_4">
+                          <property name="minimumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>171</width>
+                            <height>51</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #d32f2f; /* 紅色邊框 */
+    border-radius: 25px;
+    border-style: outset;
+	text-align: left;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #f28b82, stop: 1 #d32f2f
+    );
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #e57373, stop: 1 #c62828
+    );
+}
+
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #d32f2f, stop: 1 #b71c1c
+    );
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string> HARD</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-4-key-80.png</normaloff>:/icons/icons/icons8-4-key-80.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="music_page">
+             <widget class="QLabel" name="label_2">
+              <property name="geometry">
+               <rect>
+                <x>400</x>
+                <y>200</y>
+                <width>251</width>
+                <height>91</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Music Page</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="progress_page">
+             <widget class="QLabel" name="label_3">
+              <property name="geometry">
+               <rect>
+                <x>460</x>
+                <y>260</y>
+                <width>251</width>
+                <height>91</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Progress Page</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="share_page">
+             <widget class="QLabel" name="label_4">
+              <property name="geometry">
+               <rect>
+                <x>480</x>
+                <y>250</y>
+                <width>251</width>
+                <height>91</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Share Page</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="account_page">
+             <widget class="QLabel" name="label_6">
+              <property name="geometry">
+               <rect>
+                <x>310</x>
+                <y>240</y>
+                <width>251</width>
+                <height>91</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Account Page</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="info_page">
+             <widget class="QLabel" name="label_5">
+              <property name="geometry">
+               <rect>
+                <x>420</x>
+                <y>280</y>
+                <width>137</width>
+                <height>38</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Info Page</string>
+              </property>
+             </widget>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>menu_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>icon_only_frame</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>48</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>menu_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_menu_frame</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>434</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>home_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_home_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>24</x>
+     <y>62</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>120</x>
+     <y>60</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>music_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_music_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>progress_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_progress_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>16</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>60</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>share_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_share_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>21</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>83</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>account_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_account_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>16</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>72</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_home_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>home_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>64</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>31</x>
+     <y>62</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_music_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>music_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>106</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>15</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_progress_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>progress_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_share_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>share_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_account_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>account_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>22</x>
+     <y>225</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>info_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_info_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>27</x>
+     <y>727</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>78</x>
+     <y>727</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_info_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>info_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>713</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>39</x>
+     <y>721</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>login_out_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_login_out_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>22</x>
+     <y>755</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>756</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>full_login_out_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>login_out_btn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>771</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>27</x>
+     <y>769</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
