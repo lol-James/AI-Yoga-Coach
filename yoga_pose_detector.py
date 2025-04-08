@@ -14,7 +14,7 @@ class YogaPoseDetector(QThread):
                            'Squat_Pose', 'Locust_Pose', 'Triangle_Pose', 'Bridge_Pose']
         self.is_running = False
     def run(self):
-            self.model = YOLO(r'app\AI-Yoga-Coach\YOLO\runs\detect\train_03\weights\best.pt')
+            self.model = YOLO(r'YOLO\runs\detect\train_03\weights\best.pt')
             self.is_running = True
             self.frame = None
             try:

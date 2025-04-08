@@ -1,5 +1,53 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/about.png</file>
+    <file>icons/addFromLocal.png</file>
+    <file>icons/app_icon.png</file>
+    <file>icons/clear.png</file>
+    <file>icons/current-music.png</file>
+    <file>icons/detail.png</file>
+    <file>icons/dialog-music.png</file>
+    <file>icons/duration.png</file>
+    <file>icons/icons8-1-key-80.png</file>
+    <file>icons/icons8-2-key-80.png</file>
+    <file>icons/icons8-3-key-80.png</file>
+    <file>icons/icons8-4-key-80.png</file>
+    <file>icons/icons8-account-24.png</file>
+    <file>icons/icons8-camera-50.png</file>
+    <file>icons/icons8-chart-50.png</file>
+    <file>icons/icons8-close-48.png</file>
+    <file>icons/icons8-full-screen-48.png</file>
+    <file>icons/icons8-hamburger-button-50.png</file>
+    <file>icons/icons8-home-page-48.png</file>
+    <file>icons/icons8-info-50.png</file>
+    <file>icons/icons8-logout-50.png</file>
+    <file>icons/icons8-minimize-window-48.png</file>
+    <file>icons/icons8-musical-note-48.png</file>
+    <file>icons/icons8-pause-60.png</file>
+    <file>icons/icons8-reset-50.png</file>
+    <file>icons/icons8-share-50.png</file>
+    <file>icons/icons8-start-60.png</file>
+    <file>icons/icons8-stopwatch-50.png</file>
+    <file>icons/icons8-voice-50.png</file>
+    <file>icons/like.png</file>
+    <file>icons/loop.png</file>
+    <file>icons/loop-one.png</file>
+    <file>icons/min.png</file>
+    <file>icons/music_list.png</file>
+    <file>icons/music-dir.png</file>
+    <file>icons/MusicListItem.png</file>
+    <file>icons/music-voice.png</file>
+    <file>icons/next.png</file>
+    <file>icons/pase.png</file>
+    <file>icons/play.png</file>
+    <file>icons/play-random.png</file>
+    <file>icons/pre.png</file>
+    <file>icons/quit.png</file>
+    <file>icons/remove.png</file>
+    <file>icons/sort-alpha-asc_ea48_ether.png</file>
+    <file>icons/stop.png</file>
+    <file>icons/unpause.png</file>
+    <file>icons/yoga-logo.png</file>
     <file>icons/icons8-voice-50.png</file>
     <file>icons/icons8-1-key-80.png</file>
     <file>icons/icons8-2-key-80.png</file>

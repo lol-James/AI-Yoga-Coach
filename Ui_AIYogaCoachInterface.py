@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\code\專題\app\AI-Yoga-Coach\AIYogaCoachInterface.ui'
+# Form implementation generated from reading ui file 'c:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\AIYogaCoachInterface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1661, 837)
+        MainWindow.resize(1687, 842)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/yoga-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -353,69 +353,6 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setSpacing(0)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.frame = QtWidgets.QFrame(self.frame_3)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame)
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_7.setSpacing(0)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_6.setSpacing(0)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.menu_btn = QtWidgets.QPushButton(self.frame)
-        self.menu_btn.setStyleSheet("padding: 5px;\n"
-"border: none;\n"
-"width: 35px;\n"
-"height: 35px")
-        self.menu_btn.setText("")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-hamburger-button-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.menu_btn.setIcon(icon11)
-        self.menu_btn.setIconSize(QtCore.QSize(35, 35))
-        self.menu_btn.setCheckable(True)
-        self.menu_btn.setAutoExclusive(False)
-        self.menu_btn.setObjectName("menu_btn")
-        self.horizontalLayout_6.addWidget(self.menu_btn)
-        self.camera_btn = QtWidgets.QPushButton(self.frame)
-        self.camera_btn.setEnabled(True)
-        self.camera_btn.setStyleSheet("QPushButton {\n"
-"    width: 35px;\n"
-"    height: 35px;\n"
-"    background-color: transparent; \n"
-"    border: none;\n"
-"    transition: background-color 0.3s ease;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:checked {\n"
-"    background-color: #ff6c7b;\n"
-"     border-radius: 5px;\n"
-"     border: 1px solid;\n"
-"}")
-        self.camera_btn.setText("")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-camera-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.camera_btn.setIcon(icon12)
-        self.camera_btn.setIconSize(QtCore.QSize(35, 35))
-        self.camera_btn.setCheckable(True)
-        self.camera_btn.setChecked(False)
-        self.camera_btn.setObjectName("camera_btn")
-        self.horizontalLayout_6.addWidget(self.camera_btn)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem3)
-        self.account_status_label = QtWidgets.QLabel(self.frame)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        self.account_status_label.setFont(font)
-        self.account_status_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.account_status_label.setObjectName("account_status_label")
-        self.horizontalLayout_6.addWidget(self.account_status_label)
-        self.horizontalLayout_7.addLayout(self.horizontalLayout_6)
-        self.gridLayout_2.addWidget(self.frame, 0, 0, 1, 1)
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame_3)
         self.stackedWidget.setObjectName("stackedWidget")
         self.home_page = QtWidgets.QWidget()
@@ -425,6 +362,8 @@ class Ui_MainWindow(object):
 "")
         self.home_page.setObjectName("home_page")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.home_page)
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_12.setSpacing(0)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.widget_1 = QtWidgets.QWidget(self.home_page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -477,10 +416,10 @@ class Ui_MainWindow(object):
 "")
         self.demo_label.setObjectName("demo_label")
         self.horizontalLayout_8.addWidget(self.demo_label)
-        self.deom_list = QtWidgets.QListWidget(self.widget_1)
-        self.deom_list.setMinimumSize(QtCore.QSize(300, 405))
-        self.deom_list.setMaximumSize(QtCore.QSize(300, 405))
-        self.deom_list.setStyleSheet("QListWidget {\n"
+        self.demo_list = QtWidgets.QListWidget(self.widget_1)
+        self.demo_list.setMinimumSize(QtCore.QSize(300, 405))
+        self.demo_list.setMaximumSize(QtCore.QSize(300, 405))
+        self.demo_list.setStyleSheet("QListWidget {\n"
 "    background-color: gray;  /* 設定背景顏色為灰色 */\n"
 "    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */\n"
 "    color: white;            /* 設定文字顏色為白色 */\n"
@@ -489,8 +428,8 @@ class Ui_MainWindow(object):
 "    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */\n"
 "}\n"
 "")
-        self.deom_list.setObjectName("deom_list")
-        self.horizontalLayout_8.addWidget(self.deom_list)
+        self.demo_list.setObjectName("demo_list")
+        self.horizontalLayout_8.addWidget(self.demo_list)
         self.verticalLayout_11.addLayout(self.horizontalLayout_8)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setSpacing(0)
@@ -521,9 +460,9 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_5.setText("")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-voice-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon13)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-voice-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_5.setIcon(icon11)
         self.pushButton_5.setCheckable(True)
         self.pushButton_5.setObjectName("pushButton_5")
         self.layoutWidget = QtWidgets.QWidget(self.widget_3)
@@ -651,9 +590,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-stopwatch-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.set_time_btn.setIcon(icon14)
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-stopwatch-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.set_time_btn.setIcon(icon12)
         self.set_time_btn.setObjectName("set_time_btn")
         self.horizontalLayout_9.addWidget(self.set_time_btn)
         self.start_btn = QtWidgets.QPushButton(self.widget_2)
@@ -693,9 +632,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon15 = QtGui.QIcon()
-        icon15.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-start-60.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.start_btn.setIcon(icon15)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-start-60.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.start_btn.setIcon(icon13)
         self.start_btn.setObjectName("start_btn")
         self.horizontalLayout_9.addWidget(self.start_btn)
         self.rst_btn = QtWidgets.QPushButton(self.widget_2)
@@ -735,9 +674,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-reset-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.rst_btn.setIcon(icon16)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-reset-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.rst_btn.setIcon(icon14)
         self.rst_btn.setObjectName("rst_btn")
         self.horizontalLayout_9.addWidget(self.rst_btn)
         self.verticalLayout_10.addLayout(self.horizontalLayout_9)
@@ -808,9 +747,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon17 = QtGui.QIcon()
-        icon17.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-1-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon17)
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-1-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon15)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setObjectName("pushButton")
         self.gridLayout_3.addWidget(self.pushButton, 0, 0, 1, 1)
@@ -850,9 +789,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon18 = QtGui.QIcon()
-        icon18.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-2-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon18)
+        icon16 = QtGui.QIcon()
+        icon16.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-2-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_2.setIcon(icon16)
         self.pushButton_2.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_2.setCheckable(False)
         self.pushButton_2.setChecked(False)
@@ -893,9 +832,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon19 = QtGui.QIcon()
-        icon19.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-3-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon19)
+        icon17 = QtGui.QIcon()
+        icon17.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-3-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_3.setIcon(icon17)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_3.setObjectName("pushButton_3")
         self.gridLayout_3.addWidget(self.pushButton_3, 2, 0, 1, 1)
@@ -934,9 +873,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon20 = QtGui.QIcon()
-        icon20.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-4-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon20)
+        icon18 = QtGui.QIcon()
+        icon18.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-4-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_4.setIcon(icon18)
         self.pushButton_4.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_4.setObjectName("pushButton_4")
         self.gridLayout_3.addWidget(self.pushButton_4, 3, 0, 1, 1)
@@ -946,14 +885,605 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addWidget(self.widget_1)
         self.stackedWidget.addWidget(self.home_page)
         self.music_page = QtWidgets.QWidget()
+        self.music_page.setStyleSheet("")
         self.music_page.setObjectName("music_page")
-        self.label_2 = QtWidgets.QLabel(self.music_page)
-        self.label_2.setGeometry(QtCore.QRect(400, 200, 251, 91))
+        self.widget_4 = QtWidgets.QWidget(self.music_page)
+        self.widget_4.setGeometry(QtCore.QRect(0, 0, 1507, 742))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
+        self.widget_4.setSizePolicy(sizePolicy)
+        self.widget_4.setMaximumSize(QtCore.QSize(1507, 742))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.widget_4.setFont(font)
+        self.widget_4.setStyleSheet("\\")
+        self.widget_4.setObjectName("widget_4")
+        self.horizontalLayout_19 = QtWidgets.QHBoxLayout(self.widget_4)
+        self.horizontalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_19.setSpacing(0)
+        self.horizontalLayout_19.setObjectName("horizontalLayout_19")
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_17.setSpacing(0)
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.frame_2 = QtWidgets.QFrame(self.widget_4)
+        self.frame_2.setStyleSheet("#frame_2 {\n"
+"    border: 2px solid #aaa;\n"
+"    border-radius: 12px;\n"
+"}")
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.frame_2)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setContentsMargins(-1, -1, 0, -1)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.label_2 = QtWidgets.QLabel(self.frame_2)
+        self.label_2.setMinimumSize(QtCore.QSize(61, 41))
+        self.label_2.setMaximumSize(QtCore.QSize(61, 41))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/icons/icons/current-music.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_11.addWidget(self.label_2)
+        self.label_7 = QtWidgets.QLabel(self.frame_2)
+        self.label_7.setMinimumSize(QtCore.QSize(421, 41))
+        self.label_7.setMaximumSize(QtCore.QSize(421, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(20)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_7.setFont(font)
+        self.label_7.setStyleSheet("color: #8f8f8f")
+        self.label_7.setObjectName("label_7")
+        self.horizontalLayout_11.addWidget(self.label_7)
+        self.verticalLayout_14.addLayout(self.horizontalLayout_11)
+        self.verticalLayout_13 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.label_8 = QtWidgets.QLabel(self.frame_2)
+        self.label_8.setMinimumSize(QtCore.QSize(481, 40))
+        self.label_8.setMaximumSize(QtCore.QSize(481, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_8.setFont(font)
+        self.label_8.setStyleSheet("color: rgb(141, 141, 141);\n"
+"padding-left: 15px;")
+        self.label_8.setObjectName("label_8")
+        self.verticalLayout_13.addWidget(self.label_8)
+        self.current_song_name_label = QtWidgets.QLabel(self.frame_2)
+        self.current_song_name_label.setMinimumSize(QtCore.QSize(481, 31))
+        self.current_song_name_label.setMaximumSize(QtCore.QSize(481, 31))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.current_song_name_label.setFont(font)
+        self.current_song_name_label.setStyleSheet("padding-left: 15px;")
+        self.current_song_name_label.setObjectName("current_song_name_label")
+        self.verticalLayout_13.addWidget(self.current_song_name_label)
+        self.label11 = QtWidgets.QLabel(self.frame_2)
+        self.label11.setMinimumSize(QtCore.QSize(481, 40))
+        self.label11.setMaximumSize(QtCore.QSize(481, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label11.setFont(font)
+        self.label11.setStyleSheet("color: rgb(141, 141, 141);\n"
+"padding-left: 15px;")
+        self.label11.setObjectName("label11")
+        self.verticalLayout_13.addWidget(self.label11)
+        self.current_song_path_label = QtWidgets.QLabel(self.frame_2)
+        self.current_song_path_label.setMinimumSize(QtCore.QSize(481, 31))
+        self.current_song_path_label.setMaximumSize(QtCore.QSize(481, 31))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.current_song_path_label.setFont(font)
+        self.current_song_path_label.setStyleSheet("padding-left: 15px\n"
+"")
+        self.current_song_path_label.setObjectName("current_song_path_label")
+        self.verticalLayout_13.addWidget(self.current_song_path_label)
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
+        self.add_to_playlist_btn = QtWidgets.QPushButton(self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.add_to_playlist_btn.sizePolicy().hasHeightForWidth())
+        self.add_to_playlist_btn.setSizePolicy(sizePolicy)
+        self.add_to_playlist_btn.setMinimumSize(QtCore.QSize(250, 41))
+        self.add_to_playlist_btn.setMaximumSize(QtCore.QSize(250, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.add_to_playlist_btn.setFont(font)
+        self.add_to_playlist_btn.setStyleSheet("QPushButton {\n"
+"    color: white; /* 白字 */\n"
+"    background: #ffa500; /* 橘色底 */\n"
+"    border-radius: 20px; /* 圓角 */\n"
+"    padding: 10px 20px;\n"
+"    font-size: 22px;\n"
+"    text-align: left;\n"
+"    padding-left: 20px;\n"
+"}\n"
+"\n"
+"/* 滑鼠移上去：略深橘 */\n"
+"QPushButton:hover {\n"
+"    background: #e69500;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"/* 按下時：更深橘 */\n"
+"QPushButton:pressed {\n"
+"    background: #cc8400;\n"
+"    color: white;\n"
+"}\n"
+"")
+        icon19 = QtGui.QIcon()
+        icon19.addPixmap(QtGui.QPixmap(":/icons/icons/music_list.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.add_to_playlist_btn.setIcon(icon19)
+        self.add_to_playlist_btn.setIconSize(QtCore.QSize(30, 30))
+        self.add_to_playlist_btn.setObjectName("add_to_playlist_btn")
+        self.horizontalLayout_14.addWidget(self.add_to_playlist_btn)
+        self.add_to_fav_btn = QtWidgets.QPushButton(self.frame_2)
+        self.add_to_fav_btn.setMinimumSize(QtCore.QSize(250, 41))
+        self.add_to_fav_btn.setMaximumSize(QtCore.QSize(250, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.add_to_fav_btn.setFont(font)
+        self.add_to_fav_btn.setStyleSheet("QPushButton {\n"
+"    color: #ff69b4; /* 粉紅字 */\n"
+"    background: #ffffff; /* 白底 */\n"
+"    border-radius: 20px; /* 圓角 */\n"
+"    padding: 10px 20px; /* 增加內邊距 */\n"
+"    font-size: 22px;\n"
+"    text-align: left; /* 字體靠左 */\n"
+"    padding-left: 20px; /* 加一點左邊空間 */\n"
+"}\n"
+"\n"
+"/* 滑鼠移上去：灰底粉紅字 */\n"
+"QPushButton:hover {\n"
+"    background: #cccccc;\n"
+"    color: #ff69b4;\n"
+"}\n"
+"\n"
+"/* 按下時：深灰底粉紅字 */\n"
+"QPushButton:pressed {\n"
+"    background: #888888;\n"
+"    color: #ff69b4;\n"
+"}\n"
+"")
+        icon20 = QtGui.QIcon()
+        icon20.addPixmap(QtGui.QPixmap(":/icons/icons/like.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.add_to_fav_btn.setIcon(icon20)
+        self.add_to_fav_btn.setIconSize(QtCore.QSize(30, 30))
+        self.add_to_fav_btn.setObjectName("add_to_fav_btn")
+        self.horizontalLayout_14.addWidget(self.add_to_fav_btn)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_14)
+        self.verticalLayout_14.addLayout(self.verticalLayout_13)
+        self.verticalLayout_17.addWidget(self.frame_2)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_17.addItem(spacerItem3)
+        self.frame_4 = QtWidgets.QFrame(self.widget_4)
+        self.frame_4.setStyleSheet("#frame_4 {\n"
+"    background-color: rgb(217, 248, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}")
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.frame_4)
+        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_16.setSpacing(0)
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setSpacing(0)
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        self.label_9 = QtWidgets.QLabel(self.frame_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
+        self.label_9.setSizePolicy(sizePolicy)
+        self.label_9.setMinimumSize(QtCore.QSize(40, 40))
+        self.label_9.setMaximumSize(QtCore.QSize(40, 40))
+        self.label_9.setText("")
+        self.label_9.setPixmap(QtGui.QPixmap(":/icons/icons/icons8-voice-50.png"))
+        self.label_9.setScaledContents(True)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_12.addWidget(self.label_9)
+        self.label_10 = QtWidgets.QLabel(self.frame_4)
+        self.label_10.setMinimumSize(QtCore.QSize(131, 41))
+        self.label_10.setMaximumSize(QtCore.QSize(131, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName("label_10")
+        self.horizontalLayout_12.addWidget(self.label_10)
+        self.horizontalSlider = QtWidgets.QSlider(self.frame_4)
+        self.horizontalSlider.setMinimumSize(QtCore.QSize(291, 31))
+        self.horizontalSlider.setMaximumSize(QtCore.QSize(291, 31))
+        self.horizontalSlider.setStyleSheet("QSlider::groove:horizontal {\n"
+"    border: 1px solid #999999; /* 灰色邊框 */\n"
+"    background: rgb(229, 229, 229); /* 灰色底 */\n"
+"    margin: 2px 0;\n"
+"    border-radius: 11px;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: rgba(0, 255, 127, 100); /* 左側淺綠色 */\n"
+"    border-radius: 11px;\n"
+"    /* 增加 padding 讓 sub-page 和 groove 匹配 */\n"
+"    padding-left: 0;\n"
+"    padding-right: 0;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background: rgb(255, 200, 50); /* 黃色滑塊 */\n"
+"    border: 1px solid #5c5c5c;\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"    margin: -2px 0;\n"
+"    border-radius: 9px;\n"
+"}\n"
+"")
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName("horizontalSlider")
+        self.horizontalLayout_12.addWidget(self.horizontalSlider)
+        self.label_11 = QtWidgets.QLabel(self.frame_4)
+        self.label_11.setMinimumSize(QtCore.QSize(48, 41))
+        self.label_11.setMaximumSize(QtCore.QSize(48, 41))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName("label_11")
+        self.horizontalLayout_12.addWidget(self.label_11)
+        self.verticalLayout_16.addLayout(self.horizontalLayout_12)
+        self.verticalLayout_17.addWidget(self.frame_4)
+        self.frame_5 = QtWidgets.QFrame(self.widget_4)
+        self.frame_5.setStyleSheet("frame_5 {\n"
+"background-color:rgb(220, 220, 220)\n"
+"}")
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.frame_5)
+        self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_13.setSpacing(0)
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        self.play_btn = QtWidgets.QPushButton(self.frame_5)
+        self.play_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.play_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.play_btn.setText("")
+        icon21 = QtGui.QIcon()
+        icon21.addPixmap(QtGui.QPixmap(":/icons/icons/pase.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.play_btn.setIcon(icon21)
+        self.play_btn.setIconSize(QtCore.QSize(40, 40))
+        self.play_btn.setFlat(True)
+        self.play_btn.setObjectName("play_btn")
+        self.horizontalLayout_13.addWidget(self.play_btn)
+        self.pause_btn = QtWidgets.QPushButton(self.frame_5)
+        self.pause_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.pause_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.pause_btn.setText("")
+        icon22 = QtGui.QIcon()
+        icon22.addPixmap(QtGui.QPixmap(":/icons/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pause_btn.setIcon(icon22)
+        self.pause_btn.setIconSize(QtCore.QSize(40, 40))
+        self.pause_btn.setFlat(True)
+        self.pause_btn.setObjectName("pause_btn")
+        self.horizontalLayout_13.addWidget(self.pause_btn)
+        self.stop_btn = QtWidgets.QPushButton(self.frame_5)
+        self.stop_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.stop_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.stop_btn.setText("")
+        icon23 = QtGui.QIcon()
+        icon23.addPixmap(QtGui.QPixmap(":/icons/icons/stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.stop_btn.setIcon(icon23)
+        self.stop_btn.setIconSize(QtCore.QSize(40, 40))
+        self.stop_btn.setFlat(True)
+        self.stop_btn.setObjectName("stop_btn")
+        self.horizontalLayout_13.addWidget(self.stop_btn)
+        self.previous_btn = QtWidgets.QPushButton(self.frame_5)
+        self.previous_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.previous_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.previous_btn.setText("")
+        icon24 = QtGui.QIcon()
+        icon24.addPixmap(QtGui.QPixmap(":/icons/icons/pre.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.previous_btn.setIcon(icon24)
+        self.previous_btn.setIconSize(QtCore.QSize(40, 40))
+        self.previous_btn.setFlat(True)
+        self.previous_btn.setObjectName("previous_btn")
+        self.horizontalLayout_13.addWidget(self.previous_btn)
+        self.next_btn = QtWidgets.QPushButton(self.frame_5)
+        self.next_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.next_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.next_btn.setText("")
+        icon25 = QtGui.QIcon()
+        icon25.addPixmap(QtGui.QPixmap(":/icons/icons/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.next_btn.setIcon(icon25)
+        self.next_btn.setIconSize(QtCore.QSize(40, 40))
+        self.next_btn.setFlat(True)
+        self.next_btn.setObjectName("next_btn")
+        self.horizontalLayout_13.addWidget(self.next_btn)
+        self.shuffle_songs_btn = QtWidgets.QPushButton(self.frame_5)
+        self.shuffle_songs_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.shuffle_songs_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.shuffle_songs_btn.setText("")
+        icon26 = QtGui.QIcon()
+        icon26.addPixmap(QtGui.QPixmap(":/icons/icons/play-random.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.shuffle_songs_btn.setIcon(icon26)
+        self.shuffle_songs_btn.setIconSize(QtCore.QSize(40, 40))
+        self.shuffle_songs_btn.setFlat(True)
+        self.shuffle_songs_btn.setObjectName("shuffle_songs_btn")
+        self.horizontalLayout_13.addWidget(self.shuffle_songs_btn)
+        self.loop_one_btn = QtWidgets.QPushButton(self.frame_5)
+        self.loop_one_btn.setMinimumSize(QtCore.QSize(40, 40))
+        self.loop_one_btn.setMaximumSize(QtCore.QSize(40, 40))
+        self.loop_one_btn.setText("")
+        icon27 = QtGui.QIcon()
+        icon27.addPixmap(QtGui.QPixmap(":/icons/icons/loop-one.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.loop_one_btn.setIcon(icon27)
+        self.loop_one_btn.setIconSize(QtCore.QSize(40, 40))
+        self.loop_one_btn.setFlat(True)
+        self.loop_one_btn.setObjectName("loop_one_btn")
+        self.horizontalLayout_13.addWidget(self.loop_one_btn)
+        self.verticalLayout_17.addWidget(self.frame_5)
+        self.horizontalLayout_19.addLayout(self.verticalLayout_17)
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.frame_6 = QtWidgets.QFrame(self.widget_4)
+        self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_6.setObjectName("frame_6")
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.frame_6)
+        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_15.setSpacing(0)
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_16.setSpacing(0)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        self.label_12 = QtWidgets.QLabel(self.frame_6)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(22)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_12.setFont(font)
+        self.label_12.setObjectName("label_12")
+        self.horizontalLayout_16.addWidget(self.label_12)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem4)
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_15.setSpacing(0)
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+        self.add_songs_btn = QtWidgets.QPushButton(self.frame_6)
+        self.add_songs_btn.setMinimumSize(QtCore.QSize(50, 50))
+        self.add_songs_btn.setMaximumSize(QtCore.QSize(50, 50))
+        self.add_songs_btn.setText("")
+        icon28 = QtGui.QIcon()
+        icon28.addPixmap(QtGui.QPixmap(":/icons/icons/addFromLocal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.add_songs_btn.setIcon(icon28)
+        self.add_songs_btn.setIconSize(QtCore.QSize(50, 50))
+        self.add_songs_btn.setFlat(True)
+        self.add_songs_btn.setObjectName("add_songs_btn")
+        self.horizontalLayout_15.addWidget(self.add_songs_btn)
+        self.remove_selected_btn = QtWidgets.QPushButton(self.frame_6)
+        self.remove_selected_btn.setMinimumSize(QtCore.QSize(50, 50))
+        self.remove_selected_btn.setMaximumSize(QtCore.QSize(50, 50))
+        self.remove_selected_btn.setText("")
+        icon29 = QtGui.QIcon()
+        icon29.addPixmap(QtGui.QPixmap(":/icons/icons/clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.remove_selected_btn.setIcon(icon29)
+        self.remove_selected_btn.setIconSize(QtCore.QSize(50, 50))
+        self.remove_selected_btn.setFlat(True)
+        self.remove_selected_btn.setObjectName("remove_selected_btn")
+        self.horizontalLayout_15.addWidget(self.remove_selected_btn)
+        self.clear_all_btn = QtWidgets.QPushButton(self.frame_6)
+        self.clear_all_btn.setMinimumSize(QtCore.QSize(50, 50))
+        self.clear_all_btn.setMaximumSize(QtCore.QSize(50, 50))
+        self.clear_all_btn.setText("")
+        icon30 = QtGui.QIcon()
+        icon30.addPixmap(QtGui.QPixmap(":/icons/icons/remove.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.clear_all_btn.setIcon(icon30)
+        self.clear_all_btn.setIconSize(QtCore.QSize(50, 50))
+        self.clear_all_btn.setFlat(True)
+        self.clear_all_btn.setObjectName("clear_all_btn")
+        self.horizontalLayout_15.addWidget(self.clear_all_btn)
+        self.horizontalLayout_16.addLayout(self.horizontalLayout_15)
+        self.verticalLayout_15.addLayout(self.horizontalLayout_16)
+        self.song_listWidget = QtWidgets.QListWidget(self.frame_6)
+        self.song_listWidget.setStyleSheet("color: rgb(86, 227, 194);\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"\n"
+"selection-background-color: rgb(255, 140, 64);\n"
+"selection-color: rgb(255, 255, 255);\n"
+"padding:10px;\n"
+"border-radius: 20px")
+        self.song_listWidget.setObjectName("song_listWidget")
+        self.verticalLayout_15.addWidget(self.song_listWidget)
+        self.verticalLayout_18.addWidget(self.frame_6)
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_17.setSpacing(0)
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.songlist_btn = QtWidgets.QPushButton(self.widget_4)
+        self.songlist_btn.setMinimumSize(QtCore.QSize(251, 51))
+        self.songlist_btn.setMaximumSize(QtCore.QSize(251, 51))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.songlist_btn.setFont(font)
+        self.songlist_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #FFD700; /* 黃色 */\n"
+"    border: 2px solid #FFC107; /* 深黃色邊框 */\n"
+"    border-radius: 25px; /* 膠囊型圓角 */\n"
+"    color: white; /* 文字顏色為白色 */\n"
+"    padding: 0 30px; /* 左右邊距，保證文本不會緊貼邊框 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #FFCC00; /* 滑鼠移上去時，顏色變淺一點 */\n"
+"    border-color: #FFB300; /* 邊框顏色變為稍微深一點的黃色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #FFB300; /* 按下時，顏色變為更深的黃色 */\n"
+"    border-color: #FF9900; /* 邊框顏色更深 */\n"
+"}\n"
+"")
+        self.songlist_btn.setObjectName("songlist_btn")
+        self.horizontalLayout_17.addWidget(self.songlist_btn)
+        self.playlist_btn = QtWidgets.QPushButton(self.widget_4)
+        self.playlist_btn.setMinimumSize(QtCore.QSize(251, 51))
+        self.playlist_btn.setMaximumSize(QtCore.QSize(251, 51))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.playlist_btn.setFont(font)
+        self.playlist_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #28a745; /* 綠色 */\n"
+"    border: 2px solid #218838; /* 深綠色邊框 */\n"
+"    border-radius: 25px; /* 膠囊型圓角 */\n"
+"    color: white; /* 文字顏色為白色 */\n"
+"    padding: 0 30px; /* 左右邊距，保證文本不會緊貼邊框 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #34d058; /* 滑鼠移上去時，顏色變淺一點 */\n"
+"    border-color: #2a9d43; /* 邊框顏色變為稍微深一點的綠色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #238636; /* 按下時，顏色變為更深的綠色 */\n"
+"    border-color: #1e7e34; /* 邊框顏色更深 */\n"
+"}\n"
+"")
+        self.playlist_btn.setObjectName("playlist_btn")
+        self.horizontalLayout_17.addWidget(self.playlist_btn)
+        self.favourites_btn = QtWidgets.QPushButton(self.widget_4)
+        self.favourites_btn.setMinimumSize(QtCore.QSize(251, 51))
+        self.favourites_btn.setMaximumSize(QtCore.QSize(251, 51))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.favourites_btn.setFont(font)
+        self.favourites_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #ff69b4; /* 粉紅色 */\n"
+"    border: 2px solid #ff4f9d; /* 深粉紅色邊框 */\n"
+"    border-radius: 25px; /* 膠囊型圓角 */\n"
+"    color: white; /* 文字顏色為白色 */\n"
+"    padding: 0 30px; /* 左右邊距，保證文本不會緊貼邊框 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ff80bf; /* 滑鼠移上去時，顏色變淺一點 */\n"
+"    border-color: #ff66b3; /* 邊框顏色變為稍微深一點的粉紅色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #e64a8b; /* 按下時，顏色變為更深的粉紅色 */\n"
+"    border-color: #d6336c; /* 邊框顏色更深 */\n"
+"}\n"
+"")
+        self.favourites_btn.setObjectName("favourites_btn")
+        self.horizontalLayout_17.addWidget(self.favourites_btn)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_17)
+        self.horizontalLayout_18 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_18.setSpacing(0)
+        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
+        self.music_slider = QtWidgets.QSlider(self.widget_4)
+        self.music_slider.setMinimumSize(QtCore.QSize(651, 35))
+        self.music_slider.setMaximumSize(QtCore.QSize(651, 35))
+        self.music_slider.setStyleSheet("QSlider::groove:horizontal {\n"
+"    border: 1px solid #999999; /* 灰色邊框 */\n"
+"    background: #cccccc; /* 灰色底色 */\n"
+"    height: 8px; /* 設定底部條形的高度 */\n"
+"    border-radius: 4px; /* 圓角效果 */\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: #1db954; /* 綠色進度條 */\n"
+"    border-radius: 4px; /* 確保進度條和底部條形有一致的圓角 */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background: white; /* 白色圓點 */\n"
+"    border: 2px solid #1db954; /* 綠色邊框 */\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"    border-radius: 8px; /* 圓形圓點 */\n"
+"    margin: -6px 0; /* 確保圓點正確對齊 */\n"
+"}\n"
+"\n"
+"QSlider::handle:hover {\n"
+"    background: white; /* 滑鼠移到圓點時仍保持白色 */\n"
+"    border: 2px solid #1db954; /* 邊框保持綠色 */\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal:disabled {\n"
+"    background: #cccccc; /* 禁用狀態下，進度條顯示灰色 */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:disabled {\n"
+"    background: #aaaaaa; /* 禁用狀態下，圓點顏色變成灰色 */\n"
+"    border: 2px solid #aaaaaa; /* 圓點邊框顏色變灰 */\n"
+"}\n"
+"")
+        self.music_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.music_slider.setObjectName("music_slider")
+        self.horizontalLayout_18.addWidget(self.music_slider)
+        self.time_label = QtWidgets.QLabel(self.widget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(221)
+        sizePolicy.setVerticalStretch(35)
+        sizePolicy.setHeightForWidth(self.time_label.sizePolicy().hasHeightForWidth())
+        self.time_label.setSizePolicy(sizePolicy)
+        self.time_label.setMinimumSize(QtCore.QSize(221, 35))
+        self.time_label.setMaximumSize(QtCore.QSize(16777215, 35))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.time_label.setFont(font)
+        self.time_label.setStyleSheet("padding:2px;\n"
+"border-radius:5px")
+        self.time_label.setObjectName("time_label")
+        self.horizontalLayout_18.addWidget(self.time_label)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_18)
+        self.horizontalLayout_19.addLayout(self.verticalLayout_18)
         self.stackedWidget.addWidget(self.music_page)
         self.progress_page = QtWidgets.QWidget()
         self.progress_page.setObjectName("progress_page")
@@ -995,12 +1525,76 @@ class Ui_MainWindow(object):
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.stackedWidget.addWidget(self.info_page)
-        self.gridLayout_2.addWidget(self.stackedWidget, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.stackedWidget, 2, 0, 1, 1)
+        self.frame = QtWidgets.QFrame(self.frame_3)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.menu_btn = QtWidgets.QPushButton(self.frame)
+        self.menu_btn.setStyleSheet("padding: 5px;\n"
+"border: none;\n"
+"width: 35px;\n"
+"height: 35px")
+        self.menu_btn.setText("")
+        icon31 = QtGui.QIcon()
+        icon31.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-hamburger-button-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.menu_btn.setIcon(icon31)
+        self.menu_btn.setIconSize(QtCore.QSize(35, 35))
+        self.menu_btn.setCheckable(True)
+        self.menu_btn.setAutoExclusive(False)
+        self.menu_btn.setObjectName("menu_btn")
+        self.horizontalLayout_6.addWidget(self.menu_btn)
+        self.camera_btn = QtWidgets.QPushButton(self.frame)
+        self.camera_btn.setEnabled(True)
+        self.camera_btn.setStyleSheet("QPushButton {\n"
+"    width: 35px;\n"
+"    height: 35px;\n"
+"    background-color: transparent; \n"
+"    border: none;\n"
+"    transition: background-color 0.3s ease;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:checked {\n"
+"    background-color: #ff6c7b;\n"
+"     border-radius: 5px;\n"
+"     border: 1px solid;\n"
+"}")
+        self.camera_btn.setText("")
+        icon32 = QtGui.QIcon()
+        icon32.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-camera-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.camera_btn.setIcon(icon32)
+        self.camera_btn.setIconSize(QtCore.QSize(35, 35))
+        self.camera_btn.setCheckable(True)
+        self.camera_btn.setChecked(False)
+        self.camera_btn.setObjectName("camera_btn")
+        self.horizontalLayout_6.addWidget(self.camera_btn)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem5)
+        self.account_status_label = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        self.account_status_label.setFont(font)
+        self.account_status_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.account_status_label.setObjectName("account_status_label")
+        self.horizontalLayout_6.addWidget(self.account_status_label)
+        self.horizontalLayout_7.addLayout(self.horizontalLayout_6)
+        self.gridLayout_2.addWidget(self.frame, 1, 0, 1, 1)
         self.horizontalLayout_5.addWidget(self.frame_3)
         self.verticalLayout_7.addWidget(self.main_frame)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(1)
         self.menu_btn.toggled['bool'].connect(self.icon_only_frame.setHidden) # type: ignore
         self.menu_btn.toggled['bool'].connect(self.full_menu_frame.setVisible) # type: ignore
         self.home_btn.toggled['bool'].connect(self.full_home_btn.setChecked) # type: ignore
@@ -1030,7 +1624,6 @@ class Ui_MainWindow(object):
         self.full_account_btn.setText(_translate("MainWindow", "Account"))
         self.full_info_btn.setText(_translate("MainWindow", "Information"))
         self.full_login_out_btn.setText(_translate("MainWindow", "Log In/Out"))
-        self.account_status_label.setText(_translate("MainWindow", "Visitor"))
         self.camera_label.setText(_translate("MainWindow", "Lens screen not found"))
         self.demo_label.setText(_translate("MainWindow", "Demo"))
         self.pos_reg_label.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -1057,9 +1650,23 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", " EASY"))
         self.pushButton_3.setText(_translate("MainWindow", " NORMAL"))
         self.pushButton_4.setText(_translate("MainWindow", " HARD"))
-        self.label_2.setText(_translate("MainWindow", "Music Page"))
+        self.label_7.setText(_translate("MainWindow", "Currently  Playing..."))
+        self.label_8.setText(_translate("MainWindow", "Song Name"))
+        self.current_song_name_label.setText(_translate("MainWindow", "Song name goes here..."))
+        self.label11.setText(_translate("MainWindow", "Song Path"))
+        self.current_song_path_label.setText(_translate("MainWindow", "Song path goes here..."))
+        self.add_to_playlist_btn.setText(_translate("MainWindow", "Add to Playlist"))
+        self.add_to_fav_btn.setText(_translate("MainWindow", "Add to Favourates"))
+        self.label_10.setText(_translate("MainWindow", "Volume(%)"))
+        self.label_11.setText(_translate("MainWindow", "100"))
+        self.label_12.setText(_translate("MainWindow", "Song List"))
+        self.songlist_btn.setText(_translate("MainWindow", "Song List"))
+        self.playlist_btn.setText(_translate("MainWindow", "Playlists"))
+        self.favourites_btn.setText(_translate("MainWindow", "Favourites"))
+        self.time_label.setText(_translate("MainWindow", "00:00:00 / 00:00:00"))
         self.label_3.setText(_translate("MainWindow", "Progress Page"))
         self.label_4.setText(_translate("MainWindow", "Share Page"))
         self.label_6.setText(_translate("MainWindow", "Account Page"))
         self.label_5.setText(_translate("MainWindow", "Info Page"))
+        self.account_status_label.setText(_translate("MainWindow", "Visitor"))
 import resource_rc
