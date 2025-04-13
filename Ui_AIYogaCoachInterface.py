@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\AIYogaCoachInterface.ui'
+# Form implementation generated from reading ui file 'AIYogaCoachInterface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -1487,13 +1487,1158 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.music_page)
         self.progress_page = QtWidgets.QWidget()
         self.progress_page.setObjectName("progress_page")
-        self.label_3 = QtWidgets.QLabel(self.progress_page)
-        self.label_3.setGeometry(QtCore.QRect(460, 260, 251, 91))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(20)
-        self.label_3.setFont(font)
+        self.tabWidget = QtWidgets.QTabWidget(self.progress_page)
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1481, 741))
+        self.tabWidget.setStyleSheet("QTabWidget::pane {\n"
+"    border: 2px solid #A9CCE3;\n"
+"    background: #E0F0FF;\n"
+"    border-radius: 6px;\n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QTabBar::tab {\n"
+"    background: #D6ECF9;\n"
+"    color: #333;\n"
+"    border: 1px solid #A9CCE3;\n"
+"    border-bottom: none;\n"
+"    border-top-left-radius: 6px;\n"
+"    border-top-right-radius: 6px;\n"
+"    min-width: 100px;\n"
+"    min-height: 36px;\n"
+"    padding: 6px;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"    background: #B3E0FF;\n"
+"    font-weight: bold;\n"
+"    color: #000;\n"
+"}\n"
+"\n"
+"QTabBar::tab:hover {\n"
+"    background: #AED6F1;\n"
+"}\n"
+"")
+        self.tabWidget.setObjectName("tabWidget")
+        self.p1 = QtWidgets.QWidget()
+        self.p1.setObjectName("p1")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.p1)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 1461, 671))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout_20 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
+        self.frame_7 = QtWidgets.QFrame(self.horizontalLayoutWidget)
+        self.frame_7.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.frame_7)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(-1, -1, 1161, 671))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy)
+        self.label_3.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap("icons/posture_accuracy_sample.png"))
+        self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
+        self.verticalLayout_19.addWidget(self.label_3)
+        self.horizontalLayout_20.addWidget(self.frame_7)
+        self.frame_8 = QtWidgets.QFrame(self.horizontalLayoutWidget)
+        self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_8.setObjectName("frame_8")
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.frame_8)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(-1, 9, 291, 241))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.label_14 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.label_14.setStyleSheet("color: #2a4d69;    \n"
+"font-weight: bold;    \n"
+"font-size: 14px;           \n"
+"font-family: \"Microsoft JhengHei\";\n"
+"\n"
+"")
+        self.label_14.setObjectName("label_14")
+        self.verticalLayout_20.addWidget(self.label_14, 0, QtCore.Qt.AlignHCenter)
+        self.comboBox_3 = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.comboBox_3.setStyleSheet("QComboBox {\n"
+"    background-color: #E0F3FF;\n"
+"    border: 1px solid #A0C4FF;\n"
+"    padding: 4px;\n"
+"    border-radius: 5px;\n"
+"    font-size: 14px;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    border: none;\n"
+"}\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color: #F0FAFF;\n"
+"    selection-background-color: #A0C4FF;\n"
+"}\n"
+"")
+        self.comboBox_3.setObjectName("comboBox_3")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.verticalLayout_20.addWidget(self.comboBox_3)
+        self.label_15 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.label_15.setStyleSheet("color: #2a4d69;    \n"
+"font-weight: bold;    \n"
+"font-size: 14px;           \n"
+"font-family: \"Microsoft JhengHei\";\n"
+"\n"
+"")
+        self.label_15.setObjectName("label_15")
+        self.verticalLayout_20.addWidget(self.label_15, 0, QtCore.Qt.AlignHCenter)
+        self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.comboBox.setStyleSheet("QComboBox {\n"
+"    background-color: #E0F3FF;\n"
+"    border: 1px solid #A0C4FF;\n"
+"    padding: 4px;\n"
+"    border-radius: 5px;\n"
+"    font-size: 14px;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    border: none;\n"
+"}\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color: #F0FAFF;\n"
+"    selection-background-color: #A0C4FF;\n"
+"}\n"
+"")
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.verticalLayout_20.addWidget(self.comboBox)
+        self.label_13 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(30)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
+        self.label_13.setSizePolicy(sizePolicy)
+        self.label_13.setMinimumSize(QtCore.QSize(289, 10))
+        self.label_13.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label_13.setStyleSheet("color: #2a4d69;    \n"
+"font-weight: bold;    \n"
+"font-size: 14px;           \n"
+"font-family: \"Microsoft JhengHei\";\n"
+"\n"
+"")
+        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_13.setWordWrap(True)
+        self.label_13.setObjectName("label_13")
+        self.verticalLayout_20.addWidget(self.label_13)
+        self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_24.setSpacing(10)
+        self.horizontalLayout_24.setObjectName("horizontalLayout_24")
+        self.lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.lineEdit.setStyleSheet("QLineEdit {\n"
+"  border: 1px solid #B0D9F6;\n"
+"  border-radius: 5px;\n"
+"  padding: 2px 6px;\n"
+"  background-color: #E7F5FF;\n"
+"}\n"
+"")
+        self.lineEdit.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lineEdit.setObjectName("lineEdit")
+        self.horizontalLayout_24.addWidget(self.lineEdit)
+        self.comboBox_2 = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.comboBox_2.setStyleSheet("QComboBox {\n"
+"  border: 1px solid #B0D9F6;\n"
+"  border-radius: 5px;\n"
+"  padding: 2px 6px;\n"
+"  background-color: #E0F0FF;\n"
+"}\n"
+"")
+        self.comboBox_2.setObjectName("comboBox_2")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.horizontalLayout_24.addWidget(self.comboBox_2)
+        self.horizontalLayout_24.setStretch(0, 3)
+        self.horizontalLayout_24.setStretch(1, 1)
+        self.verticalLayout_20.addLayout(self.horizontalLayout_24)
+        self.pushButton_6 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
+"  background-color: #A8D0E6;\n"
+"  color: white;\n"
+"  border-radius: 8px;\n"
+"  padding: 5px 12px;\n"
+"  font-weight: bold;\n"
+"}\n"
+"")
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.verticalLayout_20.addWidget(self.pushButton_6)
+        self.horizontalLayout_20.addWidget(self.frame_8)
+        self.horizontalLayout_20.setStretch(0, 4)
+        self.horizontalLayout_20.setStretch(1, 1)
+        self.tabWidget.addTab(self.p1, "")
+        self.p2 = QtWidgets.QWidget()
+        self.p2.setObjectName("p2")
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.p2)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(570, 0, 301, 81))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_21.setSpacing(3)
+        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
+        self.pushButton_7 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.pushButton_7.setStyleSheet("QPushButton {\n"
+"    background-color: #e6f5ff;\n"
+"    border: none;\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #cceeff;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: #99ddff;\n"
+"}\n"
+"")
+        self.pushButton_7.setText("")
+        icon31 = QtGui.QIcon()
+        icon31.addPixmap(QtGui.QPixmap("icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_7.setIcon(icon31)
+        self.pushButton_7.setIconSize(QtCore.QSize(30, 30))
+        self.pushButton_7.setObjectName("pushButton_7")
+        self.horizontalLayout_21.addWidget(self.pushButton_7)
+        self.label_16 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        self.label_16.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 30px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_16.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_16.setObjectName("label_16")
+        self.horizontalLayout_21.addWidget(self.label_16)
+        self.pushButton_8 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.pushButton_8.setStyleSheet("QPushButton {\n"
+"    background-color: #e6f5ff;\n"
+"    border: none;\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #cceeff;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: #99ddff;\n"
+"}\n"
+"")
+        self.pushButton_8.setText("")
+        icon32 = QtGui.QIcon()
+        icon32.addPixmap(QtGui.QPixmap("icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_8.setIcon(icon32)
+        self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
+        self.pushButton_8.setObjectName("pushButton_8")
+        self.horizontalLayout_21.addWidget(self.pushButton_8)
+        self.horizontalLayout_21.setStretch(0, 1)
+        self.horizontalLayout_21.setStretch(1, 3)
+        self.horizontalLayout_21.setStretch(2, 1)
+        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.p2)
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(-1, 89, 1461, 581))
+        self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
+        self.horizontalLayout_22 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
+        self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_22.setObjectName("horizontalLayout_22")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.label_19 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_19.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 20px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_19.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_19.setObjectName("label_19")
+        self.verticalLayout_22.addWidget(self.label_19)
+        self.horizontalLayout_23 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
+        self.label_17 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_17.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_17.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_17.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_17.setObjectName("label_17")
+        self.horizontalLayout_23.addWidget(self.label_17)
+        self.label_18 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_18.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_18.setObjectName("label_18")
+        self.horizontalLayout_23.addWidget(self.label_18)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_23)
+        self.horizontalLayout_25 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_25.setObjectName("horizontalLayout_25")
+        self.label_22 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_22.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_22.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_22.setObjectName("label_22")
+        self.horizontalLayout_25.addWidget(self.label_22)
+        self.label_21 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_21.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_21.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_21.setObjectName("label_21")
+        self.horizontalLayout_25.addWidget(self.label_21)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_25)
+        self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_31.setObjectName("horizontalLayout_31")
+        self.label_30 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_30.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_30.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_30.setObjectName("label_30")
+        self.horizontalLayout_31.addWidget(self.label_30)
+        self.label_29 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_29.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_29.setObjectName("label_29")
+        self.horizontalLayout_31.addWidget(self.label_29)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_31)
+        self.horizontalLayout_41 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_41.setObjectName("horizontalLayout_41")
+        self.label_74 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_74.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_74.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_74.setObjectName("label_74")
+        self.horizontalLayout_41.addWidget(self.label_74)
+        self.label_73 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_73.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_73.setObjectName("label_73")
+        self.horizontalLayout_41.addWidget(self.label_73)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_41)
+        self.horizontalLayout_40 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_40.setObjectName("horizontalLayout_40")
+        self.label_76 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_76.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_76.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_76.setObjectName("label_76")
+        self.horizontalLayout_40.addWidget(self.label_76)
+        self.label_75 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_75.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_75.setObjectName("label_75")
+        self.horizontalLayout_40.addWidget(self.label_75)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_40)
+        self.horizontalLayout_30 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_30.setObjectName("horizontalLayout_30")
+        self.label_24 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_24.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_24.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_24.setObjectName("label_24")
+        self.horizontalLayout_30.addWidget(self.label_24)
+        self.label_23 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_23.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.label_23.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_23.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_23.setObjectName("label_23")
+        self.horizontalLayout_30.addWidget(self.label_23)
+        self.label_31 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_31.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_31.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_31.setObjectName("label_31")
+        self.horizontalLayout_30.addWidget(self.label_31)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_30)
+        self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_29.setObjectName("horizontalLayout_29")
+        self.label_26 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_26.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_26.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_26.setObjectName("label_26")
+        self.horizontalLayout_29.addWidget(self.label_26)
+        self.label_25 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_25.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.label_25.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_25.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_25.setObjectName("label_25")
+        self.horizontalLayout_29.addWidget(self.label_25)
+        self.label_32 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_32.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_32.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_32.setObjectName("label_32")
+        self.horizontalLayout_29.addWidget(self.label_32)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_29)
+        self.horizontalLayout_28 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_28.setObjectName("horizontalLayout_28")
+        self.label_28 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_28.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_28.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_28.setObjectName("label_28")
+        self.horizontalLayout_28.addWidget(self.label_28)
+        self.label_27 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_27.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_27.setObjectName("label_27")
+        self.horizontalLayout_28.addWidget(self.label_27)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_28)
+        self.horizontalLayout_22.addLayout(self.verticalLayout_22)
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.label_20 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_20.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 20px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_20.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_20.setObjectName("label_20")
+        self.verticalLayout_23.addWidget(self.label_20)
+        self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_26.setObjectName("horizontalLayout_26")
+        self.label_34 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_34.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_34.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_34.setObjectName("label_34")
+        self.horizontalLayout_26.addWidget(self.label_34)
+        self.label_33 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_33.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_33.setObjectName("label_33")
+        self.horizontalLayout_26.addWidget(self.label_33)
+        self.label_54 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_54.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_54.setObjectName("label_54")
+        self.horizontalLayout_26.addWidget(self.label_54)
+        self.label_53 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_53.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_53.setObjectName("label_53")
+        self.horizontalLayout_26.addWidget(self.label_53)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_26)
+        self.horizontalLayout_38 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_38.setObjectName("horizontalLayout_38")
+        self.label_36 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_36.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_36.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_36.setObjectName("label_36")
+        self.horizontalLayout_38.addWidget(self.label_36)
+        self.label_55 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_55.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_55.setObjectName("label_55")
+        self.horizontalLayout_38.addWidget(self.label_55)
+        self.label_56 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_56.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_56.setObjectName("label_56")
+        self.horizontalLayout_38.addWidget(self.label_56)
+        self.label_35 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_35.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_35.setObjectName("label_35")
+        self.horizontalLayout_38.addWidget(self.label_35)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_38)
+        self.horizontalLayout_39 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_39.setObjectName("horizontalLayout_39")
+        self.label_38 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_38.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_38.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_38.setObjectName("label_38")
+        self.horizontalLayout_39.addWidget(self.label_38)
+        self.label_37 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_37.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_37.setObjectName("label_37")
+        self.horizontalLayout_39.addWidget(self.label_37)
+        self.label_58 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_58.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_58.setObjectName("label_58")
+        self.horizontalLayout_39.addWidget(self.label_58)
+        self.label_57 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_57.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_57.setObjectName("label_57")
+        self.horizontalLayout_39.addWidget(self.label_57)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_39)
+        self.horizontalLayout_37 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_37.setObjectName("horizontalLayout_37")
+        self.label_40 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_40.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_40.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_40.setObjectName("label_40")
+        self.horizontalLayout_37.addWidget(self.label_40)
+        self.label_59 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_59.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_59.setObjectName("label_59")
+        self.horizontalLayout_37.addWidget(self.label_59)
+        self.label_60 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_60.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_60.setObjectName("label_60")
+        self.horizontalLayout_37.addWidget(self.label_60)
+        self.label_39 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_39.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_39.setObjectName("label_39")
+        self.horizontalLayout_37.addWidget(self.label_39)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_37)
+        self.horizontalLayout_36 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_36.setObjectName("horizontalLayout_36")
+        self.label_42 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_42.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_42.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_42.setObjectName("label_42")
+        self.horizontalLayout_36.addWidget(self.label_42)
+        self.label_61 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_61.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_61.setObjectName("label_61")
+        self.horizontalLayout_36.addWidget(self.label_61)
+        self.label_62 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_62.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_62.setObjectName("label_62")
+        self.horizontalLayout_36.addWidget(self.label_62)
+        self.label_41 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_41.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_41.setObjectName("label_41")
+        self.horizontalLayout_36.addWidget(self.label_41)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_36)
+        self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_33.setObjectName("horizontalLayout_33")
+        self.label_44 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_44.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_44.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_44.setObjectName("label_44")
+        self.horizontalLayout_33.addWidget(self.label_44)
+        self.label_63 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_63.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_63.setObjectName("label_63")
+        self.horizontalLayout_33.addWidget(self.label_63)
+        self.label_43 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_43.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_43.setObjectName("label_43")
+        self.horizontalLayout_33.addWidget(self.label_43)
+        self.label_64 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_64.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_64.setObjectName("label_64")
+        self.horizontalLayout_33.addWidget(self.label_64)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_33)
+        self.horizontalLayout_35 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_35.setObjectName("horizontalLayout_35")
+        self.label_46 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_46.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_46.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_46.setObjectName("label_46")
+        self.horizontalLayout_35.addWidget(self.label_46)
+        self.label_65 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_65.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_65.setObjectName("label_65")
+        self.horizontalLayout_35.addWidget(self.label_65)
+        self.label_66 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_66.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_66.setObjectName("label_66")
+        self.horizontalLayout_35.addWidget(self.label_66)
+        self.label_45 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_45.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_45.setObjectName("label_45")
+        self.horizontalLayout_35.addWidget(self.label_45)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_35)
+        self.horizontalLayout_34 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_34.setObjectName("horizontalLayout_34")
+        self.label_48 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_48.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_48.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_48.setObjectName("label_48")
+        self.horizontalLayout_34.addWidget(self.label_48)
+        self.label_67 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_67.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_67.setObjectName("label_67")
+        self.horizontalLayout_34.addWidget(self.label_67)
+        self.label_68 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_68.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_68.setObjectName("label_68")
+        self.horizontalLayout_34.addWidget(self.label_68)
+        self.label_47 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_47.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_47.setObjectName("label_47")
+        self.horizontalLayout_34.addWidget(self.label_47)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_34)
+        self.horizontalLayout_32 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_32.setObjectName("horizontalLayout_32")
+        self.label_50 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_50.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_50.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_50.setObjectName("label_50")
+        self.horizontalLayout_32.addWidget(self.label_50)
+        self.label_69 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_69.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_69.setObjectName("label_69")
+        self.horizontalLayout_32.addWidget(self.label_69)
+        self.label_70 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_70.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_70.setObjectName("label_70")
+        self.horizontalLayout_32.addWidget(self.label_70)
+        self.label_49 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_49.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_49.setObjectName("label_49")
+        self.horizontalLayout_32.addWidget(self.label_49)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_32)
+        self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_27.setObjectName("horizontalLayout_27")
+        self.label_52 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_52.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_52.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_52.setObjectName("label_52")
+        self.horizontalLayout_27.addWidget(self.label_52)
+        self.label_71 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_71.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_71.setObjectName("label_71")
+        self.horizontalLayout_27.addWidget(self.label_71)
+        self.label_72 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_72.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_72.setObjectName("label_72")
+        self.horizontalLayout_27.addWidget(self.label_72)
+        self.label_51 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_51.setStyleSheet("QLabel {\n"
+"    background-color: #e6f5ff;\n"
+"    color: #003366;  \n"
+"    font-weight: bold;\n"
+"    font-size: 15px;\n"
+"    font-family: \"Microsoft JhengHei\";\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"")
+        self.label_51.setObjectName("label_51")
+        self.horizontalLayout_27.addWidget(self.label_51)
+        self.verticalLayout_23.addLayout(self.horizontalLayout_27)
+        self.horizontalLayout_22.addLayout(self.verticalLayout_23)
+        self.tabWidget.addTab(self.p2, "")
         self.stackedWidget.addWidget(self.progress_page)
         self.share_page = QtWidgets.QWidget()
         self.share_page.setObjectName("share_page")
@@ -1543,9 +2688,9 @@ class Ui_MainWindow(object):
 "width: 35px;\n"
 "height: 35px")
         self.menu_btn.setText("")
-        icon31 = QtGui.QIcon()
-        icon31.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-hamburger-button-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.menu_btn.setIcon(icon31)
+        icon33 = QtGui.QIcon()
+        icon33.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-hamburger-button-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.menu_btn.setIcon(icon33)
         self.menu_btn.setIconSize(QtCore.QSize(35, 35))
         self.menu_btn.setCheckable(True)
         self.menu_btn.setAutoExclusive(False)
@@ -1569,9 +2714,9 @@ class Ui_MainWindow(object):
 "     border: 1px solid;\n"
 "}")
         self.camera_btn.setText("")
-        icon32 = QtGui.QIcon()
-        icon32.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-camera-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.camera_btn.setIcon(icon32)
+        icon34 = QtGui.QIcon()
+        icon34.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-camera-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.camera_btn.setIcon(icon34)
         self.camera_btn.setIconSize(QtCore.QSize(35, 35))
         self.camera_btn.setCheckable(True)
         self.camera_btn.setChecked(False)
@@ -1594,7 +2739,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.menu_btn.toggled['bool'].connect(self.icon_only_frame.setHidden) # type: ignore
         self.menu_btn.toggled['bool'].connect(self.full_menu_frame.setVisible) # type: ignore
         self.home_btn.toggled['bool'].connect(self.full_home_btn.setChecked) # type: ignore
@@ -1664,7 +2810,93 @@ class Ui_MainWindow(object):
         self.playlist_btn.setText(_translate("MainWindow", "Playlists"))
         self.favourites_btn.setText(_translate("MainWindow", "Favourites"))
         self.time_label.setText(_translate("MainWindow", "00:00:00 / 00:00:00"))
-        self.label_3.setText(_translate("MainWindow", "Progress Page"))
+        self.label_14.setText(_translate("MainWindow", "請選擇查詢模式："))
+        self.comboBox_3.setItemText(0, _translate("MainWindow", "PRACTICE"))
+        self.comboBox_3.setItemText(1, _translate("MainWindow", "EASY"))
+        self.comboBox_3.setItemText(2, _translate("MainWindow", "NORMAL"))
+        self.comboBox_3.setItemText(3, _translate("MainWindow", "HARD"))
+        self.label_15.setText(_translate("MainWindow", "請選擇查詢姿勢："))
+        self.comboBox.setItemText(0, _translate("MainWindow", "Bridge Pose"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "Cow Pose"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "Downward-Facing Dog"))
+        self.comboBox.setItemText(3, _translate("MainWindow", "Low Lunge Pose"))
+        self.comboBox.setItemText(4, _translate("MainWindow", "Plank Pose"))
+        self.comboBox.setItemText(5, _translate("MainWindow", "Squat Pose"))
+        self.comboBox.setItemText(6, _translate("MainWindow", "Staff Pose"))
+        self.comboBox.setItemText(7, _translate("MainWindow", "Triangle Pose"))
+        self.comboBox.setItemText(8, _translate("MainWindow", "Warrior 1 Pose"))
+        self.comboBox.setItemText(9, _translate("MainWindow", "Warrior 2 Pose"))
+        self.label_13.setText(_translate("MainWindow", "請輸入時間與單位："))
+        self.comboBox_2.setItemText(0, _translate("MainWindow", "秒"))
+        self.comboBox_2.setItemText(1, _translate("MainWindow", "分鐘"))
+        self.comboBox_2.setItemText(2, _translate("MainWindow", "小時"))
+        self.comboBox_2.setItemText(3, _translate("MainWindow", "天"))
+        self.comboBox_2.setItemText(4, _translate("MainWindow", "月"))
+        self.comboBox_2.setItemText(5, _translate("MainWindow", "年"))
+        self.pushButton_6.setText(_translate("MainWindow", "確認時間"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p1), _translate("MainWindow", "Page1"))
+        self.label_16.setText(_translate("MainWindow", "XXXX模式"))
+        self.label_19.setText(_translate("MainWindow", "總姿勢&額外數據"))
+        self.label_17.setText(_translate("MainWindow", "總瑜伽姿勢完成次數："))
+        self.label_18.setText(_translate("MainWindow", "247"))
+        self.label_22.setText(_translate("MainWindow", "使用APP總時間（天）："))
+        self.label_21.setText(_translate("MainWindow", "365"))
+        self.label_30.setText(_translate("MainWindow", "進行瑜伽運動時間（天）："))
+        self.label_29.setText(_translate("MainWindow", "355"))
+        self.label_74.setText(_translate("MainWindow", "1天內最長使用APP時間（小時）："))
+        self.label_73.setText(_translate("MainWindow", "4"))
+        self.label_76.setText(_translate("MainWindow", "1天內最短使用APP時間（小時）："))
+        self.label_75.setText(_translate("MainWindow", "1"))
+        self.label_24.setText(_translate("MainWindow", "完成次數最多的姿勢："))
+        self.label_23.setText(_translate("MainWindow", "Staff Pose"))
+        self.label_31.setText(_translate("MainWindow", "40"))
+        self.label_26.setText(_translate("MainWindow", "完成次數最少的姿勢："))
+        self.label_25.setText(_translate("MainWindow", "Cow Pose"))
+        self.label_32.setText(_translate("MainWindow", "10"))
+        self.label_28.setText(_translate("MainWindow", "最長連續打卡天數："))
+        self.label_27.setText(_translate("MainWindow", "30"))
+        self.label_20.setText(_translate("MainWindow", "個別姿勢數據（總完成數、最高準確率%、最低準確率%）"))
+        self.label_34.setText(_translate("MainWindow", "Bridge Pose"))
+        self.label_33.setText(_translate("MainWindow", "11"))
+        self.label_54.setText(_translate("MainWindow", "94"))
+        self.label_53.setText(_translate("MainWindow", "61"))
+        self.label_36.setText(_translate("MainWindow", "Cow Pose"))
+        self.label_55.setText(_translate("MainWindow", "10"))
+        self.label_56.setText(_translate("MainWindow", "80"))
+        self.label_35.setText(_translate("MainWindow", "50"))
+        self.label_38.setText(_translate("MainWindow", "Downward-Facing Dog"))
+        self.label_37.setText(_translate("MainWindow", "13"))
+        self.label_58.setText(_translate("MainWindow", "86"))
+        self.label_57.setText(_translate("MainWindow", "70"))
+        self.label_40.setText(_translate("MainWindow", "Low Lunge Pose"))
+        self.label_59.setText(_translate("MainWindow", "14"))
+        self.label_60.setText(_translate("MainWindow", "89"))
+        self.label_39.setText(_translate("MainWindow", "68"))
+        self.label_42.setText(_translate("MainWindow", "Plank Pose"))
+        self.label_61.setText(_translate("MainWindow", "23"))
+        self.label_62.setText(_translate("MainWindow", "91"))
+        self.label_41.setText(_translate("MainWindow", "54"))
+        self.label_44.setText(_translate("MainWindow", "Squat Pose"))
+        self.label_63.setText(_translate("MainWindow", "36"))
+        self.label_43.setText(_translate("MainWindow", "96"))
+        self.label_64.setText(_translate("MainWindow", "57"))
+        self.label_46.setText(_translate("MainWindow", "Staff Pose"))
+        self.label_65.setText(_translate("MainWindow", "40"))
+        self.label_66.setText(_translate("MainWindow", "100"))
+        self.label_45.setText(_translate("MainWindow", "80"))
+        self.label_48.setText(_translate("MainWindow", "Triangle Pose"))
+        self.label_67.setText(_translate("MainWindow", "38"))
+        self.label_68.setText(_translate("MainWindow", "99"))
+        self.label_47.setText(_translate("MainWindow", "72"))
+        self.label_50.setText(_translate("MainWindow", "Warrior 1 Pose"))
+        self.label_69.setText(_translate("MainWindow", "25"))
+        self.label_70.setText(_translate("MainWindow", "90"))
+        self.label_49.setText(_translate("MainWindow", "78"))
+        self.label_52.setText(_translate("MainWindow", "Warrior 2 Pose"))
+        self.label_71.setText(_translate("MainWindow", "37"))
+        self.label_72.setText(_translate("MainWindow", "88"))
+        self.label_51.setText(_translate("MainWindow", "76"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p2), _translate("MainWindow", "Page2"))
         self.label_4.setText(_translate("MainWindow", "Share Page"))
         self.label_6.setText(_translate("MainWindow", "Account Page"))
         self.label_5.setText(_translate("MainWindow", "Info Page"))
