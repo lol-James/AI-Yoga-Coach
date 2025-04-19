@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/yoga_background.jpg</file>
+    <file>icons/non user.png</file>
     <file>icons/icons8-back-48.png</file>
     <file>icons/icons8-fb-48.png</file>
     <file>icons/icons8-google-48.png</file>

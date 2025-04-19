@@ -57,6 +57,14 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.ui.login_forgot_btn.clicked.connect(self.change_account_widget)
         self.ui.reg_back_btn.clicked.connect(self.change_account_widget)
         self.ui.forgot_back_btn.clicked.connect(self.change_account_widget)
+        
+        # user info
+        self.ui.adjust_passport_widge.hide()
+        self.ui.adjust_information_widge.hide()
+        self.ui.config_passport.clicked.connect(self.change_user_info_widget)
+        self.ui.config_user_information.clicked.connect(self.change_user_info_widget)
+        self.ui.data_change_cancel.clicked.connect(self.change_user_info_widget)
+        self.ui.change_passport_cancel.clicked.connect(self.change_user_info_widget)
 
         self.show()
         
@@ -160,4 +168,26 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.ui.forgot_ui.hide()
             self.ui.login_ui.show()
             self.ui.forgot_back_btn.setChecked(False)
+    
+    def change_user_info_widget(self):
+        if self.ui.config_passport.isChecked():
+            self.ui.user_information_widge.hide()
+            self.ui.adjust_passport_widge.show()
+            self.ui.config_passport.setChecked(False)
+            
+        if self.ui.config_user_information.isChecked():
+            self.ui.user_information_widge.hide()
+            self.ui.adjust_information_widge.show()
+            self.ui.config_user_information.setChecked(False)
+            
+        if self.ui.data_change_cancel.isChecked():
+            self.ui.adjust_information_widge.hide()
+            self.ui.user_information_widge.show()
+            self.ui.data_change_cancel.setChecked(False)
+            
+        if self.ui.change_passport_cancel.isChecked():
+            self.ui.adjust_passport_widge.hide()
+            self.ui.user_information_widge.show()
+            self.ui.change_passport_cancel.setChecked(False)
+            
     
