@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'AIYogaCoachInterface.ui'
+# Form implementation generated from reading ui file 'c:\code\專題\app\AI-Yoga-Coach\AIYogaCoachInterface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1687, 842)
+        MainWindow.resize(1665, 815)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/yoga-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -353,6 +353,69 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setSpacing(0)
         self.gridLayout_2.setObjectName("gridLayout_2")
+        self.frame = QtWidgets.QFrame(self.frame_3)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.menu_btn = QtWidgets.QPushButton(self.frame)
+        self.menu_btn.setStyleSheet("padding: 5px;\n"
+"border: none;\n"
+"width: 35px;\n"
+"height: 35px")
+        self.menu_btn.setText("")
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-hamburger-button-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.menu_btn.setIcon(icon11)
+        self.menu_btn.setIconSize(QtCore.QSize(35, 35))
+        self.menu_btn.setCheckable(True)
+        self.menu_btn.setAutoExclusive(False)
+        self.menu_btn.setObjectName("menu_btn")
+        self.horizontalLayout_6.addWidget(self.menu_btn)
+        self.camera_btn = QtWidgets.QPushButton(self.frame)
+        self.camera_btn.setEnabled(True)
+        self.camera_btn.setStyleSheet("QPushButton {\n"
+"    width: 35px;\n"
+"    height: 35px;\n"
+"    background-color: transparent; \n"
+"    border: none;\n"
+"    transition: background-color 0.3s ease;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:checked {\n"
+"    background-color: #ff6c7b;\n"
+"     border-radius: 5px;\n"
+"     border: 1px solid;\n"
+"}")
+        self.camera_btn.setText("")
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-camera-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.camera_btn.setIcon(icon12)
+        self.camera_btn.setIconSize(QtCore.QSize(35, 35))
+        self.camera_btn.setCheckable(True)
+        self.camera_btn.setChecked(False)
+        self.camera_btn.setObjectName("camera_btn")
+        self.horizontalLayout_6.addWidget(self.camera_btn)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem3)
+        self.account_status_label = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        self.account_status_label.setFont(font)
+        self.account_status_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.account_status_label.setObjectName("account_status_label")
+        self.horizontalLayout_6.addWidget(self.account_status_label)
+        self.horizontalLayout_7.addLayout(self.horizontalLayout_6)
+        self.gridLayout_2.addWidget(self.frame, 1, 0, 1, 1)
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame_3)
         self.stackedWidget.setObjectName("stackedWidget")
         self.home_page = QtWidgets.QWidget()
@@ -460,9 +523,9 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_5.setText("")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-voice-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon11)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-voice-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_5.setIcon(icon13)
         self.pushButton_5.setCheckable(True)
         self.pushButton_5.setObjectName("pushButton_5")
         self.layoutWidget = QtWidgets.QWidget(self.widget_3)
@@ -590,9 +653,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-stopwatch-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.set_time_btn.setIcon(icon12)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-stopwatch-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.set_time_btn.setIcon(icon14)
         self.set_time_btn.setObjectName("set_time_btn")
         self.horizontalLayout_9.addWidget(self.set_time_btn)
         self.start_btn = QtWidgets.QPushButton(self.widget_2)
@@ -632,9 +695,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-start-60.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.start_btn.setIcon(icon13)
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-start-60.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.start_btn.setIcon(icon15)
         self.start_btn.setObjectName("start_btn")
         self.horizontalLayout_9.addWidget(self.start_btn)
         self.rst_btn = QtWidgets.QPushButton(self.widget_2)
@@ -674,9 +737,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-reset-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.rst_btn.setIcon(icon14)
+        icon16 = QtGui.QIcon()
+        icon16.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-reset-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.rst_btn.setIcon(icon16)
         self.rst_btn.setObjectName("rst_btn")
         self.horizontalLayout_9.addWidget(self.rst_btn)
         self.verticalLayout_10.addLayout(self.horizontalLayout_9)
@@ -747,9 +810,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon15 = QtGui.QIcon()
-        icon15.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-1-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon15)
+        icon17 = QtGui.QIcon()
+        icon17.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-1-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon17)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setObjectName("pushButton")
         self.gridLayout_3.addWidget(self.pushButton, 0, 0, 1, 1)
@@ -789,9 +852,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-2-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon16)
+        icon18 = QtGui.QIcon()
+        icon18.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-2-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_2.setIcon(icon18)
         self.pushButton_2.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_2.setCheckable(False)
         self.pushButton_2.setChecked(False)
@@ -832,9 +895,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon17 = QtGui.QIcon()
-        icon17.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-3-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon17)
+        icon19 = QtGui.QIcon()
+        icon19.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-3-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_3.setIcon(icon19)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_3.setObjectName("pushButton_3")
         self.gridLayout_3.addWidget(self.pushButton_3, 2, 0, 1, 1)
@@ -873,9 +936,9 @@ class Ui_MainWindow(object):
 "    );\n"
 "}\n"
 "")
-        icon18 = QtGui.QIcon()
-        icon18.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-4-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon18)
+        icon20 = QtGui.QIcon()
+        icon20.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-4-key-80.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_4.setIcon(icon20)
         self.pushButton_4.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_4.setObjectName("pushButton_4")
         self.gridLayout_3.addWidget(self.pushButton_4, 3, 0, 1, 1)
@@ -1034,9 +1097,9 @@ class Ui_MainWindow(object):
 "    color: white;\n"
 "}\n"
 "")
-        icon19 = QtGui.QIcon()
-        icon19.addPixmap(QtGui.QPixmap(":/icons/icons/music_list.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.add_to_playlist_btn.setIcon(icon19)
+        icon21 = QtGui.QIcon()
+        icon21.addPixmap(QtGui.QPixmap(":/icons/icons/music_list.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.add_to_playlist_btn.setIcon(icon21)
         self.add_to_playlist_btn.setIconSize(QtCore.QSize(30, 30))
         self.add_to_playlist_btn.setObjectName("add_to_playlist_btn")
         self.horizontalLayout_14.addWidget(self.add_to_playlist_btn)
@@ -1071,17 +1134,17 @@ class Ui_MainWindow(object):
 "    color: #ff69b4;\n"
 "}\n"
 "")
-        icon20 = QtGui.QIcon()
-        icon20.addPixmap(QtGui.QPixmap(":/icons/icons/like.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.add_to_fav_btn.setIcon(icon20)
+        icon22 = QtGui.QIcon()
+        icon22.addPixmap(QtGui.QPixmap(":/icons/icons/like.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.add_to_fav_btn.setIcon(icon22)
         self.add_to_fav_btn.setIconSize(QtCore.QSize(30, 30))
         self.add_to_fav_btn.setObjectName("add_to_fav_btn")
         self.horizontalLayout_14.addWidget(self.add_to_fav_btn)
         self.verticalLayout_13.addLayout(self.horizontalLayout_14)
         self.verticalLayout_14.addLayout(self.verticalLayout_13)
         self.verticalLayout_17.addWidget(self.frame_2)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_17.addItem(spacerItem3)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_17.addItem(spacerItem4)
         self.frame_4 = QtWidgets.QFrame(self.widget_4)
         self.frame_4.setStyleSheet("#frame_4 {\n"
 "    background-color: rgb(217, 248, 255);\n"
@@ -1180,9 +1243,9 @@ class Ui_MainWindow(object):
         self.play_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.play_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.play_btn.setText("")
-        icon21 = QtGui.QIcon()
-        icon21.addPixmap(QtGui.QPixmap(":/icons/icons/pase.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.play_btn.setIcon(icon21)
+        icon23 = QtGui.QIcon()
+        icon23.addPixmap(QtGui.QPixmap(":/icons/icons/pase.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.play_btn.setIcon(icon23)
         self.play_btn.setIconSize(QtCore.QSize(40, 40))
         self.play_btn.setFlat(True)
         self.play_btn.setObjectName("play_btn")
@@ -1191,9 +1254,9 @@ class Ui_MainWindow(object):
         self.pause_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.pause_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.pause_btn.setText("")
-        icon22 = QtGui.QIcon()
-        icon22.addPixmap(QtGui.QPixmap(":/icons/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pause_btn.setIcon(icon22)
+        icon24 = QtGui.QIcon()
+        icon24.addPixmap(QtGui.QPixmap(":/icons/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pause_btn.setIcon(icon24)
         self.pause_btn.setIconSize(QtCore.QSize(40, 40))
         self.pause_btn.setFlat(True)
         self.pause_btn.setObjectName("pause_btn")
@@ -1202,9 +1265,9 @@ class Ui_MainWindow(object):
         self.stop_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.stop_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.stop_btn.setText("")
-        icon23 = QtGui.QIcon()
-        icon23.addPixmap(QtGui.QPixmap(":/icons/icons/stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.stop_btn.setIcon(icon23)
+        icon25 = QtGui.QIcon()
+        icon25.addPixmap(QtGui.QPixmap(":/icons/icons/stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.stop_btn.setIcon(icon25)
         self.stop_btn.setIconSize(QtCore.QSize(40, 40))
         self.stop_btn.setFlat(True)
         self.stop_btn.setObjectName("stop_btn")
@@ -1213,9 +1276,9 @@ class Ui_MainWindow(object):
         self.previous_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.previous_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.previous_btn.setText("")
-        icon24 = QtGui.QIcon()
-        icon24.addPixmap(QtGui.QPixmap(":/icons/icons/pre.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.previous_btn.setIcon(icon24)
+        icon26 = QtGui.QIcon()
+        icon26.addPixmap(QtGui.QPixmap(":/icons/icons/pre.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.previous_btn.setIcon(icon26)
         self.previous_btn.setIconSize(QtCore.QSize(40, 40))
         self.previous_btn.setFlat(True)
         self.previous_btn.setObjectName("previous_btn")
@@ -1224,9 +1287,9 @@ class Ui_MainWindow(object):
         self.next_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.next_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.next_btn.setText("")
-        icon25 = QtGui.QIcon()
-        icon25.addPixmap(QtGui.QPixmap(":/icons/icons/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.next_btn.setIcon(icon25)
+        icon27 = QtGui.QIcon()
+        icon27.addPixmap(QtGui.QPixmap(":/icons/icons/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.next_btn.setIcon(icon27)
         self.next_btn.setIconSize(QtCore.QSize(40, 40))
         self.next_btn.setFlat(True)
         self.next_btn.setObjectName("next_btn")
@@ -1235,9 +1298,9 @@ class Ui_MainWindow(object):
         self.shuffle_songs_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.shuffle_songs_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.shuffle_songs_btn.setText("")
-        icon26 = QtGui.QIcon()
-        icon26.addPixmap(QtGui.QPixmap(":/icons/icons/play-random.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.shuffle_songs_btn.setIcon(icon26)
+        icon28 = QtGui.QIcon()
+        icon28.addPixmap(QtGui.QPixmap(":/icons/icons/play-random.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.shuffle_songs_btn.setIcon(icon28)
         self.shuffle_songs_btn.setIconSize(QtCore.QSize(40, 40))
         self.shuffle_songs_btn.setFlat(True)
         self.shuffle_songs_btn.setObjectName("shuffle_songs_btn")
@@ -1246,9 +1309,9 @@ class Ui_MainWindow(object):
         self.loop_one_btn.setMinimumSize(QtCore.QSize(40, 40))
         self.loop_one_btn.setMaximumSize(QtCore.QSize(40, 40))
         self.loop_one_btn.setText("")
-        icon27 = QtGui.QIcon()
-        icon27.addPixmap(QtGui.QPixmap(":/icons/icons/loop-one.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.loop_one_btn.setIcon(icon27)
+        icon29 = QtGui.QIcon()
+        icon29.addPixmap(QtGui.QPixmap(":/icons/icons/loop-one.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.loop_one_btn.setIcon(icon29)
         self.loop_one_btn.setIconSize(QtCore.QSize(40, 40))
         self.loop_one_btn.setFlat(True)
         self.loop_one_btn.setObjectName("loop_one_btn")
@@ -1278,8 +1341,8 @@ class Ui_MainWindow(object):
         self.label_12.setFont(font)
         self.label_12.setObjectName("label_12")
         self.horizontalLayout_16.addWidget(self.label_12)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem5)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_15.setSpacing(0)
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
@@ -1287,9 +1350,9 @@ class Ui_MainWindow(object):
         self.add_songs_btn.setMinimumSize(QtCore.QSize(50, 50))
         self.add_songs_btn.setMaximumSize(QtCore.QSize(50, 50))
         self.add_songs_btn.setText("")
-        icon28 = QtGui.QIcon()
-        icon28.addPixmap(QtGui.QPixmap(":/icons/icons/addFromLocal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.add_songs_btn.setIcon(icon28)
+        icon30 = QtGui.QIcon()
+        icon30.addPixmap(QtGui.QPixmap(":/icons/icons/addFromLocal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.add_songs_btn.setIcon(icon30)
         self.add_songs_btn.setIconSize(QtCore.QSize(50, 50))
         self.add_songs_btn.setFlat(True)
         self.add_songs_btn.setObjectName("add_songs_btn")
@@ -1298,9 +1361,9 @@ class Ui_MainWindow(object):
         self.remove_selected_btn.setMinimumSize(QtCore.QSize(50, 50))
         self.remove_selected_btn.setMaximumSize(QtCore.QSize(50, 50))
         self.remove_selected_btn.setText("")
-        icon29 = QtGui.QIcon()
-        icon29.addPixmap(QtGui.QPixmap(":/icons/icons/clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.remove_selected_btn.setIcon(icon29)
+        icon31 = QtGui.QIcon()
+        icon31.addPixmap(QtGui.QPixmap(":/icons/icons/clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.remove_selected_btn.setIcon(icon31)
         self.remove_selected_btn.setIconSize(QtCore.QSize(50, 50))
         self.remove_selected_btn.setFlat(True)
         self.remove_selected_btn.setObjectName("remove_selected_btn")
@@ -1309,9 +1372,9 @@ class Ui_MainWindow(object):
         self.clear_all_btn.setMinimumSize(QtCore.QSize(50, 50))
         self.clear_all_btn.setMaximumSize(QtCore.QSize(50, 50))
         self.clear_all_btn.setText("")
-        icon30 = QtGui.QIcon()
-        icon30.addPixmap(QtGui.QPixmap(":/icons/icons/remove.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.clear_all_btn.setIcon(icon30)
+        icon32 = QtGui.QIcon()
+        icon32.addPixmap(QtGui.QPixmap(":/icons/icons/remove.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.clear_all_btn.setIcon(icon32)
         self.clear_all_btn.setIconSize(QtCore.QSize(50, 50))
         self.clear_all_btn.setFlat(True)
         self.clear_all_btn.setObjectName("clear_all_btn")
@@ -1547,7 +1610,7 @@ class Ui_MainWindow(object):
         self.label_3.setSizePolicy(sizePolicy)
         self.label_3.setMinimumSize(QtCore.QSize(0, 0))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("icons/posture_accuracy_sample.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/posture_accuracy_sample.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_19.addWidget(self.label_3)
@@ -1720,9 +1783,9 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_7.setText("")
-        icon31 = QtGui.QIcon()
-        icon31.addPixmap(QtGui.QPixmap("icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon31)
+        icon33 = QtGui.QIcon()
+        icon33.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_7.setIcon(icon33)
         self.pushButton_7.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_7.setObjectName("pushButton_7")
         self.horizontalLayout_21.addWidget(self.pushButton_7)
@@ -1755,9 +1818,9 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_8.setText("")
-        icon32 = QtGui.QIcon()
-        icon32.addPixmap(QtGui.QPixmap("icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_8.setIcon(icon32)
+        icon34 = QtGui.QIcon()
+        icon34.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_8.setIcon(icon34)
         self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_8.setObjectName("pushButton_8")
         self.horizontalLayout_21.addWidget(self.pushButton_8)
@@ -2652,13 +2715,542 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.share_page)
         self.account_page = QtWidgets.QWidget()
         self.account_page.setObjectName("account_page")
-        self.label_6 = QtWidgets.QLabel(self.account_page)
-        self.label_6.setGeometry(QtCore.QRect(310, 240, 251, 91))
+        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(self.account_page)
+        self.horizontalLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 1491, 721))
+        self.horizontalLayoutWidget_4.setObjectName("horizontalLayoutWidget_4")
+        self.horizontalLayout_42 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_4)
+        self.horizontalLayout_42.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_42.setObjectName("horizontalLayout_42")
+        self.frame_9 = QtWidgets.QFrame(self.horizontalLayoutWidget_4)
+        self.frame_9.setMinimumSize(QtCore.QSize(820, 630))
+        self.frame_9.setMaximumSize(QtCore.QSize(820, 630))
+        self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_9.setObjectName("frame_9")
+        self.label_6 = QtWidgets.QLabel(self.frame_9)
+        self.label_6.setGeometry(QtCore.QRect(10, 0, 390, 630))
+        self.label_6.setMinimumSize(QtCore.QSize(390, 630))
+        self.label_6.setMaximumSize(QtCore.QSize(390, 630))
+        self.label_6.setStyleSheet("background-image: url(:/icons/icons/background.jpg);\n"
+"border-top-left-radius: 50px;\n"
+"border-bottom-left-radius: 50px;")
+        self.label_6.setText("")
+        self.label_6.setScaledContents(False)
+        self.label_6.setObjectName("label_6")
+        self.label_77 = QtWidgets.QLabel(self.frame_9)
+        self.label_77.setGeometry(QtCore.QRect(380, 0, 430, 630))
+        self.label_77.setMinimumSize(QtCore.QSize(430, 630))
+        self.label_77.setMaximumSize(QtCore.QSize(430, 630))
+        self.label_77.setStyleSheet("background-color: rgba(255, 255, 255, 255);\n"
+"border-top-right-radius: 50px;\n"
+"border-bottom-right-radius: 50px;")
+        self.label_77.setText("")
+        self.label_77.setObjectName("label_77")
+        self.login_ui = QtWidgets.QWidget(self.frame_9)
+        self.login_ui.setGeometry(QtCore.QRect(420, 40, 351, 561))
+        self.login_ui.setObjectName("login_ui")
+        self.horizontalLayoutWidget_5 = QtWidgets.QWidget(self.login_ui)
+        self.horizontalLayoutWidget_5.setGeometry(QtCore.QRect(0, 0, 351, 81))
+        self.horizontalLayoutWidget_5.setObjectName("horizontalLayoutWidget_5")
+        self.horizontalLayout_43 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_5)
+        self.horizontalLayout_43.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_43.setObjectName("horizontalLayout_43")
+        self.login_header_label = QtWidgets.QLabel(self.horizontalLayoutWidget_5)
+        self.login_header_label.setMinimumSize(QtCore.QSize(135, 50))
+        self.login_header_label.setMaximumSize(QtCore.QSize(135, 50))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(20)
-        self.label_6.setFont(font)
-        self.label_6.setObjectName("label_6")
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.login_header_label.setFont(font)
+        self.login_header_label.setStyleSheet("color: rgba(0, 0, 0, 200);\n"
+"")
+        self.login_header_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.login_header_label.setObjectName("login_header_label")
+        self.horizontalLayout_43.addWidget(self.login_header_label)
+        self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.login_ui)
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(60, 350, 222, 165))
+        self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.login_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.login_btn.setMinimumSize(QtCore.QSize(220, 45))
+        self.login_btn.setMaximumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.login_btn.setFont(font)
+        self.login_btn.setStyleSheet("QPushButton{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"    color:rgba(255, 255, 255, 210);\n"
+"    border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(150, 123, 111, 255);\n"
+"}")
+        self.login_btn.setCheckable(True)
+        self.login_btn.setObjectName("login_btn")
+        self.verticalLayout_21.addWidget(self.login_btn)
+        self.login_register_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.login_register_btn.setMinimumSize(QtCore.QSize(220, 45))
+        self.login_register_btn.setMaximumSize(QtCore.QSize(220, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.login_register_btn.setFont(font)
+        self.login_register_btn.setStyleSheet("QPushButton{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"    color:rgba(255, 255, 255, 210);\n"
+"    border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(150, 123, 111, 255);\n"
+"}")
+        self.login_register_btn.setCheckable(True)
+        self.login_register_btn.setObjectName("login_register_btn")
+        self.verticalLayout_21.addWidget(self.login_register_btn)
+        self.horizontalLayout_44 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_44.setObjectName("horizontalLayout_44")
+        self.login_by_google_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.login_by_google_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.login_by_google_btn.setText("")
+        icon35 = QtGui.QIcon()
+        icon35.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-google-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.login_by_google_btn.setIcon(icon35)
+        self.login_by_google_btn.setIconSize(QtCore.QSize(48, 48))
+        self.login_by_google_btn.setCheckable(True)
+        self.login_by_google_btn.setObjectName("login_by_google_btn")
+        self.horizontalLayout_44.addWidget(self.login_by_google_btn)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_44.addItem(spacerItem6)
+        self.login_by_fb_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.login_by_fb_btn.setMinimumSize(QtCore.QSize(50, 50))
+        self.login_by_fb_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.login_by_fb_btn.setText("")
+        icon36 = QtGui.QIcon()
+        icon36.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-fb-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.login_by_fb_btn.setIcon(icon36)
+        self.login_by_fb_btn.setIconSize(QtCore.QSize(48, 48))
+        self.login_by_fb_btn.setCheckable(True)
+        self.login_by_fb_btn.setObjectName("login_by_fb_btn")
+        self.horizontalLayout_44.addWidget(self.login_by_fb_btn)
+        self.verticalLayout_21.addLayout(self.horizontalLayout_44)
+        self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.login_ui)
+        self.verticalLayoutWidget_6.setGeometry(QtCore.QRect(40, 110, 257, 141))
+        self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_6)
+        self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.login_mail_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_6)
+        self.login_mail_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.login_mail_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.login_mail_lineedit.setFont(font)
+        self.login_mail_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.login_mail_lineedit.setObjectName("login_mail_lineedit")
+        self.verticalLayout_26.addWidget(self.login_mail_lineedit)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_26.addItem(spacerItem7)
+        self.login_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_6)
+        self.login_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.login_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.login_password_lineedit.setFont(font)
+        self.login_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.login_password_lineedit.setObjectName("login_password_lineedit")
+        self.verticalLayout_26.addWidget(self.login_password_lineedit)
+        self.login_forgot_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_6)
+        self.login_forgot_btn.setMinimumSize(QtCore.QSize(150, 20))
+        self.login_forgot_btn.setMaximumSize(QtCore.QSize(150, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        self.login_forgot_btn.setFont(font)
+        self.login_forgot_btn.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.login_forgot_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.login_forgot_btn.setCheckable(True)
+        self.login_forgot_btn.setObjectName("login_forgot_btn")
+        self.verticalLayout_26.addWidget(self.login_forgot_btn)
+        self.reg_ui = QtWidgets.QWidget(self.frame_9)
+        self.reg_ui.setGeometry(QtCore.QRect(420, 40, 351, 561))
+        self.reg_ui.setObjectName("reg_ui")
+        self.horizontalLayoutWidget_10 = QtWidgets.QWidget(self.reg_ui)
+        self.horizontalLayoutWidget_10.setGeometry(QtCore.QRect(0, 0, 351, 81))
+        self.horizontalLayoutWidget_10.setObjectName("horizontalLayoutWidget_10")
+        self.horizontalLayout_51 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_10)
+        self.horizontalLayout_51.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_51.setObjectName("horizontalLayout_51")
+        self.reg_label = QtWidgets.QLabel(self.horizontalLayoutWidget_10)
+        self.reg_label.setMinimumSize(QtCore.QSize(170, 50))
+        self.reg_label.setMaximumSize(QtCore.QSize(170, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.reg_label.setFont(font)
+        self.reg_label.setStyleSheet("color: rgba(0, 0, 0, 200);\n"
+"")
+        self.reg_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.reg_label.setObjectName("reg_label")
+        self.horizontalLayout_51.addWidget(self.reg_label)
+        self.verticalLayoutWidget_10 = QtWidgets.QWidget(self.reg_ui)
+        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(60, 414, 222, 113))
+        self.verticalLayoutWidget_10.setObjectName("verticalLayoutWidget_10")
+        self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_10)
+        self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_30.setObjectName("verticalLayout_30")
+        self.reg_register_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_10)
+        self.reg_register_btn.setMinimumSize(QtCore.QSize(220, 45))
+        self.reg_register_btn.setMaximumSize(QtCore.QSize(220, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.reg_register_btn.setFont(font)
+        self.reg_register_btn.setStyleSheet("QPushButton{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"    color:rgba(255, 255, 255, 210);\n"
+"    border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(150, 123, 111, 255);\n"
+"}")
+        self.reg_register_btn.setCheckable(True)
+        self.reg_register_btn.setObjectName("reg_register_btn")
+        self.verticalLayout_30.addWidget(self.reg_register_btn)
+        self.horizontalLayout_52 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_52.setObjectName("horizontalLayout_52")
+        self.reg_by_google_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_10)
+        self.reg_by_google_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.reg_by_google_btn.setText("")
+        self.reg_by_google_btn.setIcon(icon35)
+        self.reg_by_google_btn.setIconSize(QtCore.QSize(48, 48))
+        self.reg_by_google_btn.setCheckable(True)
+        self.reg_by_google_btn.setObjectName("reg_by_google_btn")
+        self.horizontalLayout_52.addWidget(self.reg_by_google_btn)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_52.addItem(spacerItem8)
+        self.reg_by_fb_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_10)
+        self.reg_by_fb_btn.setMinimumSize(QtCore.QSize(50, 50))
+        self.reg_by_fb_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.reg_by_fb_btn.setText("")
+        self.reg_by_fb_btn.setIcon(icon36)
+        self.reg_by_fb_btn.setIconSize(QtCore.QSize(48, 48))
+        self.reg_by_fb_btn.setCheckable(True)
+        self.reg_by_fb_btn.setObjectName("reg_by_fb_btn")
+        self.horizontalLayout_52.addWidget(self.reg_by_fb_btn)
+        self.verticalLayout_30.addLayout(self.horizontalLayout_52)
+        self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.reg_ui)
+        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(40, 110, 258, 211))
+        self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_11)
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.horizontalLayout_54 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_54.setObjectName("horizontalLayout_54")
+        self.reg_firstname_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_firstname_lineedit.setMinimumSize(QtCore.QSize(120, 40))
+        self.reg_firstname_lineedit.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_firstname_lineedit.setFont(font)
+        self.reg_firstname_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_firstname_lineedit.setObjectName("reg_firstname_lineedit")
+        self.horizontalLayout_54.addWidget(self.reg_firstname_lineedit)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_54.addItem(spacerItem9)
+        self.reg_lastname_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_lastname_lineedit.setMinimumSize(QtCore.QSize(120, 40))
+        self.reg_lastname_lineedit.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_lastname_lineedit.setFont(font)
+        self.reg_lastname_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_lastname_lineedit.setObjectName("reg_lastname_lineedit")
+        self.horizontalLayout_54.addWidget(self.reg_lastname_lineedit)
+        self.verticalLayout_31.addLayout(self.horizontalLayout_54)
+        spacerItem10 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem10)
+        self.reg_mail_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_mail_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_mail_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_mail_lineedit.setFont(font)
+        self.reg_mail_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_mail_lineedit.setObjectName("reg_mail_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_mail_lineedit)
+        spacerItem11 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem11)
+        self.reg_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_password_lineedit.setFont(font)
+        self.reg_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_password_lineedit.setObjectName("reg_password_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_password_lineedit)
+        spacerItem12 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem12)
+        self.reg_confirm_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_confirm_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_confirm_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_confirm_password_lineedit.setFont(font)
+        self.reg_confirm_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_confirm_password_lineedit.setObjectName("reg_confirm_password_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_confirm_password_lineedit)
+        self.reg_back_btn = QtWidgets.QPushButton(self.reg_ui)
+        self.reg_back_btn.setGeometry(QtCore.QRect(0, 70, 41, 41))
+        self.reg_back_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.reg_back_btn.setText("")
+        icon37 = QtGui.QIcon()
+        icon37.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-back-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.reg_back_btn.setIcon(icon37)
+        self.reg_back_btn.setIconSize(QtCore.QSize(40, 40))
+        self.reg_back_btn.setCheckable(True)
+        self.reg_back_btn.setObjectName("reg_back_btn")
+        self.forgot_ui = QtWidgets.QWidget(self.frame_9)
+        self.forgot_ui.setGeometry(QtCore.QRect(420, 40, 351, 561))
+        self.forgot_ui.setObjectName("forgot_ui")
+        self.horizontalLayoutWidget_14 = QtWidgets.QWidget(self.forgot_ui)
+        self.horizontalLayoutWidget_14.setGeometry(QtCore.QRect(0, 0, 352, 81))
+        self.horizontalLayoutWidget_14.setObjectName("horizontalLayoutWidget_14")
+        self.horizontalLayout_60 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_14)
+        self.horizontalLayout_60.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_60.setObjectName("horizontalLayout_60")
+        self.forgot_label = QtWidgets.QLabel(self.horizontalLayoutWidget_14)
+        self.forgot_label.setMinimumSize(QtCore.QSize(350, 50))
+        self.forgot_label.setMaximumSize(QtCore.QSize(135, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.forgot_label.setFont(font)
+        self.forgot_label.setStyleSheet("color: rgba(0, 0, 0, 200);\n"
+"")
+        self.forgot_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.forgot_label.setObjectName("forgot_label")
+        self.horizontalLayout_60.addWidget(self.forgot_label)
+        self.verticalLayoutWidget_16 = QtWidgets.QWidget(self.forgot_ui)
+        self.verticalLayoutWidget_16.setGeometry(QtCore.QRect(60, 350, 222, 51))
+        self.verticalLayoutWidget_16.setObjectName("verticalLayoutWidget_16")
+        self.verticalLayout_36 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_16)
+        self.verticalLayout_36.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_36.setObjectName("verticalLayout_36")
+        self.forgot_label_2 = QtWidgets.QPushButton(self.verticalLayoutWidget_16)
+        self.forgot_label_2.setMinimumSize(QtCore.QSize(220, 45))
+        self.forgot_label_2.setMaximumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.forgot_label_2.setFont(font)
+        self.forgot_label_2.setStyleSheet("QPushButton{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"    color:rgba(255, 255, 255, 210);\n"
+"    border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(150, 123, 111, 255);\n"
+"}")
+        self.forgot_label_2.setObjectName("forgot_label_2")
+        self.verticalLayout_36.addWidget(self.forgot_label_2)
+        self.verticalLayoutWidget_17 = QtWidgets.QWidget(self.forgot_ui)
+        self.verticalLayoutWidget_17.setGeometry(QtCore.QRect(40, 110, 257, 51))
+        self.verticalLayoutWidget_17.setObjectName("verticalLayoutWidget_17")
+        self.verticalLayout_37 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_17)
+        self.verticalLayout_37.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_37.setObjectName("verticalLayout_37")
+        self.forgot_mail_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_17)
+        self.forgot_mail_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.forgot_mail_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.forgot_mail_lineedit.setFont(font)
+        self.forgot_mail_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.forgot_mail_lineedit.setObjectName("forgot_mail_lineedit")
+        self.verticalLayout_37.addWidget(self.forgot_mail_lineedit)
+        self.forgot_back_btn = QtWidgets.QPushButton(self.forgot_ui)
+        self.forgot_back_btn.setGeometry(QtCore.QRect(0, 70, 41, 41))
+        self.forgot_back_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.forgot_back_btn.setText("")
+        self.forgot_back_btn.setIcon(icon37)
+        self.forgot_back_btn.setIconSize(QtCore.QSize(40, 40))
+        self.forgot_back_btn.setCheckable(True)
+        self.forgot_back_btn.setObjectName("forgot_back_btn")
+        self.horizontalLayout_42.addWidget(self.frame_9)
         self.stackedWidget.addWidget(self.account_page)
         self.info_page = QtWidgets.QWidget()
         self.info_page.setObjectName("info_page")
@@ -2671,75 +3263,12 @@ class Ui_MainWindow(object):
         self.label_5.setObjectName("label_5")
         self.stackedWidget.addWidget(self.info_page)
         self.gridLayout_2.addWidget(self.stackedWidget, 2, 0, 1, 1)
-        self.frame = QtWidgets.QFrame(self.frame_3)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame)
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_7.setSpacing(0)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_6.setSpacing(0)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.menu_btn = QtWidgets.QPushButton(self.frame)
-        self.menu_btn.setStyleSheet("padding: 5px;\n"
-"border: none;\n"
-"width: 35px;\n"
-"height: 35px")
-        self.menu_btn.setText("")
-        icon33 = QtGui.QIcon()
-        icon33.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-hamburger-button-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.menu_btn.setIcon(icon33)
-        self.menu_btn.setIconSize(QtCore.QSize(35, 35))
-        self.menu_btn.setCheckable(True)
-        self.menu_btn.setAutoExclusive(False)
-        self.menu_btn.setObjectName("menu_btn")
-        self.horizontalLayout_6.addWidget(self.menu_btn)
-        self.camera_btn = QtWidgets.QPushButton(self.frame)
-        self.camera_btn.setEnabled(True)
-        self.camera_btn.setStyleSheet("QPushButton {\n"
-"    width: 35px;\n"
-"    height: 35px;\n"
-"    background-color: transparent; \n"
-"    border: none;\n"
-"    transition: background-color 0.3s ease;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QPushButton:checked {\n"
-"    background-color: #ff6c7b;\n"
-"     border-radius: 5px;\n"
-"     border: 1px solid;\n"
-"}")
-        self.camera_btn.setText("")
-        icon34 = QtGui.QIcon()
-        icon34.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-camera-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.camera_btn.setIcon(icon34)
-        self.camera_btn.setIconSize(QtCore.QSize(35, 35))
-        self.camera_btn.setCheckable(True)
-        self.camera_btn.setChecked(False)
-        self.camera_btn.setObjectName("camera_btn")
-        self.horizontalLayout_6.addWidget(self.camera_btn)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem5)
-        self.account_status_label = QtWidgets.QLabel(self.frame)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        self.account_status_label.setFont(font)
-        self.account_status_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.account_status_label.setObjectName("account_status_label")
-        self.horizontalLayout_6.addWidget(self.account_status_label)
-        self.horizontalLayout_7.addLayout(self.horizontalLayout_6)
-        self.gridLayout_2.addWidget(self.frame, 1, 0, 1, 1)
         self.horizontalLayout_5.addWidget(self.frame_3)
         self.verticalLayout_7.addWidget(self.main_frame)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
         self.menu_btn.toggled['bool'].connect(self.icon_only_frame.setHidden) # type: ignore
         self.menu_btn.toggled['bool'].connect(self.full_menu_frame.setVisible) # type: ignore
@@ -2770,6 +3299,7 @@ class Ui_MainWindow(object):
         self.full_account_btn.setText(_translate("MainWindow", "Account"))
         self.full_info_btn.setText(_translate("MainWindow", "Information"))
         self.full_login_out_btn.setText(_translate("MainWindow", "Log In/Out"))
+        self.account_status_label.setText(_translate("MainWindow", "Visitor"))
         self.camera_label.setText(_translate("MainWindow", "Lens screen not found"))
         self.demo_label.setText(_translate("MainWindow", "Demo"))
         self.pos_reg_label.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -2898,7 +3428,21 @@ class Ui_MainWindow(object):
         self.label_51.setText(_translate("MainWindow", "76"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.p2), _translate("MainWindow", "Page2"))
         self.label_4.setText(_translate("MainWindow", "Share Page"))
-        self.label_6.setText(_translate("MainWindow", "Account Page"))
+        self.login_header_label.setText(_translate("MainWindow", "Log In"))
+        self.login_btn.setText(_translate("MainWindow", "Log In"))
+        self.login_register_btn.setText(_translate("MainWindow", "Register"))
+        self.login_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
+        self.login_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Password"))
+        self.login_forgot_btn.setText(_translate("MainWindow", "Forgot your password?"))
+        self.reg_label.setText(_translate("MainWindow", "Register"))
+        self.reg_register_btn.setText(_translate("MainWindow", "Register"))
+        self.reg_firstname_lineedit.setPlaceholderText(_translate("MainWindow", "  First Name"))
+        self.reg_lastname_lineedit.setPlaceholderText(_translate("MainWindow", "  Last Name"))
+        self.reg_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
+        self.reg_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Password"))
+        self.reg_confirm_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Confirm Password"))
+        self.forgot_label.setText(_translate("MainWindow", "Forgot password"))
+        self.forgot_label_2.setText(_translate("MainWindow", "Send "))
+        self.forgot_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
         self.label_5.setText(_translate("MainWindow", "Info Page"))
-        self.account_status_label.setText(_translate("MainWindow", "Visitor"))
 import resource_rc

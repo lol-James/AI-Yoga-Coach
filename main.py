@@ -50,6 +50,14 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.detector.result_image_signal.connect(self.update_GUI_frame)
         self.ui.camera_btn.toggled.connect(self.on_camera_btn_toggled)
 
+        # account
+        self.ui.reg_ui.hide()
+        self.ui.forgot_ui.hide()
+        self.ui.login_register_btn.clicked.connect(self.change_account_widget)
+        self.ui.login_forgot_btn.clicked.connect(self.change_account_widget)
+        self.ui.reg_back_btn.clicked.connect(self.change_account_widget)
+        self.ui.forgot_back_btn.clicked.connect(self.change_account_widget)
+
         self.show()
         
         
@@ -134,3 +142,22 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def clear_camera_label(self):
         self.ui.camera_label.setPixmap(QPixmap())
         self.ui.camera_label.setText('Lens screen not found')
+    
+    def change_account_widget(self):
+        if self.ui.login_register_btn.isChecked():
+            self.ui.login_ui.hide()
+            self.ui.reg_ui.show()
+            self.ui.login_register_btn.setChecked(False)
+        if self.ui.login_forgot_btn.isChecked():
+            self.ui.login_ui.hide()
+            self.ui.forgot_ui.show()
+            self.ui.login_forgot_btn.setChecked(False)
+        if self.ui.reg_back_btn.isChecked():
+            self.ui.reg_ui.hide()
+            self.ui.login_ui.show()
+            self.ui.reg_back_btn.setChecked(False)
+        if self.ui.forgot_back_btn.isChecked():
+            self.ui.forgot_ui.hide()
+            self.ui.login_ui.show()
+            self.ui.forgot_back_btn.setChecked(False)
+    
