@@ -42,6 +42,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.ui.full_account_btn.toggled.connect(self.on_full_account_btn_toggled)
         self.ui.info_btn.toggled.connect(self.on_info_btn_toggled)
         self.ui.full_info_btn.toggled.connect(self.on_full_info_btn_toggled)
+        self.ui.addShareicon.setCheckable(True)
 
         # camera and yoga detector initializations
         self.camera_thread = CameraThread()
@@ -49,6 +50,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.detector = YogaPoseDetector()
         self.detector.result_image_signal.connect(self.update_GUI_frame)
         self.ui.camera_btn.toggled.connect(self.on_camera_btn_toggled)
+
+        #share page
+        self.ui.widget_6.hide()
+        self.ui.addShareicon.clicked.connect(self.toggle_share_page_widget)
 
         # account
         self.ui.reg_ui.hide()
@@ -190,4 +195,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.ui.user_information_widge.show()
             self.ui.change_passport_cancel.setChecked(False)
             
+    def toggle_share_page_widget(self):
+            if self.ui.addShareicon.isChecked():
+                    self.ui.widget_6.show()
     

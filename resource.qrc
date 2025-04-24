@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/cancel_icon.png</file>
+    <file>icons/sharecat_icon.png</file>
+    <file>icons/send_icon.png</file>
+    <file>icons/break-heart_icon.png</file>
+    <file>icons/link_icon.png</file>
+    <file>icons/comment.png</file>
+    <file>icons/addSharebutton.png</file>
     <file>icons/yoga_background.jpg</file>
     <file>icons/non user.png</file>
     <file>icons/icons8-back-48.png</file>
