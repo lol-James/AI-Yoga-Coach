@@ -43,6 +43,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.ui.info_btn.toggled.connect(self.on_info_btn_toggled)
         self.ui.full_info_btn.toggled.connect(self.on_full_info_btn_toggled)
         self.ui.addShareicon.setCheckable(True)
+        self.ui.share_comment_btn.setCheckable(True)
+        self.ui.share_cancel_btn.setCheckable(True)
 
         # camera and yoga detector initializations
         self.camera_thread = CameraThread()
@@ -53,7 +55,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         #share page
         self.ui.widget_6.hide()
-        self.ui.addShareicon.clicked.connect(self.toggle_share_page_widget)
+        self.ui.share_comment_frame.hide()
+        self.ui.addShareicon.clicked.connect(self.show_share_page_widget)
+        self.ui.share_comment_btn.clicked.connect(self.toggle_share_comment_widget)
+        self.ui.share_cancel_btn.clicked.connect(self.hide_share_page_widget)
 
         # account
         self.ui.reg_ui.hide()
@@ -195,7 +200,18 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.ui.user_information_widge.show()
             self.ui.change_passport_cancel.setChecked(False)
             
-    def toggle_share_page_widget(self):
+    #社群新增分享 開啟
+    def show_share_page_widget(self):
             if self.ui.addShareicon.isChecked():
                     self.ui.widget_6.show()
+    #開啟社群聊天室
+    def toggle_share_comment_widget(self):
+        if self.ui.share_comment_frame.isVisible():
+            self.ui.share_comment_frame.hide()
+        else:
+            self.ui.share_comment_frame.show()
+    #社群新增分享 關閉
+    def hide_share_page_widget(self):
+            if self.ui.share_cancel_btn.isChecked():
+                    self.ui.widget_6.hide()
     

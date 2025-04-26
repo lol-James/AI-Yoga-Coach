@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Graduate_project\AI-Yoga-Coach-main\AIYogaCoachInterface.ui'
+# Form implementation generated from reading ui file 'c:\Graduate_project\AI-Yoga-Coach-main\AIYogaCoachInterface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -1610,7 +1610,7 @@ class Ui_MainWindow(object):
         self.label_3.setSizePolicy(sizePolicy)
         self.label_3.setMinimumSize(QtCore.QSize(0, 0))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/posture_accuracy_sample.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/posture_accuracy_sample.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_19.addWidget(self.label_3)
@@ -1784,7 +1784,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_7.setText("")
         icon33 = QtGui.QIcon()
-        icon33.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon33.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_7.setIcon(icon33)
         self.pushButton_7.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -1819,7 +1819,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_8.setText("")
         icon34 = QtGui.QIcon()
-        icon34.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon34.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_8.setIcon(icon34)
         self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_8.setObjectName("pushButton_8")
@@ -2834,7 +2834,7 @@ class Ui_MainWindow(object):
 "")
         self.share_comment_btn.setText("")
         icon35 = QtGui.QIcon()
-        icon35.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon35.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.share_comment_btn.setIcon(icon35)
         self.share_comment_btn.setIconSize(QtCore.QSize(40, 40))
         self.share_comment_btn.setObjectName("share_comment_btn")
@@ -3019,7 +3019,7 @@ class Ui_MainWindow(object):
 "")
         self.dislike_button.setText("")
         icon36 = QtGui.QIcon()
-        icon36.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon36.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.dislike_button.setIcon(icon36)
         self.dislike_button.setObjectName("dislike_button")
         self.horizontalLayout_48.addWidget(self.dislike_button)
@@ -3108,7 +3108,7 @@ class Ui_MainWindow(object):
 "")
         self.link_button.setText("")
         icon37 = QtGui.QIcon()
-        icon37.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon37.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.link_button.setIcon(icon37)
         self.link_button.setIconSize(QtCore.QSize(50, 50))
         self.link_button.setObjectName("link_button")
@@ -3132,7 +3132,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_10.setText("")
         icon38 = QtGui.QIcon()
-        icon38.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon38.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_10.setIcon(icon38)
         self.pushButton_10.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_10.setObjectName("pushButton_10")
@@ -3156,7 +3156,7 @@ class Ui_MainWindow(object):
 "")
         self.share_cancel_btn.setText("")
         icon39 = QtGui.QIcon()
-        icon39.addPixmap(QtGui.QPixmap("C:\\Graduate_project\\AI-Yoga-Coach-main\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon39.addPixmap(QtGui.QPixmap("c:\\Graduate_project\\AI-Yoga-Coach-main\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.share_cancel_btn.setIcon(icon39)
         self.share_cancel_btn.setIconSize(QtCore.QSize(50, 50))
         self.share_cancel_btn.setObjectName("share_cancel_btn")
