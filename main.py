@@ -42,6 +42,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.ui.full_account_btn.toggled.connect(self.on_full_account_btn_toggled)
         self.ui.info_btn.toggled.connect(self.on_info_btn_toggled)
         self.ui.full_info_btn.toggled.connect(self.on_full_info_btn_toggled)
+        self.ui.login_out_btn.toggled.connect(self.on_login_out_btn_toggled)
+        self.ui.full_login_out_btn.toggled.connect(self.on_full_login_out_btn_toggled)
         self.ui.addShareicon.setCheckable(True)
         self.ui.share_comment_btn.setCheckable(True)
         self.ui.share_cancel_btn.setCheckable(True)
@@ -135,6 +137,12 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def on_full_info_btn_toggled(self):
         self.ui.stackedWidget.setCurrentIndex(5)
 
+    def on_login_out_btn_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(6)
+
+    def on_full_login_out_btn_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(6)
+
     def update_current_frame(self, frame):
         self.detector.frame = frame
     
@@ -200,17 +208,17 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.ui.user_information_widge.show()
             self.ui.change_passport_cancel.setChecked(False)
             
-    #ªÀ¸s·s¼W¤À¨É ¶}±Ò
+    #ï¿½ï¿½ï¿½sï¿½sï¿½Wï¿½ï¿½ï¿½ï¿½ ï¿½}ï¿½ï¿½
     def show_share_page_widget(self):
             if self.ui.addShareicon.isChecked():
                     self.ui.widget_6.show()
-    #¶}±ÒªÀ¸s²á¤Ñ«Ç
+    #ï¿½}ï¿½Òªï¿½ï¿½sï¿½ï¿½Ñ«ï¿½
     def toggle_share_comment_widget(self):
         if self.ui.share_comment_frame.isVisible():
             self.ui.share_comment_frame.hide()
         else:
             self.ui.share_comment_frame.show()
-    #ªÀ¸s·s¼W¤À¨É Ãö³¬
+    #ï¿½ï¿½ï¿½sï¿½sï¿½Wï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     def hide_share_page_widget(self):
             if self.ui.share_cancel_btn.isChecked():
                     self.ui.widget_6.hide()

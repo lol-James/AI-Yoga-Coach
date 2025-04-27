@@ -448,10 +448,10 @@ background-color:  #BBDEFB;
                  </size>
                 </property>
                 <property name="checkable">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="autoExclusive">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -722,10 +722,10 @@ background-color:  #BBDEFB;
                </size>
               </property>
               <property name="checkable">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="autoExclusive">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -827,7 +827,6 @@ height: 35px</string>
     height: 35px;
     background-color: transparent; 
     border: none;
-    transition: background-color 0.3s ease;
 }
 
 
@@ -896,7 +895,7 @@ QPushButton:checked {
           <item row="2" column="0">
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
@@ -1049,8 +1048,6 @@ QPushButton:checked {
     border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
     color: white;            /* 設定文字顏色為白色 */
     font-size: 15px;         /* 設定字體大小為 15px */
-    text-align: center;      /* 水平置中，Qt 不支援此屬性 */
-    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */
 }
 </string>
                      </property>
@@ -2140,7 +2137,7 @@ padding-left: 15px;</string>
                           <property name="font">
                            <font>
                             <family>Arial</family>
-                            <pointsize>-1</pointsize>
+                            <pointsize>12</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -2151,7 +2148,6 @@ padding-left: 15px;</string>
     background: #ffa500; /* 橘色底 */
     border-radius: 20px; /* 圓角 */
     padding: 10px 20px;
-    font-size: 22px;
     text-align: left;
     padding-left: 20px;
 }
@@ -2201,7 +2197,7 @@ QPushButton:pressed {
                           <property name="font">
                            <font>
                             <family>Arial</family>
-                            <pointsize>-1</pointsize>
+                            <pointsize>12</pointsize>
                             <weight>75</weight>
                             <bold>true</bold>
                            </font>
@@ -2212,7 +2208,6 @@ QPushButton:pressed {
     background: #ffffff; /* 白底 */
     border-radius: 20px; /* 圓角 */
     padding: 10px 20px; /* 增加內邊距 */
-    font-size: 22px;
     text-align: left; /* 字體靠左 */
     padding-left: 20px; /* 加一點左邊空間 */
 }
@@ -5939,6 +5934,1185 @@ padding-bottom:7px;</string>
              </widget>
             </widget>
             <widget class="QWidget" name="account_page">
+             <widget class="QWidget" name="info_widge" native="true">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1487</width>
+                <height>720</height>
+               </rect>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>1487</width>
+                <height>720</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1487</width>
+                <height>720</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_45" stretch="1,2,2">
+               <item>
+                <widget class="QWidget" name="user_picture_widge" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>290</width>
+                   <height>698</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>290</width>
+                   <height>698</height>
+                  </size>
+                 </property>
+                 <widget class="QLabel" name="user_picture">
+                  <property name="geometry">
+                   <rect>
+                    <x>50</x>
+                    <y>30</y>
+                    <width>221</width>
+                    <height>221</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>221</width>
+                    <height>221</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>221</width>
+                    <height>221</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="data_widge" native="true">
+                 <widget class="QWidget" name="adjust_information_widge" native="true">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>581</width>
+                    <height>695</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>581</width>
+                    <height>695</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>581</width>
+                    <height>695</height>
+                   </size>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_5">
+                   <item row="3" column="5">
+                    <widget class="QComboBox" name="select_genger">
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="currentText">
+                      <string>其他</string>
+                     </property>
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>其他</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>男</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>女</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="0" column="5">
+                    <widget class="QLineEdit" name="new_name">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLabel" name="new_user_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>使用者名稱:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="new_user_account_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>帳號名稱:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLabel" name="new_user_gender_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>性別:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QPushButton" name="adjust_confirm">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;          
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>確認修改資料</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="5">
+                    <widget class="QLineEdit" name="new_age">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="5">
+                    <widget class="QLineEdit" name="new_account">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLabel" name="new_user_age_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>年齡:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <spacer name="data_spacer">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="4" column="5">
+                    <widget class="QPushButton" name="data_change_cancel">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;      
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>取消</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="adjust_passport_widge" native="true">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>581</width>
+                    <height>695</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>581</width>
+                    <height>695</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>581</width>
+                    <height>695</height>
+                   </size>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_6">
+                   <item row="4" column="1">
+                    <widget class="QPushButton" name="passport_confirm">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;               
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>修改新密碼</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="5">
+                    <widget class="QPushButton" name="change_passport_cancel">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;         
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>取消</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLabel" name="old_passport_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>請輸入舊密碼:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="5">
+                    <widget class="QLineEdit" name="old_passport">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLabel" name="new_passport_confirm_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>再次輸入新密碼:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="new_passport_label">
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>請輸入新密碼:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="5">
+                    <widget class="QLineEdit" name="new_passport">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <spacer name="passport_spacer">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="2" column="5">
+                    <widget class="QLineEdit" name="new_passport_confirm">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="user_information_widge" native="true">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>0</y>
+                    <width>581</width>
+                    <height>695</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>581</width>
+                    <height>695</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>581</width>
+                    <height>695</height>
+                   </size>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_4">
+                   <item row="1" column="5">
+                    <widget class="QLabel" name="user_account">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>abc@gmail.com</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLabel" name="user_gender_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>性別:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QPushButton" name="config_passport">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;    
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>修改密碼</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLabel" name="user_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>使用者名稱:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLabel" name="user_age_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>年齡:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="5">
+                    <widget class="QLabel" name="user_gender">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>其他</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="5">
+                    <widget class="QLabel" name="user_age">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>20</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="user_account_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>帳號名稱:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="5">
+                    <widget class="QLabel" name="user_name">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>XXXXX</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="5">
+                    <widget class="QPushButton" name="config_user_information">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>45</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;            
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>修改個人資料</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="5">
+                    <widget class="QLabel" name="user_register_time">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>2024/04/19</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QLabel" name="user_register_label">
+                     <property name="minimumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>185</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>20</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>註冊時間:</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <zorder>user_information_widge</zorder>
+                 <zorder>adjust_information_widge</zorder>
+                 <zorder>adjust_passport_widge</zorder>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="picture_widge" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>580</width>
+                   <height>698</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>580</width>
+                   <height>698</height>
+                  </size>
+                 </property>
+                 <widget class="QLabel" name="infor_background">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>20</y>
+                    <width>561</width>
+                    <height>661</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>561</width>
+                    <height>661</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>561</width>
+                    <height>661</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="resource.qrc">:/icons/icons/yoga_background.jpg</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="info_page"/>
+            <widget class="QWidget" name="login_logout_page">
              <widget class="QWidget" name="horizontalLayoutWidget_4">
               <property name="geometry">
                <rect>
@@ -7106,1207 +8280,6 @@ QPushButton:pressed{
                     <bool>true</bool>
                    </property>
                   </widget>
-                 </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="info_page">
-             <widget class="QWidget" name="info_widge" native="true">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>1487</width>
-                <height>720</height>
-               </rect>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>1487</width>
-                <height>720</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>1487</width>
-                <height>720</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_45" stretch="1,2,2">
-               <item>
-                <widget class="QWidget" name="user_picture_widge" native="true">
-                 <property name="minimumSize">
-                  <size>
-                   <width>290</width>
-                   <height>698</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>290</width>
-                   <height>698</height>
-                  </size>
-                 </property>
-                 <widget class="QLabel" name="user_picture">
-                  <property name="geometry">
-                   <rect>
-                    <x>50</x>
-                    <y>30</y>
-                    <width>221</width>
-                    <height>221</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>221</width>
-                    <height>221</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>221</width>
-                    <height>221</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </widget>
-               </item>
-               <item>
-                <widget class="QWidget" name="data_widge" native="true">
-                 <widget class="QWidget" name="adjust_information_widge" native="true">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>10</y>
-                    <width>581</width>
-                    <height>695</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>581</width>
-                    <height>695</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>581</width>
-                    <height>695</height>
-                   </size>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_5">
-                   <item row="3" column="5">
-                    <widget class="QComboBox" name="select_genger">
-                     <property name="editable">
-                      <bool>false</bool>
-                     </property>
-                     <property name="currentText">
-                      <string>其他</string>
-                     </property>
-                     <property name="currentIndex">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <property name="text">
-                       <string>其他</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>男</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>女</string>
-                      </property>
-                     </item>
-                    </widget>
-                   </item>
-                   <item row="0" column="5">
-                    <widget class="QLineEdit" name="new_name">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLabel" name="new_user_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>使用者名稱:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="new_user_account_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>帳號名稱:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="1">
-                    <widget class="QLabel" name="new_user_gender_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>性別:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QPushButton" name="adjust_confirm">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    background-color: #f7c59f;       
-    color: #333333;                  
-    border: 1px solid #d6a77a;
-    border-radius: 10px;            
-    padding: 6px 12px;            
-    font-size: 15px;              
-}
-
-QPushButton:hover {
-    background-color: #ffdab9;   
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>確認修改資料</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="5">
-                    <widget class="QLineEdit" name="new_age">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="5">
-                    <widget class="QLineEdit" name="new_account">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLabel" name="new_user_age_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>年齡:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="2">
-                    <spacer name="data_spacer">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="4" column="5">
-                    <widget class="QPushButton" name="data_change_cancel">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    background-color: #f7c59f;       
-    color: #333333;                  
-    border: 1px solid #d6a77a;
-    border-radius: 10px;            
-    padding: 6px 12px;            
-    font-size: 15px;              
-}
-
-QPushButton:hover {
-    background-color: #ffdab9;   
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>取消</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                 <widget class="QWidget" name="adjust_passport_widge" native="true">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>10</y>
-                    <width>581</width>
-                    <height>695</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>581</width>
-                    <height>695</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>581</width>
-                    <height>695</height>
-                   </size>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_6">
-                   <item row="4" column="1">
-                    <widget class="QPushButton" name="passport_confirm">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    background-color: #f7c59f;       
-    color: #333333;                  
-    border: 1px solid #d6a77a;
-    border-radius: 10px;            
-    padding: 6px 12px;            
-    font-size: 15px;              
-}
-
-QPushButton:hover {
-    background-color: #ffdab9;   
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>修改新密碼</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="5">
-                    <widget class="QPushButton" name="change_passport_cancel">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    background-color: #f7c59f;       
-    color: #333333;                  
-    border: 1px solid #d6a77a;
-    border-radius: 10px;            
-    padding: 6px 12px;            
-    font-size: 15px;              
-}
-
-QPushButton:hover {
-    background-color: #ffdab9;   
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>取消</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLabel" name="old_passport_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>請輸入舊密碼:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="5">
-                    <widget class="QLineEdit" name="old_passport">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLabel" name="new_passport_confirm_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>再次輸入新密碼:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="new_passport_label">
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>請輸入新密碼:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="5">
-                    <widget class="QLineEdit" name="new_passport">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="2">
-                    <spacer name="passport_spacer">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="5">
-                    <widget class="QLineEdit" name="new_passport_confirm">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                 <widget class="QWidget" name="user_information_widge" native="true">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>0</y>
-                    <width>581</width>
-                    <height>695</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>581</width>
-                    <height>695</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>581</width>
-                    <height>695</height>
-                   </size>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_4">
-                   <item row="1" column="5">
-                    <widget class="QLabel" name="user_account">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>abc@gmail.com</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="1">
-                    <widget class="QLabel" name="user_gender_label">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>性別:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="1">
-                    <widget class="QPushButton" name="config_passport">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    background-color: #f7c59f;       
-    color: #333333;                  
-    border: 1px solid #d6a77a;
-    border-radius: 10px;            
-    padding: 6px 12px;            
-    font-size: 15px;              
-}
-
-QPushButton:hover {
-    background-color: #ffdab9;   
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>修改密碼</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLabel" name="user_label">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>使用者名稱:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLabel" name="user_age_label">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>年齡:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="5">
-                    <widget class="QLabel" name="user_gender">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>其他</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="5">
-                    <widget class="QLabel" name="user_age">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>20</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="user_account_label">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>帳號名稱:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="5">
-                    <widget class="QLabel" name="user_name">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>XXXXX</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="5">
-                    <widget class="QPushButton" name="config_user_information">
-                     <property name="minimumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    background-color: #f7c59f;       
-    color: #333333;                  
-    border: 1px solid #d6a77a;
-    border-radius: 10px;            
-    padding: 6px 12px;            
-    font-size: 15px;              
-}
-
-QPushButton:hover {
-    background-color: #ffdab9;   
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>修改個人資料</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="5">
-                    <widget class="QLabel" name="user_register_time">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>2024/04/19</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QLabel" name="user_register_label">
-                     <property name="minimumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>185</width>
-                       <height>38</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>-1</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel {
-    font-size: 20px;                /* 字體大小 */
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string>註冊時間:</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                 <zorder>user_information_widge</zorder>
-                 <zorder>adjust_information_widge</zorder>
-                 <zorder>adjust_passport_widge</zorder>
-                </widget>
-               </item>
-               <item>
-                <widget class="QWidget" name="picture_widge" native="true">
-                 <property name="minimumSize">
-                  <size>
-                   <width>580</width>
-                   <height>698</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>580</width>
-                   <height>698</height>
-                  </size>
-                 </property>
-                 <widget class="QLabel" name="infor_background">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>20</y>
-                    <width>561</width>
-                    <height>661</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>561</width>
-                    <height>661</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>561</width>
-                    <height>661</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="resource.qrc">:/icons/icons/yoga_background.jpg</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
                  </widget>
                 </widget>
                </item>
