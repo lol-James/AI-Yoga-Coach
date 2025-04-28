@@ -895,7 +895,7 @@ QPushButton:checked {
           <item row="2" column="0">
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
@@ -5513,7 +5513,7 @@ QPushButton:pressed{
                      <x>10</x>
                      <y>10</y>
                      <width>321</width>
-                     <height>103</height>
+                     <height>104</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_25" stretch="0,0,0">
@@ -5934,7 +5934,7 @@ padding-bottom:7px;</string>
              </widget>
             </widget>
             <widget class="QWidget" name="account_page">
-             <widget class="QWidget" name="info_widge" native="true">
+             <widget class="QWidget" name="info_widget" native="true">
               <property name="geometry">
                <rect>
                 <x>0</x>
@@ -5973,42 +5973,51 @@ padding-bottom:7px;</string>
                    <height>698</height>
                   </size>
                  </property>
-                 <widget class="QLabel" name="user_picture">
-                  <property name="geometry">
-                   <rect>
-                    <x>50</x>
-                    <y>30</y>
-                    <width>221</width>
-                    <height>221</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>221</width>
-                    <height>221</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>221</width>
-                    <height>221</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <layout class="QVBoxLayout" name="verticalLayout_27">
+                  <item>
+                   <widget class="QLabel" name="user_picture">
+                    <property name="minimumSize">
+                     <size>
+                      <width>221</width>
+                      <height>221</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>221</width>
+                      <height>221</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="user_picture_spacer">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>445</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="data_widge" native="true">
-                 <widget class="QWidget" name="adjust_information_widge" native="true">
+                <widget class="QWidget" name="data_widget" native="true">
+                 <widget class="QWidget" name="adjust_information_widget" native="true">
                   <property name="geometry">
                    <rect>
                     <x>10</x>
@@ -6032,6 +6041,18 @@ padding-bottom:7px;</string>
                   <layout class="QGridLayout" name="gridLayout_5">
                    <item row="3" column="5">
                     <widget class="QComboBox" name="select_genger">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>32</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>32</height>
+                      </size>
+                     </property>
                      <property name="editable">
                       <bool>false</bool>
                      </property>
@@ -6063,13 +6084,13 @@ padding-bottom:7px;</string>
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
@@ -6201,13 +6222,13 @@ QPushButton:hover {
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
@@ -6217,13 +6238,13 @@ QPushButton:hover {
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
@@ -6313,7 +6334,7 @@ QPushButton:hover {
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="adjust_passport_widge" native="true">
+                 <widget class="QWidget" name="adjust_password_widget" native="true">
                   <property name="geometry">
                    <rect>
                     <x>10</x>
@@ -6336,7 +6357,7 @@ QPushButton:hover {
                   </property>
                   <layout class="QGridLayout" name="gridLayout_6">
                    <item row="4" column="1">
-                    <widget class="QPushButton" name="passport_confirm">
+                    <widget class="QPushButton" name="password_confirm">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
@@ -6380,7 +6401,7 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item row="4" column="5">
-                    <widget class="QPushButton" name="change_passport_cancel">
+                    <widget class="QPushButton" name="change_password_cancel">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
@@ -6424,7 +6445,7 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item row="0" column="1">
-                    <widget class="QLabel" name="old_passport_label">
+                    <widget class="QLabel" name="old_password_label">
                      <property name="font">
                       <font>
                        <family>Arial</family>
@@ -6450,23 +6471,23 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item row="0" column="5">
-                    <widget class="QLineEdit" name="old_passport">
+                    <widget class="QLineEdit" name="old_password">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
                    </item>
                    <item row="2" column="1">
-                    <widget class="QLabel" name="new_passport_confirm_label">
+                    <widget class="QLabel" name="new_password_confirm_label">
                      <property name="font">
                       <font>
                        <family>Arial</family>
@@ -6518,23 +6539,23 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item row="1" column="5">
-                    <widget class="QLineEdit" name="new_passport">
+                    <widget class="QLineEdit" name="new_password">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
                    </item>
                    <item row="4" column="2">
-                    <spacer name="passport_spacer">
+                    <spacer name="password_spacer">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
@@ -6547,24 +6568,24 @@ QPushButton:hover {
                     </spacer>
                    </item>
                    <item row="2" column="5">
-                    <widget class="QLineEdit" name="new_passport_confirm">
+                    <widget class="QLineEdit" name="new_password_confirm">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>200</width>
-                       <height>24</height>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="user_information_widge" native="true">
+                 <widget class="QWidget" name="user_information_widget" native="true">
                   <property name="geometry">
                    <rect>
                     <x>10</x>
@@ -6590,20 +6611,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_account">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6628,20 +6649,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_gender_label">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6663,7 +6684,7 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item row="5" column="1">
-                    <widget class="QPushButton" name="config_passport">
+                    <widget class="QPushButton" name="config_password">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
@@ -6710,20 +6731,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_label">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6748,20 +6769,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_age_label">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6786,20 +6807,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_gender">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6824,20 +6845,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_age">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6862,20 +6883,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_account_label">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6900,20 +6921,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_name">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -6982,20 +7003,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_register_time">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>0</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -7020,20 +7041,20 @@ QPushButton:hover {
                     <widget class="QLabel" name="user_register_label">
                      <property name="minimumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>185</width>
-                       <height>38</height>
+                       <width>200</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="font">
                       <font>
                        <family>Arial</family>
-                       <pointsize>20</pointsize>
+                       <pointsize>13</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -7056,56 +7077,52 @@ QPushButton:hover {
                    </item>
                   </layout>
                  </widget>
-                 <zorder>user_information_widge</zorder>
-                 <zorder>adjust_information_widge</zorder>
-                 <zorder>adjust_passport_widge</zorder>
+                 <zorder>adjust_password_widget</zorder>
+                 <zorder>user_information_widget</zorder>
+                 <zorder>adjust_information_widget</zorder>
                 </widget>
                </item>
                <item>
                 <widget class="QWidget" name="picture_widge" native="true">
                  <property name="minimumSize">
                   <size>
-                   <width>580</width>
+                   <width>550</width>
                    <height>698</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>580</width>
+                   <width>550</width>
                    <height>698</height>
                   </size>
                  </property>
-                 <widget class="QLabel" name="infor_background">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>20</y>
-                    <width>561</width>
-                    <height>661</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>561</width>
-                    <height>661</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>561</width>
-                    <height>661</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="resource.qrc">:/icons/icons/yoga_background.jpg</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <layout class="QHBoxLayout" name="horizontalLayout_53">
+                  <item>
+                   <widget class="QLabel" name="infor_background">
+                    <property name="minimumSize">
+                     <size>
+                      <width>561</width>
+                      <height>661</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>561</width>
+                      <height>661</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/icons/icons/yoga_background.jpg</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
               </layout>

@@ -71,12 +71,12 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.ui.forgot_back_btn.clicked.connect(self.change_account_widget)
         
         # user info
-        self.ui.adjust_passport_widge.hide()
-        self.ui.adjust_information_widge.hide()
-        self.ui.config_passport.clicked.connect(self.change_user_info_widget)
+        self.ui.adjust_password_widget.hide()
+        self.ui.adjust_information_widget.hide()
+        self.ui.config_password.clicked.connect(self.change_user_info_widget)
         self.ui.config_user_information.clicked.connect(self.change_user_info_widget)
         self.ui.data_change_cancel.clicked.connect(self.change_user_info_widget)
-        self.ui.change_passport_cancel.clicked.connect(self.change_user_info_widget)
+        self.ui.change_password_cancel.clicked.connect(self.change_user_info_widget)
 
         self.show()
         
@@ -188,25 +188,25 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.ui.forgot_back_btn.setChecked(False)
     
     def change_user_info_widget(self):
-        if self.ui.config_passport.isChecked():
-            self.ui.user_information_widge.hide()
-            self.ui.adjust_passport_widge.show()
-            self.ui.config_passport.setChecked(False)
+        if self.ui.config_password.isChecked():
+            self.ui.user_information_widget.hide()
+            self.ui.adjust_password_widget.show()
+            self.ui.config_password.setChecked(False)
             
         if self.ui.config_user_information.isChecked():
-            self.ui.user_information_widge.hide()
-            self.ui.adjust_information_widge.show()
+            self.ui.user_information_widget.hide()
+            self.ui.adjust_information_widget.show()
             self.ui.config_user_information.setChecked(False)
             
         if self.ui.data_change_cancel.isChecked():
-            self.ui.adjust_information_widge.hide()
-            self.ui.user_information_widge.show()
+            self.ui.adjust_information_widget.hide()
+            self.ui.user_information_widget.show()
             self.ui.data_change_cancel.setChecked(False)
             
-        if self.ui.change_passport_cancel.isChecked():
-            self.ui.adjust_passport_widge.hide()
-            self.ui.user_information_widge.show()
-            self.ui.change_passport_cancel.setChecked(False)
+        if self.ui.change_password_cancel.isChecked():
+            self.ui.adjust_password_widget.hide()
+            self.ui.user_information_widget.show()
+            self.ui.change_password_cancel.setChecked(False)
             
     #���s�s�W���� �}��
     def show_share_page_widget(self):
