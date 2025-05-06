@@ -1,6 +1,9 @@
 import cv2
 from ultralytics import YOLO
 from PyQt5.QtCore import QThread, pyqtSignal
+import logging
+
+logging.getLogger('ultralytics').setLevel(logging.WARNING)
 
 class YogaPoseDetector(QThread):
     result_image_signal = pyqtSignal(object)  # labelled image

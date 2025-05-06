@@ -5,7 +5,6 @@ import sys
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("icons\yoga-logo.png"))
     window = AIYogaCoachApp()
     window.show()
     sys.exit(app.exec_())
