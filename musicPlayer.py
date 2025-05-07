@@ -430,7 +430,7 @@ class MusicPlayer:
             
     def toggle_mute(self):
         if self.player.volume() == self.current_volume:
-            self.player.setvalue(0)
+            self.player.setVolume(0)
         else:
             self.player.setVolume(self.current_volume)
             

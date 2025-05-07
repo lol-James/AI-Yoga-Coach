@@ -8,14 +8,18 @@ from notification import NotificationLabel
 class GestureAnalyzer(QThread):
     processed_image_signal = pyqtSignal(object)
     result_str_signal = pyqtSignal(str)
+    touch_note_signal = pyqtSignal(str)
+    
     def __init__(self):
         super().__init__()
         self.frame = None
+        self.enabled = False
         self.mp_drawing = mp.solutions.drawing_utils
         self.mp_drawing_styles = mp.solutions.drawing_styles
         self.mp_hands = mp.solutions.hands
         self.last_gesture = None
         self.last_time = 0
+        self.last_touch_note_time = 0
         self.is_running = False
         
     def vector_2d_angle(self, v1, v2):
@@ -88,10 +92,10 @@ class GestureAnalyzer(QThread):
             return self.get_thumb_direction(finger_points)
         elif f1 < 50 and f2 < 50 and f3 >= 50 and f4 >= 50 and f5 < 50:
             return 'Rock!'
-        elif f1 >= 50 and f2 >= 50 and f3 >= 50 and f4 >= 50 and f5 >= 50:
-            return '0'
         elif f1 >= 50 and f2 >= 50 and f3 >= 50 and f4 >= 50 and f5 < 50:
             return 'Pinky'
+        elif f1 >= 50 and f2 >= 50 and f3 >= 50 and f4 >= 50 and f5 >= 50:
+            return '0'
         elif f1 >= 50 and f2 < 50 and f3 >= 50 and f4 >= 50 and f5 >= 50:
             return '1'
         elif f1 >= 50 and f2 < 50 and f3 < 50 and f4 >= 50 and f5 >= 50:
@@ -114,7 +118,19 @@ class GestureAnalyzer(QThread):
             return '9'
         else:
             return ''
-    
+
+    def check_finger_in_area(self, finger_points):
+        area = (0, 0, 80, 80)  
+        pinky_finger = finger_points[20] 
+        finger_angle = self.hand_angle(finger_points)
+        text = self.hand_pos(finger_points, finger_angle)
+        if area[0] <= pinky_finger[0] <= area[0] + area[2] and area[1] <= pinky_finger[1] <= area[1] + area[3] and text == 'Pinky':
+            if time.time() - self.last_touch_note_time > 2:
+                self.touch_note_signal.emit("touch")  
+                self.last_touch_note_time = time.time()  
+        else:
+            self.last_touch_note_time = time.time()
+
     def run(self):
         self.is_running = True
         self.frame = None
@@ -150,14 +166,14 @@ class GestureAnalyzer(QThread):
                         if finger_points:
                             finger_angle = self.hand_angle(finger_points)
                             text = self.hand_pos(finger_points, finger_angle)
-                            if text == self.last_gesture:
+                            if text == self.last_gesture and self.enabled == True:
                                 if time.time() - self.last_time > 2:
                                     self.result_str_signal.emit(text)
                                     self.last_time = time.time()
                             else:
                                 self.last_gesture = text
                                 self.last_time = time.time()
-                                
+                    self.check_finger_in_area(finger_points)           
                 self.processed_image_signal.emit(img)
 
     def stop(self):
@@ -187,7 +203,5 @@ class GestureInterpreter:
     def interpret(self, gesture_str):
         if gesture_str in self.gesture_actions:
             action, message = self.gesture_actions[gesture_str]
-            action()  
             NotificationLabel(self.parent, message, success=True)  
-        else:
-            NotificationLabel(self.parent, f"Unrecognized Gesture: {gesture_str}", success=False)
+            action()  

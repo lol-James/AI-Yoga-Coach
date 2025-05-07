@@ -7,6 +7,7 @@ from camera import CameraThread
 from yoga_pose_detector import YogaPoseDetector
 from musicPlayer import MusicPlayer
 from gesture import GestureAnalyzer, GestureInterpreter
+from notification import NotificationLabel
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -68,6 +69,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.gesture_analyzer = GestureAnalyzer()
         self.gesture_interpreter = GestureInterpreter(self)
         self.gesture_analyzer.result_str_signal.connect(self.gesture_interpreter.interpret)
+        self.gesture_analyzer.touch_note_signal.connect(self.toggle_touch_note)
         self.show()
             
     def mousePressEvent(self, event):
@@ -171,3 +173,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         
     def previous_pose(self):
         print('Prvious Pose')
+    
+    def toggle_touch_note(self, str):
+        self.gesture_analyzer.enabled = not self.gesture_analyzer.enabled
+        if self.gesture_analyzer.enabled:
+            NotificationLabel(self, f"Gesture control enabled", success=True)
+        else:    
+            NotificationLabel(self, f"Gesture control disabled", success=False)
