@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\AIYogaCoachInterface.ui'
+# Form implementation generated from reading ui file 'c:\code\專題\app\AI-Yoga-Coach\AIYogaCoachInterface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1707, 854)
+        MainWindow.resize(1752, 861)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/yoga-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -457,8 +457,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setSpacing(0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.camera_label = QtWidgets.QLabel(self.widget_1)
-        self.camera_label.setMinimumSize(QtCore.QSize(720, 405))
-        self.camera_label.setMaximumSize(QtCore.QSize(720, 405))
+        self.camera_label.setMinimumSize(QtCore.QSize(700, 410))
+        self.camera_label.setMaximumSize(QtCore.QSize(700, 410))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(16)
@@ -475,8 +475,8 @@ class Ui_MainWindow(object):
         self.camera_label.setObjectName("camera_label")
         self.horizontalLayout_8.addWidget(self.camera_label)
         self.demo_label = QtWidgets.QLabel(self.widget_1)
-        self.demo_label.setMinimumSize(QtCore.QSize(440, 405))
-        self.demo_label.setMaximumSize(QtCore.QSize(400, 405))
+        self.demo_label.setMinimumSize(QtCore.QSize(560, 410))
+        self.demo_label.setMaximumSize(QtCore.QSize(560, 410))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(16)
@@ -493,15 +493,43 @@ class Ui_MainWindow(object):
         self.demo_label.setObjectName("demo_label")
         self.horizontalLayout_8.addWidget(self.demo_label)
         self.demo_list = QtWidgets.QListWidget(self.widget_1)
-        self.demo_list.setMinimumSize(QtCore.QSize(300, 405))
-        self.demo_list.setMaximumSize(QtCore.QSize(300, 405))
+        self.demo_list.setMinimumSize(QtCore.QSize(310, 410))
+        self.demo_list.setMaximumSize(QtCore.QSize(310, 410))
         self.demo_list.setStyleSheet("QListWidget {\n"
 "    background-color: gray;  /* 設定背景顏色為灰色 */\n"
 "    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */\n"
 "    color: white;            /* 設定文字顏色為白色 */\n"
 "    font-size: 15px;         /* 設定字體大小為 15px */\n"
 "}\n"
+"\n"
+"QListWidget::item {\n"
+"    background-color: #4f4f4f; /* 項目背景色 */\n"
+"    color: #ffffff; /* 文字顏色 */\n"
+"    border: none;\n"
+"    padding: 7px;\n"
+"    margin: 3px; /* 增加間距以突顯圓角效果 */\n"
+"    border-radius: 12px; /* 每個項目圓角 */\n"
+"}\n"
+"\n"
+"QListWidget::item:hover {\n"
+"    background-color: #6c6c6c; /* 懸停時的較亮背景色 */\n"
+"    border-radius: 12px; /* 保持圓角 */\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    background-color: #009688; /* 選中背景色 */\n"
+"    color: #ffffff; /* 選中後文字顏色 */\n"
+"    border: none;\n"
+"    border-radius: 12px; /* 選中效果圓角 */\n"
+"}\n"
+"\n"
 "")
+        self.demo_list.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.demo_list.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.demo_list.setAutoScroll(True)
+        self.demo_list.setAutoScrollMargin(16)
+        self.demo_list.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
+        self.demo_list.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.demo_list.setObjectName("demo_list")
         self.horizontalLayout_8.addWidget(self.demo_list)
         self.verticalLayout_11.addLayout(self.horizontalLayout_8)
@@ -509,14 +537,84 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setSpacing(0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.widget_3 = QtWidgets.QWidget(self.widget_1)
-        self.widget_3.setMinimumSize(QtCore.QSize(711, 311))
-        self.widget_3.setMaximumSize(QtCore.QSize(711, 311))
+        self.widget_3.setMinimumSize(QtCore.QSize(350, 311))
+        self.widget_3.setMaximumSize(QtCore.QSize(350, 311))
         self.widget_3.setObjectName("widget_3")
-        self.pushButton_5 = QtWidgets.QPushButton(self.widget_3)
-        self.pushButton_5.setGeometry(QtCore.QRect(520, 220, 51, 51))
-        self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_5.setMouseTracking(False)
-        self.pushButton_5.setStyleSheet("QPushButton {\n"
+        self.layoutWidget = QtWidgets.QWidget(self.widget_3)
+        self.layoutWidget.setGeometry(QtCore.QRect(0, -10, 352, 330))
+        self.layoutWidget.setMinimumSize(QtCore.QSize(0, 330))
+        self.layoutWidget.setMaximumSize(QtCore.QSize(16777215, 330))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.pose_label = QtWidgets.QLabel(self.layoutWidget)
+        self.pose_label.setMinimumSize(QtCore.QSize(269, 27))
+        self.pose_label.setMaximumSize(QtCore.QSize(269, 27))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pose_label.setFont(font)
+        self.pose_label.setObjectName("pose_label")
+        self.verticalLayout_9.addWidget(self.pose_label)
+        self.pose_reg_label = QtWidgets.QTextEdit(self.layoutWidget)
+        self.pose_reg_label.setMinimumSize(QtCore.QSize(330, 50))
+        self.pose_reg_label.setMaximumSize(QtCore.QSize(330, 50))
+        self.pose_reg_label.setSizeIncrement(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setWeight(50)
+        self.pose_reg_label.setFont(font)
+        self.pose_reg_label.setStyleSheet("QTextEdit {\n"
+"    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */\n"
+"    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */\n"
+"    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */\n"
+"    color: black;               /* 可選：設定文字顏色 */\n"
+"    qproperty-readOnly: true; \n"
+"}\n"
+"\n"
+"")
+        self.pose_reg_label.setObjectName("pose_reg_label")
+        self.verticalLayout_9.addWidget(self.pose_reg_label)
+        self.suggestion_label = QtWidgets.QLabel(self.layoutWidget)
+        self.suggestion_label.setMinimumSize(QtCore.QSize(269, 27))
+        self.suggestion_label.setMaximumSize(QtCore.QSize(269, 27))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.suggestion_label.setFont(font)
+        self.suggestion_label.setObjectName("suggestion_label")
+        self.verticalLayout_9.addWidget(self.suggestion_label)
+        self.gesture_reg_label_2 = QtWidgets.QTextEdit(self.layoutWidget)
+        self.gesture_reg_label_2.setMinimumSize(QtCore.QSize(330, 100))
+        self.gesture_reg_label_2.setMaximumSize(QtCore.QSize(330, 100))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        self.gesture_reg_label_2.setFont(font)
+        self.gesture_reg_label_2.setStyleSheet("QTextEdit {\n"
+"    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */\n"
+"    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */\n"
+"    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */\n"
+"    color: black;               /* 可選：設定文字顏色 */\n"
+"    qproperty-readOnly: true; \n"
+"}\n"
+"\n"
+"")
+        self.gesture_reg_label_2.setObjectName("gesture_reg_label_2")
+        self.verticalLayout_9.addWidget(self.gesture_reg_label_2)
+        self.voice_broadcast_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.voice_broadcast_btn.setMinimumSize(QtCore.QSize(51, 51))
+        self.voice_broadcast_btn.setMaximumSize(QtCore.QSize(51, 51))
+        self.voice_broadcast_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.voice_broadcast_btn.setMouseTracking(False)
+        self.voice_broadcast_btn.setStyleSheet("QPushButton {\n"
 "    color: #333;\n"
 "    border: none;               /* 取消邊框 */\n"
 "    border-radius: 25px;        /* 邊角圓滑 */\n"
@@ -533,98 +631,150 @@ class Ui_MainWindow(object):
 "    background: #bdbdbd;        /* 深一點的淺灰色 */\n"
 "}\n"
 "")
-        self.pushButton_5.setText("")
+        self.voice_broadcast_btn.setText("")
         icon13 = QtGui.QIcon()
         icon13.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-voice-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon13)
-        self.pushButton_5.setCheckable(True)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.layoutWidget = QtWidgets.QWidget(self.widget_3)
-        self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 501, 281))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.pos_reg_label = QtWidgets.QTextEdit(self.layoutWidget)
-        self.pos_reg_label.setMinimumSize(QtCore.QSize(491, 71))
-        self.pos_reg_label.setMaximumSize(QtCore.QSize(491, 71))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        self.pos_reg_label.setFont(font)
-        self.pos_reg_label.setStyleSheet("QTextEdit {\n"
-"    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */\n"
-"    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */\n"
-"    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */\n"
-"    color: black;               /* 可選：設定文字顏色 */\n"
-"    qproperty-readOnly: true; \n"
-"}\n"
-"\n"
-"")
-        self.pos_reg_label.setObjectName("pos_reg_label")
-        self.verticalLayout_9.addWidget(self.pos_reg_label)
-        self.gesture_reg_label = QtWidgets.QTextEdit(self.layoutWidget)
-        self.gesture_reg_label.setMinimumSize(QtCore.QSize(491, 71))
-        self.gesture_reg_label.setMaximumSize(QtCore.QSize(491, 71))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        self.gesture_reg_label.setFont(font)
-        self.gesture_reg_label.setStyleSheet("QTextEdit {\n"
-"    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */\n"
-"    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */\n"
-"    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */\n"
-"    color: black;               /* 可選：設定文字顏色 */\n"
-"    qproperty-readOnly: true; \n"
-"}\n"
-"\n"
-"")
-        self.gesture_reg_label.setObjectName("gesture_reg_label")
-        self.verticalLayout_9.addWidget(self.gesture_reg_label)
-        self.gesture_reg_label_2 = QtWidgets.QTextEdit(self.layoutWidget)
-        self.gesture_reg_label_2.setMinimumSize(QtCore.QSize(491, 101))
-        self.gesture_reg_label_2.setMaximumSize(QtCore.QSize(491, 101))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        self.gesture_reg_label_2.setFont(font)
-        self.gesture_reg_label_2.setStyleSheet("QTextEdit {\n"
-"    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */\n"
-"    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */\n"
-"    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */\n"
-"    color: black;               /* 可選：設定文字顏色 */\n"
-"    qproperty-readOnly: true; \n"
-"}\n"
-"\n"
-"")
-        self.gesture_reg_label_2.setObjectName("gesture_reg_label_2")
-        self.verticalLayout_9.addWidget(self.gesture_reg_label_2)
+        self.voice_broadcast_btn.setIcon(icon13)
+        self.voice_broadcast_btn.setCheckable(True)
+        self.voice_broadcast_btn.setObjectName("voice_broadcast_btn")
+        self.verticalLayout_9.addWidget(self.voice_broadcast_btn)
         self.horizontalLayout_10.addWidget(self.widget_3)
+        self.widget_9 = QtWidgets.QWidget(self.widget_1)
+        self.widget_9.setMinimumSize(QtCore.QSize(403, 330))
+        self.widget_9.setMaximumSize(QtCore.QSize(403, 330))
+        self.widget_9.setObjectName("widget_9")
+        self.verticalLayoutWidget_8 = QtWidgets.QWidget(self.widget_9)
+        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(0, 0, 401, 320))
+        self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
+        self.verticalLayout_35 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
+        self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_35.setObjectName("verticalLayout_35")
+        self.horizontalLayout_62 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_62.setObjectName("horizontalLayout_62")
+        self.state_label = QtWidgets.QLabel(self.verticalLayoutWidget_8)
+        self.state_label.setMaximumSize(QtCore.QSize(71, 27))
+        self.state_label.setSizeIncrement(QtCore.QSize(71, 27))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.state_label.setFont(font)
+        self.state_label.setObjectName("state_label")
+        self.horizontalLayout_62.addWidget(self.state_label)
+        self.state_reg_label = QtWidgets.QLabel(self.verticalLayoutWidget_8)
+        self.state_reg_label.setMinimumSize(QtCore.QSize(0, 27))
+        self.state_reg_label.setMaximumSize(QtCore.QSize(16777215, 27))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.state_reg_label.setFont(font)
+        self.state_reg_label.setObjectName("state_reg_label")
+        self.horizontalLayout_62.addWidget(self.state_reg_label)
+        self.verticalLayout_35.addLayout(self.horizontalLayout_62)
+        self.statistics_label_2 = QtWidgets.QLabel(self.verticalLayoutWidget_8)
+        self.statistics_label_2.setMinimumSize(QtCore.QSize(0, 27))
+        self.statistics_label_2.setMaximumSize(QtCore.QSize(16777215, 27))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.statistics_label_2.setFont(font)
+        self.statistics_label_2.setObjectName("statistics_label_2")
+        self.verticalLayout_35.addWidget(self.statistics_label_2)
+        self.statistics_treewidget = QtWidgets.QTreeWidget(self.verticalLayoutWidget_8)
+        self.statistics_treewidget.setMinimumSize(QtCore.QSize(0, 225))
+        self.statistics_treewidget.setMaximumSize(QtCore.QSize(16777215, 225))
+        self.statistics_treewidget.setStyleSheet("QTreeWidget {\n"
+"    background-color: #D6F0F5; /* 淡藍綠背景 */\n"
+"    border: 1px solid #A0C4C4;\n"
+"    border-radius: 6px;\n"
+"    font-size: 14px;\n"
+"    color: #000000;\n"
+"    outline: 0;\n"
+"}\n"
+"\n"
+"QTreeWidget::item {\n"
+"    padding: 4px 8px;\n"
+"    height: 11px;\n"
+"}\n"
+"\n"
+"QTreeWidget::item:selected {\n"
+"    background-color: #A1D6E2; /* 柔和選取背景 */\n"
+"    color: #000000;\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QTreeWidget::item:hover {\n"
+"    background-color: #C1EBF2;\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #7FDBFF; /* 淺藍表頭 */\n"
+"    padding: 1px 2px;\n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"    border: 1px solid #A0C4C4;\n"
+"    border-radius: 4px;\n"
+"    color: #000;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    background: #E0FFFF;\n"
+"    width: 10px;\n"
+"    margin: 2px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: #7FDBFF;\n"
+"    min-height: 20px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    height: 0;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical,\n"
+"QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"")
+        self.statistics_treewidget.setRootIsDecorated(False)
+        self.statistics_treewidget.setObjectName("statistics_treewidget")
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.statistics_treewidget)
+        self.statistics_treewidget.header().setDefaultSectionSize(180)
+        self.statistics_treewidget.header().setMinimumSectionSize(31)
+        self.verticalLayout_35.addWidget(self.statistics_treewidget)
+        self.horizontalLayout_10.addWidget(self.widget_9)
         self.widget_2 = QtWidgets.QWidget(self.widget_1)
-        self.widget_2.setMinimumSize(QtCore.QSize(461, 311))
-        self.widget_2.setMaximumSize(QtCore.QSize(461, 311))
+        self.widget_2.setMinimumSize(QtCore.QSize(461, 330))
+        self.widget_2.setMaximumSize(QtCore.QSize(461, 330))
         self.widget_2.setObjectName("widget_2")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.widget_2)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.timer_label = QtWidgets.QLabel(self.widget_2)
-        self.timer_label.setMinimumSize(QtCore.QSize(431, 171))
-        self.timer_label.setMaximumSize(QtCore.QSize(431, 171))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(48)
-        self.timer_label.setFont(font)
-        self.timer_label.setStyleSheet("QLabel {\n"
-"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, \n"
-"                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* 稍微深一點的藍色 */\n"
-"    color: black;               /* 文字顏色為黑色 */\n"
-"    border-radius: 10px;        /* 邊角圓滑 */\n"
-"    padding: 5px;               /* 內邊距，讓文字不會緊貼邊緣 */\n"
-"    qproperty-alignment: AlignCenter;  /* 文字置中 */\n"
-"    border: 2px solid #90caf9;  /* 細邊框，顏色為淡藍色 */\n"
-"}\n"
-"")
-        self.timer_label.setObjectName("timer_label")
-        self.verticalLayout_10.addWidget(self.timer_label)
+        self.timer_lcdnumber = QtWidgets.QLCDNumber(self.widget_2)
+        self.timer_lcdnumber.setMinimumSize(QtCore.QSize(431, 171))
+        self.timer_lcdnumber.setMaximumSize(QtCore.QSize(431, 171))
+        self.timer_lcdnumber.setDigitCount(5)
+        self.timer_lcdnumber.setMode(QtWidgets.QLCDNumber.Oct)
+        self.timer_lcdnumber.setSegmentStyle(QtWidgets.QLCDNumber.Filled)
+        self.timer_lcdnumber.setObjectName("timer_lcdnumber")
+        self.verticalLayout_10.addWidget(self.timer_lcdnumber)
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.set_time_btn = QtWidgets.QPushButton(self.widget_2)
@@ -756,8 +906,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.addLayout(self.horizontalLayout_9)
         self.horizontalLayout_10.addWidget(self.widget_2)
         self.widget = QtWidgets.QWidget(self.widget_1)
-        self.widget.setMinimumSize(QtCore.QSize(311, 311))
-        self.widget.setMaximumSize(QtCore.QSize(311, 311))
+        self.widget.setMinimumSize(QtCore.QSize(311, 330))
+        self.widget.setMaximumSize(QtCore.QSize(311, 330))
         self.widget.setStyleSheet("QWidget {\n"
 "    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, \n"
 "                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* 稍微深一點的藍色 */\n"
@@ -1636,7 +1786,7 @@ class Ui_MainWindow(object):
         self.label_3.setSizePolicy(sizePolicy)
         self.label_3.setMinimumSize(QtCore.QSize(0, 0))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/posture_accuracy_sample.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/posture_accuracy_sample.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_19.addWidget(self.label_3)
@@ -1810,7 +1960,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_7.setText("")
         icon32 = QtGui.QIcon()
-        icon32.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon32.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_7.setIcon(icon32)
         self.pushButton_7.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -1845,7 +1995,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_8.setText("")
         icon33 = QtGui.QIcon()
-        icon33.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon33.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_8.setIcon(icon33)
         self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_8.setObjectName("pushButton_8")
@@ -2861,7 +3011,7 @@ class Ui_MainWindow(object):
 "")
         self.share_comment_btn.setText("")
         icon34 = QtGui.QIcon()
-        icon34.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon34.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.share_comment_btn.setIcon(icon34)
         self.share_comment_btn.setIconSize(QtCore.QSize(40, 40))
         self.share_comment_btn.setObjectName("share_comment_btn")
@@ -3046,7 +3196,7 @@ class Ui_MainWindow(object):
 "")
         self.dislike_button.setText("")
         icon35 = QtGui.QIcon()
-        icon35.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon35.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.dislike_button.setIcon(icon35)
         self.dislike_button.setObjectName("dislike_button")
         self.horizontalLayout_48.addWidget(self.dislike_button)
@@ -3135,7 +3285,7 @@ class Ui_MainWindow(object):
 "")
         self.link_button.setText("")
         icon36 = QtGui.QIcon()
-        icon36.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon36.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.link_button.setIcon(icon36)
         self.link_button.setIconSize(QtCore.QSize(50, 50))
         self.link_button.setObjectName("link_button")
@@ -3159,7 +3309,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_10.setText("")
         icon37 = QtGui.QIcon()
-        icon37.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon37.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_10.setIcon(icon37)
         self.pushButton_10.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_10.setObjectName("pushButton_10")
@@ -3183,7 +3333,7 @@ class Ui_MainWindow(object):
 "")
         self.share_cancel_btn.setText("")
         icon38 = QtGui.QIcon()
-        icon38.addPixmap(QtGui.QPixmap("c:\\Users\\lolJames\\OneDrive\\桌面\\AI Yoga Coach\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon38.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.share_cancel_btn.setIcon(icon38)
         self.share_cancel_btn.setIconSize(QtCore.QSize(50, 50))
         self.share_cancel_btn.setObjectName("share_cancel_btn")
@@ -4339,7 +4489,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
         self.select_genger.setCurrentIndex(0)
         self.menu_btn.toggled['bool'].connect(self.icon_only_frame.setHidden) # type: ignore
@@ -4374,22 +4524,46 @@ class Ui_MainWindow(object):
         self.account_status_label.setText(_translate("MainWindow", "Visitor"))
         self.camera_label.setText(_translate("MainWindow", "Lens screen not found"))
         self.demo_label.setText(_translate("MainWindow", "Demo"))
-        self.pos_reg_label.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.pose_label.setText(_translate("MainWindow", "Pose:"))
+        self.pose_reg_label.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Arial\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">姿勢辨識</p></body></html>"))
-        self.gesture_reg_label.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Arial\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">手勢辨識</p></body></html>"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.suggestion_label.setText(_translate("MainWindow", "Suggestion:"))
         self.gesture_reg_label_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Arial\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">建議</p></body></html>"))
-        self.timer_label.setText(_translate("MainWindow", "00:00.00"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.state_label.setText(_translate("MainWindow", "State:"))
+        self.state_reg_label.setText(_translate("MainWindow", "N/A"))
+        self.statistics_label_2.setText(_translate("MainWindow", "Statistics:"))
+        self.statistics_treewidget.headerItem().setText(0, _translate("MainWindow", "Pose"))
+        self.statistics_treewidget.headerItem().setText(1, _translate("MainWindow", "Counts"))
+        __sortingEnabled = self.statistics_treewidget.isSortingEnabled()
+        self.statistics_treewidget.setSortingEnabled(False)
+        self.statistics_treewidget.topLevelItem(0).setText(0, _translate("MainWindow", "Bridge Pose"))
+        self.statistics_treewidget.topLevelItem(0).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(1).setText(0, _translate("MainWindow", "Cow Pose"))
+        self.statistics_treewidget.topLevelItem(1).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(2).setText(0, _translate("MainWindow", "Downward Facing Dog"))
+        self.statistics_treewidget.topLevelItem(2).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(3).setText(0, _translate("MainWindow", "Locust Pose"))
+        self.statistics_treewidget.topLevelItem(3).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(4).setText(0, _translate("MainWindow", "Plank Pose"))
+        self.statistics_treewidget.topLevelItem(4).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(5).setText(0, _translate("MainWindow", "Squat Pose"))
+        self.statistics_treewidget.topLevelItem(5).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(6).setText(0, _translate("MainWindow", "Staff Pose"))
+        self.statistics_treewidget.topLevelItem(6).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(7).setText(0, _translate("MainWindow", "Triangle Pose"))
+        self.statistics_treewidget.topLevelItem(7).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(8).setText(0, _translate("MainWindow", "Warrior I"))
+        self.statistics_treewidget.topLevelItem(8).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.topLevelItem(9).setText(0, _translate("MainWindow", "Warrior II"))
+        self.statistics_treewidget.topLevelItem(9).setText(1, _translate("MainWindow", "0"))
+        self.statistics_treewidget.setSortingEnabled(__sortingEnabled)
         self.set_time_btn.setText(_translate("MainWindow", "Set Time"))
         self.start_btn.setText(_translate("MainWindow", "Start"))
         self.rst_btn.setText(_translate("MainWindow", "Reset"))

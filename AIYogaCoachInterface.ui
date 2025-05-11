@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1707</width>
-    <height>854</height>
+    <width>1752</width>
+    <height>861</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -937,7 +937,7 @@ QPushButton:checked {
           <item row="2" column="0">
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
@@ -998,14 +998,14 @@ QPushButton:checked {
                     <widget class="QLabel" name="camera_label">
                      <property name="minimumSize">
                       <size>
-                       <width>720</width>
-                       <height>405</height>
+                       <width>700</width>
+                       <height>410</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>720</width>
-                       <height>405</height>
+                       <width>700</width>
+                       <height>410</height>
                       </size>
                      </property>
                      <property name="font">
@@ -1036,14 +1036,14 @@ QPushButton:checked {
                     <widget class="QLabel" name="demo_label">
                      <property name="minimumSize">
                       <size>
-                       <width>440</width>
-                       <height>405</height>
+                       <width>560</width>
+                       <height>410</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>400</width>
-                       <height>405</height>
+                       <width>560</width>
+                       <height>410</height>
                       </size>
                      </property>
                      <property name="font">
@@ -1074,14 +1074,14 @@ QPushButton:checked {
                     <widget class="QListWidget" name="demo_list">
                      <property name="minimumSize">
                       <size>
-                       <width>300</width>
-                       <height>405</height>
+                       <width>310</width>
+                       <height>410</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>300</width>
-                       <height>405</height>
+                       <width>310</width>
+                       <height>410</height>
                       </size>
                      </property>
                      <property name="styleSheet">
@@ -1091,7 +1091,47 @@ QPushButton:checked {
     color: white;            /* 設定文字顏色為白色 */
     font-size: 15px;         /* 設定字體大小為 15px */
 }
+
+QListWidget::item {
+    background-color: #4f4f4f; /* 項目背景色 */
+    color: #ffffff; /* 文字顏色 */
+    border: none;
+    padding: 7px;
+    margin: 3px; /* 增加間距以突顯圓角效果 */
+    border-radius: 12px; /* 每個項目圓角 */
+}
+
+QListWidget::item:hover {
+    background-color: #6c6c6c; /* 懸停時的較亮背景色 */
+    border-radius: 12px; /* 保持圓角 */
+}
+
+QListWidget::item:selected {
+    background-color: #009688; /* 選中背景色 */
+    color: #ffffff; /* 選中後文字顏色 */
+    border: none;
+    border-radius: 12px; /* 選中效果圓角 */
+}
+
 </string>
+                     </property>
+                     <property name="verticalScrollBarPolicy">
+                      <enum>Qt::ScrollBarAlwaysOff</enum>
+                     </property>
+                     <property name="horizontalScrollBarPolicy">
+                      <enum>Qt::ScrollBarAlwaysOff</enum>
+                     </property>
+                     <property name="autoScroll">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoScrollMargin">
+                      <number>16</number>
+                     </property>
+                     <property name="verticalScrollMode">
+                      <enum>QAbstractItemView::ScrollPerPixel</enum>
+                     </property>
+                     <property name="horizontalScrollMode">
+                      <enum>QAbstractItemView::ScrollPerPixel</enum>
                      </property>
                     </widget>
                    </item>
@@ -1106,33 +1146,202 @@ QPushButton:checked {
                     <widget class="QWidget" name="widget_3" native="true">
                      <property name="minimumSize">
                       <size>
-                       <width>711</width>
+                       <width>350</width>
                        <height>311</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>711</width>
+                       <width>350</width>
                        <height>311</height>
                       </size>
                      </property>
-                     <widget class="QPushButton" name="pushButton_5">
+                     <widget class="QWidget" name="layoutWidget">
                       <property name="geometry">
                        <rect>
-                        <x>520</x>
-                        <y>220</y>
-                        <width>51</width>
-                        <height>51</height>
+                        <x>0</x>
+                        <y>-10</y>
+                        <width>352</width>
+                        <height>330</height>
                        </rect>
                       </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>330</height>
+                       </size>
                       </property>
-                      <property name="mouseTracking">
-                       <bool>false</bool>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>330</height>
+                       </size>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton {
+                      <layout class="QVBoxLayout" name="verticalLayout_9">
+                       <item>
+                        <widget class="QLabel" name="pose_label">
+                         <property name="minimumSize">
+                          <size>
+                           <width>269</width>
+                           <height>27</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>269</width>
+                           <height>27</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>13</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Pose:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="pose_reg_label">
+                         <property name="minimumSize">
+                          <size>
+                           <width>330</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>330</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="sizeIncrement">
+                          <size>
+                           <width>0</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>14</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
+	qproperty-readOnly: true; 
+}
+
+</string>
+                         </property>
+                         <property name="html">
+                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="suggestion_label">
+                         <property name="minimumSize">
+                          <size>
+                           <width>269</width>
+                           <height>27</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>269</width>
+                           <height>27</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>13</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Suggestion:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="gesture_reg_label_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>330</width>
+                           <height>100</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>330</width>
+                           <height>100</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>14</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
+	qproperty-readOnly: true; 
+}
+
+</string>
+                         </property>
+                         <property name="html">
+                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="voice_broadcast_btn">
+                         <property name="minimumSize">
+                          <size>
+                           <width>51</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="mouseTracking">
+                          <bool>false</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
     color: #333;
     border: none;               /* 取消邊框 */
     border-radius: 25px;        /* 邊角圓滑 */
@@ -1149,146 +1358,304 @@ QPushButton:pressed {
     background: #bdbdbd;        /* 深一點的淺灰色 */
 }
 </string>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="resource.qrc">
-                        <normaloff>:/icons/icons/icons8-voice-50.png</normaloff>:/icons/icons/icons8-voice-50.png</iconset>
-                      </property>
-                      <property name="checkable">
-                       <bool>true</bool>
-                      </property>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="resource.qrc">
+                           <normaloff>:/icons/icons/icons8-voice-50.png</normaloff>:/icons/icons/icons8-voice-50.png</iconset>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
-                     <widget class="QWidget" name="layoutWidget">
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_9" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>403</width>
+                       <height>330</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>403</width>
+                       <height>330</height>
+                      </size>
+                     </property>
+                     <widget class="QWidget" name="verticalLayoutWidget_8">
                       <property name="geometry">
                        <rect>
                         <x>0</x>
-                        <y>10</y>
-                        <width>501</width>
-                        <height>281</height>
+                        <y>0</y>
+                        <width>401</width>
+                        <height>320</height>
                        </rect>
                       </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_9">
+                      <layout class="QVBoxLayout" name="verticalLayout_35">
                        <item>
-                        <widget class="QTextEdit" name="pos_reg_label">
+                        <layout class="QHBoxLayout" name="horizontalLayout_62">
+                         <item>
+                          <widget class="QLabel" name="state_label">
+                           <property name="maximumSize">
+                            <size>
+                             <width>71</width>
+                             <height>27</height>
+                            </size>
+                           </property>
+                           <property name="sizeIncrement">
+                            <size>
+                             <width>71</width>
+                             <height>27</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Arial</family>
+                             <pointsize>13</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>State:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="state_reg_label">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>27</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>27</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Arial</family>
+                             <pointsize>13</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>N/A</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="statistics_label_2">
                          <property name="minimumSize">
                           <size>
-                           <width>491</width>
-                           <height>71</height>
+                           <width>0</width>
+                           <height>27</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>491</width>
-                           <height>71</height>
+                           <width>16777215</width>
+                           <height>27</height>
                           </size>
                          </property>
                          <property name="font">
                           <font>
                            <family>Arial</family>
-                           <pointsize>14</pointsize>
+                           <pointsize>13</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
-    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
-    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
-    color: black;               /* 可選：設定文字顏色 */
-	qproperty-readOnly: true; 
-}
-
-</string>
-                         </property>
-                         <property name="html">
-                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;姿勢辨識&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         <property name="text">
+                          <string>Statistics:</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QTextEdit" name="gesture_reg_label">
+                        <widget class="QTreeWidget" name="statistics_treewidget">
                          <property name="minimumSize">
                           <size>
-                           <width>491</width>
-                           <height>71</height>
+                           <width>0</width>
+                           <height>225</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>491</width>
-                           <height>71</height>
+                           <width>16777215</width>
+                           <height>225</height>
                           </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>14</pointsize>
-                          </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
-    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
-    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
-    color: black;               /* 可選：設定文字顏色 */
-	qproperty-readOnly: true; 
+                          <string notr="true">QTreeWidget {
+    background-color: #D6F0F5; /* 淡藍綠背景 */
+    border: 1px solid #A0C4C4;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #000000;
+    outline: 0;
 }
 
-</string>
-                         </property>
-                         <property name="html">
-                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;手勢辨識&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QTextEdit" name="gesture_reg_label_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>491</width>
-                           <height>101</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>491</width>
-                           <height>101</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>14</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
-    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
-    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
-    color: black;               /* 可選：設定文字顏色 */
-	qproperty-readOnly: true; 
+QTreeWidget::item {
+    padding: 4px 8px;
+    height: 11px;
 }
 
+QTreeWidget::item:selected {
+    background-color: #A1D6E2; /* 柔和選取背景 */
+    color: #000000;
+    border: none;
+}
+
+QTreeWidget::item:hover {
+    background-color: #C1EBF2;
+}
+
+QHeaderView::section {
+    background-color: #7FDBFF; /* 淺藍表頭 */
+    padding: 1px 2px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 1px solid #A0C4C4;
+    border-radius: 4px;
+    color: #000;
+}
+
+QScrollBar:vertical {
+    background: #E0FFFF;
+    width: 10px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #7FDBFF;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
 </string>
                          </property>
-                         <property name="html">
-                          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;建議&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         <property name="rootIsDecorated">
+                          <bool>false</bool>
                          </property>
+                         <attribute name="headerMinimumSectionSize">
+                          <number>31</number>
+                         </attribute>
+                         <attribute name="headerDefaultSectionSize">
+                          <number>180</number>
+                         </attribute>
+                         <column>
+                          <property name="text">
+                           <string>Pose</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Counts</string>
+                          </property>
+                         </column>
+                         <item>
+                          <property name="text">
+                           <string>Bridge Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Cow Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Downward Facing Dog</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Locust Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Plank Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Squat Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Staff Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Triangle Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Warrior I</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Warrior II</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
                         </widget>
                        </item>
                       </layout>
@@ -1300,18 +1667,18 @@ p, li { white-space: pre-wrap; }
                      <property name="minimumSize">
                       <size>
                        <width>461</width>
-                       <height>311</height>
+                       <height>330</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>461</width>
-                       <height>311</height>
+                       <height>330</height>
                       </size>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_10">
                       <item>
-                       <widget class="QLabel" name="timer_label">
+                       <widget class="QLCDNumber" name="timer_lcdnumber">
                         <property name="minimumSize">
                          <size>
                           <width>431</width>
@@ -1324,26 +1691,14 @@ p, li { white-space: pre-wrap; }
                           <height>171</height>
                          </size>
                         </property>
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>48</pointsize>
-                         </font>
+                        <property name="digitCount">
+                         <number>5</number>
                         </property>
-                        <property name="styleSheet">
-                         <string notr="true">QLabel {
-    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
-                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* 稍微深一點的藍色 */
-    color: black;               /* 文字顏色為黑色 */
-    border-radius: 10px;        /* 邊角圓滑 */
-    padding: 5px;               /* 內邊距，讓文字不會緊貼邊緣 */
-    qproperty-alignment: AlignCenter;  /* 文字置中 */
-    border: 2px solid #90caf9;  /* 細邊框，顏色為淡藍色 */
-}
-</string>
+                        <property name="mode">
+                         <enum>QLCDNumber::Oct</enum>
                         </property>
-                        <property name="text">
-                         <string>00:00.00</string>
+                        <property name="segmentStyle">
+                         <enum>QLCDNumber::Filled</enum>
                         </property>
                        </widget>
                       </item>
@@ -1548,13 +1903,13 @@ QPushButton:pressed {
                      <property name="minimumSize">
                       <size>
                        <width>311</width>
-                       <height>311</height>
+                       <height>330</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>311</width>
-                       <height>311</height>
+                       <height>330</height>
                       </size>
                      </property>
                      <property name="styleSheet">

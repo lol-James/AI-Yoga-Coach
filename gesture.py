@@ -186,8 +186,8 @@ class GestureInterpreter:
 
         self.gesture_actions = {
             '0': (self.parent.music_player.toggle_mute, "Gesture 0: Toggle Mute"),
-            'Up': (self.parent.next_pose, "Gesture Up: Next Pose"),
-            'Down': (self.parent.previous_pose, "Gesture Down: Previous Pose"),
+            'Up': (lambda: self.parent.next_pose(True), "Gesture Up: Next Pose"),
+            'Down': (lambda: self.parent.previous_pose(True), "Gesture Down: Previous Pose"),
             'Left': (self.parent.songlist_btn.click, "Gesture Left: Open Song List"),
             'Right': (self.parent.favorites_btn.click, "Gesture Right: Open Favorites"),
             '1': (self.parent.play_btn.click, "Gesture 1: Play Song"),

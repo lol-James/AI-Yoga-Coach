@@ -1,4 +1,5 @@
 import cv2
+import os
 from Ui_AIYogaCoachInterface import Ui_MainWindow
 from PyQt5.QtCore import Qt, QPoint, QTimer
 from PyQt5.QtWidgets import *
@@ -8,6 +9,7 @@ from yoga_pose_detector import YogaPoseDetector
 from musicPlayer import MusicPlayer
 from gesture import GestureAnalyzer, GestureInterpreter
 from notification import NotificationLabel
+from countdownTimer import Timer
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -34,6 +36,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         }
         for btn, index in button_index_map.items():
             btn.toggled.connect(lambda checked, i=index: self.stackedWidget.setCurrentIndex(i))
+        self.image_index = 0
+        self.demo_list.setEnabled(False)
+        self.load_demo_image()
+
         # camera and yoga detector initializations
         self.camera_thread = CameraThread()
         self.camera_thread.new_frame.connect(self.update_current_frame)
@@ -71,6 +77,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.gesture_analyzer.result_str_signal.connect(self.gesture_interpreter.interpret)
         self.gesture_analyzer.touch_note_signal.connect(self.toggle_touch_note)
         self.show()
+        # timer
+        self.countdown_timer = Timer(self)
+
             
     def mousePressEvent(self, event):
         if self.title_frame.underMouse():  
@@ -91,7 +100,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.gesture_analyzer.frame = frame
         
     def update_GUI_frame(self, processed_frame):
-        """Update image on GUI app"""
         if not processed_frame is None:
             rgb_frame = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
             h, w, ch = rgb_frame.shape
@@ -105,10 +113,13 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.camera_thread.start()
             self.detector.start()
             self.gesture_analyzer.start()
+            self.countdown_timer.camera_is_running = True
         else:
             self.camera_thread.stop()
             self.detector.stop()
             self.gesture_analyzer.stop()
+            self.countdown_timer.camera_is_running = False
+            self.countdown_timer._stop_timer()
             QTimer.singleShot(100, lambda: self.clear_camera_label())
         
     def clear_camera_label(self):
@@ -167,12 +178,64 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def hide_share_page_widget(self):
             if self.share_cancel_btn.isChecked():
                     self.widget_6.hide()
+    
+    def load_demo_image(self):
+        self.image_dir = r"YOLO\demo_images"
+        self.image_list = [file for file in os.listdir(self.image_dir) if file.endswith(('.png', '.jpg', '.jpeg'))]
+        self.image_index = 0
 
-    def next_pose(self):
-        print('Next Pose')
+        if not self.image_list:
+            QMessageBox.warning(self, 'Error', 'No images found in demo_images folder.')
+            return
+
+        for image_name in self.image_list:
+            self.demo_list.addItem(os.path.splitext(image_name)[0])
         
-    def previous_pose(self):
+        self.demo_list.scrollToBottom()
+        self.display_image(self.image_list[self.image_index])
+    
+    def reset_to_first_image(self):
+        if not hasattr(self, 'image_list') or not self.image_list:
+            QMessageBox.warning(self, 'Error', 'No images to display. Please load images first.')
+            return
+
+        self.image_index = 0  
+        self.display_image(self.image_list[self.image_index])
+
+    def display_image(self, image_name):
+        image_path = os.path.join(self.image_dir, image_name)
+        pixmap = QPixmap(image_path)
+
+        if pixmap.isNull():
+            QMessageBox.warning(self, 'Error', f'Unable to load image: {image_path}')
+            return
+
+        self.demo_label.setPixmap(pixmap)
+        self.demo_list.setCurrentRow(self.image_index)
+
+    def next_pose(self, skip_flag):
+        print('Next Pose')
+        if not hasattr(self, 'image_list') or not self.image_list:
+            QMessageBox.warning(self, 'Error', 'No images to display. Please load images first.')
+            return
+        
+        if self.countdown_timer.timer_is_running:
+            self.countdown_timer.skip(skip_flag)
+
+        self.image_index = (self.image_index + 1) % len(self.image_list)
+        self.display_image(self.image_list[self.image_index])
+        
+    def previous_pose(self, skip_flag):
         print('Prvious Pose')
+        if not hasattr(self, 'image_list') or not self.image_list:
+            QMessageBox.warning(self, 'Error', 'No images to display. Please load images first.')
+            return
+        
+        if self.countdown_timer.timer_is_running:
+            self.countdown_timer.skip(skip_flag)
+
+        self.image_index = (self.image_index - 1) % len(self.image_list)
+        self.display_image(self.image_list[self.image_index])
     
     def toggle_touch_note(self, str):
         self.gesture_analyzer.enabled = not self.gesture_analyzer.enabled

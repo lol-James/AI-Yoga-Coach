@@ -47,7 +47,7 @@ class MusicPlayer:
         self.current_volume = 20
         self.player.setVolume(self.current_volume)
         
-        #init slider timer
+        # init slider timer
         self.timer = QTimer(self.ui)
         self.timer.start(1000)
         self.timer.timeout.connect(self.move_slider)
