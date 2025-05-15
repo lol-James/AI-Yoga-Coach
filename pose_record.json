@@ -1,0 +1,26 @@
+{
+    "created": "2025-05-14T22:06:44.272574",
+    "total_count": 8,
+    "records": {
+        "Bridge Pose": 2,
+        "Cow Pose": 2,
+        "Downward Facing Dog": 2,
+        "Locust Pose": 1,
+        "Plank Pose": 1,
+        "Squat Pose": 0,
+        "Staff Pose": 0,
+        "Triangle Pose": 0,
+        "Warrior I": 0,
+        "Warrior II": 0
+    },
+    "usage_log": {
+        "2025-05-15": [
+            0.0,
+            0.0,
+            0.02,
+            0.02,
+            0.06,
+            1.05
+        ]
+    }
+}

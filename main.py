@@ -10,6 +10,8 @@ from musicPlayer import MusicPlayer
 from gesture import GestureAnalyzer, GestureInterpreter
 from notification import NotificationLabel
 from countdownTimer import Timer
+from record_logger import RecordLogger
+
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -79,6 +81,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.show()
         # timer
         self.countdown_timer = Timer(self)
+        # record logger
+        self.logger = RecordLogger(ui=self)
 
             
     def mousePressEvent(self, event):
