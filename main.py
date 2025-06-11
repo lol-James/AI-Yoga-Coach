@@ -1,5 +1,6 @@
 import cv2
 import os
+import pymysql
 from Ui_AIYogaCoachInterface import Ui_MainWindow
 from PyQt5.QtCore import Qt, QPoint, QTimer
 from PyQt5.QtWidgets import *
@@ -11,6 +12,8 @@ from gesture import GestureAnalyzer, GestureInterpreter
 from notification import NotificationLabel
 from countdownTimer import Timer
 from record_logger import RecordLogger
+from user_info import User_Info
+from account import Account
 
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
@@ -42,6 +45,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.demo_list.setEnabled(False)
         self.load_demo_image()
 
+        # sql variables
+        self.db=self.connect_db()
+        
         # camera and yoga detector initializations
         self.camera_thread = CameraThread()
         self.camera_thread.new_frame.connect(self.update_current_frame)
@@ -58,19 +64,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.share_comment_btn.clicked.connect(self.toggle_share_comment_widget)
         self.share_cancel_btn.clicked.connect(self.hide_share_page_widget)
         # account
-        self.reg_ui.hide()
-        self.forgot_ui.hide()
-        self.login_register_btn.clicked.connect(self.change_account_widget)
-        self.login_forgot_btn.clicked.connect(self.change_account_widget)
-        self.reg_back_btn.clicked.connect(self.change_account_widget)
-        self.forgot_back_btn.clicked.connect(self.change_account_widget)
+        self.account = Account(self)
+        
         # user info
-        self.adjust_password_widget.hide()
-        self.adjust_information_widget.hide()
-        self.config_password.clicked.connect(self.change_user_info_widget)
-        self.config_user_information.clicked.connect(self.change_user_info_widget)
-        self.data_change_cancel.clicked.connect(self.change_user_info_widget)
-        self.change_password_cancel.clicked.connect(self.change_user_info_widget)
+        self.user_info= User_Info(self,self.account.user_id)
+        print("start")
         # Music Player
         self.music_player = MusicPlayer(self)
         # mediapipe gesture analyzer initialization
@@ -83,8 +81,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.countdown_timer = Timer(self)
         # record logger
         self.logger = RecordLogger(ui=self)
-
-            
+        self.account.user_id_signal.connect(self.user_info.on_signal_received)
+        
     def mousePressEvent(self, event):
         if self.title_frame.underMouse():  
             self.old_pos = event.globalPos()
@@ -129,45 +127,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def clear_camera_label(self):
         self.camera_label.setPixmap(QPixmap())
         self.camera_label.setText('Lens screen not found')
-    
-    def change_account_widget(self):
-        if self.login_register_btn.isChecked():
-            self.login_ui.hide()
-            self.reg_ui.show()
-            self.login_register_btn.setChecked(False)
-        if self.login_forgot_btn.isChecked():
-            self.login_ui.hide()
-            self.forgot_ui.show()
-            self.login_forgot_btn.setChecked(False)
-        if self.reg_back_btn.isChecked():
-            self.reg_ui.hide()
-            self.login_ui.show()
-            self.reg_back_btn.setChecked(False)
-        if self.forgot_back_btn.isChecked():
-            self.forgot_ui.hide()
-            self.login_ui.show()
-            self.forgot_back_btn.setChecked(False)
-    
-    def change_user_info_widget(self):
-        if self.config_password.isChecked():
-            self.user_information_widget.hide()
-            self.adjust_password_widget.show()
-            self.config_password.setChecked(False)
-            
-        if self.config_user_information.isChecked():
-            self.user_information_widget.hide()
-            self.adjust_information_widget.show()
-            self.config_user_information.setChecked(False)
-            
-        if self.data_change_cancel.isChecked():
-            self.adjust_information_widget.hide()
-            self.user_information_widget.show()
-            self.data_change_cancel.setChecked(False)
-            
-        if self.change_password_cancel.isChecked():
-            self.adjust_password_widget.hide()
-            self.user_information_widget.show()
-            self.change_password_cancel.setChecked(False)
             
     def show_share_page_widget(self):
             if self.addShareicon.isChecked():
@@ -247,3 +206,19 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             NotificationLabel(self, f"Gesture control enabled", success=True)
         else:    
             NotificationLabel(self, f"Gesture control disabled", success=False)
+
+    #connect to database
+    def connect_db(self):
+        try:
+            db = pymysql.connect(
+                host='127.0.0.1',
+                user='root',
+                password='root123456',
+                database='yoga_coach_database',
+                port=3306,
+                cursorclass=pymysql.cursors.DictCursor
+            )
+            print(" pymysql 成功連線！")
+            return db
+        except Exception as e:
+            print(" pymysql 錯誤：", e)
