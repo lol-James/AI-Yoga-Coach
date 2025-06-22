@@ -8,7 +8,6 @@ mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(static_image_mode=True)
 mp_drawing = mp.solutions.drawing_utils
 
-# 三點角度計算
 def calculate_angle(a, b, c):
     a, b, c = np.array(a), np.array(b), np.array(c)
     ba = a - b
@@ -17,7 +16,6 @@ def calculate_angle(a, b, c):
     angle = np.arccos(np.clip(cosine_angle, -1.0, 1.0))
     return np.degrees(angle)
 
-# 評分函式
 def score_angle(diff, tolerance=5, power=2, max_diff=90):
     if diff > max_diff:
         return 0
@@ -26,7 +24,6 @@ def score_angle(diff, tolerance=5, power=2, max_diff=90):
     else:
         return 100 * (1 - ((diff - tolerance) / (max_diff - tolerance)) ** power)
 
-# 主評分邏輯
 def evaluate_pose(landmarks, pose_name, image=None):
     results = {}
     pose_data = POSE_DEFINITIONS.get(pose_name.lower())
@@ -69,7 +66,6 @@ def evaluate_pose(landmarks, pose_name, image=None):
             )
     return results
 
-# 姿勢定義
 POSE_DEFINITIONS = {
     "bridge": {
         "params": {"tolerance": 5, "power": 2, "max_diff": 90},
@@ -156,7 +152,6 @@ POSE_DEFINITIONS = {
     },
 }
 
-# 使用者互動介面
 if __name__ == '__main__':
     pose_options = list(POSE_DEFINITIONS.keys())
     print("請選擇一個瑜珈姿勢：")
@@ -170,7 +165,6 @@ if __name__ == '__main__':
         print("輸入錯誤，請重新執行程式。")
         exit()
 
-    # 選擇圖片
     Tk().withdraw()
     file_path = filedialog.askopenfilename(title="選擇一張圖片", filetypes=[["Image Files", "*.jpg *.png"]])
     if not file_path:
