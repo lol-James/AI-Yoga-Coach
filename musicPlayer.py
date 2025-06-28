@@ -11,6 +11,9 @@ from notification import NotificationLabel
 class MusicPlayer:
     def __init__(self, ui):
         self.ui = ui
+        self.db = ui.db
+        self.user_id = 1
+        
         # UI Elements Initialization
         self.add_songs_btn = self.ui.add_songs_btn
         self.play_btn = self.ui.play_btn
@@ -70,6 +73,64 @@ class MusicPlayer:
         self.loop_one_btn.clicked.connect(self.loop_one_song)
         self.remove_selected_btn.clicked.connect(self.remove_selected_song)
         self.clear_all_btn.clicked.connect(self.remove_all_songs)
+        
+        # load songs in db
+        self.load_songs()
+
+    def load_songs(self):
+        try:
+            with self.db.cursor() as cursor:
+                sql = "SELECT song_name, song_path FROM songs"
+                cursor.execute(sql)
+                results = cursor.fetchall()
+
+                songs.current_song_list.clear()
+                self.song_listWidget.clear()
+
+                missing_files = 0
+                for row in results:
+                    song_path = row['song_path']  # Relative path
+                    song_name = row['song_name']
+
+                    abs_path = os.path.abspath(song_path)
+
+                    # Normalize the absolute path to ensure consistent slashes
+                    abs_path = os.path.normpath(abs_path).replace('\\', '/')
+
+                    if os.path.isfile(abs_path):
+                        songs.current_song_list.append(abs_path)
+                        self.song_listWidget.addItem(
+                            QListWidgetItem(QIcon(r'icons/MusicListItem.png'), song_name)
+                        )
+                    else:
+                        missing_files += 1
+                        print(f"Warning: Song file missing on disk: {abs_path}")
+
+                if songs.current_song_list:
+                    self.song_listWidget.setCurrentRow(0)
+                    print(f"Loaded {len(songs.current_song_list)} songs from database.")
+                if missing_files > 0:
+                    print(f"Skipped {missing_files} missing song files.")
+
+        except Exception as e:
+            print(f"Error loading songs from DB: {e}")
+        
+    def update_user_id(self, new_user_id):
+        self.user_id = new_user_id
+
+        if self.user_id == 1:
+            # Not logged in, keep local only
+            print("User not logged in, using local favorites only.")
+            return
+
+        songs.favorites_songs_list.clear()
+        self.favorites_listWidget.clear()
+
+        try:
+            self.load_favorites()
+            print(f"Loaded favorites for user {self.user_id}: {len(songs.favorites_songs_list)} songs.")
+        except Exception as e:
+            print(f"Error loading user favorites: {e}")
 
     def add_songs(self):
         files, _ = QFileDialog.getOpenFileNames(
@@ -78,21 +139,50 @@ class MusicPlayer:
             directory='./music',
             filter='Supported Files (*.mp3;*.mpeg;*.m4a)'
         )
+
         if files:
-            added_any = False  
-            for file in files:
-                if file not in songs.current_song_list:
-                    songs.current_song_list.append(file)
+            added_any = False
+
+            for abs_file in files:
+                # Always normalize to absolute path with forward slashes
+                abs_path = os.path.abspath(abs_file)
+                abs_path = os.path.normpath(abs_path).replace('\\', '/')
+
+                # Compute relative path (for DB only)
+                relative_path = os.path.relpath(abs_file, start=os.getcwd()).replace('\\', '/')
+
+                # Add to local list if not duplicate (compare absolute!)
+                if abs_path not in songs.current_song_list:
+                    songs.current_song_list.append(abs_path)
                     self.song_listWidget.addItem(
                         QListWidgetItem(
                             QIcon(r'icons/MusicListItem.png'),
-                            os.path.basename(file)
+                            os.path.basename(abs_file)
                         )
                     )
                     added_any = True
+
+                    try:
+                        with self.db.cursor() as cursor:
+                            # Check by name — assuming same name means same song
+                            sql = "SELECT * FROM songs WHERE song_name = %s"
+                            cursor.execute(sql, (os.path.basename(abs_file),))
+                            result = cursor.fetchone()
+
+                            if not result:
+                                insert_sql = "INSERT INTO songs (song_name, song_path) VALUES (%s, %s)"
+                                cursor.execute(insert_sql, (os.path.basename(abs_file), relative_path))
+                                self.db.commit()
+                                print(f"Inserted into DB: {relative_path}")
+                            else:
+                                print(f"Song already exists in DB: {relative_path}")
+
+                    except Exception as e:
+                        print(f"DB Insert Error: {e}")
+
             if added_any:
                 self.song_listWidget.setCurrentRow(0)
-        
+
     def play_song(self):
         try:
             if self.stackedWidget_2.currentIndex() == 0:
@@ -300,6 +390,43 @@ class MusicPlayer:
         except Exception as e:
             print(f"Default next error: {e}")
 
+    def load_favorites(self):
+        """Load favorite songs from the database for the current user_id and update the favorites list."""
+        if self.user_id == 1:
+            # If not logged in, do not load from database
+            return
+
+        try:
+            with self.db.cursor() as cursor:
+                sql = "SELECT song_name FROM favorite_songs WHERE user_id = %s"
+                cursor.execute(sql, (self.user_id,))
+                results = cursor.fetchall()
+
+                # Clear current favorites list and UI
+                songs.favorites_songs_list.clear()
+                self.favorites_listWidget.clear()
+
+                for row in results:
+                    song_name = row['song_name']
+
+                    # Find the full song path from current_song_list by matching filename
+                    matched_file = next(
+                        (f for f in songs.current_song_list if os.path.basename(f).lower() == song_name.lower()), None)
+
+                    if matched_file:
+                        songs.favorites_songs_list.append(matched_file)
+                        self.favorites_listWidget.addItem(
+                            QListWidgetItem(QIcon('icons/MusicListItem.png'), song_name)
+                        )
+                    else:
+                        print(f"Favorite song '{song_name}' not found in current song list.")
+
+                print(f"Loaded {len(songs.favorites_songs_list)} favorites from DB.")
+
+        except Exception as e:
+            print(f"Error loading favorites: {e}")
+
+        
     def favorites_function(self):
         current_index = self.stackedWidget_2.currentIndex()
 
@@ -315,25 +442,45 @@ class MusicPlayer:
                     raise ValueError("Selected item is None.")
 
                 selected_filename = item.text()
+
+                # Find matched file in current_song_list by basename
                 matched_file = next(
-                    (f for f in songs.current_song_list if os.path.basename(f).lower() == selected_filename.lower()), None)
+                    (f for f in songs.current_song_list if os.path.basename(f).lower() == selected_filename.lower()), None
+                )
 
                 if not matched_file:
                     NotificationLabel(self.ui, "Song Not Found", success=False)
                     return
 
-                if matched_file in songs.favorites_songs_list:
-                    NotificationLabel(self.ui, "This song is already in your favorites list.", success=False)
+                if self.user_id == 1:
+                    # Not logged in: store locally
+                    if matched_file in songs.favorites_songs_list:
+                        NotificationLabel(self.ui, "This song is already in your favorites list.", success=False)
+                    else:
+                        songs.favorites_songs_list.append(matched_file)
+                        self.favorites_listWidget.addItem(
+                            QListWidgetItem(QIcon('icons/MusicListItem.png'), os.path.basename(matched_file))
+                        )
+                        NotificationLabel(self.ui, f"{os.path.basename(matched_file)} added to favorites", success=True)
                 else:
-                    songs.favorites_songs_list.append(matched_file)
-                    self.favorites_listWidget.addItem(
-                        QListWidgetItem(QIcon('icons/MusicListItem.png'), os.path.basename(matched_file))
-                    )
-                    NotificationLabel(self.ui, f"{os.path.basename(matched_file)} added to favorites", success=True)
-
+                    # Logged in: store in DB
+                    with self.db.cursor() as cursor:
+                        check_sql = "SELECT * FROM favorite_songs WHERE user_id = %s AND song_name = %s"
+                        cursor.execute(check_sql, (self.user_id, selected_filename))
+                        result = cursor.fetchone()
+                        if result:
+                            NotificationLabel(self.ui, "This song is already in your favorites list.", success=False)
+                        else:
+                            insert_sql = "INSERT INTO favorite_songs (user_id, song_name) VALUES (%s, %s)"
+                            cursor.execute(insert_sql, (self.user_id, selected_filename))
+                            self.db.commit()
+                            songs.favorites_songs_list.append(matched_file)
+                            self.favorites_listWidget.addItem(
+                                QListWidgetItem(QIcon('icons/MusicListItem.png'), selected_filename)
+                            )
+                            NotificationLabel(self.ui, f"{selected_filename} added to favorites", success=True)
             except Exception as e:
                 NotificationLabel(self.ui, f"Unexpected error {str(e)}", success=False)
-
         elif current_index == 1:
             selected_index = self.favorites_listWidget.currentRow()
             if selected_index < 0:
@@ -346,20 +493,40 @@ class MusicPlayer:
                     raise ValueError("Selected item is None.")
 
                 selected_filename = item.text()
+
+                # Find matched file in favorites_songs_list by basename
                 matched_file = next(
-                    (f for f in songs.favorites_songs_list if os.path.basename(f).lower() == selected_filename.lower()), None)
+                    (f for f in songs.favorites_songs_list if os.path.basename(f).lower() == selected_filename.lower()), None
+                )
 
                 if not matched_file:
                     NotificationLabel(self.ui, "Song Not Found", success=False)
                     return
 
-                songs.favorites_songs_list.remove(matched_file)
-                self.favorites_listWidget.takeItem(selected_index)
-                NotificationLabel(self.ui, f"{os.path.basename(matched_file)} removed from favorites", success=True)
-
+                if self.user_id == 1:
+                    if len(songs.favorites_songs_list) > 1:
+                        self.default_next()
+                    else:
+                        self.player.stop()
+                        self.player.setMedia(QMediaContent())
+                    # Not logged in: remove from local list
+                    songs.favorites_songs_list.remove(matched_file)
+                    self.favorites_listWidget.takeItem(selected_index)
+                    NotificationLabel(self.ui, f"{selected_filename} removed from favorites", success=True)
+                else:
+                    # Logged in: remove from DB
+                    with self.db.cursor() as cursor:
+                        delete_sql = "DELETE FROM favorite_songs WHERE user_id = %s AND song_name = %s"
+                        cursor.execute(delete_sql, (self.user_id, selected_filename))
+                        self.db.commit()
+                        self.default_next()
+                        songs.favorites_songs_list.remove(matched_file)
+                        self.favorites_listWidget.takeItem(selected_index)
+                        NotificationLabel(self.ui, f"{selected_filename} removed from favorites", success=True)
             except Exception as e:
                 NotificationLabel(self.ui, f"Unexpected error {str(e)}", success=False)
-
+            
+            
     def shuffle_song(self):
         try:
             if not self.is_shuffled:

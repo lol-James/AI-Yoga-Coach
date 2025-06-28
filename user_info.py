@@ -73,12 +73,14 @@ class User_Info:
         self.user_gender.setText(self.user_dict['gender'])
         self.user_register_time.setText(str(self.user_dict['register_date']))
         self.user_picture.setPixmap(QPixmap(self.user_dict['user_picture']))  # Assuming profile_picture is a QPixmap or similar
+        
     def set_placeholder(self):
         self.user_dict=self.get_sql_data()
         self.new_name.setText(self.user_dict['user_account'])
         self.new_account.setText(self.user_dict['email'])      
         self.new_age.setText(str(self.user_dict['age']))
         self.select_genger.setCurrentText(self.user_dict['gender'])
+        
     # change user info page widgets
     def change_user_info_widget(self):
         if self.config_password.isChecked():

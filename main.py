@@ -82,6 +82,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # record logger
         self.logger = RecordLogger(ui=self)
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
+        self.account.user_id_signal.connect(self.music_player.update_user_id)
         
     def mousePressEvent(self, event):
         if self.title_frame.underMouse():  
@@ -218,7 +219,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor
             )
-            print(" pymysql 成功連線！")
+            print("pymysql connected successfully")
             return db
         except Exception as e:
-            print(" pymysql 錯誤：", e)
+            print("pymysql connection error: ", e)

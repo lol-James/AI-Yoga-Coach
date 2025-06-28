@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 from datetime import datetime
 from notification import NotificationLabel
+
 class Account(QObject):
     user_id_signal = pyqtSignal(int)
     def __init__(self, ui):
