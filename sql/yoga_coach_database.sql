@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-06-29 11:06:45
+-- 產生時間： 2025-06-29 15:27:33
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.1.25
 
@@ -56,7 +56,11 @@ CREATE TABLE `favorite_songs` (
 INSERT INTO `favorite_songs` (`id`, `user_id`, `song_name`) VALUES
 (1, 12, '周杰倫 - 白色風車.mp3'),
 (2, 12, '周杰倫 - 最長的電影.mp3'),
-(3, 12, '周杰倫 - 蒲公英的約定.mp3');
+(3, 12, '周杰倫 - 蒲公英的約定.mp3'),
+(19, 19, '周杰倫 - 蒲公英的約定.mp3'),
+(20, 19, '周杰倫 - 夜曲.mp3'),
+(21, 19, '周杰倫 - 晴天.mp3'),
+(22, 19, '周杰倫 - 七里香.mp3');
 
 -- --------------------------------------------------------
 
@@ -249,7 +253,7 @@ ALTER TABLE `comment_page`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `favorite_songs`
 --
 ALTER TABLE `favorite_songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `record_detail`

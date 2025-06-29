@@ -504,11 +504,10 @@ class MusicPlayer:
                     return
 
                 if self.user_id == 1:
-                    if len(songs.favorites_songs_list) > 1:
+                    if len(songs.favorites_songs_list) > 1 and os.path.normpath(matched_file) == os.path.normpath(self.player.media().canonicalUrl().toLocalFile()):
                         self.default_next()
                     else:
-                        self.player.stop()
-                        self.player.setMedia(QMediaContent())
+                        self.stop_song()
                     # Not logged in: remove from local list
                     songs.favorites_songs_list.remove(matched_file)
                     self.favorites_listWidget.takeItem(selected_index)
@@ -562,10 +561,6 @@ class MusicPlayer:
         current_media = self.player.media()
         current_song_url = current_media.canonicalUrl().toLocalFile()
 
-        if os.path.normpath(removed_song) == os.path.normpath(current_song_url):
-            QMessageBox.warning(self.ui, 'Cannot Remove', 'You cannot remove the song that is currently playing.')
-            return
-
         reply = QMessageBox.question(
             self.ui, 'Confirm Removal',
             'Are you sure you want to remove the selected song?',
@@ -573,9 +568,27 @@ class MusicPlayer:
         )
 
         if reply == QMessageBox.Yes:
+            if self.stackedWidget_2.currentIndex() == 1 and self.user_id != 1:
+                try:
+                    selected_filename = os.path.basename(removed_song)
+                    with self.db.cursor() as cursor:
+                        delete_sql = "DELETE FROM favorite_songs WHERE user_id = %s AND song_name = %s"
+                        cursor.execute(delete_sql, (self.user_id, selected_filename))
+                        self.db.commit()
+                        print(f"Deleted {selected_filename} from favorite_songs for user {self.user_id}.")
+                except Exception as e:
+                    print(f"Error removing favorite song from DB: {e}")
+                    
+            if len(song_list) > 1 and os.path.normpath(removed_song) == os.path.normpath(current_song_url):  # If there are other songs left, play next one
+                self.default_next()
+            else:
+                # No songs left, stop player
+                self.stop_song()
+                
             list_widget.takeItem(current_row)
             del song_list[current_row]
         
+ 
     def remove_all_songs(self):
         list_widget = self.song_listWidget if self.stackedWidget_2.currentIndex() == 0 else self.favorites_listWidget
         song_list = songs.current_song_list if self.stackedWidget_2.currentIndex() == 0 else songs.favorites_songs_list
@@ -594,6 +607,16 @@ class MusicPlayer:
             self.stop_song()
             list_widget.clear()
             song_list.clear()   
+            # If in favorites page AND logged in, clear DB records too
+            if self.stackedWidget_2.currentIndex() == 1 and self.user_id != 1:
+                try:
+                    with self.db.cursor() as cursor:
+                        delete_sql = "DELETE FROM favorite_songs WHERE user_id = %s"
+                        cursor.execute(delete_sql, (self.user_id,))
+                        self.db.commit()
+                        print(f"All favorites removed from DB for user_id {self.user_id}.")
+                except Exception as e:
+                    print(f"Error removing all favorites from DB: {e}")
             
     def toggle_mute(self):
         if self.player.volume() == self.current_volume:
