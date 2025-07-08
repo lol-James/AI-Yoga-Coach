@@ -6961,24 +6961,29 @@ QComboBox QAbstractItemView::item:selected {
                         <bool>false</bool>
                        </property>
                        <property name="currentText">
-                        <string>其他</string>
+                        <string>Male</string>
                        </property>
                        <property name="currentIndex">
                         <number>0</number>
                        </property>
                        <item>
                         <property name="text">
-                         <string>其他</string>
+                         <string>Male</string>
                         </property>
                        </item>
                        <item>
                         <property name="text">
-                         <string>男</string>
+                         <string>Female</string>
                         </property>
                        </item>
                        <item>
                         <property name="text">
-                         <string>女</string>
+                         <string>Non binary</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Prefer not to say</string>
                         </property>
                        </item>
                       </widget>
@@ -7466,44 +7471,6 @@ QPushButton:hover {
                        </property>
                       </widget>
                      </item>
-                     <item row="3" column="5">
-                      <widget class="QLabel" name="user_gender">
-                       <property name="minimumSize">
-                        <size>
-                         <width>300</width>
-                         <height>45</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>300</width>
-                         <height>45</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>14</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel {
-    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
-    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
-    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
-    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
-    border-radius: 10px;            /* 圓角邊框 */
-    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
-}
-</string>
-                       </property>
-                       <property name="text">
-                        <string>其他</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="1" column="5">
                       <widget class="QLabel" name="user_account">
                        <property name="minimumSize">
@@ -7542,17 +7509,17 @@ QPushButton:hover {
                        </property>
                       </widget>
                      </item>
-                     <item row="0" column="5">
-                      <widget class="QLabel" name="user_name">
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="user_label">
                        <property name="minimumSize">
                         <size>
-                         <width>300</width>
+                         <width>215</width>
                          <height>45</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>300</width>
+                         <width>215</width>
                          <height>45</height>
                         </size>
                        </property>
@@ -7576,7 +7543,10 @@ QPushButton:hover {
 </string>
                        </property>
                        <property name="text">
-                        <string>Test</string>
+                        <string>Username</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
                        </property>
                       </widget>
                      </item>
@@ -7618,17 +7588,17 @@ QPushButton:hover {
                        </property>
                       </widget>
                      </item>
-                     <item row="1" column="1">
-                      <widget class="QLabel" name="user_account_label">
+                     <item row="3" column="5">
+                      <widget class="QLabel" name="user_gender">
                        <property name="minimumSize">
                         <size>
-                         <width>215</width>
+                         <width>300</width>
                          <height>45</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>215</width>
+                         <width>300</width>
                          <height>45</height>
                         </size>
                        </property>
@@ -7652,15 +7622,12 @@ QPushButton:hover {
 </string>
                        </property>
                        <property name="text">
-                        <string>Email</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
+                        <string>Male</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="2" column="5">
-                      <widget class="QLabel" name="user_age">
+                     <item row="0" column="5">
+                      <widget class="QLabel" name="user_name">
                        <property name="minimumSize">
                         <size>
                          <width>300</width>
@@ -7693,7 +7660,51 @@ QPushButton:hover {
 </string>
                        </property>
                        <property name="text">
-                        <string>18</string>
+                        <string>Test</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="5">
+                      <widget class="QPushButton" name="config_user_information">
+                       <property name="minimumSize">
+                        <size>
+                         <width>250</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    background-color: #f7c59f;       
+    color: #333333;                  
+    border: 1px solid #d6a77a;
+    border-radius: 10px;            
+    padding: 6px 12px;            
+}
+
+QPushButton:hover {
+    background-color: #ffdab9;   
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Modify information</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -7738,17 +7749,17 @@ QPushButton:hover {
                        </property>
                       </widget>
                      </item>
-                     <item row="0" column="1">
-                      <widget class="QLabel" name="user_label">
+                     <item row="2" column="5">
+                      <widget class="QLabel" name="user_age">
                        <property name="minimumSize">
                         <size>
-                         <width>215</width>
+                         <width>300</width>
                          <height>45</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>215</width>
+                         <width>300</width>
                          <height>45</height>
                         </size>
                        </property>
@@ -7772,10 +7783,7 @@ QPushButton:hover {
 </string>
                        </property>
                        <property name="text">
-                        <string>Username</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
+                        <string>18</string>
                        </property>
                       </widget>
                      </item>
@@ -7864,8 +7872,49 @@ QPushButton:hover {
                        </property>
                       </widget>
                      </item>
-                     <item row="5" column="5">
-                      <widget class="QPushButton" name="config_user_information">
+                     <item row="1" column="1">
+                      <widget class="QLabel" name="user_account_label">
+                       <property name="minimumSize">
+                        <size>
+                         <width>215</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>215</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>14</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel {
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Email</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="1">
+                      <widget class="QPushButton" name="delete_account">
                        <property name="minimumSize">
                         <size>
                          <width>250</width>
@@ -7888,20 +7937,20 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {
-    background-color: #f7c59f;       
+    background-color: #EA0000;       
     color: #333333;                  
     border: 1px solid #d6a77a;
     border-radius: 10px;            
-    padding: 6px 12px;            
+    padding: 6px 12px;    
 }
 
 QPushButton:hover {
-    background-color: #ffdab9;   
+    background-color: #FF5151;   
 }
 </string>
                        </property>
                        <property name="text">
-                        <string>Modify information</string>
+                        <string>Delete account</string>
                        </property>
                        <property name="checkable">
                         <bool>true</bool>
@@ -8367,399 +8416,6 @@ QPushButton:pressed{
                       </widget>
                      </item>
                     </layout>
-                   </widget>
-                  </widget>
-                  <widget class="QWidget" name="reg_ui" native="true">
-                   <property name="geometry">
-                    <rect>
-                     <x>420</x>
-                     <y>40</y>
-                     <width>351</width>
-                     <height>561</height>
-                    </rect>
-                   </property>
-                   <widget class="QWidget" name="horizontalLayoutWidget_10">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>351</width>
-                      <height>81</height>
-                     </rect>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_51">
-                     <item>
-                      <widget class="QLabel" name="reg_label">
-                       <property name="minimumSize">
-                        <size>
-                         <width>170</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>170</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>25</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">color: rgba(0, 0, 0, 200);
-</string>
-                       </property>
-                       <property name="text">
-                        <string>Register</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                   <widget class="QWidget" name="verticalLayoutWidget_10">
-                    <property name="geometry">
-                     <rect>
-                      <x>60</x>
-                      <y>414</y>
-                      <width>222</width>
-                      <height>113</height>
-                     </rect>
-                    </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_30">
-                     <item>
-                      <widget class="QPushButton" name="reg_register_btn">
-                       <property name="minimumSize">
-                        <size>
-                         <width>220</width>
-                         <height>45</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>220</width>
-                         <height>45</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>16</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QPushButton{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
-	color:rgba(255, 255, 255, 210);
-	border-radius:5px;
-}
-QPushButton:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
-}
-
-QPushButton:pressed{
-	padding-left:5px;
-	padding-top:5px;
-	background-color:rgba(150, 123, 111, 255);
-}</string>
-                       </property>
-                       <property name="text">
-                        <string>Register</string>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_52"/>
-                     </item>
-                    </layout>
-                   </widget>
-                   <widget class="QWidget" name="verticalLayoutWidget_11">
-                    <property name="geometry">
-                     <rect>
-                      <x>40</x>
-                      <y>110</y>
-                      <width>258</width>
-                      <height>211</height>
-                     </rect>
-                    </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_31">
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_54">
-                       <item>
-                        <widget class="QLineEdit" name="reg_firstname_lineedit">
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>120</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>12</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: rbga(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(46, 82, 101, 200);
-color: rgba(0, 0, 0, 240);
-padding-bottom:7px;</string>
-                         </property>
-                         <property name="placeholderText">
-                          <string>  First Name</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_8">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="reg_lastname_lineedit">
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>120</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>12</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: rbga(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(46, 82, 101, 200);
-color: rgba(0, 0, 0, 240);
-padding-bottom:7px;</string>
-                         </property>
-                         <property name="placeholderText">
-                          <string>  Last Name</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <spacer name="verticalSpacer_8">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QLineEdit" name="reg_mail_lineedit">
-                       <property name="minimumSize">
-                        <size>
-                         <width>255</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>255</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>12</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rbga(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(46, 82, 101, 200);
-color: rgba(0, 0, 0, 240);
-padding-bottom:7px;</string>
-                       </property>
-                       <property name="placeholderText">
-                        <string>  Mail</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="verticalSpacer_7">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QLineEdit" name="reg_password_lineedit">
-                       <property name="minimumSize">
-                        <size>
-                         <width>255</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>255</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>12</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rbga(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(46, 82, 101, 200);
-color: rgba(0, 0, 0, 240);
-padding-bottom:7px;</string>
-                       </property>
-                       <property name="echoMode">
-                        <enum>QLineEdit::Password</enum>
-                       </property>
-                       <property name="placeholderText">
-                        <string>  Password</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="verticalSpacer_9">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QLineEdit" name="reg_confirm_password_lineedit">
-                       <property name="minimumSize">
-                        <size>
-                         <width>255</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>255</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>12</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rbga(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(46, 82, 101, 200);
-color: rgba(0, 0, 0, 240);
-padding-bottom:7px;</string>
-                       </property>
-                       <property name="echoMode">
-                        <enum>QLineEdit::Password</enum>
-                       </property>
-                       <property name="placeholderText">
-                        <string>  Confirm Password</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                   <widget class="QPushButton" name="reg_back_btn">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>70</y>
-                      <width>41</width>
-                      <height>41</height>
-                     </rect>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	background-color: rgba(0, 0, 0, 0);
-	color:rgba(85, 98, 112, 255);
-}
-
-QPushButton:hover{
-	color: rgba(131, 96, 53, 255);
-}
-
-QPushButton:pressed{
-	padding-left:5px;
-	padding-top:5px;
-	color:rgba(91, 88, 53, 255);
-}</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="resource.qrc">
-                      <normaloff>:/icons/icons/icons8-back-48.png</normaloff>:/icons/icons/icons8-back-48.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>40</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
                    </widget>
                   </widget>
                   <widget class="QWidget" name="reset_ui" native="true">
@@ -9275,6 +8931,536 @@ padding-bottom:7px;</string>
                     </layout>
                    </widget>
                    <widget class="QPushButton" name="forgot_back_btn">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>70</y>
+                      <width>41</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);
+	color:rgba(85, 98, 112, 255);
+}
+
+QPushButton:hover{
+	color: rgba(131, 96, 53, 255);
+}
+
+QPushButton:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	color:rgba(91, 88, 53, 255);
+}</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="resource.qrc">
+                      <normaloff>:/icons/icons/icons8-back-48.png</normaloff>:/icons/icons/icons8-back-48.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </widget>
+                  <widget class="QWidget" name="reg_ui" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>420</x>
+                     <y>40</y>
+                     <width>351</width>
+                     <height>561</height>
+                    </rect>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Arial</family>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <widget class="QWidget" name="horizontalLayoutWidget_10">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>351</width>
+                      <height>81</height>
+                     </rect>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_51">
+                     <item>
+                      <widget class="QLabel" name="reg_label">
+                       <property name="minimumSize">
+                        <size>
+                         <width>170</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>170</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>25</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgba(0, 0, 0, 200);
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Register</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="verticalLayoutWidget_10">
+                    <property name="geometry">
+                     <rect>
+                      <x>60</x>
+                      <y>440</y>
+                      <width>222</width>
+                      <height>71</height>
+                     </rect>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_30">
+                     <item>
+                      <widget class="QPushButton" name="reg_register_btn">
+                       <property name="minimumSize">
+                        <size>
+                         <width>220</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>16</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+	color:rgba(255, 255, 255, 210);
+	border-radius:5px;
+}
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
+}
+
+QPushButton:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgba(150, 123, 111, 255);
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>Register</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="verticalLayoutWidget_11">
+                    <property name="geometry">
+                     <rect>
+                      <x>40</x>
+                      <y>110</y>
+                      <width>258</width>
+                      <height>314</height>
+                     </rect>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_31">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_54">
+                       <item>
+                        <widget class="QLineEdit" name="reg_firstname_lineedit">
+                         <property name="minimumSize">
+                          <size>
+                           <width>120</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>120</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rbga(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(46, 82, 101, 200);
+color: rgba(0, 0, 0, 240);
+padding-bottom:7px;</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  First Name</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_8">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="reg_lastname_lineedit">
+                         <property name="minimumSize">
+                          <size>
+                           <width>120</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>120</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rbga(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(46, 82, 101, 200);
+color: rgba(0, 0, 0, 240);
+padding-bottom:7px;</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>  Last Name</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_10">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="reg_age_lineedit">
+                       <property name="minimumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rbga(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(46, 82, 101, 200);
+color: rgba(0, 0, 0, 240);
+padding-bottom:7px;</string>
+                       </property>
+                       <property name="placeholderText">
+                        <string>  Age</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_6">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="reg_gender_combobox">
+                       <property name="minimumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    padding: 5px 20px 5px 0; /* 留右側空間給下拉箭頭 */
+	padding-left: 8px;
+    font-family: Arial;
+    color: #333;
+}
+
+QComboBox:hover {
+    border-bottom: 2px solid #666;
+}
+
+QComboBox:focus {
+    border-bottom: 2px solid #009688;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border: none;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/icons/icons8-down-arrow-50.png); /* 請換成你的實際圖示路徑 */
+    width: 12px;
+    height: 12px;
+}
+</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Male</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Female</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Non binary</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Prefer not to say</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_8">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="reg_mail_lineedit">
+                       <property name="minimumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rbga(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(46, 82, 101, 200);
+color: rgba(0, 0, 0, 240);
+padding-bottom:7px;</string>
+                       </property>
+                       <property name="placeholderText">
+                        <string>  Mail</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_7">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="reg_password_lineedit">
+                       <property name="minimumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rbga(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(46, 82, 101, 200);
+color: rgba(0, 0, 0, 240);
+padding-bottom:7px;</string>
+                       </property>
+                       <property name="echoMode">
+                        <enum>QLineEdit::Password</enum>
+                       </property>
+                       <property name="placeholderText">
+                        <string>  Password</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_9">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="reg_confirm_password_lineedit">
+                       <property name="minimumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>255</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rbga(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(46, 82, 101, 200);
+color: rgba(0, 0, 0, 240);
+padding-bottom:7px;</string>
+                       </property>
+                       <property name="echoMode">
+                        <enum>QLineEdit::Password</enum>
+                       </property>
+                       <property name="placeholderText">
+                        <string>  Confirm Password</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QPushButton" name="reg_back_btn">
                     <property name="geometry">
                      <rect>
                       <x>0</x>

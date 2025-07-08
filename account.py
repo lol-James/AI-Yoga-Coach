@@ -44,6 +44,8 @@ class Account(QObject):
         self.reg_register_btn=self.ui.reg_register_btn
         self.reg_firstname_lineedit=self.ui.reg_firstname_lineedit
         self.reg_lastname_lineedit=self.ui.reg_lastname_lineedit
+        self.reg_age_lineedit=self.ui.reg_age_lineedit
+        self.reg_gender_combobox=self.ui.reg_gender_combobox
         self.reg_mail_lineedit=self.ui.reg_mail_lineedit
         self.reg_password_lineedit=self.ui.reg_password_lineedit
         self.reg_confirm_password_lineedit=self.ui.reg_confirm_password_lineedit
@@ -72,8 +74,8 @@ class Account(QObject):
         self.forgot_confirm_btn.clicked.connect(self.verify_code)
         self.reset_back_btn.clicked.connect(self.change_widget)
         self.reset_confirm_btn.clicked.connect(self.reset_password)
-        self.login_out_btn.clicked.connect(self.login_out_page_switch)
-        self.full_login_out_btn.clicked.connect(self.login_out_page_switch)
+        self.login_out_btn.clicked.connect(lambda: self.logout(False))
+        self.full_login_out_btn.clicked.connect(lambda: self.logout(False))
         
         # others
         self.user_id = 1
@@ -98,6 +100,8 @@ class Account(QObject):
         if self.reg_back_btn.isChecked():
             self.reg_firstname_lineedit.clear()
             self.reg_lastname_lineedit.clear()
+            self.reg_age_lineedit.clear()
+            self.reg_gender_combobox.setCurrentIndex(0)
             self.reg_mail_lineedit.clear()
             self.reg_password_lineedit.clear()
             self.reg_confirm_password_lineedit.clear()
@@ -173,14 +177,20 @@ class Account(QObject):
     def register(self):
         firstname = self.reg_firstname_lineedit.text().strip()
         lastname = self.reg_lastname_lineedit.text().strip()
+        age = self.reg_age_lineedit.text()
+        gender = self.reg_gender_combobox.currentText()
         email = self.reg_mail_lineedit.text()
         password = self.reg_password_lineedit.text()
         confirm_password = self.reg_confirm_password_lineedit.text()
         register_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # form validation
-        if not firstname or not lastname or not email or not password or not confirm_password:
+        if not firstname or not lastname or not age or not email or not password or not confirm_password:
             NotificationLabel(self.ui, "All fields are required.", success=False, duration=3000)
+            return
+        
+        if not age.isdigit() or not (1 <= int(age) <= 150):
+            NotificationLabel(self.ui, "The age could only be in the range of 1 to 150.", success=False, duration=3000)
             return
         
         if not self.is_valid_email(email):
@@ -204,6 +214,7 @@ class Account(QObject):
                 return
             
             try:
+                print(gender)
                 cursor.execute("SELECT * FROM users LIMIT 0")
                 columns = [desc[0] for desc in cursor.description]
                 columns = [col for col in columns if col != 'user_id']
@@ -215,7 +226,7 @@ class Account(QObject):
                 sql = f"INSERT INTO users ({columns_sql}) VALUES ({placeholders})"
                 
                 #要新增的元組
-                value=(firstname + ' ' + lastname, password, 'icons/non user.png', None, 'other', register_time, email)
+                value=(firstname + ' ' + lastname, password, 'icons/non user.png', age, gender, register_time, email)
                 
                 cursor.execute(sql, value)
                 self.db.commit()
@@ -226,6 +237,8 @@ class Account(QObject):
                 self.login_ui.show()
                 self.reg_firstname_lineedit.clear()
                 self.reg_lastname_lineedit.clear()
+                self.reg_age_lineedit.clear()
+                self.reg_gender_combobox.setCurrentIndex(0)
                 self.reg_mail_lineedit.clear()
                 self.reg_password_lineedit.clear()
                 self.reg_confirm_password_lineedit.clear()
@@ -316,7 +329,18 @@ class Account(QObject):
         except Exception as e:
             NotificationLabel(self.ui, f"Reset password failed due to server error.", success=False, duration=3000)
         
-    def login_out_page_switch(self):
+    def logout(self, delete=False):
+        if delete:
+            self.camera_btn.setChecked(False)
+            self.on_camera_btn_toggled
+            self.login_flag = False
+            self.user_id = 1
+            self.ui.account_status_label.setText("Guest")
+            self.ui.stackedWidget.setCurrentIndex(6)
+            self.login_ui.show()
+            NotificationLabel(self.ui, "Delete success.", success=True, duration=3000)
+            return
+
         if self.login_flag:
             reply = QMessageBox.question(self.ui, "Logout", "Are You sure to logout?",
                 QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
@@ -331,3 +355,5 @@ class Account(QObject):
                 NotificationLabel(self.ui, "Logout success.", success=True, duration=3000)
         else:
             self.ui.stackedWidget.setCurrentIndex(6)
+        
+        

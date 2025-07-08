@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-06-29 15:27:33
+-- 產生時間： 2025-07-08 21:57:06
 -- 伺服器版本： 10.4.32-MariaDB
--- PHP 版本： 8.1.25
+-- PHP 版本： 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -160,7 +160,7 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL,
   `user_picture` varchar(255) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `gender` enum('male','female','other') DEFAULT 'other',
+  `gender` enum('Male','Female','Non binary','Prefer not to say') DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -170,21 +170,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_account`, `user_password`, `user_picture`, `age`, `gender`, `register_date`, `email`) VALUES
-(1, 'non', '00000000', 'icons/non user.png', NULL, 'other', NULL, 'deafult'),
-(2, 'bob456', 'bobpass456', 'icons/pre.png', 30, 'male', '2024-06-03 14:20:00', 'bob@gmail.com'),
-(3, 'charlie789', 'charlie789', 'icons/quit.png', 28, 'male', '2024-06-05 09:45:00', 'charlie@gmail.com'),
-(4, 'diana007', 'diana007pass', 'icons/remove.jpg', 22, 'female', '2024-06-07 17:30:00', 'diana@gmail.com'),
-(5, 'eve321', 'evesecret321', 'icons/stop.png', 26, 'other', '2024-06-10 11:00:00', 'eve@gmail.com'),
-(6, 'David_Sun', 'ja0126047', 'icon/non user.png', 18, 'male', '2025-05-16 15:44:02', 'vortexbluster@gmail.com'),
-(10, 'alice123', 'password123', 'icons/play.png', 25, 'female', '2024-06-01 10:00:00', 'alice@gmail.com'),
-(12, 'a a', '3333', 'icons/non user.png', NULL, 'other', NULL, 'a@gmail.com'),
-(13, 'g g', '9999', 'icons/non user.png', NULL, 'other', NULL, 'b@gmail.com'),
-(14, 'q ', '111', 'icons/non user.png', NULL, 'other', '2025-06-11 22:32:44', 'q@gmail.com'),
-(15, 'test', '444', 'icons/non user.png', 30, 'other', '2025-06-11 22:50:53', 'tset@gmail.com'),
-(16, 'sun', '1234567', 'icons/non user.png', 32, 'other', '2025-06-12 01:06:09', 'sun@gmail.com'),
-(17, 'w ', '2222', 'icons/non user.png', 20, 'other', '2025-06-12 01:56:49', 'w@gmail.com'),
-(18, 'ui ', '888', 'icons/non user.png', NULL, 'other', '2025-06-12 20:37:00', 'ui@gmail.com'),
-(19, 'lol James', 'loljames123', 'icons/non user.png', NULL, 'other', '2025-06-28 16:06:20', 'loljames123@gmail.com');
+(1, 'non', '00000000', 'icons/non user.png', 0, '', NULL, 'deafult'),
+(2, 'bob456', 'bobpass456', 'icons/pre.png', 30, 'Male', '2024-06-03 14:20:00', 'bob@gmail.com'),
+(3, 'charlie789', 'charlie789', 'icons/quit.png', 28, 'Male', '2024-06-05 09:45:00', 'charlie@gmail.com'),
+(4, 'diana007', 'diana007pass', 'icons/remove.jpg', 22, 'Female', '2024-06-07 17:30:00', 'diana@gmail.com'),
+(5, 'eve321', 'evesecret321', 'icons/stop.png', 26, '', '2024-06-10 11:00:00', 'eve@gmail.com'),
+(6, 'David_Sun', 'ja0126047', 'icon/non user.png', 18, 'Male', '2025-05-16 15:44:02', 'vortexbluster@gmail.com'),
+(10, 'alice123', 'password123', 'icons/play.png', 25, 'Female', '2024-06-01 10:00:00', 'alice@gmail.com'),
+(12, 'a a', '3333', 'icons/non user.png', NULL, '', NULL, 'a@gmail.com'),
+(13, 'g g', '9999', 'icons/non user.png', NULL, '', NULL, 'b@gmail.com'),
+(14, 'q ', '111', 'icons/non user.png', NULL, '', '2025-06-11 22:32:44', 'q@gmail.com'),
+(15, 'test', '444', 'icons/non user.png', 30, '', '2025-06-11 22:50:53', 'tset@gmail.com'),
+(16, 'sun', '1234567', 'icons/non user.png', 32, '', '2025-06-12 01:06:09', 'sun@gmail.com'),
+(17, 'w ', '2222', 'icons/non user.png', 20, '', '2025-06-12 01:56:49', 'w@gmail.com'),
+(18, 'ui ', '888', 'icons/non user.png', NULL, '', '2025-06-12 20:37:00', 'ui@gmail.com'),
+(19, 'lol James', 'loljames123', 'icons/non user.png', NULL, '', '2025-06-28 16:06:20', 'loljames123@gmail.com'),
+(26, 'test test', 'Test123', 'icons/non user.png', 18, 'Female', '2025-07-08 20:48:20', 'test@test.com'),
+(29, 'Yu Lun Wu', 'Gary123', 'icons/non user.png', 21, 'Male', '2025-07-08 21:46:27', 'gary8321233@gmail.com');
 
 --
 -- 已傾印資料表的索引
@@ -283,7 +285,7 @@ ALTER TABLE `songs`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- 已傾印資料表的限制式

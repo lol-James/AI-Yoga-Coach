@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\code\專題\app\AI-Yoga-Coach\AIYogaCoachInterface.ui'
+# Form implementation generated from reading ui file 'c:\code\zhuanti\app\AI-Yoga-Coach\AIYogaCoachInterface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -1785,7 +1785,7 @@ class Ui_MainWindow(object):
         self.label_3.setSizePolicy(sizePolicy)
         self.label_3.setMinimumSize(QtCore.QSize(0, 0))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/posture_accuracy_sample.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/posture_accuracy_sample.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_19.addWidget(self.label_3)
@@ -1999,7 +1999,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_7.setText("")
         icon32 = QtGui.QIcon()
-        icon32.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon32.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_7.setIcon(icon32)
         self.pushButton_7.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -2035,7 +2035,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_8.setText("")
         icon33 = QtGui.QIcon()
-        icon33.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon33.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_8.setIcon(icon33)
         self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_8.setObjectName("pushButton_8")
@@ -3048,7 +3048,7 @@ class Ui_MainWindow(object):
 "")
         self.share_comment_btn.setText("")
         icon34 = QtGui.QIcon()
-        icon34.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon34.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.share_comment_btn.setIcon(icon34)
         self.share_comment_btn.setIconSize(QtCore.QSize(40, 40))
         self.share_comment_btn.setObjectName("share_comment_btn")
@@ -3233,7 +3233,7 @@ class Ui_MainWindow(object):
 "")
         self.dislike_button.setText("")
         icon35 = QtGui.QIcon()
-        icon35.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon35.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.dislike_button.setIcon(icon35)
         self.dislike_button.setObjectName("dislike_button")
         self.horizontalLayout_48.addWidget(self.dislike_button)
@@ -3322,7 +3322,7 @@ class Ui_MainWindow(object):
 "")
         self.link_button.setText("")
         icon36 = QtGui.QIcon()
-        icon36.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon36.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.link_button.setIcon(icon36)
         self.link_button.setIconSize(QtCore.QSize(50, 50))
         self.link_button.setObjectName("link_button")
@@ -3346,7 +3346,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_10.setText("")
         icon37 = QtGui.QIcon()
-        icon37.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon37.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_10.setIcon(icon37)
         self.pushButton_10.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_10.setObjectName("pushButton_10")
@@ -3370,7 +3370,7 @@ class Ui_MainWindow(object):
 "")
         self.share_cancel_btn.setText("")
         icon38 = QtGui.QIcon()
-        icon38.addPixmap(QtGui.QPixmap("c:\\code\\專題\\app\\AI-Yoga-Coach\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon38.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.share_cancel_btn.setIcon(icon38)
         self.share_cancel_btn.setIconSize(QtCore.QSize(50, 50))
         self.share_cancel_btn.setObjectName("share_cancel_btn")
@@ -3675,6 +3675,7 @@ class Ui_MainWindow(object):
         self.select_gender.addItem("")
         self.select_gender.addItem("")
         self.select_gender.addItem("")
+        self.select_gender.addItem("")
         self.gridLayout_5.addWidget(self.select_gender, 3, 3, 1, 1)
         self.new_user_age_label = QtWidgets.QLabel(self.adjust_information_widget)
         self.new_user_age_label.setMinimumSize(QtCore.QSize(0, 45))
@@ -3925,26 +3926,6 @@ class Ui_MainWindow(object):
         self.user_gender_label.setAlignment(QtCore.Qt.AlignCenter)
         self.user_gender_label.setObjectName("user_gender_label")
         self.gridLayout_9.addWidget(self.user_gender_label, 3, 1, 1, 1)
-        self.user_gender = QtWidgets.QLabel(self.user_information_widget)
-        self.user_gender.setMinimumSize(QtCore.QSize(300, 45))
-        self.user_gender.setMaximumSize(QtCore.QSize(300, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.user_gender.setFont(font)
-        self.user_gender.setStyleSheet("QLabel {\n"
-"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
-"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
-"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
-"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
-"    border-radius: 10px;            /* 圓角邊框 */\n"
-"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
-"}\n"
-"")
-        self.user_gender.setObjectName("user_gender")
-        self.gridLayout_9.addWidget(self.user_gender, 3, 5, 1, 1)
         self.user_account = QtWidgets.QLabel(self.user_information_widget)
         self.user_account.setMinimumSize(QtCore.QSize(300, 45))
         self.user_account.setMaximumSize(QtCore.QSize(300, 45))
@@ -3965,108 +3946,6 @@ class Ui_MainWindow(object):
 "")
         self.user_account.setObjectName("user_account")
         self.gridLayout_9.addWidget(self.user_account, 1, 5, 1, 1)
-        self.user_name = QtWidgets.QLabel(self.user_information_widget)
-        self.user_name.setMinimumSize(QtCore.QSize(300, 45))
-        self.user_name.setMaximumSize(QtCore.QSize(300, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.user_name.setFont(font)
-        self.user_name.setStyleSheet("QLabel {\n"
-"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
-"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
-"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
-"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
-"    border-radius: 10px;            /* 圓角邊框 */\n"
-"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
-"}\n"
-"")
-        self.user_name.setObjectName("user_name")
-        self.gridLayout_9.addWidget(self.user_name, 0, 5, 1, 1)
-        self.user_register_time = QtWidgets.QLabel(self.user_information_widget)
-        self.user_register_time.setMinimumSize(QtCore.QSize(300, 45))
-        self.user_register_time.setMaximumSize(QtCore.QSize(300, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.user_register_time.setFont(font)
-        self.user_register_time.setStyleSheet("QLabel {\n"
-"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
-"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
-"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
-"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
-"    border-radius: 10px;            /* 圓角邊框 */\n"
-"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
-"}\n"
-"")
-        self.user_register_time.setObjectName("user_register_time")
-        self.gridLayout_9.addWidget(self.user_register_time, 4, 5, 1, 1)
-        self.user_account_label = QtWidgets.QLabel(self.user_information_widget)
-        self.user_account_label.setMinimumSize(QtCore.QSize(215, 45))
-        self.user_account_label.setMaximumSize(QtCore.QSize(215, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.user_account_label.setFont(font)
-        self.user_account_label.setStyleSheet("QLabel {\n"
-"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
-"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
-"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
-"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
-"    border-radius: 10px;            /* 圓角邊框 */\n"
-"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
-"}\n"
-"")
-        self.user_account_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.user_account_label.setObjectName("user_account_label")
-        self.gridLayout_9.addWidget(self.user_account_label, 1, 1, 1, 1)
-        self.user_age = QtWidgets.QLabel(self.user_information_widget)
-        self.user_age.setMinimumSize(QtCore.QSize(300, 45))
-        self.user_age.setMaximumSize(QtCore.QSize(300, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.user_age.setFont(font)
-        self.user_age.setStyleSheet("QLabel {\n"
-"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
-"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
-"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
-"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
-"    border-radius: 10px;            /* 圓角邊框 */\n"
-"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
-"}\n"
-"")
-        self.user_age.setObjectName("user_age")
-        self.gridLayout_9.addWidget(self.user_age, 2, 5, 1, 1)
-        self.user_age_label = QtWidgets.QLabel(self.user_information_widget)
-        self.user_age_label.setMinimumSize(QtCore.QSize(215, 45))
-        self.user_age_label.setMaximumSize(QtCore.QSize(215, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.user_age_label.setFont(font)
-        self.user_age_label.setStyleSheet("QLabel {\n"
-"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
-"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
-"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
-"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
-"    border-radius: 10px;            /* 圓角邊框 */\n"
-"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
-"}\n"
-"")
-        self.user_age_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.user_age_label.setObjectName("user_age_label")
-        self.gridLayout_9.addWidget(self.user_age_label, 2, 1, 1, 1)
         self.user_label = QtWidgets.QLabel(self.user_information_widget)
         self.user_label.setMinimumSize(QtCore.QSize(215, 45))
         self.user_label.setMaximumSize(QtCore.QSize(215, 45))
@@ -4088,6 +3967,131 @@ class Ui_MainWindow(object):
         self.user_label.setAlignment(QtCore.Qt.AlignCenter)
         self.user_label.setObjectName("user_label")
         self.gridLayout_9.addWidget(self.user_label, 0, 1, 1, 1)
+        self.user_register_time = QtWidgets.QLabel(self.user_information_widget)
+        self.user_register_time.setMinimumSize(QtCore.QSize(300, 45))
+        self.user_register_time.setMaximumSize(QtCore.QSize(300, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.user_register_time.setFont(font)
+        self.user_register_time.setStyleSheet("QLabel {\n"
+"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
+"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
+"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
+"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
+"    border-radius: 10px;            /* 圓角邊框 */\n"
+"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
+"}\n"
+"")
+        self.user_register_time.setObjectName("user_register_time")
+        self.gridLayout_9.addWidget(self.user_register_time, 4, 5, 1, 1)
+        self.user_gender = QtWidgets.QLabel(self.user_information_widget)
+        self.user_gender.setMinimumSize(QtCore.QSize(300, 45))
+        self.user_gender.setMaximumSize(QtCore.QSize(300, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.user_gender.setFont(font)
+        self.user_gender.setStyleSheet("QLabel {\n"
+"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
+"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
+"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
+"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
+"    border-radius: 10px;            /* 圓角邊框 */\n"
+"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
+"}\n"
+"")
+        self.user_gender.setObjectName("user_gender")
+        self.gridLayout_9.addWidget(self.user_gender, 3, 5, 1, 1)
+        self.user_name = QtWidgets.QLabel(self.user_information_widget)
+        self.user_name.setMinimumSize(QtCore.QSize(300, 45))
+        self.user_name.setMaximumSize(QtCore.QSize(300, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.user_name.setFont(font)
+        self.user_name.setStyleSheet("QLabel {\n"
+"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
+"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
+"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
+"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
+"    border-radius: 10px;            /* 圓角邊框 */\n"
+"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
+"}\n"
+"")
+        self.user_name.setObjectName("user_name")
+        self.gridLayout_9.addWidget(self.user_name, 0, 5, 1, 1)
+        self.config_user_information = QtWidgets.QPushButton(self.user_information_widget)
+        self.config_user_information.setMinimumSize(QtCore.QSize(250, 45))
+        self.config_user_information.setMaximumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.config_user_information.setFont(font)
+        self.config_user_information.setStyleSheet("QPushButton {\n"
+"    background-color: #f7c59f;       \n"
+"    color: #333333;                  \n"
+"    border: 1px solid #d6a77a;\n"
+"    border-radius: 10px;            \n"
+"    padding: 6px 12px;            \n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ffdab9;   \n"
+"}\n"
+"")
+        self.config_user_information.setCheckable(True)
+        self.config_user_information.setObjectName("config_user_information")
+        self.gridLayout_9.addWidget(self.config_user_information, 5, 5, 1, 1)
+        self.user_age_label = QtWidgets.QLabel(self.user_information_widget)
+        self.user_age_label.setMinimumSize(QtCore.QSize(215, 45))
+        self.user_age_label.setMaximumSize(QtCore.QSize(215, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.user_age_label.setFont(font)
+        self.user_age_label.setStyleSheet("QLabel {\n"
+"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
+"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
+"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
+"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
+"    border-radius: 10px;            /* 圓角邊框 */\n"
+"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
+"}\n"
+"")
+        self.user_age_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.user_age_label.setObjectName("user_age_label")
+        self.gridLayout_9.addWidget(self.user_age_label, 2, 1, 1, 1)
+        self.user_age = QtWidgets.QLabel(self.user_information_widget)
+        self.user_age.setMinimumSize(QtCore.QSize(300, 45))
+        self.user_age.setMaximumSize(QtCore.QSize(300, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.user_age.setFont(font)
+        self.user_age.setStyleSheet("QLabel {\n"
+"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
+"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
+"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
+"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
+"    border-radius: 10px;            /* 圓角邊框 */\n"
+"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
+"}\n"
+"")
+        self.user_age.setObjectName("user_age")
+        self.gridLayout_9.addWidget(self.user_age, 2, 5, 1, 1)
         self.user_register_label = QtWidgets.QLabel(self.user_information_widget)
         self.user_register_label.setMinimumSize(QtCore.QSize(215, 45))
         self.user_register_label.setMaximumSize(QtCore.QSize(215, 45))
@@ -4133,30 +4137,51 @@ class Ui_MainWindow(object):
         self.config_password.setCheckable(True)
         self.config_password.setObjectName("config_password")
         self.gridLayout_9.addWidget(self.config_password, 5, 1, 1, 1)
-        self.config_user_information = QtWidgets.QPushButton(self.user_information_widget)
-        self.config_user_information.setMinimumSize(QtCore.QSize(250, 45))
-        self.config_user_information.setMaximumSize(QtCore.QSize(200, 45))
+        self.user_account_label = QtWidgets.QLabel(self.user_information_widget)
+        self.user_account_label.setMinimumSize(QtCore.QSize(215, 45))
+        self.user_account_label.setMaximumSize(QtCore.QSize(215, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.user_account_label.setFont(font)
+        self.user_account_label.setStyleSheet("QLabel {\n"
+"    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */\n"
+"    color: #3e3e3e;                 /* 深灰文字，對比清晰 */\n"
+"    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */\n"
+"    border: 1px solid #b2d8a6;      /* 淡綠邊框 */\n"
+"    border-radius: 10px;            /* 圓角邊框 */\n"
+"    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */\n"
+"}\n"
+"")
+        self.user_account_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.user_account_label.setObjectName("user_account_label")
+        self.gridLayout_9.addWidget(self.user_account_label, 1, 1, 1, 1)
+        self.delete_account = QtWidgets.QPushButton(self.user_information_widget)
+        self.delete_account.setMinimumSize(QtCore.QSize(250, 45))
+        self.delete_account.setMaximumSize(QtCore.QSize(200, 45))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(15)
         font.setBold(True)
         font.setWeight(75)
-        self.config_user_information.setFont(font)
-        self.config_user_information.setStyleSheet("QPushButton {\n"
-"    background-color: #f7c59f;       \n"
+        self.delete_account.setFont(font)
+        self.delete_account.setStyleSheet("QPushButton {\n"
+"    background-color: #EA0000;       \n"
 "    color: #333333;                  \n"
 "    border: 1px solid #d6a77a;\n"
 "    border-radius: 10px;            \n"
-"    padding: 6px 12px;            \n"
+"    padding: 6px 12px;    \n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    background-color: #ffdab9;   \n"
+"    background-color: #FF5151;   \n"
 "}\n"
 "")
-        self.config_user_information.setCheckable(True)
-        self.config_user_information.setObjectName("config_user_information")
-        self.gridLayout_9.addWidget(self.config_user_information, 5, 5, 1, 1)
+        self.delete_account.setCheckable(True)
+        self.delete_account.setObjectName("delete_account")
+        self.gridLayout_9.addWidget(self.delete_account, 6, 1, 1, 1)
         self.horizontalLayout_45.addWidget(self.data_widget)
         self.picture_widge = QtWidgets.QWidget(self.info_widget)
         self.picture_widge.setMinimumSize(QtCore.QSize(550, 698))
@@ -4363,176 +4388,6 @@ class Ui_MainWindow(object):
         self.login_forgot_btn.setCheckable(True)
         self.login_forgot_btn.setObjectName("login_forgot_btn")
         self.verticalLayout_26.addWidget(self.login_forgot_btn)
-        self.reg_ui = QtWidgets.QWidget(self.frame_9)
-        self.reg_ui.setGeometry(QtCore.QRect(420, 40, 351, 561))
-        self.reg_ui.setObjectName("reg_ui")
-        self.horizontalLayoutWidget_10 = QtWidgets.QWidget(self.reg_ui)
-        self.horizontalLayoutWidget_10.setGeometry(QtCore.QRect(0, 0, 351, 81))
-        self.horizontalLayoutWidget_10.setObjectName("horizontalLayoutWidget_10")
-        self.horizontalLayout_51 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_10)
-        self.horizontalLayout_51.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_51.setObjectName("horizontalLayout_51")
-        self.reg_label = QtWidgets.QLabel(self.horizontalLayoutWidget_10)
-        self.reg_label.setMinimumSize(QtCore.QSize(170, 50))
-        self.reg_label.setMaximumSize(QtCore.QSize(170, 50))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(25)
-        font.setBold(True)
-        font.setWeight(75)
-        self.reg_label.setFont(font)
-        self.reg_label.setStyleSheet("color: rgba(0, 0, 0, 200);\n"
-"")
-        self.reg_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.reg_label.setObjectName("reg_label")
-        self.horizontalLayout_51.addWidget(self.reg_label)
-        self.verticalLayoutWidget_10 = QtWidgets.QWidget(self.reg_ui)
-        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(60, 414, 222, 113))
-        self.verticalLayoutWidget_10.setObjectName("verticalLayoutWidget_10")
-        self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_10)
-        self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_30.setObjectName("verticalLayout_30")
-        self.reg_register_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_10)
-        self.reg_register_btn.setMinimumSize(QtCore.QSize(220, 45))
-        self.reg_register_btn.setMaximumSize(QtCore.QSize(220, 45))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.reg_register_btn.setFont(font)
-        self.reg_register_btn.setStyleSheet("QPushButton{\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));\n"
-"    color:rgba(255, 255, 255, 210);\n"
-"    border-radius:5px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    padding-left:5px;\n"
-"    padding-top:5px;\n"
-"    background-color:rgba(150, 123, 111, 255);\n"
-"}")
-        self.reg_register_btn.setCheckable(True)
-        self.reg_register_btn.setObjectName("reg_register_btn")
-        self.verticalLayout_30.addWidget(self.reg_register_btn)
-        self.horizontalLayout_52 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_52.setObjectName("horizontalLayout_52")
-        self.verticalLayout_30.addLayout(self.horizontalLayout_52)
-        self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.reg_ui)
-        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(40, 110, 258, 211))
-        self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
-        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_11)
-        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_31.setObjectName("verticalLayout_31")
-        self.horizontalLayout_54 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_54.setObjectName("horizontalLayout_54")
-        self.reg_firstname_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
-        self.reg_firstname_lineedit.setMinimumSize(QtCore.QSize(120, 40))
-        self.reg_firstname_lineedit.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        self.reg_firstname_lineedit.setFont(font)
-        self.reg_firstname_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
-"border: none;\n"
-"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
-"color: rgba(0, 0, 0, 240);\n"
-"padding-bottom:7px;")
-        self.reg_firstname_lineedit.setObjectName("reg_firstname_lineedit")
-        self.horizontalLayout_54.addWidget(self.reg_firstname_lineedit)
-        spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_54.addItem(spacerItem19)
-        self.reg_lastname_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
-        self.reg_lastname_lineedit.setMinimumSize(QtCore.QSize(120, 40))
-        self.reg_lastname_lineedit.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        self.reg_lastname_lineedit.setFont(font)
-        self.reg_lastname_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
-"border: none;\n"
-"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
-"color: rgba(0, 0, 0, 240);\n"
-"padding-bottom:7px;")
-        self.reg_lastname_lineedit.setObjectName("reg_lastname_lineedit")
-        self.horizontalLayout_54.addWidget(self.reg_lastname_lineedit)
-        self.verticalLayout_31.addLayout(self.horizontalLayout_54)
-        spacerItem20 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_31.addItem(spacerItem20)
-        self.reg_mail_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
-        self.reg_mail_lineedit.setMinimumSize(QtCore.QSize(255, 40))
-        self.reg_mail_lineedit.setMaximumSize(QtCore.QSize(255, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        self.reg_mail_lineedit.setFont(font)
-        self.reg_mail_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
-"border: none;\n"
-"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
-"color: rgba(0, 0, 0, 240);\n"
-"padding-bottom:7px;")
-        self.reg_mail_lineedit.setObjectName("reg_mail_lineedit")
-        self.verticalLayout_31.addWidget(self.reg_mail_lineedit)
-        spacerItem21 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_31.addItem(spacerItem21)
-        self.reg_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
-        self.reg_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
-        self.reg_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        self.reg_password_lineedit.setFont(font)
-        self.reg_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
-"border: none;\n"
-"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
-"color: rgba(0, 0, 0, 240);\n"
-"padding-bottom:7px;")
-        self.reg_password_lineedit.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.reg_password_lineedit.setObjectName("reg_password_lineedit")
-        self.verticalLayout_31.addWidget(self.reg_password_lineedit)
-        spacerItem22 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_31.addItem(spacerItem22)
-        self.reg_confirm_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
-        self.reg_confirm_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
-        self.reg_confirm_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        self.reg_confirm_password_lineedit.setFont(font)
-        self.reg_confirm_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
-"border: none;\n"
-"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
-"color: rgba(0, 0, 0, 240);\n"
-"padding-bottom:7px;")
-        self.reg_confirm_password_lineedit.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.reg_confirm_password_lineedit.setObjectName("reg_confirm_password_lineedit")
-        self.verticalLayout_31.addWidget(self.reg_confirm_password_lineedit)
-        self.reg_back_btn = QtWidgets.QPushButton(self.reg_ui)
-        self.reg_back_btn.setGeometry(QtCore.QRect(0, 70, 41, 41))
-        self.reg_back_btn.setStyleSheet("QPushButton{\n"
-"    background-color: rgba(0, 0, 0, 0);\n"
-"    color:rgba(85, 98, 112, 255);\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    color: rgba(131, 96, 53, 255);\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    padding-left:5px;\n"
-"    padding-top:5px;\n"
-"    color:rgba(91, 88, 53, 255);\n"
-"}")
-        self.reg_back_btn.setText("")
-        icon39 = QtGui.QIcon()
-        icon39.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-back-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.reg_back_btn.setIcon(icon39)
-        self.reg_back_btn.setIconSize(QtCore.QSize(40, 40))
-        self.reg_back_btn.setCheckable(True)
-        self.reg_back_btn.setObjectName("reg_back_btn")
         self.reset_ui = QtWidgets.QWidget(self.frame_9)
         self.reset_ui.setGeometry(QtCore.QRect(420, 40, 351, 561))
         self.reset_ui.setObjectName("reset_ui")
@@ -4641,6 +4496,8 @@ class Ui_MainWindow(object):
 "    color:rgba(91, 88, 53, 255);\n"
 "}")
         self.reset_back_btn.setText("")
+        icon39 = QtGui.QIcon()
+        icon39.addPixmap(QtGui.QPixmap(":/icons/icons/icons8-back-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.reset_back_btn.setIcon(icon39)
         self.reset_back_btn.setIconSize(QtCore.QSize(40, 40))
         self.reset_back_btn.setCheckable(True)
@@ -4728,8 +4585,8 @@ class Ui_MainWindow(object):
 "padding-bottom:7px;")
         self.forgot_mail_lineedit.setObjectName("forgot_mail_lineedit")
         self.horizontalLayout_24.addWidget(self.forgot_mail_lineedit)
-        spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_24.addItem(spacerItem23)
+        spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_24.addItem(spacerItem19)
         self.forgot_send_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_17)
         self.forgot_send_btn.setMinimumSize(QtCore.QSize(70, 45))
         self.forgot_send_btn.setMaximumSize(QtCore.QSize(70, 45))
@@ -4757,8 +4614,8 @@ class Ui_MainWindow(object):
         self.forgot_send_btn.setObjectName("forgot_send_btn")
         self.horizontalLayout_24.addWidget(self.forgot_send_btn)
         self.verticalLayout_37.addLayout(self.horizontalLayout_24)
-        spacerItem24 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_37.addItem(spacerItem24)
+        spacerItem20 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_37.addItem(spacerItem20)
         self.forgot_verification_code_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_17)
         self.forgot_verification_code_lineedit.setMinimumSize(QtCore.QSize(245, 40))
         self.forgot_verification_code_lineedit.setMaximumSize(QtCore.QSize(245, 40))
@@ -4794,6 +4651,238 @@ class Ui_MainWindow(object):
         self.forgot_back_btn.setIconSize(QtCore.QSize(40, 40))
         self.forgot_back_btn.setCheckable(True)
         self.forgot_back_btn.setObjectName("forgot_back_btn")
+        self.reg_ui = QtWidgets.QWidget(self.frame_9)
+        self.reg_ui.setGeometry(QtCore.QRect(420, 40, 351, 561))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_ui.setFont(font)
+        self.reg_ui.setObjectName("reg_ui")
+        self.horizontalLayoutWidget_10 = QtWidgets.QWidget(self.reg_ui)
+        self.horizontalLayoutWidget_10.setGeometry(QtCore.QRect(0, 0, 351, 81))
+        self.horizontalLayoutWidget_10.setObjectName("horizontalLayoutWidget_10")
+        self.horizontalLayout_51 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_10)
+        self.horizontalLayout_51.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_51.setObjectName("horizontalLayout_51")
+        self.reg_label = QtWidgets.QLabel(self.horizontalLayoutWidget_10)
+        self.reg_label.setMinimumSize(QtCore.QSize(170, 50))
+        self.reg_label.setMaximumSize(QtCore.QSize(170, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.reg_label.setFont(font)
+        self.reg_label.setStyleSheet("color: rgba(0, 0, 0, 200);\n"
+"")
+        self.reg_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.reg_label.setObjectName("reg_label")
+        self.horizontalLayout_51.addWidget(self.reg_label)
+        self.verticalLayoutWidget_10 = QtWidgets.QWidget(self.reg_ui)
+        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(60, 440, 222, 71))
+        self.verticalLayoutWidget_10.setObjectName("verticalLayoutWidget_10")
+        self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_10)
+        self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_30.setObjectName("verticalLayout_30")
+        self.reg_register_btn = QtWidgets.QPushButton(self.verticalLayoutWidget_10)
+        self.reg_register_btn.setMinimumSize(QtCore.QSize(220, 45))
+        self.reg_register_btn.setMaximumSize(QtCore.QSize(220, 45))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.reg_register_btn.setFont(font)
+        self.reg_register_btn.setStyleSheet("QPushButton{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"    color:rgba(255, 255, 255, 210);\n"
+"    border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(150, 123, 111, 255);\n"
+"}")
+        self.reg_register_btn.setCheckable(True)
+        self.reg_register_btn.setObjectName("reg_register_btn")
+        self.verticalLayout_30.addWidget(self.reg_register_btn)
+        self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.reg_ui)
+        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(40, 110, 258, 314))
+        self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_11)
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.horizontalLayout_54 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_54.setObjectName("horizontalLayout_54")
+        self.reg_firstname_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_firstname_lineedit.setMinimumSize(QtCore.QSize(120, 40))
+        self.reg_firstname_lineedit.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_firstname_lineedit.setFont(font)
+        self.reg_firstname_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_firstname_lineedit.setObjectName("reg_firstname_lineedit")
+        self.horizontalLayout_54.addWidget(self.reg_firstname_lineedit)
+        spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_54.addItem(spacerItem21)
+        self.reg_lastname_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_lastname_lineedit.setMinimumSize(QtCore.QSize(120, 40))
+        self.reg_lastname_lineedit.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_lastname_lineedit.setFont(font)
+        self.reg_lastname_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_lastname_lineedit.setObjectName("reg_lastname_lineedit")
+        self.horizontalLayout_54.addWidget(self.reg_lastname_lineedit)
+        self.verticalLayout_31.addLayout(self.horizontalLayout_54)
+        spacerItem22 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem22)
+        self.reg_age_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_age_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_age_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_age_lineedit.setFont(font)
+        self.reg_age_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_age_lineedit.setObjectName("reg_age_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_age_lineedit)
+        spacerItem23 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem23)
+        self.reg_gender_combobox = QtWidgets.QComboBox(self.verticalLayoutWidget_11)
+        self.reg_gender_combobox.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_gender_combobox.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        self.reg_gender_combobox.setFont(font)
+        self.reg_gender_combobox.setStyleSheet("QComboBox {\n"
+"    border: none;\n"
+"    border-bottom: 2px solid #ccc;\n"
+"    background: transparent;\n"
+"    padding: 5px 20px 5px 0; /* 留右側空間給下拉箭頭 */\n"
+"    padding-left: 8px;\n"
+"    font-family: Arial;\n"
+"    color: #333;\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border-bottom: 2px solid #666;\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border-bottom: 2px solid #009688;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 20px;\n"
+"    border: none;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/icons/icons/icons8-down-arrow-50.png); /* 請換成你的實際圖示路徑 */\n"
+"    width: 12px;\n"
+"    height: 12px;\n"
+"}\n"
+"")
+        self.reg_gender_combobox.setObjectName("reg_gender_combobox")
+        self.reg_gender_combobox.addItem("")
+        self.reg_gender_combobox.addItem("")
+        self.reg_gender_combobox.addItem("")
+        self.reg_gender_combobox.addItem("")
+        self.verticalLayout_31.addWidget(self.reg_gender_combobox)
+        spacerItem24 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem24)
+        self.reg_mail_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_mail_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_mail_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_mail_lineedit.setFont(font)
+        self.reg_mail_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_mail_lineedit.setObjectName("reg_mail_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_mail_lineedit)
+        spacerItem25 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem25)
+        self.reg_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_password_lineedit.setFont(font)
+        self.reg_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_password_lineedit.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.reg_password_lineedit.setObjectName("reg_password_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_password_lineedit)
+        spacerItem26 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_31.addItem(spacerItem26)
+        self.reg_confirm_password_lineedit = QtWidgets.QLineEdit(self.verticalLayoutWidget_11)
+        self.reg_confirm_password_lineedit.setMinimumSize(QtCore.QSize(255, 40))
+        self.reg_confirm_password_lineedit.setMaximumSize(QtCore.QSize(255, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.reg_confirm_password_lineedit.setFont(font)
+        self.reg_confirm_password_lineedit.setStyleSheet("background-color: rbga(0, 0, 0, 0);\n"
+"border: none;\n"
+"border-bottom: 2px solid rgba(46, 82, 101, 200);\n"
+"color: rgba(0, 0, 0, 240);\n"
+"padding-bottom:7px;")
+        self.reg_confirm_password_lineedit.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.reg_confirm_password_lineedit.setObjectName("reg_confirm_password_lineedit")
+        self.verticalLayout_31.addWidget(self.reg_confirm_password_lineedit)
+        self.reg_back_btn = QtWidgets.QPushButton(self.reg_ui)
+        self.reg_back_btn.setGeometry(QtCore.QRect(0, 70, 41, 41))
+        self.reg_back_btn.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    color:rgba(85, 98, 112, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    color: rgba(131, 96, 53, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    color:rgba(91, 88, 53, 255);\n"
+"}")
+        self.reg_back_btn.setText("")
+        self.reg_back_btn.setIcon(icon39)
+        self.reg_back_btn.setIconSize(QtCore.QSize(40, 40))
+        self.reg_back_btn.setCheckable(True)
+        self.reg_back_btn.setObjectName("reg_back_btn")
         self.horizontalLayout_42.addWidget(self.frame_9)
         self.verticalLayout_33.addLayout(self.horizontalLayout_42)
         self.stackedWidget.addWidget(self.login_logout_page)
@@ -5011,10 +5100,11 @@ class Ui_MainWindow(object):
         self.new_account.setText(_translate("MainWindow", "test@test.com"))
         self.adjust_confirm.setText(_translate("MainWindow", "Finish"))
         self.new_user_label.setText(_translate("MainWindow", "Username"))
-        self.select_gender.setCurrentText(_translate("MainWindow", "其他"))
-        self.select_gender.setItemText(0, _translate("MainWindow", "其他"))
-        self.select_gender.setItemText(1, _translate("MainWindow", "男"))
-        self.select_gender.setItemText(2, _translate("MainWindow", "女"))
+        self.select_gender.setCurrentText(_translate("MainWindow", "Male"))
+        self.select_gender.setItemText(0, _translate("MainWindow", "Male"))
+        self.select_gender.setItemText(1, _translate("MainWindow", "Female"))
+        self.select_gender.setItemText(2, _translate("MainWindow", "Non binary"))
+        self.select_gender.setItemText(3, _translate("MainWindow", "Prefer not to say"))
         self.new_user_age_label.setText(_translate("MainWindow", "Age"))
         self.old_password_label.setText(_translate("MainWindow", "Old password"))
         self.password_confirm.setText(_translate("MainWindow", "Finish"))
@@ -5022,30 +5112,24 @@ class Ui_MainWindow(object):
         self.new_password_confirm_label.setText(_translate("MainWindow", "Confirm password"))
         self.change_password_cancel.setText(_translate("MainWindow", "Cancel"))
         self.user_gender_label.setText(_translate("MainWindow", "Gender"))
-        self.user_gender.setText(_translate("MainWindow", "其他"))
         self.user_account.setText(_translate("MainWindow", "test@test.com"))
-        self.user_name.setText(_translate("MainWindow", "Test"))
-        self.user_register_time.setText(_translate("MainWindow", "2024/04/19"))
-        self.user_account_label.setText(_translate("MainWindow", "Email"))
-        self.user_age.setText(_translate("MainWindow", "18"))
-        self.user_age_label.setText(_translate("MainWindow", "Age"))
         self.user_label.setText(_translate("MainWindow", "Username"))
+        self.user_register_time.setText(_translate("MainWindow", "2024/04/19"))
+        self.user_gender.setText(_translate("MainWindow", "Male"))
+        self.user_name.setText(_translate("MainWindow", "Test"))
+        self.config_user_information.setText(_translate("MainWindow", "Modify information"))
+        self.user_age_label.setText(_translate("MainWindow", "Age"))
+        self.user_age.setText(_translate("MainWindow", "18"))
         self.user_register_label.setText(_translate("MainWindow", "Registration time"))
         self.config_password.setText(_translate("MainWindow", "Modify password"))
-        self.config_user_information.setText(_translate("MainWindow", "Modify information"))
+        self.user_account_label.setText(_translate("MainWindow", "Email"))
+        self.delete_account.setText(_translate("MainWindow", "Delete account"))
         self.login_header_label.setText(_translate("MainWindow", "Log In"))
         self.login_btn.setText(_translate("MainWindow", "Log In"))
         self.login_register_btn.setText(_translate("MainWindow", "Register"))
         self.login_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
         self.login_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Password"))
         self.login_forgot_btn.setText(_translate("MainWindow", "Forgot your password?"))
-        self.reg_label.setText(_translate("MainWindow", "Register"))
-        self.reg_register_btn.setText(_translate("MainWindow", "Register"))
-        self.reg_firstname_lineedit.setPlaceholderText(_translate("MainWindow", "  First Name"))
-        self.reg_lastname_lineedit.setPlaceholderText(_translate("MainWindow", "  Last Name"))
-        self.reg_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
-        self.reg_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Password"))
-        self.reg_confirm_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Confirm Password"))
         self.reset_label.setText(_translate("MainWindow", "Reset password"))
         self.reset_confirm_btn.setText(_translate("MainWindow", "Confirm"))
         self.reset_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Password"))
@@ -5055,4 +5139,16 @@ class Ui_MainWindow(object):
         self.forgot_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
         self.forgot_send_btn.setText(_translate("MainWindow", "Send"))
         self.forgot_verification_code_lineedit.setPlaceholderText(_translate("MainWindow", "  Verificaiton Code"))
+        self.reg_label.setText(_translate("MainWindow", "Register"))
+        self.reg_register_btn.setText(_translate("MainWindow", "Register"))
+        self.reg_firstname_lineedit.setPlaceholderText(_translate("MainWindow", "  First Name"))
+        self.reg_lastname_lineedit.setPlaceholderText(_translate("MainWindow", "  Last Name"))
+        self.reg_age_lineedit.setPlaceholderText(_translate("MainWindow", "  Age"))
+        self.reg_gender_combobox.setItemText(0, _translate("MainWindow", "Male"))
+        self.reg_gender_combobox.setItemText(1, _translate("MainWindow", "Female"))
+        self.reg_gender_combobox.setItemText(2, _translate("MainWindow", "Non binary"))
+        self.reg_gender_combobox.setItemText(3, _translate("MainWindow", "Prefer not to say"))
+        self.reg_mail_lineedit.setPlaceholderText(_translate("MainWindow", "  Mail"))
+        self.reg_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Password"))
+        self.reg_confirm_password_lineedit.setPlaceholderText(_translate("MainWindow", "  Confirm Password"))
 import resource_rc

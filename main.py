@@ -88,6 +88,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.logger = RecordLogger(ui=self)
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
         self.account.user_id_signal.connect(self.music_player.update_user_id)
+        self.user_info.del_user_account_signal.connect(self.account.logout)
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:

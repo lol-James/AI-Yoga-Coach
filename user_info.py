@@ -1,9 +1,13 @@
-import re
+from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtGui import QPixmap
 from notification import NotificationLabel
-class User_Info:
+import re
+
+class User_Info(QObject):
+    del_user_account_signal = pyqtSignal(bool)
     def __init__(self, ui, user_id):
-        
+        super().__init__()
         self.ui = ui
         self.db = self.ui.db
         self.user_id= user_id
@@ -21,6 +25,7 @@ class User_Info:
         self.change_password_cancel=self.ui.change_password_cancel
         self.password_confirm=self.ui.password_confirm
         self.adjust_confirm=self.ui.adjust_confirm
+        self.delete_account_btn=self.ui.delete_account
        
         #user info ui elements initialization
         self.user_name=self.ui.user_name
@@ -52,6 +57,7 @@ class User_Info:
         self.change_password_cancel.clicked.connect(self.change_user_info_widget)
         self.password_confirm.clicked.connect(self.change_password)
         self.adjust_confirm.clicked.connect(self.change_info)
+        self.delete_account_btn.clicked.connect(self.delete_account)
         
         #user info dict
         self.user_dict=self.get_sql_data()
@@ -167,12 +173,6 @@ class User_Info:
         new_account = self.new_account.text()       
         new_age = self.new_age.text()
         select_gender = self.select_gender.currentText()
-        if select_gender =="男":
-            select_gender="male"
-        elif select_gender =="女":
-            select_gender="female"
-        elif select_gender =="其他":
-            select_gender="other"
         self.user_dict=self.get_sql_data()
 
         if not new_name or not new_account or not new_age:
@@ -207,6 +207,28 @@ class User_Info:
             self.user_dict=self.get_sql_data()
             self.initialize_user_info()
             NotificationLabel(self.ui, "Confirm success.", success=True)
+
+    def delete_account(self):
+        reply1 = QMessageBox.question(self.ui, "Delete account", "Are you sure to delete account?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        
+        if reply1 == QMessageBox.Yes:
+            reply2 = QMessageBox.question(self.ui, "Delete account", "Are you really sure to delete account?", 
+                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             
+            if reply2 == QMessageBox.Yes:
+                with self.db.cursor() as cursor:
+                    user_id = self.user_id
+                    self.del_user_account_signal.emit(True)
+                    sql = "DELETE FROM users WHERE user_id = %s"
+                    cursor.execute(sql, (user_id,))
+                    self.db.commit()
+
+                NotificationLabel(self.ui, "Your account has been deleted.", success=True, duration=4000)
+            else:
+                NotificationLabel(self.ui, "Account deletion canceled.", success=False, duration=2000)
+        else:
+            NotificationLabel(self.ui, "Account deletion canceled.", success=False, duration=2000)
+
           
         
