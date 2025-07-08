@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/icons8-down-arrow-50.png</file>
+    <file>icons/icons8-closed-eye-50.png</file>
+    <file>icons/icons8-eye-50.png</file>
     <file>icons/cancel_icon.png</file>
     <file>icons/sharecat_icon.png</file>
     <file>icons/send_icon.png</file>

@@ -36,11 +36,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         button_index_map = {
             self.home_btn: 0, self.full_home_btn: 0, self.music_btn: 1, self.full_music_btn: 1,
             self.progress_btn: 2, self.full_progress_btn: 2, self.share_btn: 3, self.full_share_btn: 3,  
-            self.account_btn: 4, self.full_account_btn: 4, self.info_btn: 5, self.full_info_btn: 5,
-            self.login_out_btn: 6, self.full_login_out_btn: 6
+            self.account_btn: 4, self.full_account_btn: 4, self.info_btn: 5, self.full_info_btn: 5
         }
         for btn, index in button_index_map.items():
-            btn.toggled.connect(lambda checked, i=index: self.stackedWidget.setCurrentIndex(i))
+            btn.toggled.connect(lambda checked, i=index, b=btn: self.navigate_with_auth(i, checked, b))
         self.image_index = 0
         self.demo_list.setEnabled(False)
         self.load_demo_image()
@@ -54,7 +53,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.detector = YogaPoseDetector()
         self.detector.result_image_signal.connect(self.update_GUI_frame)
         self.camera_btn.toggled.connect(self.on_camera_btn_toggled)
-        #share page
+
+        # share page
         self.addShareicon.setCheckable(True)
         self.share_comment_btn.setCheckable(True)
         self.share_cancel_btn.setCheckable(True)
@@ -63,27 +63,44 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.addShareicon.clicked.connect(self.show_share_page_widget)
         self.share_comment_btn.clicked.connect(self.toggle_share_comment_widget)
         self.share_cancel_btn.clicked.connect(self.hide_share_page_widget)
+
         # account
-        self.account = Account(self)
+        self.account = Account(self, self.on_camera_btn_toggled)
         
         # user info
-        self.user_info= User_Info(self,self.account.user_id)
+        self.user_info= User_Info(self, self.account.user_id)
         print("start")
+
         # Music Player
         self.music_player = MusicPlayer(self)
+
         # mediapipe gesture analyzer initialization
         self.gesture_analyzer = GestureAnalyzer()
         self.gesture_interpreter = GestureInterpreter(self)
         self.gesture_analyzer.result_str_signal.connect(self.gesture_interpreter.interpret)
         self.gesture_analyzer.touch_note_signal.connect(self.toggle_touch_note)
         self.show()
+
         # timer
         self.countdown_timer = Timer(self)
+
         # record logger
         self.logger = RecordLogger(ui=self)
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
         self.account.user_id_signal.connect(self.music_player.update_user_id)
+    
+    def navigate_with_auth(self, index, checked, button):
+        if not checked:
+            return
+
+        if index not in [1, 5] and not self.account.login_flag:
+            NotificationLabel(self, "Please login first to unlock the features.", success=False)
+            button.setChecked(False)
+            return
         
+        self.stackedWidget.setCurrentIndex(index)
+
+
     def mousePressEvent(self, event):
         if self.title_frame.underMouse():  
             self.old_pos = event.globalPos()
@@ -112,18 +129,26 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.camera_label.setPixmap(pixmap)
     
     def on_camera_btn_toggled(self):
-        if self.camera_btn.isChecked():
-            self.camera_thread.start()
-            self.detector.start()
-            self.gesture_analyzer.start()
-            self.countdown_timer.camera_is_running = True
+        if self.account.login_flag:
+            if self.camera_btn.isChecked():
+                self.camera_thread.start()
+                self.detector.start()
+                self.gesture_analyzer.start()
+                self.countdown_timer.camera_is_running = True
+                NotificationLabel(self, "Camera opened", success=True)
+
+            else:
+                self.camera_thread.stop()
+                self.detector.stop()
+                self.gesture_analyzer.stop()
+                self.countdown_timer.camera_is_running = False
+                self.countdown_timer._stop_timer()
+                QTimer.singleShot(100, lambda: self.clear_camera_label())
+                NotificationLabel(self, "Camera closed", success=True)
+
         else:
-            self.camera_thread.stop()
-            self.detector.stop()
-            self.gesture_analyzer.stop()
-            self.countdown_timer.camera_is_running = False
-            self.countdown_timer._stop_timer()
-            QTimer.singleShot(100, lambda: self.clear_camera_label())
+            self.camera_btn.setChecked(False)
+            NotificationLabel(self, "Please login first to unlock all features.", success=False)
         
     def clear_camera_label(self):
         self.camera_label.setPixmap(QPixmap())

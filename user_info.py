@@ -1,3 +1,4 @@
+import re
 from PyQt5.QtGui import QPixmap
 from notification import NotificationLabel
 class User_Info:
@@ -38,7 +39,7 @@ class User_Info:
         self.new_name=self.ui.new_name
         self.new_account=self.ui.new_account
         self.new_age=self.ui.new_age
-        self.select_genger=self.ui.select_genger
+        self.select_gender=self.ui.select_gender
        
         # ui initialization
         self.adjust_password_widget.hide()
@@ -79,7 +80,7 @@ class User_Info:
         self.new_name.setText(self.user_dict['user_account'])
         self.new_account.setText(self.user_dict['email'])      
         self.new_age.setText(str(self.user_dict['age']))
-        self.select_genger.setCurrentText(self.user_dict['gender'])
+        self.select_gender.setCurrentText(self.user_dict['gender'])
         
     # change user info page widgets
     def change_user_info_widget(self):
@@ -109,17 +110,36 @@ class User_Info:
         self.user_dict=self.get_sql_data()
         self.initialize_user_info()
     
+    def is_valid_email(self, email):
+        pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        return re.match(pattern, email) is not None
+    
+    # form validation about password
+    def is_valid_password(self, password):
+        if len(password) < 6:
+            return False
+        if not re.search(r'[A-Z]', password):
+            return False
+        if not re.search(r'[a-z]', password):
+            return False
+        return True
+    
     # event when change password 
     def change_password(self):
         old_password = self.old_password.text()
         new_password = self.new_password.text()
         new_password_confirm = self.new_password_confirm.text()
         
-        if new_password != new_password_confirm:
-            NotificationLabel(self.ui, "confirm password unmatch", success=False)
+        if not old_password or not new_password or not new_password_confirm:
+            NotificationLabel(self.ui, "All fields are required.", success=False, duration=3000)
             return
-        elif new_password == old_password:
-            NotificationLabel(self.ui, "confirm password unmatch", success=False)
+        
+        if not self.is_valid_password(new_password):
+            NotificationLabel(self.ui, "Password must be at least 6 characters and include both uppercase and lowercase letters.", success=False, duration=3000)
+            return
+        
+        if new_password != new_password_confirm:
+            NotificationLabel(self.ui, "Confirm password do not match.", success=False, duration=3000)
             return
         
         self.user_dict=self.get_sql_data()
@@ -131,36 +151,62 @@ class User_Info:
                 update_sql = "UPDATE users SET user_password = %s WHERE user_id = %s"
                 cursor.execute(update_sql, (new_password, self.user_id))
                 self.db.commit()
-                NotificationLabel(self.ui, "password update success", success=True)
+                NotificationLabel(self.ui, "Password update success.", success=True)
+                self.old_password.clear()
+                self.new_password.clear()
+                self.new_password_confirm.clear()
                 self.adjust_password_widget.hide()
                 self.user_information_widget.show()
                 self.change_password_cancel.setChecked(False)
             else:
-                NotificationLabel(self.ui, "old password wrong", success=False)
+                NotificationLabel(self.ui, "Fail. The password you entered is incorrect. Please try again.", success=False)
     
     # event when change user info        
     def change_info(self):
-        new_name = self.new_name.text()
+        new_name = self.new_name.text().strip()
         new_account = self.new_account.text()       
         new_age = self.new_age.text()
-        select_genger = self.select_genger.currentText()
-        if select_genger =="男":
-            select_genger="male"
-        elif select_genger =="女":
-            select_genger="female"
-        elif select_genger =="其他":
-            select_genger="other"
+        select_gender = self.select_gender.currentText()
+        if select_gender =="男":
+            select_gender="male"
+        elif select_gender =="女":
+            select_gender="female"
+        elif select_gender =="其他":
+            select_gender="other"
         self.user_dict=self.get_sql_data()
+
+        if not new_name or not new_account or not new_age:
+            NotificationLabel(self.ui, "All fields are required", success=False, duration=3000)
+            return
+        
+        if not self.is_valid_email(new_account):
+            NotificationLabel(self.ui, "Invalid email format.", success=False, duration=3000)
+            return
+        
+        if not new_age.isdigit() or not (1 <= int(new_age) <= 150):
+            NotificationLabel(self.ui, "The age could only be in the range of 1 to 150.", success=False, duration=3000)
+            return
+
         with self.db.cursor() as cursor:
-            sql = "UPDATE users SET user_account = %s,age = %s,gender = %s,email = %s WHERE user_id = %s"
-            cursor.execute(sql, (new_name,new_age,select_genger,new_account,self.user_id))
+            # exclude user from checking if the email exists in the database
+            sql_check = "SELECT COUNT(*) FROM users WHERE email = %s AND user_id != %s"
+            cursor.execute(sql_check, (new_account, self.user_id))
+            result = cursor.fetchone()
+            if result['COUNT(*)'] > 0:
+                NotificationLabel(self.ui, "This email has already been registered. Please take another one.", success=False, duration=3000)
+                return
+
+            # update
+            sql_update = "UPDATE users SET user_account = %s, age = %s, gender = %s, email = %s WHERE user_id = %s"
+            cursor.execute(sql_update, (new_name, new_age, select_gender, new_account, self.user_id))
             self.db.commit()
+
             self.adjust_information_widget.hide()
             self.user_information_widget.show()
             self.data_change_cancel.setChecked(False)
             self.user_dict=self.get_sql_data()
             self.initialize_user_info()
-            NotificationLabel(self.ui, "confirm success", success=True)
+            NotificationLabel(self.ui, "Confirm success.", success=True)
             
           
         

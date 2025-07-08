@@ -17,9 +17,9 @@ class NotificationLabel(QLabel):
             font-size: 18px;
             """
         )
-        self.setAlignment(Qt.AlignCenter)
-        self.setFixedSize(450, 50)
-        self.move(20, 60)
+        self.setAlignment(Qt.AlignLeft)
+        self.adjustSize()
+        self.move(40, 80)
         self.show()
 
         QTimer.singleShot(duration, self.hide)
