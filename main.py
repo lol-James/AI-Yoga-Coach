@@ -14,7 +14,7 @@ from countdownTimer import Timer
 from record_logger import RecordLogger
 from user_info import User_Info
 from account import Account
-
+from yoga_pose_calculate import evaluate_and_display_pose
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -89,6 +89,25 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
         self.account.user_id_signal.connect(self.music_player.update_user_id)
         self.user_info.del_user_account_signal.connect(self.account.logout)
+
+        # 計算分數並顯示在畫面
+        self.detector.result_pose_signal.connect(self.cache_pose_index)
+        self.pose_score_timer = QTimer()
+        self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
+        self.pose_score_timer.start(1000)  
+
+        self.pose_name_map = {
+            "Downward Facing Dog": "Downward-Facing_Dog",
+            "Warrior 1": "Warrior_I",
+            "Warrior 2": "Warrior_II",
+            "Cow Pose": "Cow_Pose",
+            "Plank Pose": "Plank_Pose",
+            "Staff Pose": "Staff_Pose",
+            "Chair Pose": "Squat_Pose",
+            "Locust Pose": "Locust_Pose",
+            "Triangle Pose": "Triangle_Pose",
+            "Bridge Pose": "Bridge_Pose"
+        }
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -249,3 +268,41 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             return db
         except Exception as e:
             print("pymysql connection error: ", e)
+
+    def cache_pose_index(self, pose_index):
+        self.current_pose_index = pose_index
+
+    def perform_pose_scoring(self):
+        if not hasattr(self, 'current_pose_index'):
+            return
+
+        if not self.countdown_timer.camera_is_running:
+            return
+
+        if self.state_reg_label.text() != "Exercise":
+            return
+
+        if self.detector.frame is None:
+            return
+
+        current_demo_item = self.demo_list.currentItem()
+        if current_demo_item is None:
+            return
+
+        selected_display_name = current_demo_item.text().strip()
+
+        selected_pose_name = self.pose_name_map.get(selected_display_name)
+        if selected_pose_name is None:
+            return
+
+        detected_pose_name = self.detector.pose_names[self.current_pose_index]
+
+        if detected_pose_name != selected_pose_name:
+            return
+
+        evaluate_and_display_pose(
+            self.detector.frame,
+            self.current_pose_index,
+            self.pose_reg_label
+        )
+

@@ -152,6 +152,72 @@ POSE_DEFINITIONS = {
     },
 }
 
+
+def evaluate_and_display_pose(frame, pose_index, label_widget):
+    import cv2
+    import numpy as np
+    import mediapipe as mp
+    from PyQt5.QtGui import QFont
+
+    # 原始 pose 名稱對應
+    pose_map = {
+        0: "downward_facing_dog",
+        1: "warrior1",
+        2: "warrior2",
+        3: "cow",
+        4: "plank",
+        5: "staff",
+        6: "chair",
+        7: "locust",
+        8: "triangle",
+        9: "bridge",
+    }
+
+    # 美觀顯示用名稱（完整名稱）
+    pose_display_name_map = {
+        "downward_facing_dog": "Downward Facing Dog",
+        "warrior1": "Warrior I",
+        "warrior2": "Warrior II",
+        "cow": "Cow Pose",
+        "plank": "Plank Pose",
+        "staff": "Staff Pose",
+        "chair": "Chair Pose",
+        "locust": "Locust Pose",
+        "triangle": "Triangle Pose",
+        "bridge": "Bridge Pose"
+    }
+
+    pose_name = pose_map.get(pose_index, None)
+    if pose_name is None:
+        return
+
+    display_name = pose_display_name_map.get(pose_name, pose_name.title())
+
+    mp_pose = mp.solutions.pose
+    with mp_pose.Pose(static_image_mode=False) as pose:
+        image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        result = pose.process(image_rgb)
+
+        if result.pose_landmarks:
+            scores = evaluate_pose(result.pose_landmarks.landmark, pose_name)
+            avg = scores.get('average_score', 0)
+
+            # 文字內容
+            text = f"{display_name} {avg:.1f}"
+
+            # 動態調整字體大小（越長越小）
+            font_size = 20  # 預設
+            if len(text) > 20:
+                font_size = 14
+            elif len(text) > 15:
+                font_size = 16
+            elif len(text) > 10:
+                font_size = 18
+
+            font = QFont("Arial", font_size)
+            label_widget.setFont(font)
+            label_widget.setPlainText(text)
+
 if __name__ == '__main__':
     pose_options = list(POSE_DEFINITIONS.keys())
     print("請選擇一個瑜珈姿勢：")
