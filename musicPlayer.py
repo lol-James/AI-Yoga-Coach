@@ -425,7 +425,6 @@ class MusicPlayer:
 
         except Exception as e:
             print(f"Error loading favorites: {e}")
-
         
     def favorites_function(self):
         current_index = self.stackedWidget_2.currentIndex()
@@ -494,7 +493,6 @@ class MusicPlayer:
 
                 selected_filename = item.text()
 
-                # Find matched file in favorites_songs_list by basename
                 matched_file = next(
                     (f for f in songs.favorites_songs_list if os.path.basename(f).lower() == selected_filename.lower()), None
                 )
@@ -503,29 +501,38 @@ class MusicPlayer:
                     NotificationLabel(self.ui, "Song Not Found", success=False)
                     return
 
-                if self.user_id == 1:
-                    if len(songs.favorites_songs_list) > 1 and os.path.normpath(matched_file) == os.path.normpath(self.player.media().canonicalUrl().toLocalFile()):
+                current_song_url = self.player.media().canonicalUrl().toLocalFile()
+                is_current_playing = os.path.normpath(matched_file) == os.path.normpath(current_song_url)
+
+                if is_current_playing:
+                    if len(songs.favorites_songs_list) > 1:
                         self.default_next()
                     else:
                         self.stop_song()
-                    # Not logged in: remove from local list
+
+                if self.user_id == 1:
                     songs.favorites_songs_list.remove(matched_file)
-                    self.favorites_listWidget.takeItem(selected_index)
-                    NotificationLabel(self.ui, f"{selected_filename} removed from favorites", success=True)
                 else:
-                    # Logged in: remove from DB
                     with self.db.cursor() as cursor:
                         delete_sql = "DELETE FROM favorite_songs WHERE user_id = %s AND song_name = %s"
                         cursor.execute(delete_sql, (self.user_id, selected_filename))
                         self.db.commit()
-                        self.default_next()
                         songs.favorites_songs_list.remove(matched_file)
-                        self.favorites_listWidget.takeItem(selected_index)
-                        NotificationLabel(self.ui, f"{selected_filename} removed from favorites", success=True)
+
+                self.favorites_listWidget.takeItem(selected_index)
+
+                if not is_current_playing and songs.favorites_songs_list:
+                    try:
+                        current_index = songs.favorites_songs_list.index(current_song_url)
+                        self.favorites_listWidget.setCurrentRow(current_index)
+                    except ValueError:
+                        pass
+
+                NotificationLabel(self.ui, f"{selected_filename} removed from favorites", success=True)
+
             except Exception as e:
                 NotificationLabel(self.ui, f"Unexpected error {str(e)}", success=False)
-            
-            
+                    
     def shuffle_song(self):
         try:
             if not self.is_shuffled:
@@ -568,6 +575,8 @@ class MusicPlayer:
         )
 
         if reply == QMessageBox.Yes:
+            is_current_playing = os.path.normpath(removed_song) == os.path.normpath(current_song_url)
+
             if self.stackedWidget_2.currentIndex() == 1 and self.user_id != 1:
                 try:
                     selected_filename = os.path.basename(removed_song)
@@ -578,17 +587,23 @@ class MusicPlayer:
                         print(f"Deleted {selected_filename} from favorite_songs for user {self.user_id}.")
                 except Exception as e:
                     print(f"Error removing favorite song from DB: {e}")
-                    
-            if len(song_list) > 1 and os.path.normpath(removed_song) == os.path.normpath(current_song_url):  # If there are other songs left, play next one
-                self.default_next()
-            else:
-                # No songs left, stop player
-                self.stop_song()
-                
+
+            if is_current_playing:
+                if len(song_list) > 1:
+                    self.default_next()
+                else:
+                    self.stop_song()
+
             list_widget.takeItem(current_row)
             del song_list[current_row]
-        
- 
+
+            if not is_current_playing and song_list:
+                try:
+                    current_index = song_list.index(current_song_url)
+                    list_widget.setCurrentRow(current_index)
+                except ValueError:
+                    pass
+  
     def remove_all_songs(self):
         list_widget = self.song_listWidget if self.stackedWidget_2.currentIndex() == 0 else self.favorites_listWidget
         song_list = songs.current_song_list if self.stackedWidget_2.currentIndex() == 0 else songs.favorites_songs_list
