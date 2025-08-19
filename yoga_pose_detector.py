@@ -14,8 +14,8 @@ class YogaPoseDetector(QThread):
         super().__init__()
         self.frame = None
         self.model = None
-        self.pose_names = ['Downward-Facing_Dog', 'Warrior_I', 'Warrior_II', 'Cow_Pose', 'Plank_Pose', 'Staff_Pose',
-                           'Squat_Pose', 'Locust_Pose', 'Triangle_Pose', 'Bridge_Pose']
+        self.pose_names = ['Downward-Facing_Dog', 'Warrior_I', 'Warrior_II', 'Warrior_III', 'Plank_Pose', 'Staff_Pose',
+                           'Chair_Pose', 'Locust_Pose', 'Triangle_Pose', 'Bridge_Pose']
         self.is_running = False
         self.pose_estimator = mp.solutions.pose.Pose(static_image_mode=False,
                                                      model_complexity=1,
