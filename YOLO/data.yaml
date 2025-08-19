@@ -3,5 +3,5 @@ val: ../valid/images
 test: ../test/images
 
 nc: 10
-names: ['Downward-Facing_Dog', 'Warrior_I', 'Warrior_II', 'Cow_Pose', 'Plank_Pose', 'Staff_Pose', 'Squat_Pose', 'Locust_Pose', 'Triangle_Pose', 'Bridge_Pose']
+names: ['Downward-Facing_Dog', 'Warrior_I', 'Warrior_II', 'Warrior_III', 'Plank_Pose', 'Staff_Pose', 'Chair_Pose', 'Locust_Pose', 'Triangle_Pose', 'Bridge_Pose']
 

@@ -3,8 +3,8 @@ import shutil
 import random
 
 # 設定資料夾路徑（請修改為你的路徑）
-base_dir = r"C:\code\專題\app\AI-Yoga-Coach\YOLO\All Poses Data"  # 替換成你的 All Poses Data 資料夾路徑
-dest_dir = r'C:\code\專題\app\AI-Yoga-Coach\YOLO'  # 你要存放 train/valid/test 的資料夾
+base_dir = r"C:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\YOLO\All Poses Data"  # 替換成你的 All Poses Data 資料夾路徑
+dest_dir = r'C:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\YOLO'  # 你要存放 train/valid/test 的資料夾
 
 # 設定資料集比例
 train_ratio = 0.7

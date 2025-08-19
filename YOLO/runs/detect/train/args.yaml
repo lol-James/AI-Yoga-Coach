@@ -1,7 +1,7 @@
 task: detect
 mode: train
-model: C:\code\專題\app\AI-Yoga-Coach\YOLO\yolo11n.pt
-data: C:\code\專題\app\AI-Yoga-Coach\YOLO\data.yaml
+model: C:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\YOLO\yolo11n.pt
+data: C:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\YOLO\data.yaml
 epochs: 200
 time: null
 patience: 100
