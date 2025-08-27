@@ -1452,7 +1452,7 @@ QScrollBar::sub-page:vertical {
                          </item>
                          <item>
                           <property name="text">
-                           <string>Cow Pose</string>
+                           <string>Chair Pose</string>
                           </property>
                           <property name="text">
                            <string>0</string>
@@ -1477,14 +1477,6 @@ QScrollBar::sub-page:vertical {
                          <item>
                           <property name="text">
                            <string>Plank Pose</string>
-                          </property>
-                          <property name="text">
-                           <string>0</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Squat Pose</string>
                           </property>
                           <property name="text">
                            <string>0</string>
@@ -1517,6 +1509,14 @@ QScrollBar::sub-page:vertical {
                          <item>
                           <property name="text">
                            <string>Warrior II</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Warrior III</string>
                           </property>
                           <property name="text">
                            <string>0</string>
@@ -5361,7 +5361,7 @@ border-bottom-right-radius: 50px;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>471</width>
+                       <width>474</width>
                        <height>611</height>
                       </rect>
                      </property>

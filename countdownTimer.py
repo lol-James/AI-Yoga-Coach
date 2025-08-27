@@ -28,7 +28,7 @@ class Timer(QThread):
         self.exercise_time = self.default_exercise_time
         self.rest_time = self.default_rest_time
         self.states = ['Exercise', 'Rest', 'Pause', 'N/A']
-        self.state_index = 0 
+        self.state_index = 1 
         self.state = self.states[3]
         self.record = [0 for _ in range(10)]
         self.update_lcdnumber()
@@ -41,12 +41,12 @@ class Timer(QThread):
         self.rst_btn.clicked.connect(self.reset_timer)
 
     def update_lcdnumber(self):
-        if self.state == 'Exercise' or self.state == 'N/A' or (self.state_index == 0 and self.timer_is_running):
-            self.min = str((self.exercise_time // 1000) // 60)
-            self.sec = str((self.exercise_time // 1000) % 60)
-        else:
+        if self.state == 'Rest' or self.state == 'N/A' or (self.state_index == 1 and self.timer_is_running):
             self.min = str((self.rest_time // 1000) // 60)
             self.sec = str((self.rest_time // 1000) % 60)
+        else:
+            self.min = str((self.exercise_time // 1000) // 60)
+            self.sec = str((self.exercise_time // 1000) % 60)
         
         self.min = '0' + str(self.min)
         if len(self.sec) == 1:
@@ -63,6 +63,10 @@ class Timer(QThread):
                 self.state = self.states[1]
                 self.state_reg_label.setText(self.state)
                 self.exercise_time = self.default_exercise_time
+
+                self.record[self.ui.image_index] += 1
+                self.statistics_treewidget.topLevelItem(self.ui.image_index).setText(1, str(self.record[self.ui.image_index]))
+                self.ui.next_pose(False)
             else:
                 self.exercise_time -= 1000
         elif self.state == 'Rest':
@@ -71,10 +75,6 @@ class Timer(QThread):
                 self.state = self.states[0]
                 self.state_reg_label.setText(self.state)
                 self.rest_time = self.default_rest_time
-
-                self.record[self.ui.image_index] += 1
-                self.statistics_treewidget.topLevelItem(self.ui.image_index).setText(1, str(self.record[self.ui.image_index]))
-                self.ui.next_pose(False)
             else:
                 self.rest_time -= 1000
         self.update_lcdnumber()
@@ -176,7 +176,7 @@ class Timer(QThread):
 
     def reset_timer(self):
         self.state = self.states[3]
-        self.state_index = 0
+        self.state_index = 1
         self.state_reg_label.setText(self.state)
         self.timer_is_running = False
         self.three_sec_startup = False
@@ -197,8 +197,8 @@ class Timer(QThread):
 
     def skip(self, skip_flag):
         if skip_flag:
-            self.state_index = 0
-            self.state = self.states[0]
+            self.state_index = 1
+            self.state = self.states[self.state_index]
             self.state_reg_label.setText(self.state)
             self.exercise_time = self.default_exercise_time
             self.rest_time = self.default_rest_time
