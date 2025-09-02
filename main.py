@@ -169,7 +169,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                     QTimer.singleShot(100, lambda: self.clear_camera_label())
                     NotificationLabel(self, "Camera closed", success=True)
 
-            else:
+            elif self.camera_btn.isChecked():
                 self.camera_btn.setChecked(False)
                 self.camera_thread.stop()
                 self.detector.stop()
