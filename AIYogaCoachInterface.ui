@@ -803,12 +803,12 @@ background-color:  #BBDEFB;
           <item row="2" column="0">
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>6</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
               <string notr="true">QWidget {
-    background-color: #D1E9E9; /* æ·ºç¶ è‰² */
+    background-color: #D1E9E9; /* æ·ºç????? */
 }
 </string>
              </property>
@@ -885,11 +885,11 @@ background-color:  #BBDEFB;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QLabel {
-    background-color: gray;  /* è¨­å®šèƒŒæ™¯é¡è‰²ç‚ºç°è‰² */
-    border-radius: 15px;     /* è¨­å®šé‚Šè§’åœ“æ»‘ï¼Œæ•¸å€¼è¶Šå¤§è¶Šåœ“ */
-    color: white;            /* è¨­å®šæ–‡å­—é¡è‰²ç‚ºç™½è‰²ï¼Œè®“å­—æ›´æ¸…æ¥š */
-    text-align: center;      /* æ°´å¹³ç½®ä¸­ï¼ŒQt ä¸æ”¯æ´æ­¤å±¬æ€§ï¼Œè¦ç”¨å°é½Šæ–¹å¼ */
-    qproperty-alignment: AlignCenter;  /* Qt æ¨™æº–æ–¹å¼è¨­å®šæ–‡å­—ç½®ä¸­ */
+    background-color: gray;  /* è¨­å???????¯é????²ç?ºç?°è?? */
+    border-radius: 15px;     /* è¨­å?????è§????æ»?ï¼???¸å?¼è??å¤§è????? */
+    color: white;            /* è¨­å?????å­?é¡???²ç?ºç?½è?²ï??è®?å­???´æ??æ¥? */
+    text-align: center;      /* æ°´å¹³ç½®ä¸­ï¼?Qt ä¸???¯æ?´æ­¤å±¬æ?§ï??è¦???¨å??é½???¹å?? */
+    qproperty-alignment: AlignCenter;  /* Qt æ¨?æº???¹å??è¨­å?????å­?ç½®ä¸­ */
 }
 </string>
                      </property>
@@ -923,11 +923,11 @@ background-color:  #BBDEFB;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QLabel {
-    background-color: gray;  /* è¨­å®šèƒŒæ™¯é¡è‰²ç‚ºç°è‰² */
-    border-radius: 15px;     /* è¨­å®šé‚Šè§’åœ“æ»‘ï¼Œæ•¸å€¼è¶Šå¤§è¶Šåœ“ */
-    color: white;            /* è¨­å®šæ–‡å­—é¡è‰²ç‚ºç™½è‰²ï¼Œè®“å­—æ›´æ¸…æ¥š */
-    text-align: center;      /* æ°´å¹³ç½®ä¸­ï¼ŒQt ä¸æ”¯æ´æ­¤å±¬æ€§ï¼Œè¦ç”¨å°é½Šæ–¹å¼ */
-    qproperty-alignment: AlignCenter;  /* Qt æ¨™æº–æ–¹å¼è¨­å®šæ–‡å­—ç½®ä¸­ */
+    background-color: gray;  /* è¨­å???????¯é????²ç?ºç?°è?? */
+    border-radius: 15px;     /* è¨­å?????è§????æ»?ï¼???¸å?¼è??å¤§è????? */
+    color: white;            /* è¨­å?????å­?é¡???²ç?ºç?½è?²ï??è®?å­???´æ??æ¥? */
+    text-align: center;      /* æ°´å¹³ç½®ä¸­ï¼?Qt ä¸???¯æ?´æ­¤å±¬æ?§ï??è¦???¨å??é½???¹å?? */
+    qproperty-alignment: AlignCenter;  /* Qt æ¨?æº???¹å??è¨­å?????å­?ç½®ä¸­ */
 }
 </string>
                      </property>
@@ -952,31 +952,31 @@ background-color:  #BBDEFB;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QListWidget {
-    background-color: gray;  /* è¨­å®šèƒŒæ™¯é¡è‰²ç‚ºç°è‰² */
-    border-radius: 15px;     /* è¨­å®šé‚Šè§’åœ“æ»‘ï¼Œæ•¸å€¼è¶Šå¤§è¶Šåœ“ */
-    color: white;            /* è¨­å®šæ–‡å­—é¡è‰²ç‚ºç™½è‰² */
-    font-size: 15px;         /* è¨­å®šå­—é«”å¤§å°ç‚º 15px */
+    background-color: gray;  /* è¨­å???????¯é????²ç?ºç?°è?? */
+    border-radius: 15px;     /* è¨­å?????è§????æ»?ï¼???¸å?¼è??å¤§è????? */
+    color: white;            /* è¨­å?????å­?é¡???²ç?ºç?½è?? */
+    font-size: 15px;         /* è¨­å??å­?é«?å¤§å????? 15px */
 }
 
 QListWidget::item {
-    background-color: #4f4f4f; /* é …ç›®èƒŒæ™¯è‰² */
-    color: #ffffff; /* æ–‡å­—é¡è‰² */
+    background-color: #4f4f4f; /* ?????®è????¯è?? */
+    color: #ffffff; /* ???å­?é¡???? */
     border: none;
     padding: 7px;
-    margin: 3px; /* å¢åŠ é–“è·ä»¥çªé¡¯åœ“è§’æ•ˆæœ */
-    border-radius: 12px; /* æ¯å€‹é …ç›®åœ“è§’ */
+    margin: 3px; /* å¢???????è·?ä»¥ç??é¡¯å??è§??????? */
+    border-radius: 12px; /* æ¯?????????®å??è§? */
 }
 
 QListWidget::item:hover {
-    background-color: #6c6c6c; /* æ‡¸åœæ™‚çš„è¼ƒäº®èƒŒæ™¯è‰² */
-    border-radius: 12px; /* ä¿æŒåœ“è§’ */
+    background-color: #6c6c6c; /* ??¸å????????è¼?äº®è????¯è?? */
+    border-radius: 12px; /* ä¿???????è§? */
 }
 
 QListWidget::item:selected {
-    background-color: #009688; /* é¸ä¸­èƒŒæ™¯è‰² */
-    color: #ffffff; /* é¸ä¸­å¾Œæ–‡å­—é¡è‰² */
+    background-color: #009688; /* ??¸ä¸­?????¯è?? */
+    color: #ffffff; /* ??¸ä¸­å¾????å­?é¡???? */
     border: none;
-    border-radius: 12px; /* é¸ä¸­æ•ˆæœåœ“è§’ */
+    border-radius: 12px; /* ??¸ä¸­?????????è§? */
 }
 
 </string>
@@ -1101,10 +1101,10 @@ QListWidget::item:selected {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* è¨­å®šèƒŒæ™¯é¡è‰²ç‚ºæ·ºé»ƒè‰² (LemonChiffon) */
-    border-radius: 15px;        /* è¨­å®šé‚Šè§’åœ“æ»‘ï¼Œæ•¸å€¼è¶Šå¤§è¶Šåœ“ */
-    border: 1px solid #D0D0D0;    /* è¨­å®š 1px é»‘è‰²é‚Šæ¡† */
-    color: black;               /* å¯é¸ï¼šè¨­å®šæ–‡å­—é¡è‰² */
+    background-color: #E8FFF5;  /* è¨­å???????¯é????²ç?ºæ·ºé»???? (LemonChiffon) */
+    border-radius: 15px;        /* è¨­å?????è§????æ»?ï¼???¸å?¼è??å¤§è????? */
+    border: 1px solid #D0D0D0;    /* è¨­å?? 1px é»???²é??æ¡? */
+    color: black;               /* ??¯é?¸ï??è¨­å?????å­?é¡???? */
 	qproperty-readOnly: true; 
 }
 
@@ -1168,10 +1168,10 @@ p, li { white-space: pre-wrap; }
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* è¨­å®šèƒŒæ™¯é¡è‰²ç‚ºæ·ºé»ƒè‰² (LemonChiffon) */
-    border-radius: 15px;        /* è¨­å®šé‚Šè§’åœ“æ»‘ï¼Œæ•¸å€¼è¶Šå¤§è¶Šåœ“ */
-    border: 1px solid #D0D0D0;    /* è¨­å®š 1px é»‘è‰²é‚Šæ¡† */
-    color: black;               /* å¯é¸ï¼šè¨­å®šæ–‡å­—é¡è‰² */
+    background-color: #E8FFF5;  /* è¨­å???????¯é????²ç?ºæ·ºé»???? (LemonChiffon) */
+    border-radius: 15px;        /* è¨­å?????è§????æ»?ï¼???¸å?¼è??å¤§è????? */
+    border: 1px solid #D0D0D0;    /* è¨­å?? 1px é»???²é??æ¡? */
+    color: black;               /* ??¯é?¸ï??è¨­å?????å­?é¡???? */
 	qproperty-readOnly: true; 
 }
 
@@ -1209,19 +1209,19 @@ p, li { white-space: pre-wrap; }
                          <property name="styleSheet">
                           <string notr="true">QPushButton {
     color: #333;
-    border: none;               /* å–æ¶ˆé‚Šæ¡† */
-    border-radius: 25px;        /* é‚Šè§’åœ“æ»‘ */
+    border: none;               /* ???æ¶????æ¡? */
+    border-radius: 25px;        /* ???è§????æ»? */
     text-align: center;
-    background: #ffffff;       /* ç™½åº• */
+    background: #ffffff;       /* ??½å?? */
     padding: 5px;
 }
 
 QPushButton:hover {
-    background: #e0e0e0;        /* æ·ºç°è‰² */
+    background: #e0e0e0;        /* æ·ºç?°è?? */
 }
 
 QPushButton:pressed {
-    background: #bdbdbd;        /* æ·±ä¸€é»çš„æ·ºç°è‰² */
+    background: #bdbdbd;        /* æ·±ä??é»????æ·ºç?°è?? */
 }
 </string>
                          </property>
@@ -1366,7 +1366,7 @@ QPushButton:pressed {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QTreeWidget {
-    background-color: #D6F0F5; /* æ·¡è—ç¶ èƒŒæ™¯ */
+    background-color: #D6F0F5; /* æ·¡è??ç¶??????? */
     border: 1px solid #A0C4C4;
     border-radius: 6px;
     font-size: 14px;
@@ -1380,7 +1380,7 @@ QTreeWidget::item {
 }
 
 QTreeWidget::item:selected {
-    background-color: #A1D6E2; /* æŸ”å’Œé¸å–èƒŒæ™¯ */
+    background-color: #A1D6E2; /* ????????¸å???????? */
     color: #000000;
     border: none;
 }
@@ -1390,7 +1390,7 @@ QTreeWidget::item:hover {
 }
 
 QHeaderView::section {
-    background-color: #7FDBFF; /* æ·ºè—è¡¨é ­ */
+    background-color: #7FDBFF; /* æ·ºè??è¡¨é?? */
     padding: 1px 2px;
     font-weight: bold;
     font-size: 14px;
@@ -1452,7 +1452,7 @@ QScrollBar::sub-page:vertical {
                          </item>
                          <item>
                           <property name="text">
-                           <string>Chair Pose</string>
+                           <string>Cow Pose</string>
                           </property>
                           <property name="text">
                            <string>0</string>
@@ -1477,6 +1477,14 @@ QScrollBar::sub-page:vertical {
                          <item>
                           <property name="text">
                            <string>Plank Pose</string>
+                          </property>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Squat Pose</string>
                           </property>
                           <property name="text">
                            <string>0</string>
@@ -1509,14 +1517,6 @@ QScrollBar::sub-page:vertical {
                          <item>
                           <property name="text">
                            <string>Warrior II</string>
-                          </property>
-                          <property name="text">
-                           <string>0</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Warrior III</string>
                           </property>
                           <property name="text">
                            <string>0</string>
@@ -1607,7 +1607,7 @@ QScrollBar::sub-page:vertical {
     padding: 5px;
 }
 
-/* æ»‘é¼ ç§»ä¸Šå»æ™‚è®Šæˆç¨å¾®æ·±ä¸€é»çš„ç°è‰² */
+/* æ»?é¼?ç§»ä????»æ??è®????ç¨?å¾®æ·±ä¸?é»??????°è?? */
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1615,7 +1615,7 @@ QPushButton:hover {
     );
 }
 
-/* æŒ‰ä¸‹æ™‚è®Šæˆæ›´æ·±çš„ç°è‰² */
+/* ???ä¸????è®??????´æ·±?????°è?? */
 QPushButton:pressed {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1659,7 +1659,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #388E3C; /* ç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #388E3C; /* ç¶???²é??æ¡? */
     border-radius: 25px;
     text-align: center;
     border-style: outset;
@@ -1670,7 +1670,7 @@ QPushButton:pressed {
     padding: 5px;
 }
 
-/* æ»‘é¼ ç§»ä¸Šå»æ™‚ï¼Œé¡è‰²ä»‹æ–¼åŸæŒ‰éˆ•ï¼ˆ#4caf50ï¼‰å’ŒæŒ‰ä¸‹ï¼ˆ#2e7d32ï¼‰ä¹‹é–“ */
+/* æ»?é¼?ç§»ä????»æ??ï¼?é¡???²ä????¼å????????ï¼?#4caf50ï¼???????ä¸?ï¼?#2e7d32ï¼?ä¹???? */
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1678,7 +1678,7 @@ QPushButton:hover {
     );
 }
 
-/* æŒ‰ä¸‹æ™‚è®Šæˆæœ€æ·±çš„é¡è‰² */
+/* ???ä¸????è®???????æ·±ç??é¡???? */
 QPushButton:pressed {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1722,7 +1722,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #d32f2f; /* ç´…è‰²é‚Šæ¡† */
+    border: 2px solid #d32f2f; /* ç´???²é??æ¡? */
     border-radius: 25px;
     text-align: center;
     border-style: outset;
@@ -1733,7 +1733,7 @@ QPushButton:pressed {
     padding: 5px;
 }
 
-/* æ»‘é¼ ç§»ä¸Šå»æ™‚ï¼Œé¡è‰²ä»‹æ–¼åŸæŒ‰éˆ•ï¼ˆ#d32f2fï¼‰å’ŒæŒ‰ä¸‹ï¼ˆ#b71c1cï¼‰ä¹‹é–“ */
+/* æ»?é¼?ç§»ä????»æ??ï¼?é¡???²ä????¼å????????ï¼?#d32f2fï¼???????ä¸?ï¼?#b71c1cï¼?ä¹???? */
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1741,7 +1741,7 @@ QPushButton:hover {
     );
 }
 
-/* æŒ‰ä¸‹æ™‚è®Šæˆæœ€æ·±çš„é¡è‰² */
+/* ???ä¸????è®???????æ·±ç??é¡???? */
 QPushButton:pressed {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1781,7 +1781,7 @@ QPushButton:pressed {
                      <property name="styleSheet">
                       <string notr="true">QWidget {
     background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
-                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* ç¨å¾®æ·±ä¸€é»çš„è—è‰² */
+                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* ç¨?å¾®æ·±ä¸?é»?????????? */
 }
 </string>
                      </property>
@@ -1841,7 +1841,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #0288d1; /* è—è‰²é‚Šæ¡† */
+    border: 2px solid #0288d1; /* ?????²é??æ¡? */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -1908,7 +1908,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #388E3C; /* ç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #388E3C; /* ç¶???²é??æ¡? */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -1982,7 +1982,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #f57c00; /* æ©˜è‰²é‚Šæ¡† */
+    border: 2px solid #f57c00; /* æ©???²é??æ¡? */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -2049,7 +2049,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #d32f2f; /* ç´…è‰²é‚Šæ¡† */
+    border: 2px solid #d32f2f; /* ç´???²é??æ¡? */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -2408,21 +2408,21 @@ padding-left: 15px;</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton {
-    color: #ff69b4; /* ç²‰ç´…å­— */
-    background: #ffffff; /* ç™½åº• */
-    border-radius: 20px; /* åœ“è§’ */
-    padding: 10px 20px; /* å¢åŠ å…§é‚Šè· */
-    text-align: left; /* å­—é«”é å·¦ */
-    padding-left: 20px; /* åŠ ä¸€é»å·¦é‚Šç©ºé–“ */
+    color: #ff69b4; /* ç²?ç´?å­? */
+    background: #ffffff; /* ??½å?? */
+    border-radius: 20px; /* ???è§? */
+    padding: 10px 20px; /* å¢??????§é??è·? */
+    text-align: left; /* å­?é«????å·? */
+    padding-left: 20px; /* ???ä¸?é»?å·¦é??ç©ºé?? */
 }
 
-/* æ»‘é¼ ç§»ä¸Šå»ï¼šç°åº•ç²‰ç´…å­— */
+/* æ»?é¼?ç§»ä????»ï????°å??ç²?ç´?å­? */
 QPushButton:hover {
     background: #cccccc;
     color: #ff69b4;
 }
 
-/* æŒ‰ä¸‹æ™‚ï¼šæ·±ç°åº•ç²‰ç´…å­— */
+/* ???ä¸????ï¼?æ·±ç?°å??ç²?ç´?å­? */
 QPushButton:pressed {
     background: #888888;
     color: #ff69b4;
@@ -2574,22 +2574,22 @@ QPushButton:pressed {
                           </property>
                           <property name="styleSheet">
                            <string notr="true">QSlider::groove:horizontal {
-    border: 1px solid #999999; /* ç°è‰²é‚Šæ¡† */
-    background: rgb(229, 229, 229); /* ç°è‰²åº• */
+    border: 1px solid #999999; /* ??°è?²é??æ¡? */
+    background: rgb(229, 229, 229); /* ??°è?²å?? */
     margin: 2px 0;
     border-radius: 11px;
 }
 
 QSlider::sub-page:horizontal {
-    background: rgba(0, 255, 127, 100); /* å·¦å´æ·ºç¶ è‰² */
+    background: rgba(0, 255, 127, 100); /* å·¦å?´æ·ºç¶???? */
     border-radius: 11px;
-    /* å¢åŠ  padding è®“ sub-page å’Œ groove åŒ¹é… */
+    /* å¢???? padding è®? sub-page ??? groove ??¹é?? */
     padding-left: 0;
     padding-right: 0;
 }
 
 QSlider::handle:horizontal {
-    background: rgb(255, 200, 50); /* é»ƒè‰²æ»‘å¡Š */
+    background: rgb(255, 200, 50); /* é»???²æ??å¡? */
     border: 1px solid #5c5c5c;
     width: 18px;
     height: 18px;
@@ -3235,21 +3235,21 @@ QListWidget::item:selected {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {
-    background-color: #FFD700; /* é»ƒè‰² */
-    border: 2px solid #FFC107; /* æ·±é»ƒè‰²é‚Šæ¡† */
-    border-radius: 25px; /* è† å›Šå‹åœ“è§’ */
-    color: white; /* æ–‡å­—é¡è‰²ç‚ºç™½è‰² */
-    padding: 0 30px; /* å·¦å³é‚Šè·ï¼Œä¿è­‰æ–‡æœ¬ä¸æœƒç·Šè²¼é‚Šæ¡† */
+    background-color: #FFD700; /* é»???? */
+    border: 2px solid #FFC107; /* æ·±é????²é??æ¡? */
+    border-radius: 25px; /* ????????????è§? */
+    color: white; /* ???å­?é¡???²ç?ºç?½è?? */
+    padding: 0 30px; /* å·¦å?³é??è·?ï¼?ä¿?è­??????¬ä?????ç·?è²¼é??æ¡? */
 }
 
 QPushButton:hover {
-    background-color: #FFCC00; /* æ»‘é¼ ç§»ä¸Šå»æ™‚ï¼Œé¡è‰²è®Šæ·ºä¸€é» */
-    border-color: #FFB300; /* é‚Šæ¡†é¡è‰²è®Šç‚ºç¨å¾®æ·±ä¸€é»çš„é»ƒè‰² */
+    background-color: #FFCC00; /* æ»?é¼?ç§»ä????»æ??ï¼?é¡???²è??æ·ºä??é»? */
+    border-color: #FFB300; /* ???æ¡?é¡???²è????ºç??å¾®æ·±ä¸?é»????é»???? */
 }
 
 QPushButton:pressed {
-    background-color: #FFB300; /* æŒ‰ä¸‹æ™‚ï¼Œé¡è‰²è®Šç‚ºæ›´æ·±çš„é»ƒè‰² */
-    border-color: #FF9900; /* é‚Šæ¡†é¡è‰²æ›´æ·± */
+    background-color: #FFB300; /* ???ä¸????ï¼?é¡???²è????ºæ?´æ·±???é»???? */
+    border-color: #FF9900; /* ???æ¡?é¡???²æ?´æ·± */
 }
 </string>
                        </property>
@@ -3282,21 +3282,21 @@ QPushButton:pressed {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {
-    background-color: #ff69b4; /* ç²‰ç´…è‰² */
-    border: 2px solid #ff4f9d; /* æ·±ç²‰ç´…è‰²é‚Šæ¡† */
-    border-radius: 25px; /* è† å›Šå‹åœ“è§’ */
-    color: white; /* æ–‡å­—é¡è‰²ç‚ºç™½è‰² */
-    padding: 0 30px; /* å·¦å³é‚Šè·ï¼Œä¿è­‰æ–‡æœ¬ä¸æœƒç·Šè²¼é‚Šæ¡† */
+    background-color: #ff69b4; /* ç²?ç´???? */
+    border: 2px solid #ff4f9d; /* æ·±ç??ç´???²é??æ¡? */
+    border-radius: 25px; /* ????????????è§? */
+    color: white; /* ???å­?é¡???²ç?ºç?½è?? */
+    padding: 0 30px; /* å·¦å?³é??è·?ï¼?ä¿?è­??????¬ä?????ç·?è²¼é??æ¡? */
 }
 
 QPushButton:hover {
-    background-color: #ff80bf; /* æ»‘é¼ ç§»ä¸Šå»æ™‚ï¼Œé¡è‰²è®Šæ·ºä¸€é» */
-    border-color: #ff66b3; /* é‚Šæ¡†é¡è‰²è®Šç‚ºç¨å¾®æ·±ä¸€é»çš„ç²‰ç´…è‰² */
+    background-color: #ff80bf; /* æ»?é¼?ç§»ä????»æ??ï¼?é¡???²è??æ·ºä??é»? */
+    border-color: #ff66b3; /* ???æ¡?é¡???²è????ºç??å¾®æ·±ä¸?é»????ç²?ç´???? */
 }
 
 QPushButton:pressed {
-    background-color: #e64a8b; /* æŒ‰ä¸‹æ™‚ï¼Œé¡è‰²è®Šç‚ºæ›´æ·±çš„ç²‰ç´…è‰² */
-    border-color: #d6336c; /* é‚Šæ¡†é¡è‰²æ›´æ·± */
+    background-color: #e64a8b; /* ???ä¸????ï¼?é¡???²è????ºæ?´æ·±???ç²?ç´???? */
+    border-color: #d6336c; /* ???æ¡?é¡???²æ?´æ·± */
 }
 </string>
                        </property>
@@ -3328,38 +3328,38 @@ QPushButton:pressed {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QSlider::groove:horizontal {
-    border: 1px solid #999999; /* ç°è‰²é‚Šæ¡† */
-    background: #cccccc; /* ç°è‰²åº•è‰² */
-    height: 8px; /* è¨­å®šåº•éƒ¨æ¢å½¢çš„é«˜åº¦ */
-    border-radius: 4px; /* åœ“è§’æ•ˆæœ */
+    border: 1px solid #999999; /* ??°è?²é??æ¡? */
+    background: #cccccc; /* ??°è?²å????? */
+    height: 8px; /* è¨­å??åº???¨æ??å½¢ç??é«?åº? */
+    border-radius: 4px; /* ???è§??????? */
 }
 
 QSlider::sub-page:horizontal {
-    background: #1db954; /* ç¶ è‰²é€²åº¦æ¢ */
-    border-radius: 4px; /* ç¢ºä¿é€²åº¦æ¢å’Œåº•éƒ¨æ¢å½¢æœ‰ä¸€è‡´çš„åœ“è§’ */
+    background: #1db954; /* ç¶???²é?²åº¦æ¢? */
+    border-radius: 4px; /* ç¢ºä????²åº¦æ¢????åº???¨æ??å½¢æ??ä¸???´ç?????è§? */
 }
 
 QSlider::handle:horizontal {
-    background: white; /* ç™½è‰²åœ“é» */
-    border: 2px solid #1db954; /* ç¶ è‰²é‚Šæ¡† */
+    background: white; /* ??½è?²å??é»? */
+    border: 2px solid #1db954; /* ç¶???²é??æ¡? */
     width: 16px;
     height: 16px;
-    border-radius: 8px; /* åœ“å½¢åœ“é» */
-    margin: -6px 0; /* ç¢ºä¿åœ“é»æ­£ç¢ºå°é½Š */
+    border-radius: 8px; /* ???å½¢å??é»? */
+    margin: -6px 0; /* ç¢ºä?????é»?æ­?ç¢ºå??é½? */
 }
 
 QSlider::handle:hover {
-    background: white; /* æ»‘é¼ ç§»åˆ°åœ“é»æ™‚ä»ä¿æŒç™½è‰² */
-    border: 2px solid #1db954; /* é‚Šæ¡†ä¿æŒç¶ è‰² */
+    background: white; /* æ»?é¼?ç§»å?°å??é»????ä»?ä¿??????½è?? */
+    border: 2px solid #1db954; /* ???æ¡?ä¿????ç¶???? */
 }
 
 QSlider::sub-page:horizontal:disabled {
-    background: #cccccc; /* ç¦ç”¨ç‹€æ…‹ä¸‹ï¼Œé€²åº¦æ¢é¡¯ç¤ºç°è‰² */
+    background: #cccccc; /* ç¦???¨ç?????ä¸?ï¼???²åº¦æ¢?é¡¯ç¤º??°è?? */
 }
 
 QSlider::handle:horizontal:disabled {
-    background: #aaaaaa; /* ç¦ç”¨ç‹€æ…‹ä¸‹ï¼Œåœ“é»é¡è‰²è®Šæˆç°è‰² */
-    border: 2px solid #aaaaaa; /* åœ“é»é‚Šæ¡†é¡è‰²è®Šç° */
+    background: #aaaaaa; /* ç¦???¨ç?????ä¸?ï¼????é»?é¡???²è???????°è?? */
+    border: 2px solid #aaaaaa; /* ???é»????æ¡?é¡???²è????? */
 }
 </string>
                        </property>
@@ -3575,7 +3575,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>è«‹é¸æ“‡æŸ¥è©¢æ¨¡å¼ï¼š</string>
+                            <string>è«???¸æ????¥è©¢æ¨¡å??ï¼?</string>
                            </property>
                           </widget>
                          </item>
@@ -3643,7 +3643,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>è«‹é¸æ“‡æŸ¥è©¢å§¿å‹¢ï¼š</string>
+                            <string>è«???¸æ????¥è©¢å§¿å?¢ï??</string>
                            </property>
                           </widget>
                          </item>
@@ -3747,7 +3747,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>è«‹è¼¸å…¥é–‹å§‹æ—¥æœŸï¼š</string>
+                            <string>è«?è¼¸å?¥é??å§???¥æ??ï¼?</string>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignCenter</set>
@@ -3761,13 +3761,13 @@ font-family: &quot;Microsoft JhengHei&quot;;
                           <widget class="QDateEdit" name="dateEdit">
                            <property name="styleSheet">
                             <string notr="true">QDateEdit {
-    background-color: #e6f2ff;       /* æ·ºè—èƒŒæ™¯ */
-    color: #003366;                  /* æ·±è—å­—é«” */
-    border: 1px solid #99ccff;       /* æ·ºè—é‚Šæ¡† */
+    background-color: #e6f2ff;       /* æ·ºè???????? */
+    color: #003366;                  /* æ·±è??å­?é«? */
+    border: 1px solid #99ccff;       /* æ·ºè?????æ¡? */
     border-radius: 5px;
     padding: 3px 8px;
-    selection-background-color: #cce6ff;  /* é¸å–æ™‚èƒŒæ™¯ */
-    selection-color: #000000;             /* é¸å–æ™‚æ–‡å­— */
+    selection-background-color: #cce6ff;  /* ??¸å??????????? */
+    selection-color: #000000;             /* ??¸å????????å­? */
 }
 
 QDateEdit::drop-down {
@@ -3775,7 +3775,7 @@ QDateEdit::drop-down {
     subcontrol-position: top right;
     width: 20px;
     border-left: 1px solid #99ccff;
-    background-color: #d9ecff;       /* ä¸‹æ‹‰ç®­é ­èƒŒæ™¯ */
+    background-color: #d9ecff;       /* ä¸????ç®­é?­è????? */
 }
 
 QDateEdit::down-arrow:disabled {
@@ -3811,7 +3811,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>è«‹è¼¸å…¥çµæŸæ—¥æœŸï¼š</string>
+                            <string>è«?è¼¸å?¥ç???????¥æ??ï¼?</string>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignCenter</set>
@@ -3822,13 +3822,13 @@ font-family: &quot;Microsoft JhengHei&quot;;
                           <widget class="QDateEdit" name="dateEdit_2">
                            <property name="styleSheet">
                             <string notr="true">QDateEdit {
-    background-color: #e6f2ff;       /* æ·ºè—èƒŒæ™¯ */
-    color: #003366;                  /* æ·±è—å­—é«” */
-    border: 1px solid #99ccff;       /* æ·ºè—é‚Šæ¡† */
+    background-color: #e6f2ff;       /* æ·ºè???????? */
+    color: #003366;                  /* æ·±è??å­?é«? */
+    border: 1px solid #99ccff;       /* æ·ºè?????æ¡? */
     border-radius: 5px;
     padding: 3px 8px;
-    selection-background-color: #cce6ff;  /* é¸å–æ™‚èƒŒæ™¯ */
-    selection-color: #000000;             /* é¸å–æ™‚æ–‡å­— */
+    selection-background-color: #cce6ff;  /* ??¸å??????????? */
+    selection-color: #000000;             /* ??¸å????????å­? */
 }
 
 QDateEdit::drop-down {
@@ -3836,7 +3836,7 @@ QDateEdit::drop-down {
     subcontrol-position: top right;
     width: 20px;
     border-left: 1px solid #99ccff;
-    background-color: #d9ecff;       /* ä¸‹æ‹‰ç®­é ­èƒŒæ™¯ */
+    background-color: #d9ecff;       /* ä¸????ç®­é?­è????? */
 }
 
 QDateEdit::down-arrow:disabled {
@@ -3868,7 +3868,7 @@ QDateEdit::down-arrow:disabled {
 </string>
                            </property>
                            <property name="text">
-                            <string>ç¢ºèª</string>
+                            <string>ç¢ºè??</string>
                            </property>
                           </widget>
                          </item>
@@ -3947,7 +3947,7 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>XXXXæ¨¡å¼</string>
+                       <string>XXXXæ¨¡å??</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
@@ -4007,7 +4007,7 @@ QPushButton:pressed {
 </string>
                         </property>
                         <property name="text">
-                         <string>ç¸½å§¿å‹¢&amp;é¡å¤–æ•¸æ“š</string>
+                         <string>ç¸½å§¿???&amp;é¡?å¤???¸æ??</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
@@ -4034,7 +4034,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>ç¸½ç‘œä¼½å§¿å‹¢å®Œæˆæ¬¡æ•¸ï¼š</string>
+                           <string>ç¸½ç??ä¼½å§¿??¢å?????æ¬¡æ?¸ï??</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4079,7 +4079,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>ä½¿ç”¨APPç¸½æ™‚é–“ï¼ˆå¤©ï¼‰ï¼š</string>
+                           <string>ä½¿ç?¨APPç¸½æ?????ï¼?å¤©ï??ï¼?</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4127,7 +4127,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1å¤©å…§é–‹å•ŸAPPæœ€å¤šçš„æ¬¡æ•¸ï¼š</string>
+                           <string>1å¤©å?§é?????APP???å¤????æ¬¡æ?¸ï??</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4172,7 +4172,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1å¤©å…§æœ€é•·ä½¿ç”¨APPæ™‚é–“ï¼ˆå°æ™‚ï¼‰ï¼š</string>
+                           <string>1å¤©å?§æ????·ä½¿??¨APP??????ï¼?å°????ï¼?ï¼?</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4217,7 +4217,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1å¤©å…§æœ€çŸ­ä½¿ç”¨APPæ™‚é–“ï¼ˆå°æ™‚ï¼‰ï¼š</string>
+                           <string>1å¤©å?§æ????­ä½¿??¨APP??????ï¼?å°????ï¼?ï¼?</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4262,7 +4262,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>å®Œæˆæ¬¡æ•¸æœ€å¤šçš„å§¿å‹¢ï¼š</string>
+                           <string>å®????æ¬¡æ?¸æ??å¤????å§¿å?¢ï??</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4341,7 +4341,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>å®Œæˆæ¬¡æ•¸æœ€å°‘çš„å§¿å‹¢ï¼š</string>
+                           <string>å®????æ¬¡æ?¸æ??å°????å§¿å?¢ï??</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4420,7 +4420,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>æœ€é•·é€£çºŒæ‰“å¡å¤©æ•¸ï¼š</string>
+                           <string>?????·é??çº??????¡å¤©??¸ï??</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4467,7 +4467,7 @@ QPushButton:pressed {
 </string>
                         </property>
                         <property name="text">
-                         <string>å€‹åˆ¥å§¿å‹¢æ•¸æ“šï¼ˆç¸½å®Œæˆæ•¸ã€æœ€é«˜æº–ç¢ºç‡%ã€æœ€ä½æº–ç¢ºç‡%ï¼‰</string>
+                         <string>?????¥å§¿??¢æ?¸æ??ï¼?ç¸½å???????¸ã?????é«?æº?ç¢ºç??%??????ä½?æº?ç¢ºç??%ï¼?</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
@@ -5581,7 +5581,7 @@ border-bottom-right-radius: 50px;</string>
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -5616,7 +5616,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -5774,9 +5774,6 @@ border-bottom-right-radius: 0px;</string>
                         <height>300</height>
                        </rect>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true">image:url(:/icons/icons/sharecat_icon.png)</string>
-                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -5785,7 +5782,7 @@ border-bottom-right-radius: 0px;</string>
                     <widget class="QPushButton" name="link_button">
                      <property name="geometry">
                       <rect>
-                       <x>50</x>
+                       <x>90</x>
                        <y>480</y>
                        <width>41</width>
                        <height>41</height>
@@ -5799,7 +5796,7 @@ border-bottom-right-radius: 0px;</string>
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -5826,7 +5823,7 @@ QPushButton:pressed {
                     <widget class="QPushButton" name="pushButton_10">
                      <property name="geometry">
                       <rect>
-                       <x>350</x>
+                       <x>400</x>
                        <y>480</y>
                        <width>51</width>
                        <height>41</height>
@@ -5840,7 +5837,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -5867,7 +5864,7 @@ QPushButton:pressed {
                     <widget class="QPushButton" name="share_cancel_btn">
                      <property name="geometry">
                       <rect>
-                       <x>400</x>
+                       <x>430</x>
                        <y>10</y>
                        <width>41</width>
                        <height>41</height>
@@ -5881,7 +5878,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -5908,7 +5905,7 @@ QPushButton:pressed {
                     <widget class="QTextEdit" name="textEdit_2">
                      <property name="geometry">
                       <rect>
-                       <x>30</x>
+                       <x>60</x>
                        <y>400</y>
                        <width>391</width>
                        <height>51</height>
@@ -6022,7 +6019,7 @@ QPushButton:pressed{
 }</string>
                      </property>
                      <property name="text">
-                      <string>ç™¼é€</string>
+                      <string>??¼é??</string>
                      </property>
                     </widget>
                    </widget>
@@ -6105,7 +6102,7 @@ QPushButton:pressed{
                                   </font>
                                  </property>
                                  <property name="text">
-                                  <string>ç‹æ›‰æ˜</string>
+                                  <string>?????????</string>
                                  </property>
                                 </widget>
                                </item>
@@ -6125,7 +6122,7 @@ QPushButton:pressed{
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -6171,7 +6168,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* åŠé€æ˜é»‘è‰²é®ç½© hover */
+    background-color: rgba(0, 0, 0, 30);  /* ?????????é»???²é?®ç½© hover */
 }
 
 
@@ -6212,7 +6209,7 @@ QPushButton:pressed {
                               </font>
                              </property>
                              <property name="text">
-                              <string>é˜¿å›‰å“ˆ</string>
+                              <string>??¿å?????</string>
                              </property>
                             </widget>
                            </item>
@@ -6265,13 +6262,13 @@ border-top-right-radius: 5px;
 border-bottom-left-radius: 5px;
 border-bottom-right-radius: 5px;
 }
-/* æ»‘é¼ ç§»ä¸Šå»ï¼šç°åº•ç²‰ç´…å­— */
+/* æ»?é¼?ç§»ä????»ï????°å??ç²?ç´?å­? */
 QPushButton:hover {
     background: #cccccc;
     color: #ff69b4;
 }
 
-/* æŒ‰ä¸‹æ™‚ï¼šæ·±ç°åº•ç²‰ç´…å­— */
+/* ???ä¸????ï¼?æ·±ç?°å??ç²?ç´?å­? */
 QPushButton:pressed {
     background: #888888;
     color: #ff69b4;
@@ -6430,12 +6427,12 @@ QPushButton:pressed {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -6480,7 +6477,7 @@ QPushButton:pressed {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* å°ˆæ³¨æ™‚è®Šç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #5cb85c; /* å°?æ³¨æ??è®?ç¶???²é??æ¡? */
     background-color: #f9fff9;
 }
 </string>
@@ -6576,7 +6573,7 @@ QPushButton:hover {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* å°ˆæ³¨æ™‚è®Šç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #5cb85c; /* å°?æ³¨æ??è®?ç¶???²é??æ¡? */
     background-color: #f9fff9;
 }
 </string>
@@ -6610,12 +6607,12 @@ QLineEdit:focus {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -6660,7 +6657,7 @@ QLineEdit:focus {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* å°ˆæ³¨æ™‚è®Šç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #5cb85c; /* å°?æ³¨æ??è®?ç¶???²é??æ¡? */
     background-color: #f9fff9;
 }
 </string>
@@ -6738,12 +6735,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -6810,13 +6807,13 @@ QComboBox QAbstractItemView {
     padding: 4px;
 }
 
-/* æ‡¸æµ®æ™‚ï¼šé»‘åº•ç™½å­— */
+/* ??¸æµ®???ï¼?é»?åº???½å?? */
 QComboBox QAbstractItemView::item:hover {
     background-color: #000000;
     color: #ffffff;
 }
 
-/* é¸å–æ™‚ï¼šä¹Ÿæ”¹ç‚ºé»‘åº•ç™½å­— */
+/* ??¸å?????ï¼?ä¹???¹ç?ºé??åº???½å?? */
 QComboBox QAbstractItemView::item:selected {
     background-color: #000000;
     color: #ffffff;
@@ -6879,12 +6876,12 @@ QComboBox QAbstractItemView::item:selected {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -6953,7 +6950,7 @@ QComboBox QAbstractItemView::item:selected {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* å°ˆæ³¨æ™‚è®Šç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #5cb85c; /* å°?æ³¨æ??è®?ç¶???²é??æ¡? */
     background-color: #f9fff9;
 }
 </string>
@@ -6996,7 +6993,7 @@ QLineEdit:focus {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* å°ˆæ³¨æ™‚è®Šç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #5cb85c; /* å°?æ³¨æ??è®?ç¶???²é??æ¡? */
     background-color: #f9fff9;
 }
 </string>
@@ -7052,7 +7049,7 @@ QLineEdit:focus {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* å°ˆæ³¨æ™‚è®Šç¶ è‰²é‚Šæ¡† */
+    border: 2px solid #5cb85c; /* å°?æ³¨æ??è®?ç¶???²é??æ¡? */
     background-color: #f9fff9;
 }
 </string>
@@ -7086,12 +7083,12 @@ QLineEdit:focus {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7171,12 +7168,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7212,12 +7209,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7321,12 +7318,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7362,12 +7359,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7400,12 +7397,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7441,12 +7438,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7479,12 +7476,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7517,12 +7514,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7599,12 +7596,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7640,12 +7637,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7678,12 +7675,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -7763,12 +7760,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* ç²—é«”ï¼Œè¦–è¦ºä¸Šæ¥è¿‘ 2px ç²—ç·šæ„Ÿ */
-    color: #3e3e3e;                 /* æ·±ç°æ–‡å­—ï¼Œå°æ¯”æ¸…æ™° */
-    background-color: #dff5d1;      /* æŠ¹èŒ¶ç¶ èƒŒæ™¯ï¼Œæ¸…çˆ½ä¸çªå…€ */
-    border: 1px solid #b2d8a6;      /* æ·¡ç¶ é‚Šæ¡† */
-    border-radius: 10px;            /* åœ“è§’é‚Šæ¡† */
-    padding: 8px 12px;              /* å…§é‚Šè·ï¼Œè®“æ–‡å­—æ›´èˆ’æœ */
+    font-weight: 600;               /* ç²?é«?ï¼?è¦?è¦ºä????¥è?? 2px ç²?ç·???? */
+    color: #3e3e3e;                 /* æ·±ç?°æ??å­?ï¼?å°?æ¯?æ¸???? */
+    background-color: #dff5d1;      /* ??¹è?¶ç???????¯ï??æ¸???½ä??çª???? */
+    border: 1px solid #b2d8a6;      /* æ·¡ç?????æ¡? */
+    border-radius: 10px;            /* ???è§????æ¡? */
+    padding: 8px 12px;              /* ??§é??è·?ï¼?è®????å­???´è????? */
 }
 </string>
                        </property>
@@ -9133,7 +9130,7 @@ padding-bottom:7px;</string>
     border: none;
     border-bottom: 2px solid #ccc;
     background: transparent;
-    padding: 5px 20px 5px 0; /* ç•™å³å´ç©ºé–“çµ¦ä¸‹æ‹‰ç®­é ­ */
+    padding: 5px 20px 5px 0; /* ?????³å?´ç©º???çµ¦ä?????ç®­é?? */
 	padding-left: 8px;
     font-family: Arial;
     color: #333;
@@ -9156,7 +9153,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(:/icons/icons/icons8-down-arrow-50.png); /* è«‹æ›æˆä½ çš„å¯¦éš›åœ–ç¤ºè·¯å¾‘ */
+    image: url(:/icons/icons/icons8-down-arrow-50.png); /* è«???????ä½????å¯¦é?????ç¤ºè·¯å¾? */
     width: 12px;
     height: 12px;
 }

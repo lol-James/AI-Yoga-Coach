@@ -15,6 +15,7 @@ from record_logger import RecordLogger
 from user_info import User_Info
 from account import Account
 from yoga_pose_calculate import evaluate_and_display_pose
+from postdialog import PostDialog
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -74,6 +75,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # Music Player
         self.music_player = MusicPlayer(self)
 
+        #Share Page Funtions
+        self.post_dialog = PostDialog(self, self.account.user_id, self.db)
+        self.post_dialog.load_posts()
+
         # mediapipe gesture analyzer initialization
         self.gesture_analyzer = GestureAnalyzer()
         self.gesture_interpreter = GestureInterpreter(self)
@@ -88,9 +93,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.logger = RecordLogger(ui=self)
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
         self.account.user_id_signal.connect(self.music_player.update_user_id)
+        self.account.user_id_signal.connect(self.post_dialog.update_user_id)
         self.user_info.del_user_account_signal.connect(self.account.logout)
 
-        # 計算分數並顯示在畫面
+        # �?�??????�並顯示??��?��??
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
@@ -100,7 +106,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Downward Facing Dog": "Downward-Facing_Dog",
             "Warrior 1": "Warrior_I",
             "Warrior 2": "Warrior_II",
-            "Warrior 3": "Warrior_III",
+            "Cow Pose": "Cow_Pose",
             "Plank Pose": "Plank_Pose",
             "Staff Pose": "Staff_Pose",
             "Chair Pose": "Squat_Pose",
@@ -118,8 +124,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             button.setChecked(False)
             return
         
-        if self.stackedWidget.currentIndex() != 0:
-            self.on_camera_btn_toggled()       
         self.stackedWidget.setCurrentIndex(index)
 
 
@@ -152,32 +156,21 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def on_camera_btn_toggled(self):
         if self.account.login_flag:
-            if self.stackedWidget.currentIndex() == 0:
-                if self.camera_btn.isChecked():
-                    self.camera_thread.start()
-                    self.detector.start()
-                    self.gesture_analyzer.start()
-                    self.countdown_timer.camera_is_running = True
-                    NotificationLabel(self, "Camera opened", success=True)
+            if self.camera_btn.isChecked():
+                self.camera_thread.start()
+                self.detector.start()
+                self.gesture_analyzer.start()
+                self.countdown_timer.camera_is_running = True
+                NotificationLabel(self, "Camera opened", success=True)
 
-                else:
-                    self.camera_thread.stop()
-                    self.detector.stop()
-                    self.gesture_analyzer.stop()
-                    self.countdown_timer.camera_is_running = False
-                    self.countdown_timer._stop_timer()
-                    QTimer.singleShot(100, lambda: self.clear_camera_label())
-                    NotificationLabel(self, "Camera closed", success=True)
-
-            elif self.camera_btn.isChecked():
-                self.camera_btn.setChecked(False)
+            else:
                 self.camera_thread.stop()
                 self.detector.stop()
                 self.gesture_analyzer.stop()
                 self.countdown_timer.camera_is_running = False
                 self.countdown_timer._stop_timer()
                 QTimer.singleShot(100, lambda: self.clear_camera_label())
-                NotificationLabel(self, "Camera closed", success=False)
+                NotificationLabel(self, "Camera closed", success=True)
 
         else:
             self.camera_btn.setChecked(False)
@@ -272,7 +265,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             db = pymysql.connect(
                 host='127.0.0.1',
                 user='root',
-                password='root123456',
+                password='',
                 database='yoga_coach_database',
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor
