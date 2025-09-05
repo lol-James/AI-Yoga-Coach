@@ -106,7 +106,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Downward Facing Dog": "Downward-Facing_Dog",
             "Warrior 1": "Warrior_I",
             "Warrior 2": "Warrior_II",
-            "Cow Pose": "Cow_Pose",
+            "Warrior 3": "Warrior_III",
             "Plank Pose": "Plank_Pose",
             "Staff Pose": "Staff_Pose",
             "Chair Pose": "Squat_Pose",
@@ -117,12 +117,15 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:
-            return
+            return  
 
         if index not in [1, 5] and not self.account.login_flag:
             NotificationLabel(self, "Please login first to unlock the features.", success=False)
             button.setChecked(False)
             return
+        
+        if self.stackedWidget.currentIndex() != 0:
+            self.on_camera_btn_toggled()  
         
         self.stackedWidget.setCurrentIndex(index)
 
@@ -156,21 +159,32 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def on_camera_btn_toggled(self):
         if self.account.login_flag:
-            if self.camera_btn.isChecked():
-                self.camera_thread.start()
-                self.detector.start()
-                self.gesture_analyzer.start()
-                self.countdown_timer.camera_is_running = True
-                NotificationLabel(self, "Camera opened", success=True)
+                if self.stackedWidget.currentIndex() == 0:
+                    if self.camera_btn.isChecked():
+                        self.camera_thread.start()
+                        self.detector.start()
+                        self.gesture_analyzer.start()
+                        self.countdown_timer.camera_is_running = True
+                        NotificationLabel(self, "Camera opened", success=True)
 
-            else:
-                self.camera_thread.stop()
-                self.detector.stop()
-                self.gesture_analyzer.stop()
-                self.countdown_timer.camera_is_running = False
-                self.countdown_timer._stop_timer()
-                QTimer.singleShot(100, lambda: self.clear_camera_label())
-                NotificationLabel(self, "Camera closed", success=True)
+                    else:
+                        self.camera_thread.stop()
+                        self.detector.stop()
+                        self.gesture_analyzer.stop()
+                        self.countdown_timer.camera_is_running = False
+                        self.countdown_timer._stop_timer()
+                        QTimer.singleShot(100, lambda: self.clear_camera_label())
+                        NotificationLabel(self, "Camera closed", success=True)
+
+                elif self.camera_btn.isChecked():
+                    self.camera_btn.setChecked(False)
+                    self.camera_thread.stop()
+                    self.detector.stop()
+                    self.gesture_analyzer.stop()
+                    self.countdown_timer.camera_is_running = False
+                    self.countdown_timer._stop_timer()
+                    QTimer.singleShot(100, lambda: self.clear_camera_label())
+                    NotificationLabel(self, "Camera closed", success=False)
 
         else:
             self.camera_btn.setChecked(False)
