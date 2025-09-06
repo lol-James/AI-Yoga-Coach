@@ -1,7 +1,7 @@
 import os
 
 # 設定主資料夾路徑（請修改為你的資料夾位置）
-base_dir = r"C:\Users\lolJames\OneDrive\桌面\AI Yoga Coach\YOLO\All Poses Data"  # 替換成你的根目錄
+base_dir = r"YOLO\All Poses Data"  # 替換成你的根目錄
 
 # 紀錄沒有標註檔的圖片
 missing_labels = []
