@@ -279,7 +279,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             db = pymysql.connect(
                 host='127.0.0.1',
                 user='root',
-                password='',
+                password='root123456',
                 database='yoga_coach_database',
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor
