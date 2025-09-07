@@ -21,12 +21,12 @@ class PostDialog:
         self.ui.label_5.setAlignment(Qt.AlignCenter)
         self.ui.label_5.setText("請點擊左側附加檔案選擇圖片")
 
-        self.current_comment_post_id = None  # 在 __init__ 中先初始化
+        self.current_comment_post_id = None  
         self.comment_layout = self.ui.scrollArea_2.findChild(QVBoxLayout, "verticalLayout_25")
         self.share_comment_frame = self.ui.share_comment_frame
 
         self.ui.send_comment_btn.clicked.connect(self.submit_comment)
-        self.comment_target_post_id = None  # 儲存目前留言對應的 post_id
+        self.comment_target_post_id = None  
 
 
     def select_image(self):
@@ -95,10 +95,10 @@ class PostDialog:
             frame.share_user_icon.clear()
 
         if post['share_text']:
-            frame.put_word.setText(post['share_text'])         # 設定文字內容
-            frame.put_word.setWordWrap(True)                   # ✅ 啟用自動換行
-            frame.put_word.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)  # ⬅️ 讓他寬度可擴張
-            frame.put_word.setTextInteractionFlags(Qt.TextSelectableByMouse)  # 可選：允許選取文字
+            frame.put_word.setText(post['share_text'])         
+            frame.put_word.setWordWrap(True)                  
+            frame.put_word.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred) 
+            frame.put_word.setTextInteractionFlags(Qt.TextSelectableByMouse)  
 
         else:
             frame.put_word.clear()
@@ -115,7 +115,6 @@ class PostDialog:
         post_id = post['id']
         frame.share_like_btn.clicked.connect(lambda _, pid=post_id, label=frame.likeCount: self.handle_like(pid, label))
 
-        # 綁定留言按鈕
         frame.share_comment_btn.clicked.connect(lambda _, pid=post_id: self.toggle_share_comment_widget(pid))
 
         return frame
@@ -147,25 +146,31 @@ class PostDialog:
     def handle_like(self, post_id, like_label):
         try:
             with self.db_conn.cursor(pymysql.cursors.DictCursor) as cursor:
-                cursor.execute("UPDATE share_page SET share_like = share_like + 1 WHERE id = %s", (post_id,))
+                cursor.execute("SELECT * FROM post_like WHERE post_id = %s AND user_id = %s", (post_id, self.user_id))
+                like_record = cursor.fetchone()
+
+                if like_record:
+                    cursor.execute("DELETE FROM post_like WHERE post_id = %s AND user_id = %s", (post_id, self.user_id))
+                    cursor.execute("UPDATE share_page SET share_like = share_like - 1 WHERE id = %s", (post_id,))
+                else:
+                    cursor.execute("INSERT INTO post_like (post_id, user_id) VALUES (%s, %s)", (post_id, self.user_id))
+                    cursor.execute("UPDATE share_page SET share_like = share_like + 1 WHERE id = %s", (post_id,))
+
                 self.db_conn.commit()
 
                 cursor.execute("SELECT share_like FROM share_page WHERE id = %s", (post_id,))
                 result = cursor.fetchone()
                 if result:
                     like_label.setText(str(result['share_like']))
-                else:
-                    QMessageBox.warning(None, "按讚失敗", "找不到貼文")
+
         except Exception as e:
             QMessageBox.critical(None, "按讚失敗", str(e))
 
     def toggle_share_comment_widget(self, post_id):
-        # 如果目前已顯示且是同一篇貼文 → 收起留言區
         if self.share_comment_frame.isVisible() and self.comment_target_post_id == post_id:
             self.share_comment_frame.setVisible(False)
             self.comment_target_post_id = None
         else:
-            # 顯示留言區 + 載入留言 + 記錄目前對應的 post_id
             self.share_comment_frame.setVisible(True)
             self.comment_target_post_id = post_id
             self.load_comments(post_id)
@@ -213,7 +218,6 @@ class PostDialog:
                 else:
                     comment_frame.user_comment_icon_5.clear()
 
-                # ✅ 在這裡綁定按鈕（放進迴圈裡）
                 comment_id = comment['id']
                 comment_frame.like_button_5.clicked.connect(
                     partial(self.like_comment, comment['id'], comment_frame.like_number_5)
@@ -230,7 +234,7 @@ class PostDialog:
 
         
     def submit_comment(self):
-        comment_text = self.ui.comment_input.toPlainText().strip()  # 或 .text() 如果是 QLineEdit
+        comment_text = self.ui.comment_input.toPlainText().strip() 
 
         if not comment_text:
             QMessageBox.warning(None, "提醒", "請輸入留言內容")
@@ -259,7 +263,16 @@ class PostDialog:
     def like_comment(self, comment_id, label):
         try:
             with self.db_conn.cursor() as cursor:
-                cursor.execute("UPDATE comment_page SET comment_like = comment_like + 1 WHERE id = %s", (comment_id,))
+                cursor.execute("SELECT * FROM comment_like WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                result = cursor.fetchone()
+
+                if result:
+                    cursor.execute("DELETE FROM comment_like WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                    cursor.execute("UPDATE comment_page SET comment_like = comment_like - 1 WHERE id = %s", (comment_id,))
+                else:
+                    cursor.execute("INSERT INTO comment_like (comment_id, user_id) VALUES (%s, %s)", (comment_id, self.user_id))
+                    cursor.execute("UPDATE comment_page SET comment_like = comment_like + 1 WHERE id = %s", (comment_id,))
+
                 self.db_conn.commit()
 
                 cursor.execute("SELECT comment_like FROM comment_page WHERE id = %s", (comment_id,))
@@ -267,18 +280,31 @@ class PostDialog:
                 if result:
                     label.setText(str(result['comment_like']))
         except Exception as e:
-            QMessageBox.critical(None, "按讚失敗", str(e))
+            QMessageBox.critical(None, "留言按讚失敗", str(e))
 
     def dislike_comment(self, comment_id, label):
         try:
             with self.db_conn.cursor() as cursor:
-                cursor.execute("UPDATE comment_page SET comment_dislike = comment_dislike + 1 WHERE id = %s", (comment_id,))
+                cursor.execute("SELECT * FROM comment_dislike WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                result = cursor.fetchone()
+
+                if result:
+                    cursor.execute("DELETE FROM comment_dislike WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                    cursor.execute("UPDATE comment_page SET comment_dislike = comment_dislike - 1 WHERE id = %s", (comment_id,))
+                else:
+                    cursor.execute("INSERT INTO comment_dislike (comment_id, user_id) VALUES (%s, %s)", (comment_id, self.user_id))
+                    cursor.execute("UPDATE comment_page SET comment_dislike = comment_dislike + 1 WHERE id = %s", (comment_id,))
+
                 self.db_conn.commit()
 
                 cursor.execute("SELECT comment_dislike FROM comment_page WHERE id = %s", (comment_id,))
                 result = cursor.fetchone()
                 if result:
                     label.setText(str(result['comment_dislike']))
-
         except Exception as e:
-            QMessageBox.critical(None, "倒讚失敗", str(e))
+            QMessageBox.critical(None, "留言倒讚失敗", str(e))
+
+
+    def update_user_id(self, new_user_id):
+        self.user_id = new_user_id
+        print("PostDialog updated user_id:", self.user_id)
