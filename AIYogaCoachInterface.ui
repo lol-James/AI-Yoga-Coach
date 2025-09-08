@@ -808,7 +808,7 @@ background-color:  #BBDEFB;
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
               <string notr="true">QWidget {
-    background-color: #D1E9E9; /* 淺�????? */
+    background-color: #D1E9E9; /* 淺綠色 */
 }
 </string>
              </property>
@@ -885,11 +885,11 @@ background-color:  #BBDEFB;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QLabel {
-    background-color: gray;  /* 設�???????��????��?��?��?? */
-    border-radius: 15px;     /* 設�?????�????�?�???��?��??大�????? */
-    color: white;            /* 設�?????�?�???��?��?��?��??�?�???��??�? */
-    text-align: center;      /* 水平置中�?Qt �???��?�此屬�?��??�???��??�???��?? */
-    qproperty-alignment: AlignCenter;  /* Qt �?�???��??設�?????�?置中 */
+    background-color: gray;  /* 設定背景顏色為灰色 */
+    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
+    color: white;            /* 設定文字顏色為白色，讓字更清楚 */
+    text-align: center;      /* 水平置中，Qt 不支援此屬性，要用對齊方式 */
+    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */
 }
 </string>
                      </property>
@@ -923,11 +923,11 @@ background-color:  #BBDEFB;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QLabel {
-    background-color: gray;  /* 設�???????��????��?��?��?? */
-    border-radius: 15px;     /* 設�?????�????�?�???��?��??大�????? */
-    color: white;            /* 設�?????�?�???��?��?��?��??�?�???��??�? */
-    text-align: center;      /* 水平置中�?Qt �???��?�此屬�?��??�???��??�???��?? */
-    qproperty-alignment: AlignCenter;  /* Qt �?�???��??設�?????�?置中 */
+    background-color: gray;  /* 設定背景顏色為灰色 */
+    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
+    color: white;            /* 設定文字顏色為白色，讓字更清楚 */
+    text-align: center;      /* 水平置中，Qt 不支援此屬性，要用對齊方式 */
+    qproperty-alignment: AlignCenter;  /* Qt 標準方式設定文字置中 */
 }
 </string>
                      </property>
@@ -952,31 +952,31 @@ background-color:  #BBDEFB;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QListWidget {
-    background-color: gray;  /* 設�???????��????��?��?��?? */
-    border-radius: 15px;     /* 設�?????�????�?�???��?��??大�????? */
-    color: white;            /* 設�?????�?�???��?��?��?? */
-    font-size: 15px;         /* 設�??�?�?大�????? 15px */
+    background-color: gray;  /* 設定背景顏色為灰色 */
+    border-radius: 15px;     /* 設定邊角圓滑，數值越大越圓 */
+    color: white;            /* 設定文字顏色為白色 */
+    font-size: 15px;         /* 設定字體大小為 15px */
 }
 
 QListWidget::item {
-    background-color: #4f4f4f; /* ?????��????��?? */
-    color: #ffffff; /* ???�?�???? */
+    background-color: #4f4f4f; /* 項目背景色 */
+    color: #ffffff; /* 文字顏色 */
     border: none;
     padding: 7px;
-    margin: 3px; /* �???????�?以�??顯�??�??????? */
-    border-radius: 12px; /* �?????????��??�? */
+    margin: 3px; /* 增加間距以突顯圓角效果 */
+    border-radius: 12px; /* 每個項目圓角 */
 }
 
 QListWidget::item:hover {
-    background-color: #6c6c6c; /* ??��????????�?亮�????��?? */
-    border-radius: 12px; /* �???????�? */
+    background-color: #6c6c6c; /* 懸停時的較亮背景色 */
+    border-radius: 12px; /* 保持圓角 */
 }
 
 QListWidget::item:selected {
-    background-color: #009688; /* ??�中?????��?? */
-    color: #ffffff; /* ??�中�????�?�???? */
+    background-color: #009688; /* 選中背景色 */
+    color: #ffffff; /* 選中後文字顏色 */
     border: none;
-    border-radius: 12px; /* ??�中?????????�? */
+    border-radius: 12px; /* 選中效果圓角 */
 }
 
 </string>
@@ -1101,10 +1101,10 @@ QListWidget::item:selected {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* 設�???????��????��?�淺�???? (LemonChiffon) */
-    border-radius: 15px;        /* 設�?????�????�?�???��?��??大�????? */
-    border: 1px solid #D0D0D0;    /* 設�?? 1px �???��??�? */
-    color: black;               /* ??��?��??設�?????�?�???? */
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
 	qproperty-readOnly: true; 
 }
 
@@ -1168,10 +1168,10 @@ p, li { white-space: pre-wrap; }
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QTextEdit {
-    background-color: #E8FFF5;  /* 設�???????��????��?�淺�???? (LemonChiffon) */
-    border-radius: 15px;        /* 設�?????�????�?�???��?��??大�????? */
-    border: 1px solid #D0D0D0;    /* 設�?? 1px �???��??�? */
-    color: black;               /* ??��?��??設�?????�?�???? */
+    background-color: #E8FFF5;  /* 設定背景顏色為淺黃色 (LemonChiffon) */
+    border-radius: 15px;        /* 設定邊角圓滑，數值越大越圓 */
+    border: 1px solid #D0D0D0;    /* 設定 1px 黑色邊框 */
+    color: black;               /* 可選：設定文字顏色 */
 	qproperty-readOnly: true; 
 }
 
@@ -1209,19 +1209,19 @@ p, li { white-space: pre-wrap; }
                          <property name="styleSheet">
                           <string notr="true">QPushButton {
     color: #333;
-    border: none;               /* ???�????�? */
-    border-radius: 25px;        /* ???�????�? */
+    border: none;               /* 取消邊框 */
+    border-radius: 25px;        /* 邊角圓滑 */
     text-align: center;
-    background: #ffffff;       /* ??��?? */
+    background: #ffffff;       /* 白底 */
     padding: 5px;
 }
 
 QPushButton:hover {
-    background: #e0e0e0;        /* 淺�?��?? */
+    background: #e0e0e0;        /* 淺灰色 */
 }
 
 QPushButton:pressed {
-    background: #bdbdbd;        /* 深�??�????淺�?��?? */
+    background: #bdbdbd;        /* 深一點的淺灰色 */
 }
 </string>
                          </property>
@@ -1366,7 +1366,7 @@ QPushButton:pressed {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QTreeWidget {
-    background-color: #D6F0F5; /* 淡�??�??????? */
+    background-color: #D6F0F5; /* 淡藍綠背景 */
     border: 1px solid #A0C4C4;
     border-radius: 6px;
     font-size: 14px;
@@ -1380,7 +1380,7 @@ QTreeWidget::item {
 }
 
 QTreeWidget::item:selected {
-    background-color: #A1D6E2; /* ????????��???????? */
+    background-color: #A1D6E2; /* 柔和選取背景 */
     color: #000000;
     border: none;
 }
@@ -1390,7 +1390,7 @@ QTreeWidget::item:hover {
 }
 
 QHeaderView::section {
-    background-color: #7FDBFF; /* 淺�??表�?? */
+    background-color: #7FDBFF; /* 淺藍表頭 */
     padding: 1px 2px;
     font-weight: bold;
     font-size: 14px;
@@ -1607,7 +1607,7 @@ QScrollBar::sub-page:vertical {
     padding: 5px;
 }
 
-/* �?�?移�????��??�????�?微深�?�??????��?? */
+/* 滑鼠移上去時變成稍微深一點的灰色 */
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1615,7 +1615,7 @@ QPushButton:hover {
     );
 }
 
-/* ???�????�??????�深?????��?? */
+/* 按下時變成更深的灰色 */
 QPushButton:pressed {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1659,7 +1659,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #388E3C; /* �???��??�? */
+    border: 2px solid #388E3C; /* 綠色邊框 */
     border-radius: 25px;
     text-align: center;
     border-style: outset;
@@ -1670,7 +1670,7 @@ QPushButton:pressed {
     padding: 5px;
 }
 
-/* �?�?移�????��??�?�???��????��????????�?#4caf50�???????�?�?#2e7d32�?�???? */
+/* 滑鼠移上去時，顏色介於原按鈕（#4caf50）和按下（#2e7d32）之間 */
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1678,7 +1678,7 @@ QPushButton:hover {
     );
 }
 
-/* ???�????�???????深�??�???? */
+/* 按下時變成最深的顏色 */
 QPushButton:pressed {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1722,7 +1722,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #d32f2f; /* �???��??�? */
+    border: 2px solid #d32f2f; /* 紅色邊框 */
     border-radius: 25px;
     text-align: center;
     border-style: outset;
@@ -1733,7 +1733,7 @@ QPushButton:pressed {
     padding: 5px;
 }
 
-/* �?�?移�????��??�?�???��????��????????�?#d32f2f�???????�?�?#b71c1c�?�???? */
+/* 滑鼠移上去時，顏色介於原按鈕（#d32f2f）和按下（#b71c1c）之間 */
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1741,7 +1741,7 @@ QPushButton:hover {
     );
 }
 
-/* ???�????�???????深�??�???? */
+/* 按下時變成最深的顏色 */
 QPushButton:pressed {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
@@ -1781,7 +1781,7 @@ QPushButton:pressed {
                      <property name="styleSheet">
                       <string notr="true">QWidget {
     background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
-                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* �?微深�?�?????????? */
+                                stop:0 #e1f5fe, stop:1 #b3e5fc); /* 稍微深一點的藍色 */
 }
 </string>
                      </property>
@@ -1841,7 +1841,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #0288d1; /* ?????��??�? */
+    border: 2px solid #0288d1; /* 藍色邊框 */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -1908,7 +1908,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #388E3C; /* �???��??�? */
+    border: 2px solid #388E3C; /* 綠色邊框 */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -1982,7 +1982,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #f57c00; /* �???��??�? */
+    border: 2px solid #f57c00; /* 橘色邊框 */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -2049,7 +2049,7 @@ QPushButton:pressed {
                           <property name="styleSheet">
                            <string notr="true">QPushButton {
     color: #333;
-    border: 2px solid #d32f2f; /* �???��??�? */
+    border: 2px solid #d32f2f; /* 紅色邊框 */
     border-radius: 25px;
     border-style: outset;
 	text-align: left;
@@ -2408,21 +2408,21 @@ padding-left: 15px;</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton {
-    color: #ff69b4; /* �?�?�? */
-    background: #ffffff; /* ??��?? */
-    border-radius: 20px; /* ???�? */
-    padding: 10px 20px; /* �??????��??�? */
-    text-align: left; /* �?�????�? */
-    padding-left: 20px; /* ???�?�?左�??空�?? */
+    color: #ff69b4; /* 粉紅字 */
+    background: #ffffff; /* 白底 */
+    border-radius: 20px; /* 圓角 */
+    padding: 10px 20px; /* 增加內邊距 */
+    text-align: left; /* 字體靠左 */
+    padding-left: 20px; /* 加一點左邊空間 */
 }
 
-/* �?�?移�????��????��??�?�?�? */
+/* 滑鼠移上去：灰底粉紅字 */
 QPushButton:hover {
     background: #cccccc;
     color: #ff69b4;
 }
 
-/* ???�????�?深�?��??�?�?�? */
+/* 按下時：深灰底粉紅字 */
 QPushButton:pressed {
     background: #888888;
     color: #ff69b4;
@@ -2574,22 +2574,22 @@ QPushButton:pressed {
                           </property>
                           <property name="styleSheet">
                            <string notr="true">QSlider::groove:horizontal {
-    border: 1px solid #999999; /* ??��?��??�? */
-    background: rgb(229, 229, 229); /* ??��?��?? */
+    border: 1px solid #999999; /* 灰色邊框 */
+    background: rgb(229, 229, 229); /* 灰色底 */
     margin: 2px 0;
     border-radius: 11px;
 }
 
 QSlider::sub-page:horizontal {
-    background: rgba(0, 255, 127, 100); /* 左�?�淺�???? */
+    background: rgba(0, 255, 127, 100); /* 左側淺綠色 */
     border-radius: 11px;
-    /* �???? padding �? sub-page ??? groove ??��?? */
+    /* 增加 padding 讓 sub-page 和 groove 匹配 */
     padding-left: 0;
     padding-right: 0;
 }
 
 QSlider::handle:horizontal {
-    background: rgb(255, 200, 50); /* �???��??�? */
+    background: rgb(255, 200, 50); /* 黃色滑塊 */
     border: 1px solid #5c5c5c;
     width: 18px;
     height: 18px;
@@ -3235,21 +3235,21 @@ QListWidget::item:selected {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {
-    background-color: #FFD700; /* �???? */
-    border: 2px solid #FFC107; /* 深�????��??�? */
-    border-radius: 25px; /* ????????????�? */
-    color: white; /* ???�?�???��?��?��?? */
-    padding: 0 30px; /* 左�?��??�?�?�?�??????��?????�?貼�??�? */
+    background-color: #FFD700; /* 黃色 */
+    border: 2px solid #FFC107; /* 深黃色邊框 */
+    border-radius: 25px; /* 膠囊型圓角 */
+    color: white; /* 文字顏色為白色 */
+    padding: 0 30px; /* 左右邊距，保證文本不會緊貼邊框 */
 }
 
 QPushButton:hover {
-    background-color: #FFCC00; /* �?�?移�????��??�?�???��??淺�??�? */
-    border-color: #FFB300; /* ???�?�???��????��??微深�?�????�???? */
+    background-color: #FFCC00; /* 滑鼠移上去時，顏色變淺一點 */
+    border-color: #FFB300; /* 邊框顏色變為稍微深一點的黃色 */
 }
 
 QPushButton:pressed {
-    background-color: #FFB300; /* ???�????�?�???��????��?�深???�???? */
-    border-color: #FF9900; /* ???�?�???��?�深 */
+    background-color: #FFB300; /* 按下時，顏色變為更深的黃色 */
+    border-color: #FF9900; /* 邊框顏色更深 */
 }
 </string>
                        </property>
@@ -3282,21 +3282,21 @@ QPushButton:pressed {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {
-    background-color: #ff69b4; /* �?�???? */
-    border: 2px solid #ff4f9d; /* 深�??�???��??�? */
-    border-radius: 25px; /* ????????????�? */
-    color: white; /* ???�?�???��?��?��?? */
-    padding: 0 30px; /* 左�?��??�?�?�?�??????��?????�?貼�??�? */
+    background-color: #ff69b4; /* 粉紅色 */
+    border: 2px solid #ff4f9d; /* 深粉紅色邊框 */
+    border-radius: 25px; /* 膠囊型圓角 */
+    color: white; /* 文字顏色為白色 */
+    padding: 0 30px; /* 左右邊距，保證文本不會緊貼邊框 */
 }
 
 QPushButton:hover {
-    background-color: #ff80bf; /* �?�?移�????��??�?�???��??淺�??�? */
-    border-color: #ff66b3; /* ???�?�???��????��??微深�?�????�?�???? */
+    background-color: #ff80bf; /* 滑鼠移上去時，顏色變淺一點 */
+    border-color: #ff66b3; /* 邊框顏色變為稍微深一點的粉紅色 */
 }
 
 QPushButton:pressed {
-    background-color: #e64a8b; /* ???�????�?�???��????��?�深???�?�???? */
-    border-color: #d6336c; /* ???�?�???��?�深 */
+    background-color: #e64a8b; /* 按下時，顏色變為更深的粉紅色 */
+    border-color: #d6336c; /* 邊框顏色更深 */
 }
 </string>
                        </property>
@@ -3328,38 +3328,38 @@ QPushButton:pressed {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QSlider::groove:horizontal {
-    border: 1px solid #999999; /* ??��?��??�? */
-    background: #cccccc; /* ??��?��????? */
-    height: 8px; /* 設�??�???��??形�??�?�? */
-    border-radius: 4px; /* ???�??????? */
+    border: 1px solid #999999; /* 灰色邊框 */
+    background: #cccccc; /* 灰色底色 */
+    height: 8px; /* 設定底部條形的高度 */
+    border-radius: 4px; /* 圓角效果 */
 }
 
 QSlider::sub-page:horizontal {
-    background: #1db954; /* �???��?�度�? */
-    border-radius: 4px; /* 確�????�度�????�???��??形�??�???��?????�? */
+    background: #1db954; /* 綠色進度條 */
+    border-radius: 4px; /* 確保進度條和底部條形有一致的圓角 */
 }
 
 QSlider::handle:horizontal {
-    background: white; /* ??��?��??�? */
-    border: 2px solid #1db954; /* �???��??�? */
+    background: white; /* 白色圓點 */
+    border: 2px solid #1db954; /* 綠色邊框 */
     width: 16px;
     height: 16px;
-    border-radius: 8px; /* ???形�??�? */
-    margin: -6px 0; /* 確�?????�?�?確�??�? */
+    border-radius: 8px; /* 圓形圓點 */
+    margin: -6px 0; /* 確保圓點正確對齊 */
 }
 
 QSlider::handle:hover {
-    background: white; /* �?�?移�?��??�????�?�??????��?? */
-    border: 2px solid #1db954; /* ???�?�????�???? */
+    background: white; /* 滑鼠移到圓點時仍保持白色 */
+    border: 2px solid #1db954; /* 邊框保持綠色 */
 }
 
 QSlider::sub-page:horizontal:disabled {
-    background: #cccccc; /* �???��?????�?�???�度�?顯示??��?? */
+    background: #cccccc; /* 禁用狀態下，進度條顯示灰色 */
 }
 
 QSlider::handle:horizontal:disabled {
-    background: #aaaaaa; /* �???��?????�?�????�?�???��???????��?? */
-    border: 2px solid #aaaaaa; /* ???�????�?�???��????? */
+    background: #aaaaaa; /* 禁用狀態下，圓點顏色變成灰色 */
+    border: 2px solid #aaaaaa; /* 圓點邊框顏色變灰 */
 }
 </string>
                        </property>
@@ -3575,7 +3575,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>�???��????�詢模�??�?</string>
+                            <string>請選擇查詢模式：</string>
                            </property>
                           </widget>
                          </item>
@@ -3643,7 +3643,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>�???��????�詢姿�?��??</string>
+                            <string>請選擇查詢姿勢：</string>
                            </property>
                           </widget>
                          </item>
@@ -3747,7 +3747,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>�?輸�?��??�???��??�?</string>
+                            <string>請輸入開始日期：</string>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignCenter</set>
@@ -3761,13 +3761,13 @@ font-family: &quot;Microsoft JhengHei&quot;;
                           <widget class="QDateEdit" name="dateEdit">
                            <property name="styleSheet">
                             <string notr="true">QDateEdit {
-    background-color: #e6f2ff;       /* 淺�???????? */
-    color: #003366;                  /* 深�??�?�? */
-    border: 1px solid #99ccff;       /* 淺�?????�? */
+    background-color: #e6f2ff;       /* 淺藍背景 */
+    color: #003366;                  /* 深藍字體 */
+    border: 1px solid #99ccff;       /* 淺藍邊框 */
     border-radius: 5px;
     padding: 3px 8px;
-    selection-background-color: #cce6ff;  /* ??��??????????? */
-    selection-color: #000000;             /* ??��????????�? */
+    selection-background-color: #cce6ff;  /* 選取時背景 */
+    selection-color: #000000;             /* 選取時文字 */
 }
 
 QDateEdit::drop-down {
@@ -3775,7 +3775,7 @@ QDateEdit::drop-down {
     subcontrol-position: top right;
     width: 20px;
     border-left: 1px solid #99ccff;
-    background-color: #d9ecff;       /* �????箭�?��????? */
+    background-color: #d9ecff;       /* 下拉箭頭背景 */
 }
 
 QDateEdit::down-arrow:disabled {
@@ -3811,7 +3811,7 @@ font-family: &quot;Microsoft JhengHei&quot;;
 </string>
                            </property>
                            <property name="text">
-                            <string>�?輸�?��???????��??�?</string>
+                            <string>請輸入結束日期：</string>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignCenter</set>
@@ -3822,13 +3822,13 @@ font-family: &quot;Microsoft JhengHei&quot;;
                           <widget class="QDateEdit" name="dateEdit_2">
                            <property name="styleSheet">
                             <string notr="true">QDateEdit {
-    background-color: #e6f2ff;       /* 淺�???????? */
-    color: #003366;                  /* 深�??�?�? */
-    border: 1px solid #99ccff;       /* 淺�?????�? */
+    background-color: #e6f2ff;       /* 淺藍背景 */
+    color: #003366;                  /* 深藍字體 */
+    border: 1px solid #99ccff;       /* 淺藍邊框 */
     border-radius: 5px;
     padding: 3px 8px;
-    selection-background-color: #cce6ff;  /* ??��??????????? */
-    selection-color: #000000;             /* ??��????????�? */
+    selection-background-color: #cce6ff;  /* 選取時背景 */
+    selection-color: #000000;             /* 選取時文字 */
 }
 
 QDateEdit::drop-down {
@@ -3836,7 +3836,7 @@ QDateEdit::drop-down {
     subcontrol-position: top right;
     width: 20px;
     border-left: 1px solid #99ccff;
-    background-color: #d9ecff;       /* �????箭�?��????? */
+    background-color: #d9ecff;       /* 下拉箭頭背景 */
 }
 
 QDateEdit::down-arrow:disabled {
@@ -3868,7 +3868,7 @@ QDateEdit::down-arrow:disabled {
 </string>
                            </property>
                            <property name="text">
-                            <string>確�??</string>
+                            <string>確認</string>
                            </property>
                           </widget>
                          </item>
@@ -3947,7 +3947,7 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>XXXX模�??</string>
+                       <string>XXXX模式</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
@@ -4007,7 +4007,7 @@ QPushButton:pressed {
 </string>
                         </property>
                         <property name="text">
-                         <string>總姿???&amp;�?�???��??</string>
+                         <string>總姿勢&amp;額外數據</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
@@ -4034,7 +4034,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>總�??伽姿??��?????次�?��??</string>
+                           <string>總瑜伽姿勢完成次數：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4079,7 +4079,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>使�?�APP總�?????�?天�??�?</string>
+                           <string>使用APP總時間（天）：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4127,7 +4127,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1天�?��?????APP???�????次�?��??</string>
+                           <string>1天內開啟APP最多的次數：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4172,7 +4172,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1天�?��????�使??�APP??????�?�????�?�?</string>
+                           <string>1天內最長使用APP時間（小時）：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4217,7 +4217,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1天�?��????�使??�APP??????�?�????�?�?</string>
+                           <string>1天內最短使用APP時間（小時）：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4262,7 +4262,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>�????次�?��??�????姿�?��??</string>
+                           <string>完成次數最多的姿勢：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4341,7 +4341,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>�????次�?��??�????姿�?��??</string>
+                           <string>完成次數最少的姿勢：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4420,7 +4420,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>?????��??�??????�天??��??</string>
+                           <string>最長連續打卡天數：</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4467,7 +4467,7 @@ QPushButton:pressed {
 </string>
                         </property>
                         <property name="text">
-                         <string>?????�姿??��?��??�?總�???????��?????�?�?確�??%??????�?�?確�??%�?</string>
+                         <string>個別姿勢數據（總完成數、最高準確率%、最低準確率%）</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
@@ -5581,7 +5581,7 @@ border-bottom-right-radius: 50px;</string>
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -5616,7 +5616,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -5796,7 +5796,7 @@ border-bottom-right-radius: 0px;</string>
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -5837,7 +5837,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -5878,7 +5878,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -6122,7 +6122,7 @@ QPushButton:pressed{
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -6168,7 +6168,7 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: rgba(0, 0, 0, 30);  /* ?????????�???��?�罩 hover */
+    background-color: rgba(0, 0, 0, 30);  /* 半透明黑色遮罩 hover */
 }
 
 
@@ -6262,13 +6262,13 @@ border-top-right-radius: 5px;
 border-bottom-left-radius: 5px;
 border-bottom-right-radius: 5px;
 }
-/* �?�?移�????��????��??�?�?�? */
+/* 滑鼠移上去：灰底粉紅字 */
 QPushButton:hover {
     background: #cccccc;
     color: #ff69b4;
 }
 
-/* ???�????�?深�?��??�?�?�? */
+/* 按下時：深灰底粉紅字 */
 QPushButton:pressed {
     background: #888888;
     color: #ff69b4;
@@ -6427,12 +6427,12 @@ QPushButton:pressed {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -6477,7 +6477,7 @@ QPushButton:pressed {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* �?注�??�?�???��??�? */
+    border: 2px solid #5cb85c; /* 專注時變綠色邊框 */
     background-color: #f9fff9;
 }
 </string>
@@ -6573,7 +6573,7 @@ QPushButton:hover {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* �?注�??�?�???��??�? */
+    border: 2px solid #5cb85c; /* 專注時變綠色邊框 */
     background-color: #f9fff9;
 }
 </string>
@@ -6607,12 +6607,12 @@ QLineEdit:focus {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -6657,7 +6657,7 @@ QLineEdit:focus {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* �?注�??�?�???��??�? */
+    border: 2px solid #5cb85c; /* 專注時變綠色邊框 */
     background-color: #f9fff9;
 }
 </string>
@@ -6735,12 +6735,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -6807,13 +6807,13 @@ QComboBox QAbstractItemView {
     padding: 4px;
 }
 
-/* ??�浮???�?�?�???��?? */
+/* 懸浮時：黑底白字 */
 QComboBox QAbstractItemView::item:hover {
     background-color: #000000;
     color: #ffffff;
 }
 
-/* ??��?????�?�???��?��??�???��?? */
+/* 選取時：也改為黑底白字 */
 QComboBox QAbstractItemView::item:selected {
     background-color: #000000;
     color: #ffffff;
@@ -6876,12 +6876,12 @@ QComboBox QAbstractItemView::item:selected {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -6950,7 +6950,7 @@ QComboBox QAbstractItemView::item:selected {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* �?注�??�?�???��??�? */
+    border: 2px solid #5cb85c; /* 專注時變綠色邊框 */
     background-color: #f9fff9;
 }
 </string>
@@ -6993,7 +6993,7 @@ QLineEdit:focus {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* �?注�??�?�???��??�? */
+    border: 2px solid #5cb85c; /* 專注時變綠色邊框 */
     background-color: #f9fff9;
 }
 </string>
@@ -7049,7 +7049,7 @@ QLineEdit:focus {
 }
 
 QLineEdit:focus {
-    border: 2px solid #5cb85c; /* �?注�??�?�???��??�? */
+    border: 2px solid #5cb85c; /* 專注時變綠色邊框 */
     background-color: #f9fff9;
 }
 </string>
@@ -7083,12 +7083,12 @@ QLineEdit:focus {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7168,12 +7168,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7209,12 +7209,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7318,12 +7318,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7359,12 +7359,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7397,12 +7397,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7438,12 +7438,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7476,12 +7476,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7514,12 +7514,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7596,12 +7596,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7637,12 +7637,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7675,12 +7675,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -7760,12 +7760,12 @@ QPushButton:hover {
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel {
-    font-weight: 600;               /* �?�?�?�?覺�????��?? 2px �?�???? */
-    color: #3e3e3e;                 /* 深�?��??�?�?�?�?�???? */
-    background-color: #dff5d1;      /* ??��?��???????��??�???��??�???? */
-    border: 1px solid #b2d8a6;      /* 淡�?????�? */
-    border-radius: 10px;            /* ???�????�? */
-    padding: 8px 12px;              /* ??��??�?�?�????�???��????? */
+    font-weight: 600;               /* 粗體，視覺上接近 2px 粗線感 */
+    color: #3e3e3e;                 /* 深灰文字，對比清晰 */
+    background-color: #dff5d1;      /* 抹茶綠背景，清爽不突兀 */
+    border: 1px solid #b2d8a6;      /* 淡綠邊框 */
+    border-radius: 10px;            /* 圓角邊框 */
+    padding: 8px 12px;              /* 內邊距，讓文字更舒服 */
 }
 </string>
                        </property>
@@ -9130,7 +9130,7 @@ padding-bottom:7px;</string>
     border: none;
     border-bottom: 2px solid #ccc;
     background: transparent;
-    padding: 5px 20px 5px 0; /* ?????��?�空???給�?????箭�?? */
+    padding: 5px 20px 5px 0; /* 留右側空間給下拉箭頭 */
 	padding-left: 8px;
     font-family: Arial;
     color: #333;
@@ -9153,7 +9153,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(:/icons/icons/icons8-down-arrow-50.png); /* �???????�????實�?????示路�? */
+    image: url(:/icons/icons/icons8-down-arrow-50.png); /* 請換成你的實際圖示路徑 */
     width: 12px;
     height: 12px;
 }
