@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFont
 from pose_calculate.downward_facing_dog_pose_accuracy import evaluate_downward_facing_dog_pose
 from pose_calculate.plank_accuracy import evaluate_plank_pose
 from pose_calculate.staff_accuracy import evaluate_staff_pose
-from pose_calculate.trigle_angle import analyze_image         
+from pose_calculate.trigle_angle import evaluate_triangle_pose        
 from pose_calculate.warrior1_accuracy import evaluate_warrior1_pose
 from pose_calculate.warrior2_accuracy import evaluate_warrior2_pose
 from pose_calculate.warrior3_accuracy import evaluate_warrior3_pose
@@ -25,7 +25,7 @@ INDEX_TO_KEY = {
     3: "warrior3",
     4: "plank",
     5: "staff",
-    6: "squat",      
+    6: "chair",      
     7: "locust",
     8: "triangle",
     9: "bridge",
@@ -38,7 +38,7 @@ KEY_TO_DISPLAY = {
     "warrior3": "Warrior III",
     "plank": "Plank Pose",
     "staff": "Staff Pose",
-    "squat": "Squat Pose",     
+    "chair": "Chair Pose",     
     "locust": "Locust Pose",
     "triangle": "Triangle Pose",
     "bridge": "Bridge Pose",
@@ -52,16 +52,16 @@ POSE_EVALUATORS = {
     "warrior3": evaluate_warrior3_pose,
     "plank": evaluate_plank_pose,
     "staff": evaluate_staff_pose,
-    "squat": evaluate_squat_pose,       
+    "chair": evaluate_squat_pose,       
     "locust": evaluate_locust_pose,
-    "triangle": analyze_image,
+    "triangle": evaluate_triangle_pose,
     "bridge": evaluate_bridge_pose,     
 }
 
 def evaluate_and_display_pose(frame, pose_index, label_widget):
     pose_key = INDEX_TO_KEY.get(pose_index)
     if pose_key is None:
-        font = QFont("Arial", 18)
+        font = QFont("Arial", 14)
         label_widget.setFont(font)
         label_widget.setPlainText("Unknown pose")
         return
@@ -85,7 +85,17 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
     else:
         scores = 0.0  
 
-    avg = float(scores) if scores is not None else 0.0
+    if isinstance(scores, dict):
+        if "average_score" in scores:
+            avg = float(scores["average_score"])
+        elif len(scores) > 0:  
+            avg = float(sum(scores.values()) / len(scores))
+        else:
+            avg = 0.0
+    elif isinstance(scores, (int, float)):
+        avg = float(scores)
+    else:
+        avg = 0.0
 
     # 顯示文字
     text = f"{display_name} {avg:.1f}"

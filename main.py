@@ -96,7 +96,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.account.user_id_signal.connect(self.post_dialog.update_user_id)
         self.user_info.del_user_account_signal.connect(self.account.logout)
 
-        # �?�??????�並顯示??��?��??
+        # 計算分數並顯示在畫面
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
@@ -109,7 +109,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Warrior 3": "Warrior_III",
             "Plank Pose": "Plank_Pose",
             "Staff Pose": "Staff_Pose",
-            "Chair Pose": "Squat_Pose",
+            "Chair Pose": "Chair_Pose",
             "Locust Pose": "Locust_Pose",
             "Triangle Pose": "Triangle_Pose",
             "Bridge Pose": "Bridge_Pose"

@@ -16,11 +16,6 @@ STANDARD_ANGLES = {
     "leg": {"avg": 174.93, "label": "Leg"}
 }
 
-# 資料夾設定
-input_folder = "downward_facing_dog"
-output_folder = "downward_facing_dog_annotated(nonlinear)"
-os.makedirs(output_folder, exist_ok=True)
-
 # Mediapipe 初始化
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(static_image_mode=True)
@@ -99,16 +94,3 @@ def evaluate_downward_facing_dog_pose(landmarks):
     scores = round(np.nanmean([s for s in scores1.values() if s is not None]), 2)
 
     return scores
-
-# ----- 主程式 -----
-if __name__ == '__main__':
-    for img_file in sorted(Path(input_folder).glob("*.jpg")):
-        img = cv2.imread(str(img_file))
-        landmarks = get_landmarks(img)
-        if not landmarks:
-            continue
-
-        txts = evaluate_downward_facing_dog_pose(landmarks)
-        print(txts)
-
-    pose.close()
