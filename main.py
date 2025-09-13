@@ -109,7 +109,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Warrior 3": "Warrior_III",
             "Plank Pose": "Plank_Pose",
             "Staff Pose": "Staff_Pose",
-            "Chair Pose": "Squat_Pose",
+            "Chair Pose": "Chair_Pose",
             "Locust Pose": "Locust_Pose",
             "Triangle Pose": "Triangle_Pose",
             "Bridge Pose": "Bridge_Pose"

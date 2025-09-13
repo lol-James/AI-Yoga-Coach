@@ -4,12 +4,12 @@ import mediapipe as mp
 import numpy as np
 from pathlib import Path
 
-# ?????¸è¨­å®? 
+# ?????ï¿½è¨­ï¿½? 
 TOLERANCE = 5  
 POWER = 1.5      
 MAX_DIFF = 50    
 
-# æ¨?æº?è§?åº?
+# ï¿½?ï¿½?ï¿½?ï¿½?
 STANDARD_ANGLES = {
     "front_leg": 109.43,
     "back_leg": 171.03,
@@ -18,19 +18,14 @@ STANDARD_ANGLES = {
     "arm_trunk": 168.97
 }
 
-# è³????å¤¾è¨­å®?
-input_folder = "warrior_1"
-output_folder = "warrior_1_annotated(nonlinear)"
-os.makedirs(output_folder, exist_ok=True)
-
-# Mediapipe ???å§????
+# Mediapipe ???ï¿½????
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(static_image_mode=True)
 
-# ----- å·¥å?·å?½å?? -----
+# ----- å·¥ï¿½?ï¿½ï¿½?ï¿½ï¿½?? -----
 def calculate_angle(a, b, c):
     if None in (a, b, c): return None
-    a, b, c = np.array(a), np.array(b), np.array(c)
+    a, b, c = np.array([a.x, a.y]), np.array([b.x, b.y]), np.array([c.x, c.y])
     ba = a - b
     bc = c - b
     cosine = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
@@ -51,12 +46,12 @@ def get_landmarks(image):
     return [(int(p.x * w), int(p.y * h)) if p.visibility > 0.5 else None for p in lm] + [None] * (33 - len(lm))
 
 def evaluate_warrior1_pose(landmarks):
-        # ??¿é?¨è??åº?
+        # ??ï¿½ï¿½?ï¿½ï¿½??ï¿½?
     L_leg = calculate_angle(landmarks[23], landmarks[25], landmarks[27])
     R_leg = calculate_angle(landmarks[24], landmarks[26], landmarks[28])
     if None in (L_leg, R_leg): 
         return
-    # ??¤å?????å¾????
+    # ??ï¿½ï¿½?????ï¿½????
     if L_leg < R_leg:
         front_leg, back_leg = L_leg, R_leg
         front_leg_trunk = (11,23,25) if all(landmarks[i] for i in (11,23,25)) else None
@@ -66,7 +61,7 @@ def evaluate_warrior1_pose(landmarks):
 
     leg_trunk = calculate_angle(landmarks[front_leg_trunk[0]], landmarks[front_leg_trunk[1]], landmarks[front_leg_trunk[2]]) if front_leg_trunk else None
 
-    # ???????????©è??è§?åº?
+    # ???????????ï¿½ï¿½??ï¿½?ï¿½?
     LA1 = calculate_angle(landmarks[23], landmarks[11], landmarks[13])
     LA2 = calculate_angle(landmarks[11], landmarks[13], landmarks[15])
     RA1 = calculate_angle(landmarks[24], landmarks[12], landmarks[14])
@@ -87,15 +82,3 @@ def evaluate_warrior1_pose(landmarks):
 
     return avg_score
 
-# ----- ä¸»ç??å¼? -----
-if __name__ == '__main__':
-    for img_file in sorted(Path(input_folder).glob("*.jpg")):
-        img = cv2.imread(str(img_file))
-        landmarks = get_landmarks(img)
-        if not landmarks:
-            continue
-        
-        txts = evaluate_warrior1_pose(landmarks)
-        print(txts)
-
-    pose.close()
