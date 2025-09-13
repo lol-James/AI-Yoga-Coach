@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QThread, pyqtSignal, QTimer, QSize
 from PyQt5.QtWidgets import QMessageBox, QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox, QPushButton
 from PyQt5.QtGui import QIntValidator, QIcon
+from collections import deque
 
 class Timer(QThread):
     def __init__(self, ui):

@@ -73,9 +73,9 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
     result = POSE.process(image_rgb)
 
     if not result.pose_landmarks:
-        font = QFont("Arial", 16)
+        font = QFont("Arial", 14)
         label_widget.setFont(font)
-        label_widget.setPlainText(f"{display_name} — No pose detected")
+        label_widget.setPlainText(f"Error: Pose detected but no landmarks")
         return
 
     
@@ -99,16 +99,8 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
 
     # 顯示文字
     text = f"{display_name} {avg:.1f}"
-    if len(text) > 20:
-        font_size = 14
-    elif len(text) > 15:
-        font_size = 16
-    elif len(text) > 10:
-        font_size = 18
-    else:
-        font_size = 20
 
-    font = QFont("Arial", font_size)
+    font = QFont("Arial", 14)
     label_widget.setFont(font)
     label_widget.setPlainText(text)
 
