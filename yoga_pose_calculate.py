@@ -97,7 +97,7 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
     else:
         avg = 0.0
 
-    # 顯示文字
+    # display text
     text = f"{display_name} {avg:.1f}"
 
     font = QFont("Arial", 14)

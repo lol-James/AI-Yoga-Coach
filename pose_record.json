@@ -1,17 +1,17 @@
 {
     "created": "2025-05-14T22:06:44.272574",
-    "total_count": 343,
+    "total_count": 353,
     "records": {
-        "Bridge Pose": 61,
-        "Cow Pose": 49,
-        "Downward Facing Dog": 42,
-        "Locust Pose": 33,
-        "Plank Pose": 29,
-        "Squat Pose": 27,
-        "Staff Pose": 25,
-        "Triangle Pose": 20,
-        "Warrior I": 26,
-        "Warrior II": 31
+        "Bridge Pose": 62,
+        "Cow Pose": 50,
+        "Downward Facing Dog": 43,
+        "Locust Pose": 34,
+        "Plank Pose": 30,
+        "Squat Pose": 28,
+        "Staff Pose": 26,
+        "Triangle Pose": 21,
+        "Warrior I": 27,
+        "Warrior II": 32
     },
     "usage_log": {
         "2025-05-15": [
@@ -395,6 +395,9 @@
             0.02,
             0.02,
             0.12
+        ],
+        "2025-09-14": [
+            0.02
         ]
     }
 }

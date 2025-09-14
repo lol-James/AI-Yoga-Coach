@@ -22,6 +22,10 @@ class YogaPoseDetector(QThread):
                                                      enable_segmentation=False,
                                                      min_detection_confidence=0.5,
                                                      min_tracking_confidence=0.45)
+        
+        # initialize YOLO detection status attributes
+        self.yolo_has_person = False
+        self.yolo_label_name = ""
 
     def is_full_body_visible(self, frame):
         image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -50,10 +54,21 @@ class YogaPoseDetector(QThread):
                     results[0].boxes.data = filtered_results
 
                     if filtered_results:
+                        self.yolo_has_person = True
+
                         best_result = max(filtered_results, key=lambda x: x[-2])
-                        pose_index = int(best_result[-1])  
+                        pose_index = int(best_result[-1])
+
+                        if 0 <= pose_index < len(self.pose_names):
+                            self.yolo_label_name = self.pose_names[pose_index]
+                        else:
+                            self.yolo_label_name = ""
+
                         self.result_pose_signal.emit(pose_index)
+
                     else:
+                        self.yolo_has_person = False
+                        self.yolo_label_name = ""
                         self.result_pose_signal.emit(8)
                         
                     annotated_frame = results[0].plot()

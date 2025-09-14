@@ -295,6 +295,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def perform_pose_scoring(self):
         if not hasattr(self, 'current_pose_index'):
             return
+        
+        # exit if YOLO has not detect person
+        if not getattr(self.detector, "yolo_has_person", False):
+            return
 
         if not self.countdown_timer.camera_is_running:
             return
@@ -304,6 +308,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         if self.detector.frame is None:
             return
+        
+        
 
         current_demo_item = self.demo_list.currentItem()
         if current_demo_item is None:
