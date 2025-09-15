@@ -293,42 +293,30 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.current_pose_index = pose_index
 
     def perform_pose_scoring(self):
-        if not hasattr(self, 'current_pose_index'):
+        if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) or not self.countdown_timer.camera_is_running\
+            or self.state_reg_label.text() != "Exercise" or self.detector.frame is None:
+            self.countdown_timer.on_pose_detected(False)
             return
         
-        # exit if YOLO has not detect person
-        if not getattr(self.detector, "yolo_has_person", False):
-            return
-
-        if not self.countdown_timer.camera_is_running:
-            return
-
-        if self.state_reg_label.text() != "Exercise":
-            return
-
-        if self.detector.frame is None:
-            return
-        
-        
-
         current_demo_item = self.demo_list.currentItem()
-        if current_demo_item is None:
-            return
-
         selected_display_name = current_demo_item.text().strip()
-
         selected_pose_name = self.pose_name_map.get(selected_display_name)
-        if selected_pose_name is None:
-            return
-
         detected_pose_name = self.detector.pose_names[self.current_pose_index]
 
-        if detected_pose_name != selected_pose_name:
+        if current_demo_item is None or selected_pose_name is None or detected_pose_name != selected_pose_name:
+            self.countdown_timer.on_pose_detected(False)
             return
+        
+        isUpdated = False
 
-        evaluate_and_display_pose(
-            self.detector.frame,
-            self.current_pose_index,
-            self.pose_reg_label
-        )
+        if detected_pose_name == selected_pose_name:
+            avg = evaluate_and_display_pose(
+                self.detector.frame,
+                self.current_pose_index,
+                self.pose_reg_label
+            )
+            if avg and avg > 0:
+                isUpdated = True
+        
+        self.countdown_timer.on_pose_detected(isUpdated)
 

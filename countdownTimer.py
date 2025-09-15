@@ -41,6 +41,9 @@ class Timer(QThread):
         self.start_btn.clicked.connect(self.toggled_start_pause_timer)
         self.rst_btn.clicked.connect(self.reset_timer)
 
+        # other
+        self.pose_history = deque(maxlen=3)
+
     def update_lcdnumber(self):
         if self.state == 'Rest' or self.state == 'N/A' or (self.state_index == 1 and self.timer_is_running):
             self.min = str((self.rest_time // 1000) // 60)
@@ -174,6 +177,16 @@ class Timer(QThread):
         self.start_btn.setIconSize(QSize(20, 20))
         self.three_sec_startup = False
 
+    def on_pose_detected(self, isUpdated: bool):
+        self.pose_history.append(isUpdated)
+        print(f'isUpdated:{isUpdated}')
+        print(f'pose_history{list(self.pose_history)}')
+
+        if self.state == "Exercise" and self.timer_is_running: 
+            if not self.timer.isActive():  
+                self.timer.start(1000)  
+            if not any(self.pose_history):  
+                self.timer.stop()
 
     def reset_timer(self):
         self.state = self.states[3]

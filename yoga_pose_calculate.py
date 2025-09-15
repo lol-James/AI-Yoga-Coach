@@ -64,11 +64,10 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
         font = QFont("Arial", 14)
         label_widget.setFont(font)
         label_widget.setPlainText("Unknown pose")
-        return
+        return None
 
     display_name = KEY_TO_DISPLAY.get(pose_key, pose_key.title())
-
-    
+ 
     image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     result = POSE.process(image_rgb)
 
@@ -76,9 +75,8 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
         font = QFont("Arial", 14)
         label_widget.setFont(font)
         label_widget.setPlainText(f"Error: Pose detected but no landmarks")
-        return
+        return None
 
-    
     evaluator = POSE_EVALUATORS.get(pose_key)
     if callable(evaluator):
         scores = evaluator(result.pose_landmarks.landmark)  
@@ -100,8 +98,10 @@ def evaluate_and_display_pose(frame, pose_index, label_widget):
     # display text
     text = f"{display_name} {avg:.1f}"
 
-    font = QFont("Arial", 14)
+    font = QFont("Arial", 12)
     label_widget.setFont(font)
     label_widget.setPlainText(text)
+
+    return avg
 
 
