@@ -15,7 +15,11 @@ from pose_calculate.squat_accuracy import evaluate_squat_pose
 
 
 mp_pose = mp.solutions.pose
-POSE = mp_pose.Pose(static_image_mode=False)
+POSE = mp_pose.Pose(static_image_mode=False,
+        model_complexity=2,
+        enable_segmentation=False,
+        min_detection_confidence=0.2,
+        min_tracking_confidence=0.7)
 
 
 INDEX_TO_KEY = {
