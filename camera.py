@@ -8,7 +8,7 @@ class CameraThread(QThread):
     def __init__(self):
         super().__init__()
         self.is_running = False
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(1)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 720)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 405)
 

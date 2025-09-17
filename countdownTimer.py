@@ -179,8 +179,8 @@ class Timer(QThread):
 
     def on_pose_detected(self, isUpdated: bool):
         self.pose_history.append(isUpdated)
-        print(f'isUpdated:{isUpdated}')
-        print(f'pose_history{list(self.pose_history)}')
+        # print(f'isUpdated:{isUpdated}')
+        # print(f'pose_history{list(self.pose_history)}')
 
         if self.state == "Exercise" and self.timer_is_running: 
             if not self.timer.isActive():  

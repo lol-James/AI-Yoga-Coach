@@ -100,7 +100,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
-        self.pose_score_timer.start(1000)  
+        self.pose_score_timer.start(500)  
 
         self.pose_name_map = {
             "Downward Facing Dog": "Downward-Facing_Dog",
