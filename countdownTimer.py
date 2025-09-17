@@ -2,7 +2,7 @@ from PyQt5.QtCore import QThread, pyqtSignal, QTimer, QSize
 from PyQt5.QtWidgets import QMessageBox, QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox, QPushButton
 from PyQt5.QtGui import QIntValidator, QIcon
 from collections import deque
-
+from notification import NotificationLabel
 class Timer(QThread):
     def __init__(self, ui):
         super().__init__()
@@ -187,6 +187,7 @@ class Timer(QThread):
                 self.timer.start(1000)  
             if not any(self.pose_history):  
                 self.timer.stop()
+                NotificationLabel(self.ui, "Mediapipe detection failure", success=False,duration=500)
 
     def reset_timer(self):
         self.state = self.states[3]
