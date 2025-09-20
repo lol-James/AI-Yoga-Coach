@@ -1622,7 +1622,10 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #888
     );
 }
-</string>
+
+QPushButton:focus {
+    outline: none;
+}</string>
                           </property>
                           <property name="text">
                            <string>Set Time</string>
@@ -1684,6 +1687,10 @@ QPushButton:pressed {
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
         radius: 1.35, stop: 0 #4caf50, stop: 1 #2e7d32
     );
+}
+
+QPushButton:focus {
+    outline: none;
 }
 </string>
                           </property>
@@ -1748,6 +1755,10 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #d32f2f, stop: 1 #b71c1c
     );
 }
+
+QPushButton:focus {
+    outline: none;
+}
 </string>
                           </property>
                           <property name="text">
@@ -1787,7 +1798,19 @@ QPushButton:pressed {
                      </property>
                      <layout class="QGridLayout" name="gridLayout">
                       <item row="0" column="0">
-                       <widget class="QLabel" name="label">
+                       <widget class="QLabel" name="mode_selection_label">
+                        <property name="minimumSize">
+                         <size>
+                          <width>580</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>580</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
                         <property name="font">
                          <font>
                           <family>Arial</family>
@@ -1803,14 +1826,14 @@ QPushButton:pressed {
 }</string>
                         </property>
                         <property name="text">
-                         <string>Mode Selection: </string>
+                         <string>Mode Selection: Pratice</string>
                         </property>
                        </widget>
                       </item>
                       <item row="1" column="0">
                        <layout class="QGridLayout" name="gridLayout_3">
                         <item row="0" column="0">
-                         <widget class="QPushButton" name="pushButton">
+                         <widget class="QPushButton" name="practice_btn">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -1820,13 +1843,13 @@ QPushButton:pressed {
                           <property name="minimumSize">
                            <size>
                             <width>171</width>
-                            <height>51</height>
+                            <height>60</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>171</width>
-                            <height>51</height>
+                            <height>60</height>
                            </size>
                           </property>
                           <property name="font">
@@ -1865,7 +1888,18 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #0288d1, stop: 1 #01579b
     );
 }
-</string>
+
+QPushButton:checked {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #0288d1, stop: 1 #01579b
+    );
+    color: white; /* 選中時文字變白比較清楚 */
+}
+
+QPushButton:focus {
+    outline: none;
+}</string>
                           </property>
                           <property name="text">
                            <string> PRACTICE</string>
@@ -1880,20 +1914,120 @@ QPushButton:pressed {
                             <height>25</height>
                            </size>
                           </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>true</bool>
+                          </property>
                          </widget>
                         </item>
-                        <item row="1" column="0">
-                         <widget class="QPushButton" name="pushButton_2">
+                        <item row="2" column="0">
+                         <widget class="QPushButton" name="hard_btn">
                           <property name="minimumSize">
                            <size>
                             <width>171</width>
-                            <height>51</height>
+                            <height>60</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>171</width>
-                            <height>51</height>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #d32f2f; /* 紅色邊框 */
+    border-radius: 25px;
+    border-style: outset;
+    text-align: left;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #f28b82, stop: 1 #d32f2f
+    );
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #e57373, stop: 1 #c62828
+    );
+}
+
+QPushButton:pressed {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #d32f2f, stop: 1 #b71c1c
+    );
+}
+
+/* checked 狀態，顏色變深 */
+QPushButton:checked {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #c62828, stop: 1 #b71c1c
+    );
+	color: white; /* 選中時文字變白比較清楚 */
+}
+
+QPushButton:focus {
+    outline: none;
+}</string>
+                          </property>
+                          <property name="text">
+                           <string> HARD</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/icons/icons/icons8-4-key-80.png</normaloff>:/icons/icons/icons8-4-key-80.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QPushButton" name="easy_btn">
+                          <property name="minimumSize">
+                           <size>
+                            <width>171</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>171</width>
+                            <height>60</height>
                            </size>
                           </property>
                           <property name="font">
@@ -1911,7 +2045,7 @@ QPushButton:pressed {
     border: 2px solid #388E3C; /* 綠色邊框 */
     border-radius: 25px;
     border-style: outset;
-	text-align: left;
+    text-align: left;
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
         radius: 1.35, stop: 0 #a8e6a3, stop: 1 #4caf50
@@ -1933,6 +2067,18 @@ QPushButton:pressed {
     );
 }
 
+/* 新增 checked 狀態 */
+QPushButton:checked {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #388E3C, stop: 1 #1B5E20
+    );
+	color: white; /* 選中時文字變白比較清楚 */
+}
+
+QPushButton:focus {
+    outline: none;
+}
 </string>
                           </property>
                           <property name="text">
@@ -1949,144 +2095,13 @@ QPushButton:pressed {
                            </size>
                           </property>
                           <property name="checkable">
-                           <bool>false</bool>
+                           <bool>true</bool>
                           </property>
                           <property name="checked">
                            <bool>false</bool>
                           </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QPushButton" name="pushButton_3">
-                          <property name="minimumSize">
-                           <size>
-                            <width>171</width>
-                            <height>51</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>171</width>
-                            <height>51</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Arial</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QPushButton {
-    color: #333;
-    border: 2px solid #f57c00; /* 橘色邊框 */
-    border-radius: 25px;
-    border-style: outset;
-	text-align: left;
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #ffcc80, stop: 1 #f57c00
-    );
-    padding: 5px;
-}
-
-QPushButton:hover {
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #ffb74d, stop: 1 #ef6c00
-    );
-}
-
-QPushButton:pressed {
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #f57c00, stop: 1 #e65100
-    );
-}
-</string>
-                          </property>
-                          <property name="text">
-                           <string> NORMAL</string>
-                          </property>
-                          <property name="icon">
-                           <iconset resource="resource.qrc">
-                            <normaloff>:/icons/icons/icons8-3-key-80.png</normaloff>:/icons/icons/icons8-3-key-80.png</iconset>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>25</width>
-                            <height>25</height>
-                           </size>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="0">
-                         <widget class="QPushButton" name="pushButton_4">
-                          <property name="minimumSize">
-                           <size>
-                            <width>171</width>
-                            <height>51</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>171</width>
-                            <height>51</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Arial</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QPushButton {
-    color: #333;
-    border: 2px solid #d32f2f; /* 紅色邊框 */
-    border-radius: 25px;
-    border-style: outset;
-	text-align: left;
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #f28b82, stop: 1 #d32f2f
-    );
-    padding: 5px;
-}
-
-QPushButton:hover {
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #e57373, stop: 1 #c62828
-    );
-}
-
-QPushButton:pressed {
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #d32f2f, stop: 1 #b71c1c
-    );
-}
-</string>
-                          </property>
-                          <property name="text">
-                           <string> HARD</string>
-                          </property>
-                          <property name="icon">
-                           <iconset resource="resource.qrc">
-                            <normaloff>:/icons/icons/icons8-4-key-80.png</normaloff>:/icons/icons/icons8-4-key-80.png</iconset>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>25</width>
-                            <height>25</height>
-                           </size>
+                          <property name="autoExclusive">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -9407,10 +9422,16 @@ QPushButton:pressed{
                <item>
                 <widget class="QPushButton" name="menu_btn">
                  <property name="styleSheet">
-                  <string notr="true">padding: 5px;
-border: none;
-width: 35px;
-height: 35px</string>
+                  <string notr="true">QPushButton {
+    width: 35px;
+    height: 35px;
+    background-color: transparent; 
+    border: none;
+}
+
+QPushButton:focus {
+    outline: none;
+}</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -9446,12 +9467,14 @@ height: 35px</string>
     border: none;
 }
 
-
-
 QPushButton:checked {
     background-color: #ff6c7b;
 	 border-radius: 5px;
 	 border: 1px solid;
+}
+
+QPushButton:focus {
+    outline: none;
 }</string>
                  </property>
                  <property name="text">

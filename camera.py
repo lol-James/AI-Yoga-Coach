@@ -2,13 +2,29 @@ from PyQt5.QtCore import QThread, pyqtSignal
 import cv2
 import numpy as np
 
+def get_camera():
+    cap = cv2.VideoCapture(1)
+    if cap.isOpened():
+        print("External Lens used")
+        return cap
+    else:
+        cap.release()
+        cap = cv2.VideoCapture(0)
+        if cap.isOpened():
+            print("Internal Lens used")
+            return cap
+        else:
+            cap.release()
+            raise RuntimeError("Len Not Found")
+
+
 class CameraThread(QThread):
     new_frame = pyqtSignal(object) 
 
     def __init__(self):
         super().__init__()
         self.is_running = False
-        self.cap = cv2.VideoCapture(1)
+        self.cap = get_camera()
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 720)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 405)
 

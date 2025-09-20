@@ -14,6 +14,10 @@ class Timer(QThread):
         self.rst_btn = self.ui.rst_btn
         self.state_reg_label = self.ui.state_reg_label
         self.camera_btn = self.ui.camera_btn
+        self.practice_btn = self.ui.practice_btn
+        self.easy_btn = self.ui.easy_btn
+        self.hard_btn = self.ui.hard_btn
+        self.mode_selection_label = self.ui.mode_selection_label
         self.statistics_treewidget = self.ui.statistics_treewidget
         self.statistics_treewidget.setColumnWidth(0, 180)  
         self.statistics_treewidget.setColumnWidth(1, 150)  
@@ -41,7 +45,14 @@ class Timer(QThread):
         self.start_btn.clicked.connect(self.toggled_start_pause_timer)
         self.rst_btn.clicked.connect(self.reset_timer)
 
-        # other
+        # mode selection
+        self.mode = None
+        self.practice_btn.clicked.connect(self.mode_selection)
+        self.easy_btn.clicked.connect(self.mode_selection)
+        self.hard_btn.clicked.connect(self.mode_selection)
+
+
+        # pose history
         self.pose_history = deque(maxlen=3)
 
     def update_lcdnumber(self):
@@ -220,3 +231,12 @@ class Timer(QThread):
             self.update_lcdnumber()
             self.timer.stop()
             self.timer.start(1000)
+    
+    def mode_selection(self):
+        if self.practice_btn.isChecked():
+            self.mode = "Practice"
+        elif self.easy_btn.isChecked():
+            self.mode = "Easy"
+        elif self.hard_btn.isChecked():
+            self.mode = "Hard"
+        self.mode_selection_label.setText(f"Mode Selection: {self.mode}")
