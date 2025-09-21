@@ -320,7 +320,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             )
 
             if avg and avg > 0:
-                # ✅ 呼叫獨立的判斷模組
+                # call thresholds function
                 mode = self.countdown_timer.mode
                 isUpdated = is_pose_score_valid(self.current_pose_index, avg, mode)
 

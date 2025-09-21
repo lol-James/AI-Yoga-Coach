@@ -46,8 +46,7 @@ class Timer(QThread):
         self.rst_btn.clicked.connect(self.reset_timer)
 
         # mode selection
-        self.mode = None
-        self.mode_selection_label.setText("Mode Selection: None")
+        self.mode = "Practice"
         self.practice_btn.clicked.connect(self.mode_selection)
         self.easy_btn.clicked.connect(self.mode_selection)
         self.hard_btn.clicked.connect(self.mode_selection)
