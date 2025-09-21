@@ -1,11 +1,11 @@
 {
     "created": "2025-05-14T22:06:44.272574",
-    "total_count": 364,
+    "total_count": 370,
     "records": {
-        "Bridge Pose": 70,
-        "Cow Pose": 53,
-        "Downward Facing Dog": 43,
-        "Locust Pose": 34,
+        "Bridge Pose": 72,
+        "Cow Pose": 55,
+        "Downward Facing Dog": 44,
+        "Locust Pose": 35,
         "Plank Pose": 30,
         "Squat Pose": 28,
         "Staff Pose": 26,
@@ -434,6 +434,13 @@
             0.01,
             0.01,
             0.0
+        ],
+        "2025-09-21": [
+            0.04,
+            0.25,
+            0.12,
+            0.01,
+            0.04
         ]
     }
 }

@@ -16,6 +16,7 @@ from user_info import User_Info
 from account import Account
 from yoga_pose_calculate import evaluate_and_display_pose
 from postdialog import PostDialog
+from pose_thresholds import is_pose_score_valid
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -294,8 +295,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.current_pose_index = pose_index
 
     def perform_pose_scoring(self):
-        if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) or not self.countdown_timer.camera_is_running\
-            or self.state_reg_label.text() != "Exercise" or self.detector.frame is None:
+        if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) \
+            or not self.countdown_timer.camera_is_running or self.state_reg_label.text() != "Exercise" \
+            or self.detector.frame is None:
             self.countdown_timer.on_pose_detected(False)
             return
         
@@ -316,8 +318,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 self.current_pose_index,
                 self.pose_reg_label
             )
+
             if avg and avg > 0:
-                isUpdated = True
-        
+                # ✅ 呼叫獨立的判斷模組
+                mode = self.countdown_timer.mode
+                isUpdated = is_pose_score_valid(self.current_pose_index, avg, mode)
+
         self.countdown_timer.on_pose_detected(isUpdated)
 
