@@ -4,6 +4,10 @@ from PyQt5.QtGui import QIntValidator, QIcon
 from collections import deque
 from notification import NotificationLabel
 class Timer(QThread):
+    # Signals to notify when timer starts or stops
+    timer_started_signal = pyqtSignal()
+    timer_stopped_signal = pyqtSignal()
+
     def __init__(self, ui):
         super().__init__()
         self.ui = ui
@@ -168,6 +172,8 @@ class Timer(QThread):
             QMessageBox.warning(self.ui, "Error", "Please turn on the camera first!")
 
     def _start_timer(self):
+        self.timer_is_running = True
+        self.timer_started_signal.emit()   # Emit when timer starts
         self.start_btn.setEnabled(True)
         self.rst_btn.setEnabled(True)
         self.state = self.states[self.state_index]
@@ -179,6 +185,8 @@ class Timer(QThread):
         self.start_btn.setIconSize(QSize(20, 20))
 
     def _stop_timer(self):
+        self.timer_is_running = False
+        self.timer_stopped_signal.emit()   # Emit when timer stops
         self.state = self.states[2]
         self.state_reg_label.setText(self.state)
         self.timer_is_running = False

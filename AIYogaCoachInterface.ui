@@ -1826,7 +1826,7 @@ QPushButton:focus {
 }</string>
                         </property>
                         <property name="text">
-                         <string>Mode Selection: Pratice</string>
+                         <string>Mode Selection: Practice</string>
                         </property>
                        </widget>
                       </item>
@@ -3625,11 +3625,6 @@ QComboBox QAbstractItemView {
                            </item>
                            <item>
                             <property name="text">
-                             <string>NORMAL</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
                              <string>HARD</string>
                             </property>
                            </item>
@@ -3688,7 +3683,7 @@ QComboBox QAbstractItemView {
                            </item>
                            <item>
                             <property name="text">
-                             <string>Cow Pose</string>
+                             <string>Chair Pose</string>
                             </property>
                            </item>
                            <item>
@@ -3704,11 +3699,6 @@ QComboBox QAbstractItemView {
                            <item>
                             <property name="text">
                              <string>Plank Pose</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Squat Pose</string>
                             </property>
                            </item>
                            <item>
@@ -3729,6 +3719,11 @@ QComboBox QAbstractItemView {
                            <item>
                             <property name="text">
                              <string>Warrior 2 Pose</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Warrior 3 Pose</string>
                             </property>
                            </item>
                           </widget>
@@ -4071,7 +4066,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>247</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4116,7 +4111,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>365</string>
+                           <string>-</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -4164,7 +4159,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>355</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4209,7 +4204,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>4</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4254,7 +4249,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>1</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4305,7 +4300,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Staff Pose</string>
+                           <string>-</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4333,7 +4328,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>40</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4384,7 +4379,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Cow Pose</string>
+                           <string>-</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4412,7 +4407,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>10</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4457,7 +4452,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>30</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4528,7 +4523,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>11</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4547,7 +4542,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>94</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4566,7 +4561,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>61</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4589,7 +4584,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Cow Pose</string>
+                           <string>Chair Pose</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4611,7 +4606,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>10</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4630,7 +4625,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>80</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4649,7 +4644,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>50</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4694,7 +4689,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>13</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4713,7 +4708,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>86</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4732,7 +4727,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>70</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4777,7 +4772,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>14</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4796,7 +4791,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>89</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4815,7 +4810,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>68</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4860,7 +4855,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>23</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4879,7 +4874,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>91</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4898,7 +4893,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>54</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4921,7 +4916,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Squat Pose</string>
+                           <string>Staff Pose</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -4943,7 +4938,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>36</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4962,7 +4957,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>96</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -4981,7 +4976,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>57</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5004,7 +4999,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Staff Pose</string>
+                           <string>Triangle Pose</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -5026,7 +5021,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>40</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5045,7 +5040,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>100</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5064,7 +5059,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>80</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5087,7 +5082,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Triangle Pose</string>
+                           <string>Warrior 1 Pose</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -5109,7 +5104,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>38</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5128,7 +5123,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>99</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5147,7 +5142,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>72</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5170,7 +5165,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Warrior 1 Pose</string>
+                           <string>Warrior 2 Pose</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -5192,7 +5187,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>25</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5211,7 +5206,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>90</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5230,7 +5225,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>78</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5253,7 +5248,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>Warrior 2 Pose</string>
+                           <string>Warrior 3 Pose</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
@@ -5275,7 +5270,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>37</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5294,7 +5289,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>88</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>
@@ -5313,7 +5308,7 @@ QPushButton:pressed {
 </string>
                           </property>
                           <property name="text">
-                           <string>76</string>
+                           <string>-</string>
                           </property>
                          </widget>
                         </item>

@@ -168,22 +168,40 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`) VALUES
 --
 
 CREATE TABLE `record_detail` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `total_posture_count` int(11) DEFAULT NULL,
-  `daily_max_app_opens` int(11) DEFAULT NULL,
-  `max_daily_usage_hours` int(11) DEFAULT NULL,
-  `min_daily_usage_hours` int(11) DEFAULT NULL,
-  `max_posture_name` text DEFAULT NULL,
-  `max_posture_count` int(11) DEFAULT NULL,
-  `min_posture_name` text DEFAULT NULL,
-  `min_posture_count` int(11) DEFAULT NULL,
-  `longest_streak_days` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `mode` int(11) NOT NULL, -- 0=Practice, 1=Easy, 2=Hard
+  `total_posture_count` int(11) DEFAULT 0,
+  `daily_max_app_opens` int(11) DEFAULT 0,
+  `max_daily_usage_hours` float DEFAULT 0,
+  `min_daily_usage_hours` float DEFAULT 0,
+  `longest_streak_days` int(11) DEFAULT 0,
+  `total_usage_hours` float DEFAULT 0,         
   `posture_id` int(11) DEFAULT NULL,
   `posture_name` text DEFAULT NULL,
-  `total_completed` int(11) DEFAULT NULL,
+  `total_completed` int(11) DEFAULT 0,
   `max_accuracy` float DEFAULT NULL,
-  `min_accuracy` float DEFAULT NULL
+  `min_accuracy` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `record_session`
+--
+
+CREATE TABLE `record_session` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `session_id` VARCHAR(64) NOT NULL,
+  `start_time` DATETIME NOT NULL,
+  `end_time` DATETIME DEFAULT NULL,
+  `mode` INT DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `session_id` (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------

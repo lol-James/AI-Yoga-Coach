@@ -1,6 +1,11 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import cv2
 import os
 import pymysql
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from datetime import datetime, timedelta, time as dtime
 from Ui_AIYogaCoachInterface import Ui_MainWindow
 from PyQt5.QtCore import Qt, QPoint, QTimer
 from PyQt5.QtWidgets import *
@@ -90,12 +95,52 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # timer
         self.countdown_timer = Timer(self)
 
-        # record logger
-        self.logger = RecordLogger(ui=self)
+        # record logger (MODIFIED: session handling)
+        self.logger = RecordLogger(ui=self, db=self.db)
+
+        # keep record_detail prepared when account emits user_id
+        self.account.user_id_signal.connect(self.logger.set_user_id)
+
+        # start a session when login (uid truthy) and end session when logout (uid falsy)
+        # pass current mode into start_session so session row has mode assigned
+        self.account.user_id_signal.connect(
+            lambda uid: self.logger.start_session(self.countdown_timer.mode) if uid else self.logger.end_session()
+        )
+
+        # existing connections (keep these)
+        self.account.user_id_signal.connect(lambda uid: self.update_progress_page_statistics(self.countdown_timer.mode))
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
         self.account.user_id_signal.connect(self.music_player.update_user_id)
         self.account.user_id_signal.connect(self.post_dialog.update_user_id)
         self.user_info.del_user_account_signal.connect(self.account.logout)
+
+        # Initialize snapshot (record the number of each posture of the current treewidget)
+        self._tree_counts_snapshot = []
+        for i in range(len(self.logger.pose_names)):
+            item = self.countdown_timer.statistics_treewidget.topLevelItem(i)
+            try:
+                v = int(item.text(1)) if item and item.text(1).isdigit() else 0
+            except Exception:
+                v = 0
+            self._tree_counts_snapshot.append(v)
+
+        # Connect itemChanged event (this handler calculates delta based on snapshot)
+        self.countdown_timer.statistics_treewidget.itemChanged.connect(self.on_tree_item_changed)
+
+        # default mode label
+        self.label_16.setText("Practice")
+
+        # keep label_16 in sync with selected mode
+        self.practice_btn.clicked.connect(lambda: self.on_mode_changed("Practice"))
+        self.easy_btn.clicked.connect(lambda: self.on_mode_changed("Easy"))
+        self.hard_btn.clicked.connect(lambda: self.on_mode_changed("Hard"))
+        self.difficulties = ["Practice", "Easy", "Hard"]
+        self.pushButton_7.clicked.connect(self.on_prev_mode)
+        self.pushButton_8.clicked.connect(self.on_next_mode)
+
+        # Lock/unlock mode buttons when timer starts/stops
+        self.countdown_timer.timer_started_signal.connect(lambda: self.toggle_mode_buttons(False))
+        self.countdown_timer.timer_stopped_signal.connect(lambda: self.toggle_mode_buttons(True))
 
         # calculate score and display
         self.detector.result_pose_signal.connect(self.cache_pose_index)
@@ -104,17 +149,41 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.pose_score_timer.start(500)  
 
         self.pose_name_map = {
+            "Bridge Pose": "Bridge_Pose",
+            "Chair Pose": "Chair_Pose",
             "Downward Facing Dog": "Downward-Facing_Dog",
-            "Warrior 1": "Warrior_I",
-            "Warrior 2": "Warrior_II",
-            "Warrior 3": "Warrior_III",
+            "Locust Pose": "Locust_Pose",
             "Plank Pose": "Plank_Pose",
             "Staff Pose": "Staff_Pose",
-            "Chair Pose": "Chair_Pose",
-            "Locust Pose": "Locust_Pose",
             "Triangle Pose": "Triangle_Pose",
-            "Bridge Pose": "Bridge_Pose"
+            "Warrior 1": "Warrior_I",
+            "Warrior 2": "Warrior_II",
+            "Warrior 3": "Warrior_III"
         }
+
+        # Mode & posture mapping (for chart usage)
+        self.MODE_MAP = {
+            "PRACTICE": 0,
+            "EASY": 1,
+            "HARD": 2,
+        }
+
+        # Corresponds to record_picture.posture_id, order must match pose_names (index 0..9)
+        self.POSTURE_MAP = {
+            "Bridge Pose": 0,
+            "Chair Pose": 1,
+            "Downward Facing Dog": 2,
+            "Locust Pose": 3,
+            "Plank Pose": 4,
+            "Staff Pose": 5,
+            "Triangle Pose": 6,
+            "Warrior 1": 7,
+            "Warrior 2": 8,
+            "Warrior 3": 9,
+        }
+
+        # pushButton_6
+        self.pushButton_6.clicked.connect(self.generate_score_plot)
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -255,6 +324,12 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         self.image_index = (self.image_index + 1) % len(self.image_list)
         self.display_image(self.image_list[self.image_index])
+
+        try:
+            # Only refresh the statistics page display, do not call update_detail_from_tree again
+            self.update_progress_page_statistics(self.countdown_timer.mode)
+        except Exception as e:
+            print("update_progress_page_statistics error:", e)
         
     def previous_pose(self, skip_flag):
         print('Prvious Pose')
@@ -295,34 +370,312 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.current_pose_index = pose_index
 
     def perform_pose_scoring(self):
+        # If any of the required preconditions is not met, inform the timer that no pose is detected.
         if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) \
             or not self.countdown_timer.camera_is_running or self.state_reg_label.text() != "Exercise" \
             or self.detector.frame is None:
             self.countdown_timer.on_pose_detected(False)
             return
-        
+
         current_demo_item = self.demo_list.currentItem()
+        if current_demo_item is None:
+            self.countdown_timer.on_pose_detected(False)
+            return
+
         selected_display_name = current_demo_item.text().strip()
         selected_pose_name = self.pose_name_map.get(selected_display_name)
         detected_pose_name = self.detector.pose_names[self.current_pose_index]
 
-        if current_demo_item is None or selected_pose_name is None or detected_pose_name != selected_pose_name:
+        # If the displayed demo pose does not match the detected pose, treat as no pose.
+        if selected_pose_name is None or detected_pose_name != selected_pose_name:
             self.countdown_timer.on_pose_detected(False)
             return
-        
-        isUpdated = False
 
-        if detected_pose_name == selected_pose_name:
-            avg = evaluate_and_display_pose(
-                self.detector.frame,
-                self.current_pose_index,
-                self.pose_reg_label
-            )
+        # Evaluate pose and get average score
+        avg = evaluate_and_display_pose(
+            self.detector.frame,
+            self.current_pose_index,
+            self.pose_reg_label
+        )
 
-            if avg and avg > 0:
-                # call thresholds function
-                mode = self.countdown_timer.mode
-                isUpdated = is_pose_score_valid(self.current_pose_index, avg, mode)
+        detected = False   # whether a valid pose score was produced (keep timer running)
+        updated = False    # whether historical stats need updating (max/min accuracy)
 
-        self.countdown_timer.on_pose_detected(isUpdated)
+        if avg and avg > 0:
+            detected = True  # pose successfully detected and scored
 
+            mode = self.countdown_timer.mode  # "Practice", "Easy", or "Hard"
+
+            # Save the per-second score into record_picture
+            try:
+                self.logger.add_picture_record(
+                    posture_id=self.current_pose_index,
+                    posture_name=detected_pose_name,
+                    accuracy=avg,
+                    mode=mode
+                )
+            except Exception as e:
+                print("add_picture_record error:", e)
+
+            # If the current score passes threshold, update historical max/min accuracy only.
+            # Do NOT update completion counts here (counts are driven by statistics_treewidget).
+            try:
+                if is_pose_score_valid(self.current_pose_index, avg, mode):
+                    updated = True
+                    try:
+                        # Update historical max/min accuracy (do not change completion counts)
+                        try:
+                            self.logger.update_pose_accuracy(
+                                posture_id=self.current_pose_index,
+                                posture_name=detected_pose_name,
+                                mode=mode,
+                                accuracy=avg
+                            )
+                        except Exception as e:
+                            print("update_pose_accuracy error:", e)
+
+                        # Only refresh UI (counts are driven by treewidget)
+                        try:
+                            self.update_progress_page_statistics(mode)
+                        except Exception as e:
+                            print("update_progress_page_statistics error:", e)
+                    except Exception as e:
+                        print("is_pose_score_valid inner error:", e)
+            except Exception as e:
+                print("is_pose_score_valid error:", e)
+
+        # Pass 'detected' to timer to indicate whether Mediapipe detection succeeded.
+        self.countdown_timer.on_pose_detected(detected)
+
+    def update_progress_page_statistics(self, mode):
+        try:
+            stats = self.logger.load_statistics(mode)
+            stats_all = self.logger.load_statistics("ALL")  # ALL mode
+        except Exception as e:
+            print("update_progress_page_statistics load_statistics error:", e)
+            stats = None
+            stats_all = None
+
+        # --- Overall statistics across all modes ---
+        if stats_all:
+            self.label_18.setText(str(stats_all["total_count"]))
+            usage = stats_all.get("usage", {})
+            # Display total usage **in days, with 4 decimal places**
+            total_usage_days = usage.get("total_usage_days")
+            if total_usage_days is None:
+                # fallback: compute from hours if not present
+                try:
+                    total_usage_days = round(float(usage.get("total_usage_hours", 0.0) or 0.0) / 24.0, 4)
+                except Exception:
+                    total_usage_days = 0.0
+            self.label_21.setText(f"{total_usage_days:.4f}")
+
+            # Daily max app opens (integer)
+            self.label_29.setText(str(usage.get("daily_max_app_opens", 0)))
+
+            # Max/min daily usage hours → show 4 decimal places to avoid rounding short durations to 0.00
+            self.label_73.setText(f"{usage.get('max_daily_usage_hours', 0.0):.4f}")
+            self.label_75.setText(f"{usage.get('min_daily_usage_hours', 0.0):.4f}")
+
+            # Longest continuous streak
+            self.label_27.setText(str(usage.get("longest_streak_days", 0)))
+
+        # --- Pose statistics for the current mode ---
+        if stats:
+            max_pose_name, max_pose_count = stats.get("max_pose", (None, 0))
+            min_pose_name, min_pose_count = stats.get("min_pose", (None, 0))
+            self.label_23.setText(str(max_pose_name or ""))
+            self.label_31.setText(str(max_pose_count or 0))
+            self.label_25.setText(str(min_pose_name or ""))
+            self.label_32.setText(str(min_pose_count or 0))
+
+            counts = stats.get("counts", {})
+            per_acc = stats.get("per_pose_accuracy", {})
+            for pose in self.logger.pose_names:
+                cnt = counts.get(pose, 0)
+                accs = per_acc.get(pose, {})
+                max_a = accs.get("max")
+                min_a = accs.get("min")
+                count_lbl, max_lbl, min_lbl = self.logger.pose_labels.get(pose, (None, None, None))
+                if count_lbl:
+                    count_lbl.setText(str(cnt))
+                if max_lbl:
+                    max_lbl.setText(f"{max_a:.1f}" if max_a is not None else "0")
+                if min_lbl:
+                    min_lbl.setText(f"{min_a:.1f}" if min_a is not None else "0")
+
+    def on_mode_changed(self, mode_name):
+        """Update small label when mode button is clicked."""
+        self.label_16.setText(mode_name)
+        # also refresh progress page stats for this mode
+        try:
+            self.update_progress_page_statistics(mode_name)
+        except Exception as e:
+            print("on_mode_changed error:", e)
+    
+    def on_tree_item_changed(self, item, column):
+        """
+        Detect changes in treewidget column 1, use snapshot to calculate delta and update record_detail.
+        Only increment when the number increases (supports delta > 1).
+        """
+        if column != 1:
+            return
+        try:
+            idx = self.countdown_timer.statistics_treewidget.indexOfTopLevelItem(item)
+            if idx < 0:
+                return
+
+            txt = item.text(1).strip() if item.text(1) else "0"
+            new_count = int(txt) if txt.isdigit() else 0
+
+            # Get previous snapshot
+            old_count = 0
+            if idx < len(self._tree_counts_snapshot):
+                old_count = self._tree_counts_snapshot[idx]
+            delta = new_count - old_count
+
+            if delta > 0:
+                # Incremental write (without accuracy, because counts come from the treewidget)
+                self.logger.increment_pose_count(
+                    posture_id=idx,
+                    posture_name=self.logger.pose_names[idx],
+                    mode=self.countdown_timer.mode,
+                    delta=delta
+                )
+                # Update UI display (counts and accuracies)
+                try:
+                    self.update_progress_page_statistics(self.countdown_timer.mode)
+                except Exception:
+                    pass
+
+            # Update snapshot (sync to latest)
+            if idx < len(self._tree_counts_snapshot):
+                self._tree_counts_snapshot[idx] = new_count
+            else:
+                # If the snapshot is shorter, extend it
+                extend_len = idx - len(self._tree_counts_snapshot) + 1
+                self._tree_counts_snapshot.extend([0] * extend_len)
+                self._tree_counts_snapshot[idx] = new_count
+
+        except Exception as e:
+            print("on_tree_item_changed error:", e)
+
+    def on_prev_mode(self):
+        current = self.difficulties.index(self.label_16.text())
+        new_mode = self.difficulties[(current - 1) % len(self.difficulties)]
+        self.on_mode_changed(new_mode)
+
+    def on_next_mode(self):
+        current = self.difficulties.index(self.label_16.text())
+        new_mode = self.difficulties[(current + 1) % len(self.difficulties)]
+        self.on_mode_changed(new_mode)
+
+    def closeEvent(self, event):
+        # End session before the application closes (if any)
+        try:
+            if hasattr(self, 'logger') and self.logger:
+                self.logger.end_session()
+        except Exception:
+            pass
+        super().closeEvent(event)
+    
+    def generate_score_plot(self):
+        """
+        Based on comboBox_3 (mode), comboBox (posture), dateEdit/dateEdit_2 (time range),
+        generate a score-time chart, save it to record_pic/<user_id>.png, and display it on label_3.
+        """
+        if not self.account.user_id:
+            NotificationLabel(self, "Please login first.", success=False)
+            return
+
+        mode_text = self.comboBox_3.currentText()
+        posture_text = self.comboBox.currentText()
+        start_date = self.dateEdit.date().toPyDate()
+        end_date = self.dateEdit_2.date().toPyDate()
+
+        mode_val = self.MODE_MAP.get(mode_text.upper(), 0)
+        posture_id = self.POSTURE_MAP.get(posture_text)
+
+        # Ensure the date range is correct
+        start_dt = datetime.combine(start_date, dtime.min)
+        end_dt = datetime.combine(end_date, dtime.max)
+
+        try:
+            with self.db.cursor() as cursor:
+                cursor.execute(
+                    "SELECT timestamp, accuracy FROM record_picture "
+                    "WHERE user_id=%s AND mode=%s AND posture_id=%s "
+                    "AND timestamp BETWEEN %s AND %s "
+                    "ORDER BY timestamp",
+                    (self.account.user_id, mode_val, posture_id, start_dt, end_dt)
+                )
+                rows = cursor.fetchall()
+
+            if not rows:
+                NotificationLabel(self, "No data found for selected filters.", success=False)
+                return
+
+            times = [r["timestamp"] for r in rows]
+            scores = [r["accuracy"] for r in rows]
+
+            # Set X-axis ticks: auto-adjust based on time range
+            start_ts, end_ts = times[0], times[-1]
+            duration = (end_ts - start_ts).total_seconds()
+
+            fig, ax = plt.subplots(figsize=(8, 4))
+            ax.plot(times, scores, marker="o", linestyle="-")
+            ax.set_ylim(0, 100)
+            ax.set_xlabel("Time")
+            ax.set_ylabel("Score")
+            ax.set_title(f"{posture_text} - {mode_text}")
+            ax.grid(True)
+
+            # Adjust x-axis tick units based on range
+            if duration <= 60:  # ≤ 1 minutes
+                locator = mdates.SecondLocator(interval=1)
+                formatter = mdates.DateFormatter("%H:%M:%S")
+            elif duration <= 3600:  # ≤ 1 hour
+                locator = mdates.MinuteLocator(interval=1)
+                formatter = mdates.DateFormatter("%H:%M")
+            elif duration <= 86400:  # ≤ 1 days
+                locator = mdates.HourLocator(interval=1)
+                formatter = mdates.DateFormatter("%m-%d %H:%M")
+            elif duration <= 2678400:  # ≤ 31 days
+                locator = mdates.DayLocator(interval=1)
+                formatter = mdates.DateFormatter("%m-%d")
+            elif duration <= 31536000:  # ≤ 1 year
+                locator = mdates.MonthLocator(interval=1)
+                formatter = mdates.DateFormatter("%Y-%m")
+            else:  # > 1 year
+                locator = mdates.YearLocator()
+                formatter = mdates.DateFormatter("%Y")
+
+            ax.xaxis.set_major_locator(locator)
+            ax.xaxis.set_major_formatter(formatter)
+            fig.autofmt_xdate()
+
+            plt.tight_layout()
+
+            # Save to record_pic
+            img_dir = os.path.join(os.path.dirname(__file__), "record_pic")
+            os.makedirs(img_dir, exist_ok=True)
+            img_path = os.path.join(img_dir, f"{self.account.user_id}.png")
+            plt.savefig(img_path)
+            plt.close(fig)
+
+            # Display on label_3 (overwrite the original demo image)
+            pixmap = QPixmap(img_path)
+            self.label_3.setPixmap(pixmap)
+            self.label_3.setScaledContents(True)
+
+            NotificationLabel(self, f"Chart generated at {img_path}", success=True)
+
+        except Exception as e:
+            print("generate_score_plot error:", e)
+            NotificationLabel(self, "Error generating chart.", success=False)
+            
+    def toggle_mode_buttons(self, enabled: bool):
+        """Enable or disable mode switch buttons."""
+        self.practice_btn.setEnabled(enabled)
+        self.easy_btn.setEnabled(enabled)
+        self.hard_btn.setEnabled(enabled)
