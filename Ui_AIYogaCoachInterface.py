@@ -1738,7 +1738,6 @@ class Ui_MainWindow(object):
         self.label_3.setSizePolicy(sizePolicy)
         self.label_3.setMinimumSize(QtCore.QSize(0, 0))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("icons/posture_accuracy_sample.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_19.addWidget(self.label_3)
@@ -1918,10 +1917,65 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_6.setObjectName("pushButton_6")
         self.verticalLayout_20.addWidget(self.pushButton_6)
+        self.label = QtWidgets.QLabel(self.frame_8)
+        self.label.setMinimumSize(QtCore.QSize(0, 30))
+        self.label.setStyleSheet("color: #2a4d69;    \n"
+"font-weight: bold;    \n"
+"font-size: 14px;           \n"
+"font-family: \"Microsoft JhengHei\";\n"
+"\n"
+"")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout_20.addWidget(self.label)
         self.horizontalLayout_61 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_61.setSpacing(7)
         self.horizontalLayout_61.setObjectName("horizontalLayout_61")
+        self.pushButton = QtWidgets.QPushButton(self.frame_8)
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"    background-color: #e6f5ff;\n"
+"    border: none;\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #cceeff;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: #99ddff;\n"
+"}\n"
+"")
+        self.pushButton.setText("")
+        icon30 = QtGui.QIcon()
+        icon30.addPixmap(QtGui.QPixmap("icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon30)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_61.addWidget(self.pushButton)
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame_8)
+        self.pushButton_2.setStyleSheet("QPushButton {\n"
+"    background-color: #e6f5ff;\n"
+"    border: none;\n"
+"    border-radius: 12px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #cceeff;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: #99ddff;\n"
+"}\n"
+"")
+        self.pushButton_2.setText("")
+        icon31 = QtGui.QIcon()
+        icon31.addPixmap(QtGui.QPixmap("icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_2.setIcon(icon31)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout_61.addWidget(self.pushButton_2)
         self.verticalLayout_20.addLayout(self.horizontalLayout_61)
-        self.verticalLayout_20.setStretch(9, 1)
+        self.horizontalLayout_46 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_46.setObjectName("horizontalLayout_46")
+        self.verticalLayout_20.addLayout(self.horizontalLayout_46)
+        self.verticalLayout_20.setStretch(11, 1)
         self.verticalLayout_38.addLayout(self.verticalLayout_20)
         self.horizontalLayout_20.addWidget(self.frame_8)
         self.horizontalLayout_20.setStretch(0, 4)
@@ -1950,8 +2004,6 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_7.setText("")
-        icon30 = QtGui.QIcon()
-        icon30.addPixmap(QtGui.QPixmap("icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_7.setIcon(icon30)
         self.pushButton_7.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -1986,8 +2038,6 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_8.setText("")
-        icon31 = QtGui.QIcon()
-        icon31.addPixmap(QtGui.QPixmap("icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_8.setIcon(icon31)
         self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_8.setObjectName("pushButton_8")
@@ -4959,7 +5009,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(6)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.select_gender.setCurrentIndex(0)
         self.menu_btn.toggled['bool'].connect(self.icon_only_frame.setHidden) # type: ignore
         self.menu_btn.toggled['bool'].connect(self.full_menu_frame.setVisible) # type: ignore
@@ -5081,6 +5131,7 @@ class Ui_MainWindow(object):
         self.label_13.setText(_translate("MainWindow", "請輸入開始日期："))
         self.label_11.setText(_translate("MainWindow", "請輸入結束日期："))
         self.pushButton_6.setText(_translate("MainWindow", "確認"))
+        self.label.setText(_translate("MainWindow", "切換圖表："))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.p1), _translate("MainWindow", "Page1"))
         self.label_16.setText(_translate("MainWindow", "XXXX模式"))
         self.label_19.setText(_translate("MainWindow", "總姿勢&額外數據"))

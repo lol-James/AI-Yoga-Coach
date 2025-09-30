@@ -3500,7 +3500,7 @@ QTabBar::tab:hover {
 </string>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="p1">
                  <attribute name="title">
@@ -3540,9 +3540,6 @@ QTabBar::tab:hover {
                            <property name="text">
                             <string/>
                            </property>
-                           <property name="pixmap">
-                            <pixmap>icons/posture_accuracy_sample.png</pixmap>
-                           </property>
                            <property name="scaledContents">
                             <bool>true</bool>
                            </property>
@@ -3563,7 +3560,7 @@ QTabBar::tab:hover {
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_38">
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0,0,0,0,0,0,0,1">
+                        <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0,0,0,0,0,0,0,0,0,1">
                          <property name="spacing">
                           <number>10</number>
                          </property>
@@ -3883,7 +3880,90 @@ QDateEdit::down-arrow:disabled {
                           </widget>
                          </item>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_61"/>
+                          <widget class="QLabel" name="label">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: #2a4d69;    
+font-weight: bold;    
+font-size: 14px;           
+font-family: &quot;Microsoft JhengHei&quot;;
+
+</string>
+                           </property>
+                           <property name="text">
+                            <string>切換圖表：</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_61">
+                           <property name="spacing">
+                            <number>7</number>
+                           </property>
+                           <item>
+                            <widget class="QPushButton" name="pushButton">
+                             <property name="styleSheet">
+                              <string notr="true">QPushButton {
+    background-color: #e6f5ff;
+    border: none;
+    border-radius: 12px;
+    padding: 6px;
+}
+QPushButton:hover {
+    background-color: #cceeff;
+}
+QPushButton:pressed {
+    background-color: #99ddff;
+}
+</string>
+                             </property>
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset>
+                               <normaloff>icons/arrow_left.png</normaloff>icons/arrow_left.png</iconset>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_2">
+                             <property name="styleSheet">
+                              <string notr="true">QPushButton {
+    background-color: #e6f5ff;
+    border: none;
+    border-radius: 12px;
+    padding: 6px;
+}
+QPushButton:hover {
+    background-color: #cceeff;
+}
+QPushButton:pressed {
+    background-color: #99ddff;
+}
+</string>
+                             </property>
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset>
+                               <normaloff>icons/arrow_right.png</normaloff>icons/arrow_right.png</iconset>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_46"/>
                          </item>
                         </layout>
                        </item>

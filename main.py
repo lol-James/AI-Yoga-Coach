@@ -5,6 +5,7 @@ import os
 import pymysql
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import generate_chart
 from datetime import datetime, timedelta, time as dtime
 from Ui_AIYogaCoachInterface import Ui_MainWindow
 from PyQt5.QtCore import Qt, QPoint, QTimer
@@ -184,6 +185,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         # pushButton_6
         self.pushButton_6.clicked.connect(self.generate_score_plot)
+        self.chart_groups = []
+        self.chart_paths = []
+        self.current_group_index = 0
+        self.pushButton.clicked.connect(self.show_prev_group)
+        self.pushButton_2.clicked.connect(self.show_next_group)
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -581,8 +587,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def generate_score_plot(self):
         """
-        Based on comboBox_3 (mode), comboBox (posture), dateEdit/dateEdit_2 (time range),
-        generate a score-time chart, save it to record_pic/<user_id>.png, and display it on label_3.
+        Generate grouped charts (each group is a continuous block of seconds).
         """
         if not self.account.user_id:
             NotificationLabel(self, "Please login first.", success=False)
@@ -590,85 +595,28 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         mode_text = self.comboBox_3.currentText()
         posture_text = self.comboBox.currentText()
-        start_date = self.dateEdit.date().toPyDate()
-        end_date = self.dateEdit_2.date().toPyDate()
-
-        mode_val = self.MODE_MAP.get(mode_text.upper(), 0)
-        posture_id = self.POSTURE_MAP.get(posture_text)
-
-        # Ensure the date range is correct
-        start_dt = datetime.combine(start_date, dtime.min)
-        end_dt = datetime.combine(end_date, dtime.max)
 
         try:
-            with self.db.cursor() as cursor:
-                cursor.execute(
-                    "SELECT timestamp, accuracy FROM record_picture "
-                    "WHERE user_id=%s AND mode=%s AND posture_id=%s "
-                    "AND timestamp BETWEEN %s AND %s "
-                    "ORDER BY timestamp",
-                    (self.account.user_id, mode_val, posture_id, start_dt, end_dt)
-                )
-                rows = cursor.fetchall()
-
-            if not rows:
-                NotificationLabel(self, "No data found for selected filters.", success=False)
+            # fetch grouped data from DB
+            groups = generate_chart.fetch_and_group_data(
+                user_id=self.account.user_id,
+                mode_text=mode_text,
+                posture_text=posture_text,
+                db=self.db
+            )
+            if not groups:
+                NotificationLabel(self, "No data found.", success=False)
                 return
 
-            times = [r["timestamp"] for r in rows]
-            scores = [r["accuracy"] for r in rows]
+            # save charts for each group
+            self.chart_groups = groups
+            self.chart_paths = generate_chart.save_group_charts(
+                groups, self.account.user_id, posture_text, mode_text
+            )
+            self.current_group_index = 0
 
-            # Set X-axis ticks: auto-adjust based on time range
-            start_ts, end_ts = times[0], times[-1]
-            duration = (end_ts - start_ts).total_seconds()
-
-            fig, ax = plt.subplots(figsize=(8, 4))
-            ax.plot(times, scores, marker="o", linestyle="-")
-            ax.set_ylim(0, 100)
-            ax.set_xlabel("Time")
-            ax.set_ylabel("Score")
-            ax.set_title(f"{posture_text} - {mode_text}")
-            ax.grid(True)
-
-            # Adjust x-axis tick units based on range
-            if duration <= 60:  # ≤ 1 minutes
-                locator = mdates.SecondLocator(interval=1)
-                formatter = mdates.DateFormatter("%H:%M:%S")
-            elif duration <= 3600:  # ≤ 1 hour
-                locator = mdates.MinuteLocator(interval=1)
-                formatter = mdates.DateFormatter("%H:%M")
-            elif duration <= 86400:  # ≤ 1 days
-                locator = mdates.HourLocator(interval=1)
-                formatter = mdates.DateFormatter("%m-%d %H:%M")
-            elif duration <= 2678400:  # ≤ 31 days
-                locator = mdates.DayLocator(interval=1)
-                formatter = mdates.DateFormatter("%m-%d")
-            elif duration <= 31536000:  # ≤ 1 year
-                locator = mdates.MonthLocator(interval=1)
-                formatter = mdates.DateFormatter("%Y-%m")
-            else:  # > 1 year
-                locator = mdates.YearLocator()
-                formatter = mdates.DateFormatter("%Y")
-
-            ax.xaxis.set_major_locator(locator)
-            ax.xaxis.set_major_formatter(formatter)
-            fig.autofmt_xdate()
-
-            plt.tight_layout()
-
-            # Save to record_pic
-            img_dir = os.path.join(os.path.dirname(__file__), "record_pic")
-            os.makedirs(img_dir, exist_ok=True)
-            img_path = os.path.join(img_dir, f"{self.account.user_id}.png")
-            plt.savefig(img_path)
-            plt.close(fig)
-
-            # Display on label_3 (overwrite the original demo image)
-            pixmap = QPixmap(img_path)
-            self.label_3.setPixmap(pixmap)
-            self.label_3.setScaledContents(True)
-
-            NotificationLabel(self, f"Chart generated at {img_path}", success=True)
+            # display the first group
+            self.show_current_group()
 
         except Exception as e:
             print("generate_score_plot error:", e)
@@ -679,3 +627,28 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.practice_btn.setEnabled(enabled)
         self.easy_btn.setEnabled(enabled)
         self.hard_btn.setEnabled(enabled)
+    
+    def show_current_group(self):
+        """Display current group chart in label_3."""
+        if not self.chart_paths:
+            return
+        path = self.chart_paths[self.current_group_index]
+        pixmap = QPixmap(path)
+        if pixmap.isNull():
+            NotificationLabel(self, "Failed to load chart image.", success=False)
+            return
+        self.label_3.setPixmap(pixmap)
+        self.label_3.setScaledContents(True)
+        NotificationLabel(self, f"Showing group {self.current_group_index+1}/{len(self.chart_paths)}", success=True)
+
+    def show_prev_group(self):
+        if not self.chart_paths:
+            return
+        self.current_group_index = (self.current_group_index - 1) % len(self.chart_paths)
+        self.show_current_group()
+
+    def show_next_group(self):
+        if not self.chart_paths:
+            return
+        self.current_group_index = (self.current_group_index + 1) % len(self.chart_paths)
+        self.show_current_group()
