@@ -156,6 +156,9 @@ class Timer(QThread):
             self.set_time_btn.setEnabled(False)
             self.start_btn.setEnabled(False)
             self.rst_btn.setEnabled(False)
+            self.practice_btn.setEnabled(False)
+            self.easy_btn.setEnabled(False)
+            self.hard_btn.setEnabled(False)
             self.three_sec_startup = True
             self.state_reg_label.setText("Ready...")
             QTimer.singleShot(1000, lambda: self.state_reg_label.setText("3"))
@@ -195,6 +198,9 @@ class Timer(QThread):
         self.start_btn.setIcon(QIcon("icons/icons8-start-60.png"))
         self.start_btn.setIconSize(QSize(20, 20))
         self.three_sec_startup = False
+        self.practice_btn.setEnabled(False)
+        self.easy_btn.setEnabled(False)
+        self.hard_btn.setEnabled(False)
 
     def on_pose_detected(self, isUpdated: bool):
         self.pose_history.append(isUpdated)
@@ -228,6 +234,10 @@ class Timer(QThread):
         self.record = [0 for _ in range(10)]
         for index, value in enumerate(self.record):
             self.statistics_treewidget.topLevelItem(index).setText(1, str(value))
+        self.practice_btn.setEnabled(True)
+        self.easy_btn.setEnabled(True)
+        self.hard_btn.setEnabled(True)
+        self.timer_stopped_signal.emit()
 
     def skip(self, skip_flag):
         if skip_flag:

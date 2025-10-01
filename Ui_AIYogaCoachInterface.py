@@ -1972,10 +1972,39 @@ class Ui_MainWindow(object):
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout_61.addWidget(self.pushButton_2)
         self.verticalLayout_20.addLayout(self.horizontalLayout_61)
-        self.horizontalLayout_46 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_46.setObjectName("horizontalLayout_46")
-        self.verticalLayout_20.addLayout(self.horizontalLayout_46)
-        self.verticalLayout_20.setStretch(11, 1)
+        self.label_4 = QtWidgets.QLabel(self.frame_8)
+        self.label_4.setMinimumSize(QtCore.QSize(0, 30))
+        self.label_4.setStyleSheet("color: #2a4d69;    \n"
+"font-weight: bold;    \n"
+"font-size: 14px;           \n"
+"font-family: \"Microsoft JhengHei\";\n"
+"\n"
+"")
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.verticalLayout_20.addWidget(self.label_4)
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.frame_8)
+        self.plainTextEdit.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: #E6F3FF;\n"
+"    color: #000000;\n"
+"    border: 1px solid #A0A0A0; \n"
+"    border-radius: 5px;\n"
+"    padding: 5px;  \n"
+"}\n"
+"")
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.verticalLayout_20.addWidget(self.plainTextEdit)
+        self.pushButton_3 = QtWidgets.QPushButton(self.frame_8)
+        self.pushButton_3.setStyleSheet("QPushButton {\n"
+"  background-color: #A8D0E6;\n"
+"  color: white;\n"
+"  border-radius: 8px;\n"
+"  padding: 5px 12px;\n"
+"  font-weight: bold;\n"
+"}\n"
+"")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.verticalLayout_20.addWidget(self.pushButton_3)
         self.verticalLayout_38.addLayout(self.verticalLayout_20)
         self.horizontalLayout_20.addWidget(self.frame_8)
         self.horizontalLayout_20.setStretch(0, 4)
@@ -5132,7 +5161,10 @@ class Ui_MainWindow(object):
         self.label_11.setText(_translate("MainWindow", "請輸入結束日期："))
         self.pushButton_6.setText(_translate("MainWindow", "確認"))
         self.label.setText(_translate("MainWindow", "切換圖表："))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p1), _translate("MainWindow", "Page1"))
+        self.label_4.setText(_translate("MainWindow", "一鍵分享："))
+        self.plainTextEdit.setPlainText(_translate("MainWindow", "請輸入貼文內容..."))
+        self.pushButton_3.setText(_translate("MainWindow", "確認"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p1), _translate("MainWindow", "Charts"))
         self.label_16.setText(_translate("MainWindow", "XXXX模式"))
         self.label_19.setText(_translate("MainWindow", "總姿勢&額外數據"))
         self.label_17.setText(_translate("MainWindow", "總瑜伽姿勢完成次數："))
@@ -5194,7 +5226,7 @@ class Ui_MainWindow(object):
         self.label_71.setText(_translate("MainWindow", "-"))
         self.label_72.setText(_translate("MainWindow", "-"))
         self.label_51.setText(_translate("MainWindow", "-"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p2), _translate("MainWindow", "Page2"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p2), _translate("MainWindow", "Details"))
         self.send_comment_btn.setText(_translate("MainWindow", "send"))
         self.comment_time.setText(_translate("MainWindow", "2025/04/23"))
         self.comment_name.setText(_translate("MainWindow", "test"))

@@ -180,22 +180,33 @@ def generate_chart(user_id, mode_text, posture_text, start_date, end_date, db, o
     plt.close(fig)
     return out_path
 
-def fetch_and_group_data(user_id, mode_text, posture_text, db):
+def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date=None, end_date=None):
     """Fetch data from DB, merge same-second records, and split into groups by time continuity."""
     mode_val = _MODE_MAP.get(str(mode_text).upper(), 0)
     posture_id = _POSTURE_MAP.get(posture_text, None)
 
+    # prepare SQL
     query = (
         "SELECT timestamp, accuracy FROM record_picture "
         "WHERE user_id=%s AND mode=%s "
-        + ("AND posture_id=%s " if posture_id is not None else "")
-        + "ORDER BY timestamp"
     )
-    params = (user_id, mode_val) if posture_id is None else (user_id, mode_val, posture_id)
+    params = [user_id, mode_val]
+
+    if posture_id is not None:
+        query += "AND posture_id=%s "
+        params.append(posture_id)
+
+    # add date filter if provided
+    if start_date and end_date:
+        query += "AND timestamp BETWEEN %s AND %s "
+        params.append(datetime.combine(start_date, dtime.min))
+        params.append(datetime.combine(end_date, dtime.max))
+
+    query += "ORDER BY timestamp"
 
     try:
         with db.cursor() as cursor:
-            cursor.execute(query, params)
+            cursor.execute(query, tuple(params))
             rows = cursor.fetchall()
     except Exception:
         rows = []
@@ -252,13 +263,41 @@ def save_group_charts(groups, user_id, posture_text, mode_text, output_dir=None)
     os.makedirs(output_dir, exist_ok=True)
 
     paths = []
+
+    def _parse_to_dt(ts):
+        """Convert timestamp (datetime or str) to naive datetime (local time)."""
+        if ts is None:
+            return None
+        if isinstance(ts, str):
+            # Try ISO format first
+            try:
+                return datetime.fromisoformat(ts)
+            except Exception:
+                # Fallback: common MySQL DATETIME format
+                try:
+                    return datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
+                except Exception:
+                    return None
+        # If it's already datetime, drop tzinfo to keep it local naive
+        try:
+            return ts.replace(tzinfo=None)
+        except Exception:
+            return ts
+
     for idx, group in enumerate(groups):
+        # x: seconds from 1..N, y: scores
         times = list(range(1, len(group) + 1))
         scores = [acc for _, acc in group]
 
-        start_time = group[0][0]
-        end_time = group[-1][0]
-        time_range = f"{start_time.strftime('%Y-%m-%d %H:%M:%S')} - {end_time.strftime('%Y-%m-%d %H:%M:%S')}"
+        # normalize start/end times
+        start_time = _parse_to_dt(group[0][0])
+        end_time = _parse_to_dt(group[-1][0])
+
+        # build full start-end range string
+        if start_time is None or end_time is None:
+            time_range = "Unknown time"
+        else:
+            time_range = f"{start_time.strftime('%Y-%m-%d %H:%M:%S')} - {end_time.strftime('%Y-%m-%d %H:%M:%S')}"
 
         fig, ax = plt.subplots(figsize=(8, 4))
         ax.plot(times, scores, marker="o", linestyle="-", linewidth=1)
@@ -285,9 +324,3 @@ def save_group_charts(groups, user_id, posture_text, mode_text, output_dir=None)
         plt.close(fig)
         paths.append(path)
     return paths
-
-def get_chart_path(user_id, group_index, total_groups, output_dir=None):
-    """Return the file path of the chart for the given group index (1-based)."""
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), "record_pic")
-    return os.path.join(output_dir, f"{user_id}_group{group_index}.png")

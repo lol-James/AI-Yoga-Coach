@@ -182,14 +182,24 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Warrior 2": 8,
             "Warrior 3": 9,
         }
+        # Set default start and end date to today
+        today = datetime.today().date()
+        self.dateEdit.setDate(today)
+        self.dateEdit_2.setDate(today)
 
-        # pushButton_6
+        # chart_button
         self.pushButton_6.clicked.connect(self.generate_score_plot)
         self.chart_groups = []
         self.chart_paths = []
         self.current_group_index = 0
         self.pushButton.clicked.connect(self.show_prev_group)
         self.pushButton_2.clicked.connect(self.show_next_group)
+        # PlainTextEdit placeholder
+        self.plainTextEdit.setPlaceholderText("請輸入貼文內容...")
+        # Share post button
+        self.pushButton_3.clicked.connect(self.on_share_post_clicked)
+        # Reset input on login/logout
+        self.account.user_id_signal.connect(self.reset_share_input)
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -593,6 +603,15 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             NotificationLabel(self, "Please login first.", success=False)
             return
 
+        # Get start and end date from UI
+        start_date = self.dateEdit.date().toPyDate()
+        end_date = self.dateEdit_2.date().toPyDate()
+
+        # Check if start > end
+        if start_date > end_date:
+            QMessageBox.warning(self, "Invalid Date Range", "起始日期必須小於或等於結束日期。")
+            return
+
         mode_text = self.comboBox_3.currentText()
         posture_text = self.comboBox.currentText()
 
@@ -602,7 +621,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 user_id=self.account.user_id,
                 mode_text=mode_text,
                 posture_text=posture_text,
-                db=self.db
+                db=self.db,
+                start_date=start_date,
+                end_date=end_date
             )
             if not groups:
                 NotificationLabel(self, "No data found.", success=False)
@@ -652,3 +673,49 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             return
         self.current_group_index = (self.current_group_index + 1) % len(self.chart_paths)
         self.show_current_group()
+
+    def on_share_post_clicked(self):
+        """Save post text and chart to database when share button is clicked."""
+        user_id = self.account.user_id
+        if not user_id:
+            NotificationLabel(self, "Please login first.", success=False)
+            return
+
+        share_text = self.plainTextEdit.toPlainText().strip()
+        if not share_text:
+            NotificationLabel(self, "Post text cannot be empty.", success=False)
+            return
+
+        # Use current chart image filename if available
+        if self.chart_paths and 0 <= self.current_group_index < len(self.chart_paths):
+            chart_path = self.chart_paths[self.current_group_index]
+            # Convert to relative path for DB (e.g. "post_images\xxx.png")
+            chart_rel_path = os.path.relpath(chart_path).replace("/", "\\")
+        else:
+            chart_rel_path = None
+
+        try:
+            with self.db.cursor() as cursor:
+                cursor.execute(
+                    """
+                    INSERT INTO share_page (user_id, share_date, share_text, share_content)
+                    VALUES (%s, CURDATE(), %s, %s)
+                    """,
+                    (user_id, share_text, chart_rel_path)
+                )
+            self.db.commit()
+
+            self.post_dialog.load_posts()
+            
+            NotificationLabel(self, "Post shared successfully.", success=True)
+            self.plainTextEdit.clear()
+            self.plainTextEdit.setPlaceholderText("請輸入貼文內容...")
+        except Exception as e:
+            print("on_share_post_clicked DB error:", e)
+            NotificationLabel(self, "Database error.", success=False)
+
+
+    def reset_share_input(self, user_id):
+        """Clear PlainTextEdit when user logs in or out."""
+        self.plainTextEdit.clear()
+        self.plainTextEdit.setPlaceholderText("請輸入貼文內容...")

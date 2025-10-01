@@ -3504,7 +3504,7 @@ QTabBar::tab:hover {
                 </property>
                 <widget class="QWidget" name="p1">
                  <attribute name="title">
-                  <string>Page1</string>
+                  <string>Charts</string>
                  </attribute>
                  <layout class="QVBoxLayout" name="verticalLayout_32">
                   <item>
@@ -3560,7 +3560,7 @@ QTabBar::tab:hover {
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_38">
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0,0,0,0,0,0,0,0,0,1">
+                        <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
                          <property name="spacing">
                           <number>10</number>
                          </property>
@@ -3963,7 +3963,62 @@ QPushButton:pressed {
                           </layout>
                          </item>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_46"/>
+                          <widget class="QLabel" name="label_4">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: #2a4d69;    
+font-weight: bold;    
+font-size: 14px;           
+font-family: &quot;Microsoft JhengHei&quot;;
+
+</string>
+                           </property>
+                           <property name="text">
+                            <string>一鍵分享：</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPlainTextEdit" name="plainTextEdit">
+                           <property name="styleSheet">
+                            <string notr="true">QPlainTextEdit {
+    background-color: #E6F3FF;
+    color: #000000;
+    border: 1px solid #A0A0A0; 
+    border-radius: 5px;
+    padding: 5px;  
+}
+</string>
+                           </property>
+                           <property name="plainText">
+                            <string>請輸入貼文內容...</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="pushButton_3">
+                           <property name="styleSheet">
+                            <string notr="true">QPushButton {
+  background-color: #A8D0E6;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-weight: bold;
+}
+</string>
+                           </property>
+                           <property name="text">
+                            <string>確認</string>
+                           </property>
+                          </widget>
                          </item>
                         </layout>
                        </item>
@@ -3976,7 +4031,7 @@ QPushButton:pressed {
                 </widget>
                 <widget class="QWidget" name="p2">
                  <attribute name="title">
-                  <string>Page2</string>
+                  <string>Details</string>
                  </attribute>
                  <layout class="QVBoxLayout" name="verticalLayout_39" stretch="0,1">
                   <item>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-09-05 13:16:27
--- 伺服器版本： 10.4.32-MariaDB
--- PHP 版本： 8.2.12
+-- 產生時間： 
+-- 伺服器版本： 10.1.38-MariaDB
+-- PHP 版本： 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,7 +32,7 @@ CREATE TABLE `comment_dislike` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `comment_dislike`
@@ -50,7 +51,7 @@ CREATE TABLE `comment_like` (
   `id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `comment_like`
@@ -71,9 +72,9 @@ CREATE TABLE `comment_page` (
   `comment_user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `comment_date` date NOT NULL,
-  `comment_text` text NOT NULL,
-  `comment_like` int(11) DEFAULT 0,
-  `comment_dislike` int(11) DEFAULT 0
+  `comment_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `comment_like` int(11) DEFAULT '0',
+  `comment_dislike` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -130,7 +131,7 @@ CREATE TABLE `favorite_songs` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `song_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `favorite_songs`
@@ -152,7 +153,7 @@ CREATE TABLE `post_like` (
   `id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `post_like`
@@ -168,41 +169,57 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`) VALUES
 --
 
 CREATE TABLE `record_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `mode` int(11) NOT NULL, -- 0=Practice, 1=Easy, 2=Hard
-  `total_posture_count` int(11) DEFAULT 0,
-  `daily_max_app_opens` int(11) DEFAULT 0,
-  `max_daily_usage_hours` float DEFAULT 0,
-  `min_daily_usage_hours` float DEFAULT 0,
-  `longest_streak_days` int(11) DEFAULT 0,
-  `total_usage_hours` float DEFAULT 0,         
+  `mode` int(11) NOT NULL,
+  `total_posture_count` int(11) DEFAULT '0',
+  `daily_max_app_opens` int(11) DEFAULT '0',
+  `max_daily_usage_hours` float DEFAULT '0',
+  `min_daily_usage_hours` float DEFAULT '0',
+  `longest_streak_days` int(11) DEFAULT '0',
+  `total_usage_hours` float DEFAULT '0',
   `posture_id` int(11) DEFAULT NULL,
-  `posture_name` text DEFAULT NULL,
-  `total_completed` int(11) DEFAULT 0,
+  `posture_name` text COLLATE utf8_unicode_ci,
+  `total_completed` int(11) DEFAULT '0',
   `max_accuracy` float DEFAULT NULL,
-  `min_accuracy` float DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
+  `min_accuracy` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- 資料表結構 `record_session`
+-- 傾印資料表的資料 `record_detail`
 --
 
-CREATE TABLE `record_session` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
-  `session_id` VARCHAR(64) NOT NULL,
-  `start_time` DATETIME NOT NULL,
-  `end_time` DATETIME DEFAULT NULL,
-  `mode` INT DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `session_id` (`session_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `record_detail` (`id`, `user_id`, `mode`, `total_posture_count`, `daily_max_app_opens`, `max_daily_usage_hours`, `min_daily_usage_hours`, `longest_streak_days`, `total_usage_hours`, `posture_id`, `posture_name`, `total_completed`, `max_accuracy`, `min_accuracy`) VALUES
+(1, 17, 0, 6, 0, 0, 0, 0, 0, 0, 'Bridge Pose', 6, 99.92, 94.18),
+(2, 17, 0, 6, 0, 0, 0, 0, 0, 1, 'Chair Pose', 0, NULL, NULL),
+(3, 17, 0, 6, 0, 0, 0, 0, 0, 2, 'Downward Facing Dog', 0, NULL, NULL),
+(4, 17, 0, 6, 0, 0, 0, 0, 0, 3, 'Locust Pose', 0, NULL, NULL),
+(5, 17, 0, 6, 0, 0, 0, 0, 0, 4, 'Plank Pose', 0, NULL, NULL),
+(6, 17, 0, 6, 0, 0, 0, 0, 0, 5, 'Staff Pose', 0, NULL, NULL),
+(7, 17, 0, 6, 0, 0, 0, 0, 0, 6, 'Triangle Pose', 0, NULL, NULL),
+(8, 17, 0, 6, 0, 0, 0, 0, 0, 7, 'Warrior 1', 0, NULL, NULL),
+(9, 17, 0, 6, 0, 0, 0, 0, 0, 8, 'Warrior 2', 0, NULL, NULL),
+(10, 17, 0, 6, 0, 0, 0, 0, 0, 9, 'Warrior 3', 0, NULL, NULL),
+(11, 17, 1, 0, 0, 0, 0, 0, 0, 0, 'Bridge Pose', 0, NULL, NULL),
+(12, 17, 1, 0, 0, 0, 0, 0, 0, 1, 'Chair Pose', 0, NULL, NULL),
+(13, 17, 1, 0, 0, 0, 0, 0, 0, 2, 'Downward Facing Dog', 0, NULL, NULL),
+(14, 17, 1, 0, 0, 0, 0, 0, 0, 3, 'Locust Pose', 0, NULL, NULL),
+(15, 17, 1, 0, 0, 0, 0, 0, 0, 4, 'Plank Pose', 0, NULL, NULL),
+(16, 17, 1, 0, 0, 0, 0, 0, 0, 5, 'Staff Pose', 0, NULL, NULL),
+(17, 17, 1, 0, 0, 0, 0, 0, 0, 6, 'Triangle Pose', 0, NULL, NULL),
+(18, 17, 1, 0, 0, 0, 0, 0, 0, 7, 'Warrior 1', 0, NULL, NULL),
+(19, 17, 1, 0, 0, 0, 0, 0, 0, 8, 'Warrior 2', 0, NULL, NULL),
+(20, 17, 1, 0, 0, 0, 0, 0, 0, 9, 'Warrior 3', 0, NULL, NULL),
+(21, 17, 2, 0, 0, 0, 0, 0, 0, 0, 'Bridge Pose', 0, NULL, NULL),
+(22, 17, 2, 0, 0, 0, 0, 0, 0, 1, 'Chair Pose', 0, NULL, NULL),
+(23, 17, 2, 0, 0, 0, 0, 0, 0, 2, 'Downward Facing Dog', 0, NULL, NULL),
+(24, 17, 2, 0, 0, 0, 0, 0, 0, 3, 'Locust Pose', 0, NULL, NULL),
+(25, 17, 2, 0, 0, 0, 0, 0, 0, 4, 'Plank Pose', 0, NULL, NULL),
+(26, 17, 2, 0, 0, 0, 0, 0, 0, 5, 'Staff Pose', 0, NULL, NULL),
+(27, 17, 2, 0, 0, 0, 0, 0, 0, 6, 'Triangle Pose', 0, NULL, NULL),
+(28, 17, 2, 0, 0, 0, 0, 0, 0, 7, 'Warrior 1', 0, NULL, NULL),
+(29, 17, 2, 0, 0, 0, 0, 0, 0, 8, 'Warrior 2', 0, NULL, NULL),
+(30, 17, 2, 0, 0, 0, 0, 0, 0, 9, 'Warrior 3', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -217,8 +234,151 @@ CREATE TABLE `record_picture` (
   `mode` int(11) DEFAULT NULL,
   `posture_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `session_id` text DEFAULT NULL
+  `session_id` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 傾印資料表的資料 `record_picture`
+--
+
+INSERT INTO `record_picture` (`id`, `timestamp`, `accuracy`, `mode`, `posture_id`, `user_id`, `session_id`) VALUES
+(0, '2025-09-30 16:08:13', 99.28, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:13', 99.04, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:14', 98.94, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:14', 98.87, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:15', 98.69, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:15', 98.52, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:16', 98.48, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:16', 98.82, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:17', 98.93, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:17', 99.04, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:18', 98.5, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:08:18', 98.61, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:06', 99.01, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:07', 99, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:07', 99.07, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:08', 98.78, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:08', 98.36, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:09', 99.07, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:09', 98.92, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:10', 98.75, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:10', 98.71, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:11', 98.56, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:11', 98.7, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:10:12', 98.7, 0, 0, 17, '1759219667.391654'),
+(0, '2025-09-30 16:16:17', 99.15, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:18', 98.73, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:18', 98.93, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:19', 99.17, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:19', 98.83, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:20', 99.02, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:20', 98.67, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:21', 98.76, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:21', 98.91, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:22', 98.8, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:22', 98.72, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:16:23', 98.8, 0, 0, 17, '1759220159.007322'),
+(0, '2025-09-30 16:57:01', 99.92, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:02', 99.45, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:02', 99.46, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:03', 98.75, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:03', 99.35, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:04', 98.78, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:04', 99.09, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:05', 98.6, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:05', 98.21, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:06', 94.18, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:06', 97.98, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 16:57:07', 99.11, 0, 0, 17, '1759222557.427433'),
+(0, '2025-09-30 17:07:24', 98.89, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:25', 98.88, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:25', 98.92, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:26', 99.06, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:26', 98.96, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:27', 98.94, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:27', 98.75, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:28', 98.78, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:28', 98.61, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:29', 98.6, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:29', 98.8, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:07:30', 98.8, 0, 0, 17, '1759223183.633535'),
+(0, '2025-09-30 17:32:01', 99.02, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:01', 98.89, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:02', 98.81, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:02', 98.81, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:03', 98.99, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:03', 98.2, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:04', 98.57, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:04', 98.42, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:05', 98.82, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:05', 98.99, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:06', 98.97, 0, 0, 17, '1759224654.686609'),
+(0, '2025-09-30 17:32:06', 98.69, 0, 0, 17, '1759224654.686609');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `record_session`
+--
+
+CREATE TABLE `record_session` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `session_id` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `mode` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 傾印資料表的資料 `record_session`
+--
+
+INSERT INTO `record_session` (`id`, `user_id`, `session_id`, `start_time`, `end_time`, `mode`) VALUES
+(1, 17, '1758968300.782232', '2025-09-27 18:18:20', '2025-09-27 18:20:02', 0),
+(2, 17, '1758968402.013119', '2025-09-27 18:20:02', '2025-09-27 18:20:33', 0),
+(3, 17, '1758968433.919593', '2025-09-27 18:20:33', '2025-09-27 18:20:51', 0),
+(4, 17, '1758968712.554851', '2025-09-27 18:25:12', '2025-09-27 18:25:21', 0),
+(5, 17, '1758968861.96385', '2025-09-27 18:27:41', '2025-09-27 18:28:33', 0),
+(6, 17, '1758968913.915077', '2025-09-27 18:28:33', '2025-09-27 18:28:48', 0),
+(7, 17, '1758968928.422343', '2025-09-27 18:28:48', '2025-09-27 18:29:20', 0),
+(8, 17, '1758970859.876487', '2025-09-27 19:00:59', '2025-09-27 19:20:00', 0),
+(9, 17, '1758972000.515102', '2025-09-27 19:20:00', '2025-09-27 19:23:34', 0),
+(10, 17, '1758972214.408012', '2025-09-27 19:23:34', '2025-09-27 19:28:37', 0),
+(11, 17, '1758972517.071974', '2025-09-27 19:28:37', '2025-09-27 19:30:59', 0),
+(12, 17, '1758972688.601244', '2025-09-27 19:31:28', '2025-09-27 19:31:38', 0),
+(13, 17, '1758989466.971978', '2025-09-28 00:11:06', '2025-09-28 00:11:14', 0),
+(14, 17, '1758990572.491185', '2025-09-28 00:29:32', '2025-09-28 00:30:17', 0),
+(15, 17, '1758990743.318297', '2025-09-28 00:32:23', '2025-09-28 00:37:48', 0),
+(16, 17, '1758991068.886329', '2025-09-28 00:37:48', '2025-09-28 00:40:15', 0),
+(17, 17, '1759217191.171869', '2025-09-30 15:26:31', '2025-09-30 15:30:32', 0),
+(18, 17, '1759217878.894717', '2025-09-30 15:37:58', '2025-09-30 15:38:51', 0),
+(19, 17, '1759219667.391654', '2025-09-30 16:07:47', '2025-09-30 16:11:05', 0),
+(20, 17, '1759220159.007322', '2025-09-30 16:15:59', '2025-09-30 16:19:20', 0),
+(21, 17, '1759220647.629164', '2025-09-30 16:24:07', '2025-09-30 16:46:30', 0),
+(22, 17, '1759222292.316259', '2025-09-30 16:51:32', '2025-09-30 16:55:57', 0),
+(23, 17, '1759222557.427433', '2025-09-30 16:55:57', '2025-09-30 16:57:47', 0),
+(24, 17, '1759222844.048354', '2025-09-30 17:00:44', '2025-09-30 17:04:12', 0),
+(25, 17, '1759223081.317457', '2025-09-30 17:04:41', '2025-09-30 17:05:45', 0),
+(26, 17, '1759223145.39338', '2025-09-30 17:05:45', '2025-09-30 17:05:51', 0),
+(27, 17, '1759223183.633535', '2025-09-30 17:06:23', '2025-09-30 17:07:57', 0),
+(28, 17, '1759223277.358961', '2025-09-30 17:07:57', '2025-09-30 17:08:07', 0),
+(29, 17, '1759223619.766896', '2025-09-30 17:13:39', '2025-09-30 17:13:44', 0),
+(30, 17, '1759223947.400987', '2025-09-30 17:19:07', '2025-09-30 17:29:05', 0),
+(31, 17, '1759224545.763633', '2025-09-30 17:29:05', '2025-09-30 17:30:54', 0),
+(32, 17, '1759224654.686609', '2025-09-30 17:30:54', '2025-09-30 17:32:35', 0),
+(33, 17, '1759224755.667126', '2025-09-30 17:32:35', '2025-09-30 17:33:26', 0),
+(34, 17, '1759225377.980389', '2025-09-30 17:42:57', '2025-09-30 17:43:01', 0),
+(35, 17, '1759320712.521954', '2025-10-01 20:11:52', '2025-10-01 20:16:56', 0),
+(36, 17, '1759321946.486569', '2025-10-01 20:32:26', '2025-10-01 20:37:17', 0),
+(37, 17, '1759323028.060473', '2025-10-01 20:50:28', '2025-10-01 21:05:15', 0),
+(38, 17, '1759323915.510354', '2025-10-01 21:05:15', '2025-10-01 21:07:05', 0),
+(39, 17, '1759324397.206714', '2025-10-01 21:13:17', '2025-10-01 21:13:55', 0),
+(40, 17, '1759324489.696055', '2025-10-01 21:14:49', '2025-10-01 21:17:01', 0),
+(41, 17, '1759324854.594987', '2025-10-01 21:20:54', '2025-10-01 21:25:47', 0),
+(42, 17, '1759326541.012724', '2025-10-01 21:49:01', '2025-10-01 21:49:14', 0),
+(43, 17, '1759326834.361859', '2025-10-01 21:53:54', '2025-10-01 22:01:29', 0),
+(44, 17, '1759327289.886363', '2025-10-01 22:01:29', '2025-10-01 22:02:18', 0);
 
 -- --------------------------------------------------------
 
@@ -230,9 +390,9 @@ CREATE TABLE `share_page` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `share_date` date NOT NULL,
-  `share_text` text DEFAULT NULL,
-  `share_content` varchar(255) DEFAULT NULL,
-  `share_like` int(11) DEFAULT 0
+  `share_text` text COLLATE utf8_unicode_ci,
+  `share_content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `share_like` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -265,7 +425,9 @@ INSERT INTO `share_page` (`id`, `user_id`, `share_date`, `share_text`, `share_co
 (32, 1, '2025-09-05', '1321', NULL, 0),
 (33, 1, '2025-09-05', '', 'post_images\\chair_002.jpg', 0),
 (34, 17, '2025-09-05', 'awdawd', NULL, 2),
-(35, 17, '2025-09-05', 'wdawdawd', NULL, 1);
+(35, 17, '2025-09-05', 'wdawdawd', NULL, 1),
+(36, 17, '2025-10-01', '測試123456789', 'record_pic\\17_group1.png', 0),
+(37, 17, '2025-10-01', '第二次測試23456789', 'record_pic\\17_group3.png', 0);
 
 -- --------------------------------------------------------
 
@@ -275,8 +437,8 @@ INSERT INTO `share_page` (`id`, `user_id`, `share_date`, `share_text`, `share_co
 
 CREATE TABLE `songs` (
   `song_id` int(11) NOT NULL,
-  `song_name` varchar(255) NOT NULL,
-  `song_path` varchar(255) NOT NULL
+  `song_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `song_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -305,13 +467,13 @@ INSERT INTO `songs` (`song_id`, `song_name`, `song_path`) VALUES
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `user_account` varchar(50) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
-  `user_picture` varchar(255) DEFAULT NULL,
+  `user_account` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `user_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user_picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `gender` enum('Male','Female','Non binary','Prefer not to say') DEFAULT NULL,
+  `gender` enum('Male','Female','Non binary','Prefer not to say') COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -381,11 +543,12 @@ ALTER TABLE `record_detail`
   ADD KEY `user_id` (`user_id`);
 
 --
--- 資料表索引 `record_picture`
+-- 資料表索引 `record_session`
 --
-ALTER TABLE `record_picture`
+ALTER TABLE `record_session`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `session_id` (`session_id`);
 
 --
 -- 資料表索引 `share_page`
@@ -409,94 +572,82 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+-- 在傾印的資料表使用自動增長(AUTO_INCREMENT)
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `comment_dislike`
+-- 使用資料表自動增長(AUTO_INCREMENT) `comment_dislike`
 --
 ALTER TABLE `comment_dislike`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `comment_like`
+-- 使用資料表自動增長(AUTO_INCREMENT) `comment_like`
 --
 ALTER TABLE `comment_like`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `comment_page`
+-- 使用資料表自動增長(AUTO_INCREMENT) `comment_page`
 --
 ALTER TABLE `comment_page`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `favorite_songs`
+-- 使用資料表自動增長(AUTO_INCREMENT) `favorite_songs`
 --
 ALTER TABLE `favorite_songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `post_like`
+-- 使用資料表自動增長(AUTO_INCREMENT) `post_like`
 --
 ALTER TABLE `post_like`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `record_detail`
+-- 使用資料表自動增長(AUTO_INCREMENT) `record_detail`
 --
 ALTER TABLE `record_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `record_picture`
+-- 使用資料表自動增長(AUTO_INCREMENT) `record_session`
 --
-ALTER TABLE `record_picture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `record_session`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_page`
+-- 使用資料表自動增長(AUTO_INCREMENT) `share_page`
 --
 ALTER TABLE `share_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `songs`
+-- 使用資料表自動增長(AUTO_INCREMENT) `songs`
 --
 ALTER TABLE `songs`
   MODIFY `song_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `users`
+-- 使用資料表自動增長(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- 已傾印資料表的限制式
+-- 已傾印資料表的限制(constraint)
 --
 
 --
--- 資料表的限制式 `comment_page`
+-- 資料表的限制(constraint) `comment_page`
 --
 ALTER TABLE `comment_page`
   ADD CONSTRAINT `comment_page_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `share_page` (`id`),
   ADD CONSTRAINT `comment_page_ibfk_2` FOREIGN KEY (`comment_user_id`) REFERENCES `users` (`user_id`);
 
 --
--- 資料表的限制式 `record_detail`
---
-ALTER TABLE `record_detail`
-  ADD CONSTRAINT `record_detail_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- 資料表的限制式 `record_picture`
---
-ALTER TABLE `record_picture`
-  ADD CONSTRAINT `record_picture_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- 資料表的限制式 `share_page`
+-- 資料表的限制(constraint) `share_page`
 --
 ALTER TABLE `share_page`
   ADD CONSTRAINT `share_page_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
