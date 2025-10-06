@@ -23,6 +23,7 @@ from account import Account
 from yoga_pose_calculate import evaluate_and_display_pose
 from postdialog import PostDialog
 from pose_thresholds import is_pose_score_valid
+from pose_thresholds import display_standard_score
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -66,7 +67,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.addShareicon.setCheckable(True)
         self.share_comment_btn.setCheckable(True)
         self.share_cancel_btn.setCheckable(True)
-        self.widget_6.hide()
+        self.frame_12.hide()
         self.share_comment_frame.hide()
         self.addShareicon.clicked.connect(self.show_share_page_widget)
         self.share_comment_btn.clicked.connect(self.toggle_share_comment_widget)
@@ -283,7 +284,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             
     def show_share_page_widget(self):
             if self.addShareicon.isChecked():
-                    self.widget_6.show()
+                    self.frame_12.show()
     
     def toggle_share_comment_widget(self):
         if self.share_comment_frame.isVisible():
@@ -293,7 +294,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def hide_share_page_widget(self):
             if self.share_cancel_btn.isChecked():
-                    self.widget_6.hide()
+                    self.frame_12.hide()
+                    self.post_dialog.reset_post_fields()
     
     def load_demo_image(self):
         self.image_dir = r"YOLO\demo_images"
@@ -416,11 +418,15 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         detected = False   # whether a valid pose score was produced (keep timer running)
         updated = False    # whether historical stats need updating (max/min accuracy)
+        
 
         if avg and avg > 0:
             detected = True  # pose successfully detected and scored
 
             mode = self.countdown_timer.mode  # "Practice", "Easy", or "Hard"
+
+            # Display the standard threshold score for the current pose and mode
+            display_standard_score(self.standard_score, detected_pose_name, mode)
 
             # Save the per-second score into record_picture
             try:

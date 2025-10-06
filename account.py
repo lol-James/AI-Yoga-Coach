@@ -352,6 +352,8 @@ class Account(QObject):
                 self.ui.account_status_label.setText("Guest")
                 self.ui.stackedWidget.setCurrentIndex(6)
                 self.login_ui.show()
+                self.ui.share_comment_frame.hide()
+                self.ui.frame_12.hide()
                 NotificationLabel(self.ui, "Logout success.", success=True, duration=3000)
         else:
             self.ui.stackedWidget.setCurrentIndex(6)

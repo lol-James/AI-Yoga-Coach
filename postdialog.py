@@ -19,7 +19,7 @@ class PostDialog:
         self.ui.pushButton_10.clicked.connect(self.submit_post)
 
         self.ui.label_5.setAlignment(Qt.AlignCenter)
-        self.ui.label_5.setText("請點擊左側附加檔案選擇圖片")
+        self.ui.label_5.setText("請點擊左側按鈕選擇圖片")
 
         self.current_comment_post_id = None  
         self.comment_layout = self.ui.scrollArea_2.findChild(QVBoxLayout, "verticalLayout_25")
@@ -72,7 +72,7 @@ class PostDialog:
             print("發送貼文的 user_id：", self.user_id)
             self.ui.textEdit_2.clear()
             self.ui.label_5.clear()
-            self.ui.label_5.setText("請點擊左側附加檔案選擇圖片")
+            self.ui.label_5.setText("請點擊左側按鈕選擇圖片")
             self.selected_image_path = None
             self.load_posts()
             self.ui.scrollArea.verticalScrollBar().setValue(0)
@@ -308,3 +308,16 @@ class PostDialog:
     def update_user_id(self, new_user_id):
         self.user_id = new_user_id
         print("PostDialog updated user_id:", self.user_id)
+
+    def reset_post_fields(self):
+        if hasattr(self, "selected_image_path") and self.selected_image_path:
+            if os.path.exists(self.selected_image_path):
+                try:
+                    os.remove(self.selected_image_path)
+                    print(f"Deleted image: {self.selected_image_path}")
+                except Exception as e:
+                    print(f"Failed to delete image: {e}")
+        self.selected_image_path = None
+        self.ui.label_5.clear()
+        self.ui.label_5.setText("點擊左側按鈕選擇圖片")
+        self.ui.textEdit_2.clear()
