@@ -664,6 +664,7 @@ class Ui_MainWindow(object):
         self.standard_score.setFont(font)
         self.standard_score.setStyleSheet("")
         self.standard_score.setText("")
+        self.standard_score.setWordWrap(True)
         self.standard_score.setObjectName("standard_score")
         self.horizontalLayout_46.addWidget(self.standard_score)
         self.verticalLayout_9.addLayout(self.horizontalLayout_46)

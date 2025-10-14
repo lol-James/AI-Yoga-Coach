@@ -30,9 +30,37 @@ def is_pose_score_valid(pose_index, avg_score, mode):
     return False
 # Displays the standard score of the current posture in this mode
 def display_standard_score(label_widget, pose_name, mode):
-    pose_key = pose_name.lower().replace("_pose", "").replace("_", " ")
-    if pose_key in POSE_THRESHOLDS and mode in POSE_THRESHOLDS[pose_key]:
-        standard = POSE_THRESHOLDS[pose_key][mode]
-        label_widget.setText(f"{pose_name.capitalize()} ({mode}) : {standard}")
+    pose_key = (pose_name.lower()
+                .replace("_pose", "")
+                .replace("-", "_")
+                .replace(" ", ""))
+
+    #針對三個warrior指向pose_name的key進行例外處理
+    if "warrior" in pose_key:
+        pose_key = pose_key.replace("_", "")
+        pose_key = (pose_key
+                    .replace("warrioriii", "warrior3")
+                    .replace("warriorii", "warrior2")
+                    .replace("warriori", "warrior1"))
+
+    raw_name = pose_name.replace("_", " ").replace("-", " ")
+    if "warrior" in raw_name.lower():
+        if "iii" in raw_name.lower():
+            display_name = "Warrior 3"
+        elif "ii" in raw_name.lower():
+            display_name = "Warrior 2"
+        elif "i" in raw_name.lower():
+            display_name = "Warrior 1"
+        else:
+            display_name = "Warrior"
+    else:
+        display_name = raw_name.title()
+
+    mode_key = mode.capitalize().strip()
+
+    if pose_key in POSE_THRESHOLDS and mode_key in POSE_THRESHOLDS[pose_key]:
+        standard = POSE_THRESHOLDS[pose_key][mode_key]
+        label_widget.setText(f"{display_name} ({mode_key}) : {standard}")
     else:
         label_widget.setText("Undefined pose or mode")
+
