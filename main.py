@@ -20,7 +20,7 @@ from countdownTimer import Timer
 from record_logger import RecordLogger
 from user_info import User_Info
 from account import Account
-from yoga_pose_calculate import evaluate_and_display_pose
+from yoga_pose_calculate import PoseCalculate
 from postdialog import PostDialog
 from pose_thresholds import is_pose_score_valid
 from pose_thresholds import display_standard_score
@@ -145,6 +145,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.countdown_timer.timer_stopped_signal.connect(lambda: self.toggle_mode_buttons(True))
 
         # calculate score and display
+        self.pose_calculator = PoseCalculate()
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
@@ -169,6 +170,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "EASY": 1,
             "HARD": 2,
         }
+        
 
         # Corresponds to record_picture.posture_id, order must match pose_names (index 0..9)
         self.POSTURE_MAP = {
@@ -374,7 +376,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             db = pymysql.connect(
                 host='127.0.0.1',
                 user='root',
-                password='root123456',
+                password='',
                 database='yoga_coach_database',
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor
@@ -410,7 +412,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             return
 
         # Evaluate pose and get average score
-        avg = evaluate_and_display_pose(
+        avg = self.pose_calculator.evaluate_pose(
             self.detector.frame,
             self.current_pose_index,
             self.pose_reg_label

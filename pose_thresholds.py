@@ -1,4 +1,4 @@
-from yoga_pose_calculate import INDEX_TO_KEY
+from yoga_pose_calculate import PoseCalculate
 
 # Threshold scores for each yoga pose
 POSE_THRESHOLDS = {
@@ -17,7 +17,7 @@ POSE_THRESHOLDS = {
 def is_pose_score_valid(pose_index, avg_score, mode):
     # Determine whether the current score meets the mode requirements
     
-    pose_key = INDEX_TO_KEY.get(pose_index)
+    pose_key = PoseCalculate.INDEX_TO_KEY.get(pose_index)
     if pose_key is None or avg_score <= 0:
         return False
 
