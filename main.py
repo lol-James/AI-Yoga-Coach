@@ -149,7 +149,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
-        self.pose_score_timer.start(500)  
+        self.pose_score_timer.start(1000)  
 
         self.pose_name_map = {
             "Bridge Pose": "Bridge_Pose",
@@ -171,7 +171,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "HARD": 2,
         }
         
-
         # Corresponds to record_picture.posture_id, order must match pose_names (index 0..9)
         self.POSTURE_MAP = {
             "Bridge Pose": 0,
@@ -203,6 +202,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.pushButton_3.clicked.connect(self.on_share_post_clicked)
         # Reset input on login/logout
         self.account.user_id_signal.connect(self.reset_share_input)
+        # Reset chart and date fields on logout
+        self.account.user_id_signal.connect(self.reset_chart_and_dates)
+        # reset button click
+        self.rst_btn.clicked.connect(self.on_reset_clicked)
     
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -376,7 +379,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             db = pymysql.connect(
                 host='127.0.0.1',
                 user='root',
-                password='',
+                password='root123456',
                 database='yoga_coach_database',
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor
@@ -390,7 +393,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.current_pose_index = pose_index
 
     def perform_pose_scoring(self):
-        # If any of the required preconditions is not met, inform the timer that no pose is detected.
+        """Perform pose detection, scoring, and save results with countdown and timestamp."""
+
+        # If any preconditions are not met, notify timer that no pose is detected
         if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) \
             or not self.countdown_timer.camera_is_running or self.state_reg_label.text() != "Exercise" \
             or self.detector.frame is None:
@@ -406,7 +411,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         selected_pose_name = self.pose_name_map.get(selected_display_name)
         detected_pose_name = self.detector.pose_names[self.current_pose_index]
 
-        # If the displayed demo pose does not match the detected pose, treat as no pose.
+        # If the displayed demo pose does not match the detected pose, treat as no pose
         if selected_pose_name is None or detected_pose_name != selected_pose_name:
             self.countdown_timer.on_pose_detected(False)
             return
@@ -418,36 +423,64 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.pose_reg_label
         )
 
-        detected = False   # whether a valid pose score was produced (keep timer running)
-        updated = False    # whether historical stats need updating (max/min accuracy)
-        
+        detected = False   # Whether a valid pose score was produced
+        updated = False    # Whether historical stats should be updated
 
         if avg and avg > 0:
-            detected = True  # pose successfully detected and scored
+            detected = True  # Pose successfully detected and scored
 
             mode = self.countdown_timer.mode  # "Practice", "Easy", or "Hard"
 
             # Display the standard threshold score for the current pose and mode
             display_standard_score(self.standard_score, detected_pose_name, mode)
 
-            # Save the per-second score into record_picture
+            # --- NEW: Save the per-second score into record_picture with countdown and timestamp ---
+            from datetime import datetime
             try:
+                # Read current countdown value from QLCDNumber (supports "mm:ss" format)
+                try:
+                    # Try to get the text displayed on the LCD
+                    lcd_text = self.timer_lcdnumber.value() if hasattr(self.timer_lcdnumber, "value") else ""
+                    if not lcd_text:
+                        lcd_text = self.timer_lcdnumber.property("intValue") or ""
+                    if not lcd_text or str(lcd_text) == "0":
+                        # Fallback: QLCDNumber does not store text, so read from label display text
+                        lcd_text = self.timer_lcdnumber.findChild(QLabel)
+                        lcd_text = lcd_text.text() if lcd_text else ""
+
+                    # If format is "mm:ss", convert it into total seconds
+                    if isinstance(lcd_text, str) and ":" in lcd_text:
+                        parts = lcd_text.split(":")
+                        minutes = int(parts[0]) if parts[0].isdigit() else 0
+                        seconds = int(parts[1]) if parts[1].isdigit() else 0
+                        countdown_value = minutes * 60 + seconds
+                    else:
+                        countdown_value = int(float(lcd_text)) if str(lcd_text).isdigit() else 0
+                except Exception as e:
+                    print("countdown parse error:", e)
+                    countdown_value = 0
+
+                # Current timestamp (for reference, record_logger also uses datetime.now())
+                ts = datetime.now()
+
+                countdown_value = self.countdown_timer.get_remaining_seconds()
                 self.logger.add_picture_record(
                     posture_id=self.current_pose_index,
                     posture_name=detected_pose_name,
                     accuracy=avg,
-                    mode=mode
+                    mode=mode,
+                    countdown=countdown_value
                 )
             except Exception as e:
                 print("add_picture_record error:", e)
+            # ----------------------------------------------------------------------
 
-            # If the current score passes threshold, update historical max/min accuracy only.
-            # Do NOT update completion counts here (counts are driven by statistics_treewidget).
+            # If current score passes threshold, update historical max/min accuracy only
             try:
                 if is_pose_score_valid(self.current_pose_index, avg, mode):
                     updated = True
                     try:
-                        # Update historical max/min accuracy (do not change completion counts)
+                        # Update historical max/min accuracy (no change to completion counts)
                         try:
                             self.logger.update_pose_accuracy(
                                 posture_id=self.current_pose_index,
@@ -458,7 +491,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                         except Exception as e:
                             print("update_pose_accuracy error:", e)
 
-                        # Only refresh UI (counts are driven by treewidget)
+                        # Only refresh UI (counts are updated elsewhere)
                         try:
                             self.update_progress_page_statistics(mode)
                         except Exception as e:
@@ -468,7 +501,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             except Exception as e:
                 print("is_pose_score_valid error:", e)
 
-        # Pass 'detected' to timer to indicate whether Mediapipe detection succeeded.
+        # Notify timer about whether pose detection succeeded
         self.countdown_timer.on_pose_detected(detected)
 
     def update_progress_page_statistics(self, mode):
@@ -595,9 +628,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.on_mode_changed(new_mode)
 
     def closeEvent(self, event):
-        # End session before the application closes (if any)
         try:
             if hasattr(self, 'logger') and self.logger:
+                self.logger.bump_count()  # Increase count before closing
                 self.logger.end_session()
         except Exception:
             pass
@@ -605,46 +638,75 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def generate_score_plot(self):
         """
-        Generate grouped charts (each group is a continuous block of seconds).
+        Generate grouped charts using generate_chart.fetch_and_group_data and save_group_charts.
+        If no DB groups found, try to find existing images in record_pic folder by filename prefix.
+        After generation / loading, set self.chart_paths and display the first image.
         """
         if not self.account.user_id:
             NotificationLabel(self, "Please login first.", success=False)
             return
 
-        # Get start and end date from UI
+        user_id = self.account.user_id
+        mode_text = self.comboBox_3.currentText().upper()  # PRACTICE/EASY/HARD
+        posture_text = self.comboBox.currentText()
         start_date = self.dateEdit.date().toPyDate()
         end_date = self.dateEdit_2.date().toPyDate()
 
-        # Check if start > end
+        # Basic validation
         if start_date > end_date:
-            QMessageBox.warning(self, "Invalid Date Range", "起始日期必須小於或等於結束日期。")
+            QMessageBox.warning(self, "Invalid Date Range", "Start date must be <= end date.")
             return
 
-        mode_text = self.comboBox_3.currentText()
-        posture_text = self.comboBox.currentText()
-
         try:
-            # fetch grouped data from DB
+            # fetch grouped small groups
             groups = generate_chart.fetch_and_group_data(
-                user_id=self.account.user_id,
+                user_id=user_id,
                 mode_text=mode_text,
                 posture_text=posture_text,
                 db=self.db,
                 start_date=start_date,
                 end_date=end_date
             )
+
             if not groups:
+                # no DB groups found: try to find existing images in record_pic folder that match prefix
+                record_pic_dir = os.path.join(os.path.dirname(__file__), "record_pic")
+                safe_posture = posture_text.replace(" ", "_").replace("/", "-")
+                safe_mode = str(mode_text).upper()
+                prefix = f"{user_id}_{safe_mode}_{safe_posture}_"
+                found = []
+                if os.path.isdir(record_pic_dir):
+                    for f in sorted(os.listdir(record_pic_dir)):
+                        if f.startswith(prefix) and f.lower().endswith(('.png', '.jpg', '.jpeg')):
+                            # optional: filter by filename timestamp and date range if present
+                            found.append(os.path.join(record_pic_dir, f))
+                if not found:
+                    NotificationLabel(self, "No data found.", success=False)
+                    self.chart_groups = []
+                    self.chart_paths = []
+                    self.current_group_index = 0
+                    return
+                else:
+                    # Use existing images
+                    self.chart_groups = []
+                    self.chart_paths = found
+                    self.current_group_index = 0
+                    self.show_current_group()
+                    return
+
+            # Save charts for each small group (this will create/overwrite image files)
+            paths = generate_chart.save_group_charts(groups, self.account.user_id, posture_text, mode_text)
+
+            if not paths:
                 NotificationLabel(self, "No data found.", success=False)
+                self.chart_groups = []
+                self.chart_paths = []
+                self.current_group_index = 0
                 return
 
-            # save charts for each group
             self.chart_groups = groups
-            self.chart_paths = generate_chart.save_group_charts(
-                groups, self.account.user_id, posture_text, mode_text
-            )
+            self.chart_paths = paths
             self.current_group_index = 0
-
-            # display the first group
             self.show_current_group()
 
         except Exception as e:
@@ -658,26 +720,33 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.hard_btn.setEnabled(enabled)
     
     def show_current_group(self):
-        """Display current group chart in label_3."""
-        if not self.chart_paths:
-            return
-        path = self.chart_paths[self.current_group_index]
-        pixmap = QPixmap(path)
-        if pixmap.isNull():
-            NotificationLabel(self, "Failed to load chart image.", success=False)
-            return
-        self.label_3.setPixmap(pixmap)
-        self.label_3.setScaledContents(True)
-        NotificationLabel(self, f"Showing group {self.current_group_index+1}/{len(self.chart_paths)}", success=True)
+        """Display the current image from self.chart_paths in label_3."""
+        try:
+            if not getattr(self, "chart_paths", None):
+                return
+            if not (0 <= self.current_group_index < len(self.chart_paths)):
+                return
+            path = self.chart_paths[self.current_group_index]
+            pixmap = QPixmap(path)
+            if pixmap.isNull():
+                NotificationLabel(self, "Failed to load chart image.", success=False)
+                return
+            self.label_3.setPixmap(pixmap)
+            self.label_3.setScaledContents(True)
+            NotificationLabel(self, f"Showing {self.current_group_index+1}/{len(self.chart_paths)}", success=True)
+        except Exception as e:
+            print("show_current_group error:", e)
 
     def show_prev_group(self):
-        if not self.chart_paths:
+        """Show previous chart (wrap around)."""
+        if not getattr(self, "chart_paths", None):
             return
         self.current_group_index = (self.current_group_index - 1) % len(self.chart_paths)
         self.show_current_group()
 
     def show_next_group(self):
-        if not self.chart_paths:
+        """Show next chart (wrap around)."""
+        if not getattr(self, "chart_paths", None):
             return
         self.current_group_index = (self.current_group_index + 1) % len(self.chart_paths)
         self.show_current_group()
@@ -689,18 +758,16 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             NotificationLabel(self, "Please login first.", success=False)
             return
 
+        # Allow empty share text
         share_text = self.plainTextEdit.toPlainText().strip()
-        if not share_text:
-            NotificationLabel(self, "Post text cannot be empty.", success=False)
+
+        # Check if chart (label_3) is empty
+        if not self.chart_paths or not (0 <= self.current_group_index < len(self.chart_paths)):
+            NotificationLabel(self, "Please generate a chart before sharing.", success=False)
             return
 
-        # Use current chart image filename if available
-        if self.chart_paths and 0 <= self.current_group_index < len(self.chart_paths):
-            chart_path = self.chart_paths[self.current_group_index]
-            # Convert to relative path for DB (e.g. "post_images\xxx.png")
-            chart_rel_path = os.path.relpath(chart_path).replace("/", "\\")
-        else:
-            chart_rel_path = None
+        chart_path = self.chart_paths[self.current_group_index]
+        chart_rel_path = os.path.relpath(chart_path).replace("/", "\\")
 
         try:
             with self.db.cursor() as cursor:
@@ -722,8 +789,31 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             print("on_share_post_clicked DB error:", e)
             NotificationLabel(self, "Database error.", success=False)
 
-
     def reset_share_input(self, user_id):
         """Clear PlainTextEdit when user logs in or out."""
         self.plainTextEdit.clear()
         self.plainTextEdit.setPlaceholderText("請輸入貼文內容...")
+    
+    def reset_chart_and_dates(self, user_id):
+        """Reset date fields and clear chart when the user logs out."""
+        # If account_status_label shows "Guest" or user_id is None, it means the user has logged out
+        if self.account_status_label.text() == "Guest" or not user_id:
+            today = datetime.today().date()
+            # Reset both date pickers to today's date
+            self.dateEdit.setDate(today)
+            self.dateEdit_2.setDate(today)
+            # Clear the chart display
+            self.label_3.clear()
+            # Clear temporary chart data
+            self.chart_groups = []
+            self.chart_paths = []
+            self.current_group_index = 0
+    
+    def on_reset_clicked(self):
+        """Handle reset button clicked."""
+        try:
+            # Increase count when user resets
+            self.logger.bump_count()
+            NotificationLabel(self, "Reset successful. Count increased.", success=True)
+        except Exception as e:
+            print("on_reset_clicked error:", e)

@@ -258,3 +258,12 @@ class Timer(QThread):
         elif self.hard_btn.isChecked():
             self.mode = "Hard"
         self.mode_selection_label.setText(f"Mode Selection: {self.mode}")
+
+    def get_remaining_seconds(self):
+        """Get the number of seconds remaining in the current countdown (int)"""
+        if self.state == 'Exercise':
+            return self.exercise_time // 1000
+        elif self.state == 'Rest':
+            return self.rest_time // 1000
+        else:
+            return 0

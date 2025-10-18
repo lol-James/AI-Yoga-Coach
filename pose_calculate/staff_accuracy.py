@@ -29,7 +29,7 @@ def evaluate_staff_pose(landmarks):
     LEFT_KNEE, RIGHT_KNEE = 25, 26
     LEFT_ANKLE, RIGHT_ANKLE = 27, 28
 
-    # Staff pose æ¨?æº?è§?åº¦ï??ä¾???? main.pyï¼?
+    # Staff pose ï¿½?ï¿½?ï¿½?åº¦ï¿½??ï¿½???? main.pyï¿½?
     STANDARD_ANGLES = {
         "Back": 110.1,
         "Leg": 160.0

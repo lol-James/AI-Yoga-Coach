@@ -1,4 +1,3 @@
-# complete replacement for record_logger.py
 from PyQt5.QtCore import QTimer
 from datetime import datetime, timedelta
 
@@ -18,6 +17,7 @@ class RecordLogger:
         self._session_start_time = None
         self._current_session_id = None
         self._current_session_mode = None
+        self.current_count = 0  # 每個使用者的 count 初始為 0
 
         # Pose order must match statistics_treewidget order (index 0..9)
         self.pose_names = [
@@ -59,20 +59,27 @@ class RecordLogger:
 
     # --- user id management --------------------------------
     def set_user_id(self, user_id):
-        """
-        Called when Account emits user_id (login or logout).
-        This sets internal user_id, consolidates records, and ensures rows.
-        It does NOT automatically start/stop a session.
-        """
-        try:
-            self.user_id = int(user_id) if user_id not in (None, "", 0) else None
-        except Exception:
-            self.user_id = None
+        """Update user ID when logging in or out, and initialize count."""
+        self.user_id = user_id
+        if not user_id:
+            # Clear session and reset count when logging out
+            self._current_session_id = None
+            self.current_count = 0
             return
-        if self.user_id:
-            self.consolidate_duplicate_records()
-            for m in (0, 1, 2):
-                self.ensure_user_records(mode_int=m)
+
+        # Load the user's current maximum count value (default to 0 if no records)
+        try:
+            with self.db.cursor() as cursor:
+                cursor.execute("SELECT MAX(`count`) AS max_count FROM record_picture WHERE user_id=%s", (user_id,))
+                row = cursor.fetchone()
+                self.current_count = (row["max_count"] or 0)
+        except Exception as e:
+            print("set_user_id load count error:", e)
+            self.current_count = 0
+    
+    def bump_count(self):
+        """Increase the count each time the user resets, logs out, or closes the app."""
+        self.current_count += 1
 
     # --- session tracking methods -------------------------
     def start_session(self, mode=None):
@@ -136,10 +143,14 @@ class RecordLogger:
             self._current_session_mode = None
 
     # --- write per-second sample (record_picture) ---
-    def add_picture_record(self, posture_id, posture_name, accuracy, mode):
+    def add_picture_record(self, posture_id, posture_name, accuracy, mode, countdown=None):
+        """Insert a picture record into the database, including countdown and count columns."""
         if not self.user_id:
             return
+
         mode_int = self._mode_to_int(mode)
+
+        # Ensure there is a session before inserting records
         if not self._current_session_id:
             self._session_start_time = datetime.now()
             self._current_session_id = str(self._session_start_time.timestamp())
@@ -147,29 +158,38 @@ class RecordLogger:
             try:
                 with self.db.cursor() as cursor:
                     cursor.execute(
-                        "INSERT INTO record_session (user_id, session_id, start_time, end_time, mode) "
-                        "VALUES (%s, %s, %s, %s, %s)",
-                        (self.user_id, self._current_session_id, self._session_start_time, None, self._current_session_mode)
+                        "INSERT INTO record_session (user_id, session_id, start_time, mode) VALUES (%s, %s, %s, %s)",
+                        (self.user_id, self._current_session_id, self._session_start_time, mode_int)
                     )
                 self.db.commit()
-            except Exception:
-                pass
+            except Exception as e:
+                print("record_session insert error:", e)
 
-        session_id = self._current_session_id
         ts = datetime.now()
-        canonical_id, cname = self._get_canonical_id(posture_id, posture_name)
-        if canonical_id is None:
-            return
+        session_id = self._current_session_id
+
         try:
             with self.db.cursor() as cursor:
                 cursor.execute(
-                    "INSERT INTO record_picture (timestamp, accuracy, mode, posture_id, user_id, session_id) "
-                    "VALUES (%s, %s, %s, %s, %s, %s)",
-                    (ts, float(accuracy), mode_int, canonical_id, int(self.user_id), session_id)
+                    """
+                    INSERT INTO record_picture
+                    (timestamp, accuracy, mode, posture_id, user_id, session_id, countdown, `count`)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                    """,
+                    (
+                        ts,
+                        float(accuracy) if accuracy is not None else None,
+                        int(mode_int),
+                        int(posture_id),
+                        int(self.user_id),
+                        session_id,
+                        int(countdown) if countdown is not None else None,
+                        int(self.current_count)
+                    )
                 )
             self.db.commit()
-        except Exception:
-            pass
+        except Exception as e:
+            print("add_picture_record error:", e)
 
     # --- update record_detail in real time ---
     def increment_pose_count(self, posture_id, posture_name, mode, accuracy=None, delta=1):
