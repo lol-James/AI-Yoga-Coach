@@ -27,58 +27,54 @@ def score_with_tolerance(actual_angle, angle_info):
         return 0.0
 
 STANDARD_ANGLES_LOCUST = {
-    "BackLow": {"avg": 135.90},  # ªÓ-Æb-½¥
-    "Leg":     {"avg": 159.37},  # Æb-½¥-½ï
-    "Arm":     {"avg": 31.42},   # ¨y-ªÓ-Æb
-    "Head":    {"avg": 163.04},  # »ó-ªÓ-Æb
+    "back_body": {"avg": 135.90},  # ?-?-?
+    "leg_straight":     {"avg": 159.37},  # ?-?-?
+    "armpit":     {"avg": 31.42},   # ?-?-?
+    "upper_body":    {"avg": 163.04},  # ?-?-?
 }
 
-def P(landmarks, i):
-    return [landmarks[i].x, landmarks[i].y]
-
-L = {"shoulder": 11, "elbow": 13, "hip": 23, "knee": 25, "ankle": 27}
-R = {"shoulder": 12, "elbow": 14, "hip": 24, "knee": 26, "ankle": 28}
-NOSE = 0
-
 def evaluate_locust_pose(landmarks):
+    def P(landmarks, i):
+        return [landmarks[i].x, landmarks[i].y]
+
+    LEFT_SHOULDER, RIGHT_SHOULDER = 11, 12
+    LEFT_ELBOW, RIGHT_ELBOW = 13, 14
+    LEFT_HIP, RIGHT_HIP = 23, 24
+    LEFT_KNEE, RIGHT_KNEE = 25, 26
+    LEFT_ANKLE, RIGHT_ANKLE = 27, 28
+    NOSE = 0
+
     scores = {}
 
-    # BackLow¡GªÓ-Æb-½¥¡]¥ª¥k¡^
-    bl_L = calculate_angle(P(landmarks, L["shoulder"]), P(landmarks, L["hip"]), P(landmarks, L["knee"]))
-    bl_R = calculate_angle(P(landmarks, R["shoulder"]), P(landmarks, R["hip"]), P(landmarks, R["knee"]))
-    bl_score = (
-        score_with_tolerance(bl_L, STANDARD_ANGLES_LOCUST["BackLow"]) +
-        score_with_tolerance(bl_R, STANDARD_ANGLES_LOCUST["BackLow"])
-    ) / 2
-    scores["BackLow"] = round(bl_score, 2)
+    # BackLow??-?-?????
+    LEFT_back_angle = calculate_angle(P(landmarks, LEFT_SHOULDER), P(landmarks, LEFT_HIP), P(landmarks, LEFT_KNEE))
+    Right_back_angle = calculate_angle(P(landmarks, RIGHT_SHOULDER), P(landmarks, RIGHT_HIP), P(landmarks, RIGHT_KNEE))
+    LEFT_back_score = (score_with_tolerance(LEFT_back_angle, STANDARD_ANGLES_LOCUST["back_body"]))
+    Right_back_score = (score_with_tolerance(Right_back_angle, STANDARD_ANGLES_LOCUST["back_body"]))
+    scores["Body_Bone"] = round((LEFT_back_score + Right_back_score) / 2, 2)
 
-    # Leg¡GÆb-½¥-½ï¡]¥ª¥k¡^
-    leg_L = calculate_angle(P(landmarks, L["hip"]), P(landmarks, L["knee"]), P(landmarks, L["ankle"]))
-    leg_R = calculate_angle(P(landmarks, R["hip"]), P(landmarks, R["knee"]), P(landmarks, R["ankle"]))
-    leg_score = (
-        score_with_tolerance(leg_L, STANDARD_ANGLES_LOCUST["Leg"]) +
-        score_with_tolerance(leg_R, STANDARD_ANGLES_LOCUST["Leg"])
-    ) / 2
-    scores["Leg"] = round(leg_score, 2)
+    # Leg??-?-?????
+    Left_leg_angle = calculate_angle(P(landmarks, LEFT_HIP), P(landmarks, LEFT_KNEE), P(landmarks, LEFT_ANKLE))
+    Right_leg_angle = calculate_angle(P(landmarks, RIGHT_HIP), P(landmarks, RIGHT_KNEE), P(landmarks, RIGHT_ANKLE))
+    LEFT_leg_score = (score_with_tolerance(Left_leg_angle, STANDARD_ANGLES_LOCUST["leg_straight"]))
+    Right_leg_score = (score_with_tolerance(Right_leg_angle, STANDARD_ANGLES_LOCUST["leg_straight"]))
+    scores["Knee_Bone"] = round((LEFT_leg_score + Right_leg_score) / 2, 2)
 
-    # Arm¡G¨y-ªÓ-Æb¡]¥ª¥k¡^
-    arm_L = calculate_angle(P(landmarks, L["elbow"]), P(landmarks, L["shoulder"]), P(landmarks, L["hip"]))
-    arm_R = calculate_angle(P(landmarks, R["elbow"]), P(landmarks, R["shoulder"]), P(landmarks, R["hip"]))
-    arm_score = (
-        score_with_tolerance(arm_L, STANDARD_ANGLES_LOCUST["Arm"]) +
-        score_with_tolerance(arm_R, STANDARD_ANGLES_LOCUST["Arm"])
-    ) / 2
-    scores["Arm"] = round(arm_score, 2)
+    # Arm??-?-?????
+    Left_arm_angle = calculate_angle(P(landmarks, LEFT_ELBOW), P(landmarks, LEFT_SHOULDER), P(landmarks, LEFT_HIP))
+    Right_arm_angle = calculate_angle(P(landmarks, RIGHT_ELBOW), P(landmarks, RIGHT_SHOULDER), P(landmarks, RIGHT_HIP))
+    Left_armpit_score = (score_with_tolerance(Left_arm_angle, STANDARD_ANGLES_LOCUST["armpit"]))
+    Right_armpit_score = (score_with_tolerance(Right_arm_angle, STANDARD_ANGLES_LOCUST["armpit"]))
+    scores["Armpit_Bone"] = round((Left_armpit_score + Right_armpit_score) / 2, 2)
 
-    # Head¡G»ó-ªÓ-Æb¡]¥ª¥k¡F»ó¦@¥Î¡^
-    head_L = calculate_angle(P(landmarks, NOSE), P(landmarks, L["shoulder"]), P(landmarks, L["hip"]))
-    head_R = calculate_angle(P(landmarks, NOSE), P(landmarks, R["shoulder"]), P(landmarks, R["hip"]))
-    head_score = (
-        score_with_tolerance(head_L, STANDARD_ANGLES_LOCUST["Head"]) +
-        score_with_tolerance(head_R, STANDARD_ANGLES_LOCUST["Head"])
-    ) / 2
-    scores["Head"] = round(head_score, 2)
+    # Head??-?-?????????
+    Left_upper_body = calculate_angle(P(landmarks, NOSE), P(landmarks, LEFT_SHOULDER), P(landmarks, LEFT_HIP))
+    Right_upper_body = calculate_angle(P(landmarks, NOSE), P(landmarks, RIGHT_SHOULDER), P(landmarks, RIGHT_HIP))
+    Left_upper_body_score = (score_with_tolerance(Left_upper_body, STANDARD_ANGLES_LOCUST["upper_body"]))
+    Right_upper_body_score = (score_with_tolerance(Right_upper_body, STANDARD_ANGLES_LOCUST["upper_body"]))
+    scores["Head_Bone"] = round((Left_upper_body_score + Right_upper_body_score) / 2, 2)
 
-    # ¥­§¡¤À
+    # ???
     scores["average_score"] = round(sum(scores.values()) / len(scores), 2)
+    
     return scores

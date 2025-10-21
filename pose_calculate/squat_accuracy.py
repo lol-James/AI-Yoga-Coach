@@ -9,7 +9,7 @@ def calculate_angle(a, b, c):
     ba = a - b
     bc = c - b
     denom = (np.linalg.norm(ba) * np.linalg.norm(bc))
-    if denom == 0:
+    if denom < 1e-6:
         return 0.0
     cosine_angle = np.dot(ba, bc) / denom
     angle = np.arccos(np.clip(cosine_angle, -1.0, 1.0))
@@ -30,52 +30,53 @@ def score_with_tolerance(actual_angle, angle_info):
 
 # ---------- Squat 標準角度（依你提供的 avg） ----------
 STANDARD_ANGLES_SQUAT = {
-    "Leg":      { "avg": 115.99},
-    "BackLow":  { "avg": 113.49},
-    "BackMid":  { "avg": 162.57},
-    "BackHigh": { "avg": 164.55},
+    "leg_curve":      { "avg": 115.99},
+    "butt_curve":  { "avg": 113.49},
+    "arm_straight":  { "avg": 162.57},
+    "body_straight": { "avg": 164.55},
 }
 
 # 取點
-def P(landmarks, i):
-    return [landmarks[i].x, landmarks[i].y]
-
-# Mediapipe 左右索引
-L = {"shoulder":11, "elbow":13, "hip":23, "knee":25, "ankle":27, "ear":7}
-R = {"shoulder":12, "elbow":14, "hip":24, "knee":26, "ankle":28, "ear":8}
-
-
 def evaluate_squat_pose(landmarks):
+    def P(landmarks, i):
+        return [landmarks[i].x, landmarks[i].y]
+
+    LEFT_EAR, RIGHT_EAR = 7, 8
+    LEFT_SHOULDER, RIGHT_SHOULDER = 11, 12
+    LEFT_ELBOW, RIGHT_ELBOW = 13, 14
+    LEFT_HIP, RIGHT_HIP = 23, 24
+    LEFT_KNEE, RIGHT_KNEE = 25, 26
+    LEFT_ANKLE, RIGHT_ANKLE = 27, 28
+
     scores = {}
 
     # Leg：髖-膝-踝
-    leg_L = calculate_angle(P(landmarks, L["hip"]), P(landmarks, L["knee"]), P(landmarks, L["ankle"]))
-    leg_R = calculate_angle(P(landmarks, R["hip"]), P(landmarks, R["knee"]), P(landmarks, R["ankle"]))
-    leg_score = (score_with_tolerance(leg_L, STANDARD_ANGLES_SQUAT["Leg"]) +
-                 score_with_tolerance(leg_R, STANDARD_ANGLES_SQUAT["Leg"])) / 2
-    scores["Leg"] = round(leg_score, 2)
+    Left_leg_angle = calculate_angle(P(landmarks, LEFT_HIP), P(landmarks, LEFT_KNEE), P(landmarks, LEFT_ANKLE))
+    Right_leg_angle = calculate_angle(P(landmarks, RIGHT_HIP), P(landmarks, RIGHT_KNEE), P(landmarks, RIGHT_ANKLE))
+    LEFT_leg_score = (score_with_tolerance(Left_leg_angle, STANDARD_ANGLES_SQUAT["leg_curve"]))
+    Right_leg_score = (score_with_tolerance(Right_leg_angle, STANDARD_ANGLES_SQUAT["leg_curve"]))
+    scores["Knee_Bone"] = round((LEFT_leg_score + Right_leg_score) / 2, 2)
 
     # BackLow：肩-髖-膝
-    bl_L = calculate_angle(P(landmarks, L["shoulder"]), P(landmarks, L["hip"]), P(landmarks, L["knee"]))
-    bl_R = calculate_angle(P(landmarks, R["shoulder"]), P(landmarks, R["hip"]), P(landmarks, R["knee"]))
-    bl_score = (score_with_tolerance(bl_L, STANDARD_ANGLES_SQUAT["BackLow"]) +
-                score_with_tolerance(bl_R, STANDARD_ANGLES_SQUAT["BackLow"])) / 2
-    scores["BackLow"] = round(bl_score, 2)
+    Left_butt_angle = calculate_angle(P(landmarks, LEFT_SHOULDER), P(landmarks, LEFT_HIP), P(landmarks, LEFT_KNEE))
+    Right_butt_angle = calculate_angle(P(landmarks, RIGHT_SHOULDER), P(landmarks, RIGHT_HIP), P(landmarks, RIGHT_KNEE))
+    LEFT_butt_score = (score_with_tolerance(Left_butt_angle, STANDARD_ANGLES_SQUAT["butt_curve"]))
+    Right_butt_score = (score_with_tolerance(Right_butt_angle, STANDARD_ANGLES_SQUAT["butt_curve"]))
+    scores["Hip_Bone"] = round((LEFT_butt_score + Right_butt_score) / 2, 2)
 
     # BackMid：肘-肩-髖
-    bm_L = calculate_angle(P(landmarks, L["elbow"]), P(landmarks, L["shoulder"]), P(landmarks, L["hip"]))
-    bm_R = calculate_angle(P(landmarks, R["elbow"]), P(landmarks, R["shoulder"]), P(landmarks, R["hip"]))
-    bm_score = (score_with_tolerance(bm_L, STANDARD_ANGLES_SQUAT["BackMid"]) +
-                score_with_tolerance(bm_R, STANDARD_ANGLES_SQUAT["BackMid"])) / 2
-    scores["BackMid"] = round(bm_score, 2)
+    Left_arm_angle = calculate_angle(P(landmarks, LEFT_ELBOW), P(landmarks, LEFT_SHOULDER), P(landmarks, LEFT_HIP))
+    Right_arm_angle = calculate_angle(P(landmarks,RIGHT_ELBOW), P(landmarks, RIGHT_SHOULDER), P(landmarks, RIGHT_HIP))
+    LEFT_arm_score = (score_with_tolerance(Left_arm_angle, STANDARD_ANGLES_SQUAT["arm_straight"]))
+    Right_arm_score = (score_with_tolerance(Right_arm_angle, STANDARD_ANGLES_SQUAT["arm_straight"]))
+    scores["Armpit_Bone"] = round((LEFT_arm_score + Right_arm_score) / 2, 2)
 
     # BackHigh：耳-肩-髖
-    bh_L = calculate_angle(P(landmarks, L["ear"]), P(landmarks, L["shoulder"]), P(landmarks, L["hip"]))
-    bh_R = calculate_angle(P(landmarks, R["ear"]), P(landmarks, R["shoulder"]), P(landmarks, R["hip"]))
-    bh_score = (score_with_tolerance(bh_L, STANDARD_ANGLES_SQUAT["BackHigh"]) +
-                score_with_tolerance(bh_R, STANDARD_ANGLES_SQUAT["BackHigh"])) / 2
-    scores["BackHigh"] = round(bh_score, 2)
+    Left_body_angle = calculate_angle(P(landmarks, LEFT_EAR), P(landmarks, LEFT_SHOULDER), P(landmarks, LEFT_HIP))
+    Right_body_angle = calculate_angle(P(landmarks, RIGHT_EAR), P(landmarks, RIGHT_SHOULDER), P(landmarks, RIGHT_HIP))
+    LEFT_body_score = (score_with_tolerance(Left_body_angle, STANDARD_ANGLES_SQUAT["body_straight"]))
+    Right_body_score = (score_with_tolerance(Right_body_angle, STANDARD_ANGLES_SQUAT["body_straight"]))
+    scores["Upperbody_Bone"] = round((LEFT_body_score + Right_body_score) / 2, 2)
 
     scores["average_score"] = round(sum(scores.values()) / len(scores), 2)
     return scores
-

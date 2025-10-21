@@ -84,13 +84,18 @@ def evaluate_downward_facing_dog_pose(landmarks):
     if None in (arm, torso, leg):
         return
 
-    # 角度差與分數
-    diffs = {
-        "arm": abs(arm - STANDARD_ANGLES["arm"]["avg"]),
-        "torso": abs(torso - STANDARD_ANGLES["torso"]["avg"]),
-        "leg": abs(leg - STANDARD_ANGLES["leg"]["avg"])
-    }
-    scores1 = {k: calculate_score(d) if d is not None else None for k, d in diffs.items()}
-    scores = round(np.nanmean([s for s in scores1.values() if s is not None]), 2)
 
-    return scores
+    diffs = {
+        "Arm_Bone": abs(arm - STANDARD_ANGLES["arm"]["avg"]),
+        "Hip_Bone": abs(torso - STANDARD_ANGLES["torso"]["avg"]),
+        "Knee_Bone": abs(leg - STANDARD_ANGLES["leg"]["avg"])
+    }
+
+    scores = {k: calculate_score(d) if d is not None else None for k, d in diffs.items()}
+
+    valid_scores = [s for s in scores.values() if s is not None]
+    avg_score = round(np.nanmean(valid_scores), 2) if valid_scores else None
+
+    result = {**scores, "average_score": avg_score}
+
+    return result

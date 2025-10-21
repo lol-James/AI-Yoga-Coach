@@ -98,7 +98,7 @@ def evaluate_bridge_pose(landmarks, standard_hip=162.94, standard_knee=67.88, vi
         angle = np.arccos(np.clip(cosine, -1.0, 1.0))
         return np.degrees(angle)
 
-    def score_angle(diff, weight=50, tolerance=5, power=2):
+    def score_angle(diff, weight=100, tolerance=5, power=2):
         if diff > 90:
             return 0
         elif diff <= tolerance:
@@ -134,35 +134,7 @@ def evaluate_bridge_pose(landmarks, standard_hip=162.94, standard_knee=67.88, vi
 
     hip_score = score_angle(diff_hip, weight=50)
     knee_score = score_angle(diff_knee, weight=50)
-    total = round(hip_score + knee_score, 2)
+    total = round((hip_score + knee_score)/2, 2)
 
-    scores = {"average_score": total}
+    scores = {'Hip_Bone':hip_score,'Knee_Bone':knee_score,"average_score": total}
     return scores
-
-
-
-if __name__ == "__main__":
-    image_path = r"C:\dataset\bridge_img_filter\pose_3106.jpg"
-
-    standard_hip = 162.94
-    standard_knee = 67.88
-
-    with mp.solutions.pose.Pose(static_image_mode=True, model_complexity=1) as pose:
-        hip_angle, knee_angle = extract_angles(image_path, pose)
-
-        if hip_angle is not None and knee_angle is not None:
-            diff_hip = abs(hip_angle - standard_hip)
-            diff_knee = abs(knee_angle - standard_knee)
-
-            hip_score = score_angle(diff_hip, weight=50)
-            knee_score = score_angle(diff_knee, weight=50)
-            scores = hip_score + knee_score
-
-            print(f"髖關節角度：{hip_angle:.2f}°，差距：{diff_hip:.2f}°，得分：{hip_score:.2f}")
-            print(f"膝關節角度：{knee_angle:.2f}°，差距：{diff_knee:.2f}°，得分：{knee_score:.2f}")
-            print(f"總分：{scores:.2f} / 100\n")
-
-        else:
-            print("無法取得角度資訊")
-
-

@@ -11,7 +11,6 @@ def calculate_angle(a, b, c):
     angle = np.arccos(np.clip(cosine_angle, -1.0, 1.0))
     return np.degrees(angle)
 
-# è§?åº¦å¹³?????? (??¹æ??ä½????çµ±è??è³????)
 STANDARD_ANGLES = {
     "arm_straight": {"avg": 173, "label": "Arm Straight"},
     "arm_body": {"avg": 99, "label": "Arm-Body Angle"},
@@ -35,7 +34,6 @@ def evaluate_warrior2_pose(landmarks):
     def get_point(index):
         return [landmarks[index].x, landmarks[index].y]
 
-    # Landmark index å¸¸æ??
     LEFT_SHOULDER, RIGHT_SHOULDER = 11, 12
     LEFT_ELBOW, RIGHT_ELBOW = 13, 14
     LEFT_WRIST, RIGHT_WRIST = 15, 16
@@ -45,21 +43,18 @@ def evaluate_warrior2_pose(landmarks):
 
     scores = {}
 
-    # (1) ??? - ??? - ???ï¼???????ä¼¸ç?´ï??
     left_arm_angle = calculate_angle(get_point(LEFT_SHOULDER), get_point(LEFT_ELBOW), get_point(LEFT_WRIST))
     right_arm_angle = calculate_angle(get_point(RIGHT_SHOULDER), get_point(RIGHT_ELBOW), get_point(RIGHT_WRIST))
     left_arm_score = round(score_with_tolerance(left_arm_angle, STANDARD_ANGLES["arm_straight"]), 2)
     right_arm_score = round(score_with_tolerance(right_arm_angle, STANDARD_ANGLES["arm_straight"]), 2)
-    scores["arm_score"] = round((left_arm_score + right_arm_score) / 2, )
+    scores["Arm_Bone"] = round((left_arm_score + right_arm_score) / 2, 2)
     
-    # (2) ??? - ??? - ???ï¼??????????èº«é???????´è??ï¼?
     left_arm_body_angle = calculate_angle(get_point(LEFT_WRIST), get_point(LEFT_SHOULDER), get_point(LEFT_HIP))
     right_arm_body_angle = calculate_angle(get_point(RIGHT_WRIST), get_point(RIGHT_SHOULDER), get_point(RIGHT_HIP))
     left_arm_body_score = round(score_with_tolerance(left_arm_body_angle, STANDARD_ANGLES["arm_body"]), 2)
     right_arm_body_score = round(score_with_tolerance(right_arm_body_angle, STANDARD_ANGLES["arm_body"]), 2)
-    scores["arm_body_score"] = round((left_arm_body_score + right_arm_body_score) / 2, 2)
+    scores["arm_body_bone"] = round((left_arm_body_score + right_arm_body_score) / 2, 2)
 
-    # (3) ?????? vs å¾???³ï?????è¼???¥è?? 90 åº¦è????ºå?????
     left_knee_angle = calculate_angle(get_point(LEFT_HIP), get_point(LEFT_KNEE), get_point(LEFT_ANKLE))
     right_knee_angle = calculate_angle(get_point(RIGHT_HIP), get_point(RIGHT_KNEE), get_point(RIGHT_ANKLE))
 
@@ -72,13 +67,14 @@ def evaluate_warrior2_pose(landmarks):
         back_knee_angle = left_knee_angle
         front_label, back_label = "Right", "Left"
 
-    scores[f"{front_label} Leg Front Knee"] = round(score_with_tolerance(front_knee_angle, STANDARD_ANGLES["front_knee"]), 2)
-    scores[f"{back_label} Leg Back Knee"] = round(score_with_tolerance(back_knee_angle, STANDARD_ANGLES["back_knee"]), 2)
+    scores["front_leg"] = round(score_with_tolerance(front_knee_angle, STANDARD_ANGLES["front_knee"]), 2)
+    scores["back_leg"] = round(score_with_tolerance(back_knee_angle, STANDARD_ANGLES["back_knee"]), 2)
 
-    # å¹³å????????
-    avg_score = round(sum(scores.values()) / len(scores), 2)
+    avg_score = round(sum(scores.values()) / 4, 2)
     scores["average_score"] = avg_score
-
+    scores['front'] = front_label
+    scores['back'] = back_label
+    
     return scores
         
 if __name__ == '__main__':
@@ -111,7 +107,6 @@ if __name__ == '__main__':
             else:
                 print("Pose landmarks not detected")
 
-    # ??°å?ºæ?????ä½??????????
     print("Images with score below 90:")
     for fname, score in low_score_images:
         print(f"{fname} -- {score}")

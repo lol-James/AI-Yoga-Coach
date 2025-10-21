@@ -24,7 +24,7 @@ from yoga_pose_calculate import PoseCalculate
 from postdialog import PostDialog
 from pose_thresholds import is_pose_score_valid
 from pose_thresholds import display_standard_score
-
+from critical_bone import Critical_Bone
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
@@ -86,7 +86,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         #Share Page Funtions
         self.post_dialog = PostDialog(self, self.account.user_id, self.db)
         self.post_dialog.load_posts()
-
         # mediapipe gesture analyzer initialization
         self.gesture_analyzer = GestureAnalyzer()
         self.gesture_interpreter = GestureInterpreter(self)
@@ -144,8 +143,16 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.countdown_timer.timer_started_signal.connect(lambda: self.toggle_mode_buttons(False))
         self.countdown_timer.timer_stopped_signal.connect(lambda: self.toggle_mode_buttons(True))
 
-        # calculate score and display
+        # calculate score and display the bone
         self.pose_calculator = PoseCalculate()
+        self.critical_bone = Critical_Bone()
+        
+        self.pose_calculator.score_result.connect(lambda score,result,frame:self.critical_bone.process
+            (self.current_pose_index,self.countdown_timer.mode,score,result,frame))
+        try:
+            self.critical_bone.bone_image.connect(self.update_GUI_frame)
+        except Exception as e:
+            print("critical_bone connect error:", e)
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
@@ -206,7 +213,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.account.user_id_signal.connect(self.reset_chart_and_dates)
         # reset button click
         self.rst_btn.clicked.connect(self.on_reset_clicked)
-    
+        
     def navigate_with_auth(self, index, checked, button):
         if not checked:
             return  

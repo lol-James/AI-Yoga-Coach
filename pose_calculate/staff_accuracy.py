@@ -29,10 +29,10 @@ def evaluate_staff_pose(landmarks):
     LEFT_KNEE, RIGHT_KNEE = 25, 26
     LEFT_ANKLE, RIGHT_ANKLE = 27, 28
 
-    # Staff pose �?�?�?度�??�???? main.py�?
+    # Ideal angles for staff pose
     STANDARD_ANGLES = {
-        "Back": 110.1,
-        "Leg": 160.0
+        "Hip_Bone": 110.1,
+        "Knee_Bone": 160.0
     }
 
     scores = {}
@@ -42,8 +42,11 @@ def evaluate_staff_pose(landmarks):
     back_left = calculate_angle(get_point(LEFT_SHOULDER), get_point(LEFT_HIP), get_point(LEFT_KNEE))
     back_right = calculate_angle(get_point(RIGHT_SHOULDER), get_point(RIGHT_HIP), get_point(RIGHT_KNEE))
 
-    scores['Leg'] = round((score_with_tolerance(leg_left, STANDARD_ANGLES['Leg']) + score_with_tolerance(leg_right, STANDARD_ANGLES['Leg'])) / 2, 2)
-    scores['Back'] = round((score_with_tolerance(back_left, STANDARD_ANGLES['Back']) + score_with_tolerance(back_right, STANDARD_ANGLES['Back'])) / 2, 2)
+    # Convert to bone-based score keys
+    scores['Knee_Bone'] = round((score_with_tolerance(leg_left, STANDARD_ANGLES['Knee_Bone']) + 
+                                 score_with_tolerance(leg_right, STANDARD_ANGLES['Knee_Bone'])) / 2, 2)
+    scores['Hip_Bone'] = round((score_with_tolerance(back_left, STANDARD_ANGLES['Hip_Bone']) + 
+                                score_with_tolerance(back_right, STANDARD_ANGLES['Hip_Bone'])) / 2, 2)
 
     avg_score = round(sum(scores.values()) / len(scores), 2)
     scores['average_score'] = avg_score
