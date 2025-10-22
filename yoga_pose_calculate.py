@@ -108,7 +108,7 @@ class PoseCalculate(QObject):
             scores = 0.0
 
         # Compute the overall (average) score for the pose
-        if scores != 0.0:
+        if scores:
             self.score_result.emit(scores,result,frame)
         avg = self._calculate_average_score(scores)
 

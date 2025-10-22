@@ -132,8 +132,8 @@ def evaluate_bridge_pose(landmarks, standard_hip=162.94, standard_knee=67.88, vi
     diff_hip = abs(hip - standard_hip)
     diff_knee = abs(knee - standard_knee)
 
-    hip_score = score_angle(diff_hip, weight=50)
-    knee_score = score_angle(diff_knee, weight=50)
+    hip_score = score_angle(diff_hip, weight=100)
+    knee_score = score_angle(diff_knee, weight=100)
     total = round((hip_score + knee_score)/2, 2)
 
     scores = {'Hip_Bone':hip_score,'Knee_Bone':knee_score,"average_score": total}

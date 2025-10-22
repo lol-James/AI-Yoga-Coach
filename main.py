@@ -25,6 +25,8 @@ from postdialog import PostDialog
 from pose_thresholds import is_pose_score_valid
 from pose_thresholds import display_standard_score
 from critical_bone import Critical_Bone
+from yoga_pose_feedback import YogaPoseFeedback
+
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
@@ -146,13 +148,20 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # calculate score and display the bone
         self.pose_calculator = PoseCalculate()
         self.critical_bone = Critical_Bone()
+        self.yoga_pose_feedback = YogaPoseFeedback(self)
         
         self.pose_calculator.score_result.connect(lambda score,result,frame:self.critical_bone.process
-            (self.current_pose_index,self.countdown_timer.mode,score,result,frame))
+                                                    (self.current_pose_index,self.countdown_timer.mode,score,result,frame))
+        self.pose_calculator.score_result.connect(lambda score,result,frame:self.yoga_pose_feedback.process
+                                                    (self.current_pose_index,self.countdown_timer.mode,score))
+         
+         # connect critical bone signal to update GUI
         try:
             self.critical_bone.bone_image.connect(self.update_GUI_frame)
         except Exception as e:
             print("critical_bone connect error:", e)
+        
+        
         self.detector.result_pose_signal.connect(self.cache_pose_index)
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)

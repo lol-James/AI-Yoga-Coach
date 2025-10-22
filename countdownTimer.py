@@ -86,6 +86,9 @@ class Timer(QThread):
                 self.record[self.ui.image_index] += 1
                 self.statistics_treewidget.topLevelItem(self.ui.image_index).setText(1, str(self.record[self.ui.image_index]))
                 self.ui.next_pose(False)
+                self.ui.pose_reg_label.setText("")  
+                self.ui.suggestion_text_label.setText("")  
+                self.ui.standard_score.setText("")  
             else:
                 self.exercise_time -= 1000
         elif self.state == 'Rest':
@@ -212,7 +215,7 @@ class Timer(QThread):
                 self.timer.start(1000)  
             if not any(self.pose_history):  
                 self.timer.stop()
-                NotificationLabel(self.ui, "Mediapipe detection failure", success=False,duration=500)
+                NotificationLabel(self.ui, "Mediapipe detection failure", success=False,duration=1000)
 
     def reset_timer(self):
         self.state = self.states[3]
@@ -238,6 +241,9 @@ class Timer(QThread):
         self.easy_btn.setEnabled(True)
         self.hard_btn.setEnabled(True)
         self.timer_stopped_signal.emit()
+        self.ui.pose_reg_label.setText("")  
+        self.ui.suggestion_text_label.setText("")  
+        self.ui.standard_score.setText("")  
 
     def skip(self, skip_flag):
         if skip_flag:

@@ -229,11 +229,11 @@ class Critical_Bone(QThread):
                     if min_key in self.body_part:
                         self.draw_bone(frame,result,min_key)
                     elif min_key == 'Trunk':
-                        self.draw_torso(frame,result, self.mp_pose, (0, 0, 255))
+                        self.draw_torso(frame,result, self.mp_pose)
                     elif min_key == 'Pelvis':
                         self.draw_leg_angle(frame, result, self.mp_pose)
                     elif min_key == 'Shoulder':
-                        self.draw_arm(frame, result, self.mp_pose, (0, 0, 255))
+                        self.draw_arm(frame, result, self.mp_pose)
                     elif min_key == 'front_leg':
                         leg=score['front'] 
                         if leg=='Left':
