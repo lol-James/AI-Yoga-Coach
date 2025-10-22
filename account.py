@@ -330,6 +330,10 @@ class Account(QObject):
             NotificationLabel(self.ui, f"Reset password failed due to server error.", success=False, duration=3000)
         
     def logout(self, delete=False):
+        self.ui.pose_reg_label.setText("")  
+        self.ui.suggestion_text_label.setText("")  
+        self.ui.standard_score.setText("")
+          
         if delete:
             self.camera_btn.setChecked(False)
             self.on_camera_btn_toggled
