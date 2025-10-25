@@ -252,6 +252,10 @@ class Critical_Bone(QThread):
                             self.draw_bone(frame, result,'left_Hip')
                         elif leg=='Right':
                             self.draw_bone(frame,result,'right_Hip')
+                    elif min_key == 'Hip_Bone_Left':
+                        self.draw_bone(frame, result, 'left_Hip')
+                    elif min_key == 'Hip_Bone_Right':
+                        self.draw_bone(frame, result, 'right_Hip')
                     self.bone_image.emit(frame)
             except Exception as e:
                 print("Critical_Bone process error:", e) 

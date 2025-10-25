@@ -6,9 +6,9 @@ def get_warrior3_feedbackstr(scores: dict, threshold: int) -> tuple[bool, str]:
 
     # Hip feedback (left/right)
     if scores.get("Hip_Bone_Left", 100) < threshold:
-        feedbacks.append("左側髖部伸直，右側膝蓋彎曲約90°")
+        feedbacks.append("抬高左腿向後伸直，讓身體與左腿保持一直線")
     if scores.get("Hip_Bone_Right", 100) < threshold:
-        feedbacks.append("右側髖部伸直，左側膝蓋彎曲約90°")
+        feedbacks.append("抬高右腿向後伸直，讓身體與右腿保持一直線")
 
     # Knee feedback
     if scores.get("Knee_Bone", 100) < threshold:

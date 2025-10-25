@@ -3,14 +3,7 @@ import math
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-
 def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_date):
-    """
-    Fetch data from DB and group it properly.
-    Fix 2 issues:
-      1. Merge same timestamp/countdown rows (average score)
-      2. Fill missing countdown seconds with same score
-    """
     mode_map = {"PRACTICE": 0, "EASY": 1, "HARD": 2}
     mode = mode_map.get(mode_text.upper(), 0)
 
@@ -28,7 +21,6 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
     }
     posture_id = pose_name_map.get(posture_text, None)
     if posture_id is None:
-        print(f"[DEBUG] Invalid posture_text: {posture_text}")
         return []
 
     start_dt = datetime.combine(start_date, datetime.min.time())
@@ -49,15 +41,12 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
                 (user_id, mode, posture_id, start_dt, end_dt)
             )
             rows = cursor.fetchall()
-    except Exception as e:
-        print("fetch_and_group_data DB error:", e)
+    except Exception:
         return []
 
     if not rows:
-        print("[DEBUG] No data found in DB for this filter.")
         return []
 
-    # --- (1) Merge duplicate timestamp/countdown entries ---
     merged_rows = {}
     for r in rows:
         key = (r["count"], r["countdown"])
@@ -73,8 +62,6 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
         sample["accuracy"] = avg_acc
         combined.append(sample)
 
-    # --- (2) Fill missing countdowns with last known score ---
-    # Group by 'count'
     major_groups = {}
     for row in combined:
         major_groups.setdefault(row["count"], []).append(row)
@@ -82,28 +69,30 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
     final_groups = []
     for major_key, rows_in_group in major_groups.items():
         rows_in_group.sort(key=lambda r: r["countdown"], reverse=True)
-
-        # Find max and min countdown in this group
         cds = [int(r["countdown"]) for r in rows_in_group if r["countdown"] is not None]
         if not cds:
             continue
         cd_max, cd_min = max(cds), min(cds)
 
-        # Fill missing countdowns (use last known accuracy)
         cd_map = {int(r["countdown"]): float(r["accuracy"]) for r in rows_in_group}
+        cd_time_map = {int(r["countdown"]): r["timestamp"] for r in rows_in_group if r["timestamp"] is not None}
         filled_rows = []
         last_acc = None
+        last_time = None
         for cd in range(cd_max, cd_min - 1, -1):
             acc = cd_map.get(cd, last_acc)
+            tstamp = cd_time_map.get(cd, last_time)
             if acc is not None:
                 fake_row = rows_in_group[0].copy()
                 fake_row["countdown"] = cd
                 fake_row["accuracy"] = acc
+                fake_row["timestamp"] = tstamp
                 filled_rows.append(fake_row)
             if cd in cd_map:
                 last_acc = cd_map[cd]
+            if cd in cd_time_map:
+                last_time = cd_time_map[cd]
 
-        # Split into minor groups (countdown reset pattern)
         sub_groups, temp = [], []
         prev_cd = None
         for r in filled_rows:
@@ -123,15 +112,9 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
                 "rows": sg
             })
 
-    print(f"[DEBUG] Found {len(final_groups)} groups after fill.")
     return final_groups
 
-
 def save_group_charts(groups, user_id, posture_text, mode_text):
-    """
-    Draw and save charts for each group.
-    X-axis: countdown (decreasing), 21 points per page, up to 3 pages.
-    """
     output_dir = os.path.join(os.path.dirname(__file__), "record_pic")
     os.makedirs(output_dir, exist_ok=True)
     paths = []
@@ -153,8 +136,9 @@ def save_group_charts(groups, user_id, posture_text, mode_text):
             y_vals = [float(r["accuracy"]) for r in chunk]
             times = [r["timestamp"] for r in chunk]
 
-            t_start = times[0].strftime("%Y:%m:%d:%H:%M:%S")
-            t_end = times[-1].strftime("%Y:%m:%d:%H:%M:%S")
+            times_sorted = sorted(times)
+            t_start = times_sorted[0].strftime("%Y:%m:%d:%H:%M:%S")
+            t_end = times_sorted[-1].strftime("%Y:%m:%d:%H:%M:%S")
 
             title_main = f"{mode_text.upper()}-{posture_text} ({major}-{minor}-{page + 1})"
             title_sub = f"{t_start} - {t_end}"

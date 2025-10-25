@@ -495,6 +495,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             try:
                 if is_pose_score_valid(self.current_pose_index, avg, mode):
                     updated = True
+                    if not self.countdown_timer.timer.isActive():
+                        self.countdown_timer.timer.start(1000)
                     try:
                         # Update historical max/min accuracy (no change to completion counts)
                         try:
@@ -514,6 +516,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                             print("update_progress_page_statistics error:", e)
                     except Exception as e:
                         print("is_pose_score_valid inner error:", e)
+                else:
+                    if mode in ["Easy", "Hard"]:
+                        if self.countdown_timer.timer_is_running:
+                            self.countdown_timer.timer.stop()
+                            NotificationLabel(self, "Score below threshold! Timer paused.", success=False)
             except Exception as e:
                 print("is_pose_score_valid error:", e)
 
