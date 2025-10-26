@@ -66,9 +66,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.camera_btn.toggled.connect(self.on_camera_btn_toggled)
 
         # share page
-        self.addShareicon.setCheckable(True)
+        self.addShareicon.setCheckable(False)
         self.share_comment_btn.setCheckable(True)
-        self.share_cancel_btn.setCheckable(True)
+        self.share_cancel_btn.setCheckable(False)
         self.frame_12.hide()
         self.share_comment_frame.hide()
         self.addShareicon.clicked.connect(self.show_share_page_widget)
@@ -304,8 +304,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.camera_label.setText('Lens screen not found')
             
     def show_share_page_widget(self):
-            if self.addShareicon.isChecked():
-                    self.frame_12.show()
+                self.frame_12.show()
     
     def toggle_share_comment_widget(self):
         if self.share_comment_frame.isVisible():
@@ -314,9 +313,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.share_comment_frame.show()
     
     def hide_share_page_widget(self):
-            if self.share_cancel_btn.isChecked():
-                    self.frame_12.hide()
-                    self.post_dialog.reset_post_fields()
+                self.frame_12.hide()
+                self.post_dialog.reset_post_fields()
     
     def load_demo_image(self):
         self.image_dir = r"YOLO\demo_images"
@@ -394,8 +392,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         try:
             db = pymysql.connect(
                 host='127.0.0.1',
-                user='root',
-                password='root123456',
+                user='root123456',
+                password='',
                 database='yoga_coach_database',
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor

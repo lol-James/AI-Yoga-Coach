@@ -8,12 +8,50 @@ from PyQt5 import uic
 from datetime import datetime
 from functools import partial
 
+scrollbar_style = """
+    QScrollBar:vertical {
+        border: none;
+        background: transparent;
+        width: 8px;
+        margin: 0px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::handle:vertical {
+        background-color: rgba(0, 0, 0, 80);
+        min-height: 20px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background-color: rgba(0, 0, 0, 120);
+    }
+
+    QScrollBar::handle:vertical:pressed {
+        background-color: rgba(0, 0, 0, 160);
+    }
+
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical {
+        height: 0px;
+        background: none;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }
+    """
+
 class PostDialog:
     def __init__(self, ui, user_id, db_conn):
+        
         self.ui = ui
         self.user_id = user_id
         self.db_conn = db_conn
         self.selected_image_path = None
+        self.ui.scrollArea.verticalScrollBar().setStyleSheet(scrollbar_style)
+        self.ui.scrollArea_2.verticalScrollBar().setStyleSheet(scrollbar_style)
 
         self.ui.link_button.clicked.connect(self.select_image)
         self.ui.pushButton_10.clicked.connect(self.submit_post)
@@ -321,3 +359,5 @@ class PostDialog:
         self.ui.label_5.clear()
         self.ui.label_5.setText("點擊左側按鈕選擇圖片")
         self.ui.textEdit_2.clear()
+    
+    
