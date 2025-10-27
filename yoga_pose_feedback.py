@@ -3,12 +3,16 @@ from PyQt5.QtCore import QThread, QTimer
 from Pose_Suggestion import *
 import pyttsx3
 import time
+from notification import NotificationLabel
 
 class YogaPoseFeedback(QThread):
     def __init__(self, ui):
         super().__init__()
         self.ui = ui
         self.suggesstion_text_label = self.ui.suggestion_text_label
+        
+        self.enable_voice_feedback = False
+        self.ui.voice_broadcast_btn.toggled.connect(self.on_voice_toggle)
         
         self.POSE_THRESHOLDS = {
             "bridge": {"Easy": 88, "Hard": 95},
@@ -48,6 +52,8 @@ class YogaPoseFeedback(QThread):
         pose_name = self.INDEX_TO_KEY.get(pose_index, None)
         if not pose_name or not scores:
             return
+        if mode not in ["Easy", "Hard"]:
+            return
         threshold = self.POSE_THRESHOLDS[pose_name][mode]
         feedback_func_map = {
             "bridge": bridge_feedback.get_bridge_feedbackstr,
@@ -70,7 +76,7 @@ class YogaPoseFeedback(QThread):
         
         if has_error:
             current_time = time.time()
-            if current_time - self.last_speech_time >= self.speech_interval:
+            if current_time - self.last_speech_time >= self.speech_interval and self.enable_voice_feedback:
                 self._speak(feedback_str)
             else:
                 pass
@@ -92,3 +98,12 @@ class YogaPoseFeedback(QThread):
                     self.tts_lock.release() 
             
             Thread(target=tts, daemon=True).start()
+                
+    def on_voice_toggle(self, checked):
+        if checked:
+            NotificationLabel(self.ui, "Voice Feedback Enabled ", success=True)
+            self.enable_voice_feedback = True
+        else:
+            NotificationLabel(self.ui, "Voice Feedback Disabled", success=False)
+            self.enable_voice_feedback = False
+    

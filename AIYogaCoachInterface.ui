@@ -1397,7 +1397,10 @@ QPushButton:hover {
 QPushButton:pressed {
     background: #bdbdbd;        /* 深一點的淺灰色 */
 }
-</string>
+
+QPushButton:checked {
+    background: #ffcccc;  /* 淺紅色 */
+}</string>
                            </property>
                            <property name="text">
                             <string/>
