@@ -160,7 +160,9 @@ CREATE TABLE `post_like` (
 --
 
 INSERT INTO `post_like` (`id`, `post_id`, `user_id`) VALUES
-(8, 35, 17);
+(8, 35, 17),
+(9, 38, 6),
+(10, 37, 6);
 
 -- --------------------------------------------------------
 
@@ -545,7 +547,24 @@ INSERT INTO `record_session` (`id`, `user_id`, `session_id`, `start_time`, `end_
 (3, 17, '1760695998.137941', '2025-10-17 18:13:18', '2025-10-17 18:14:29', 0),
 (4, 17, '1760696069.701902', '2025-10-17 18:14:29', '2025-10-17 18:14:50', 0),
 (5, 17, '1760696135.598574', '2025-10-17 18:15:35', '2025-10-17 18:33:06', 0),
-(6, 17, '1760697186.428868', '2025-10-17 18:33:06', '2025-10-17 18:34:36', 0);
+(6, 17, '1760697186.428868', '2025-10-17 18:33:06', '2025-10-17 18:34:36', 0),
+(7, 6, '1761555184.660114', '2025-10-27 16:53:04', '2025-10-27 16:54:44', 0),
+(8, 6, '1761555284.014604', '2025-10-27 16:54:44', '2025-10-27 16:55:19', 0),
+(9, 6, '1761558425.346711', '2025-10-27 17:47:05', '2025-10-27 17:47:16', 0),
+(10, 6, '1761559053.914278', '2025-10-27 17:57:33', '2025-10-27 17:58:06', 0),
+(11, 6, '1761559183.906549', '2025-10-27 17:59:43', '2025-10-27 18:00:34', 0),
+(12, 6, '1761559318.926104', '2025-10-27 18:01:58', '2025-10-27 18:03:21', 0),
+(13, 6, '1761559436.626439', '2025-10-27 18:03:56', '2025-10-27 18:04:01', 0),
+(14, 6, '1761569149.564626', '2025-10-27 20:45:49', '2025-10-27 20:46:01', 0),
+(15, 6, '1761569231.935215', '2025-10-27 20:47:11', '2025-10-27 20:47:16', 0),
+(16, 6, '1761569564.993422', '2025-10-27 20:52:44', '2025-10-27 20:53:10', 0),
+(17, 6, '1761569748.313036', '2025-10-27 20:55:48', '2025-10-27 20:57:19', 0),
+(18, 6, '1761569882.19981', '2025-10-27 20:58:02', '2025-10-27 20:58:11', 0),
+(19, 6, '1761570045.035556', '2025-10-27 21:00:45', '2025-10-27 21:00:50', 0),
+(20, 6, '1761570529.898866', '2025-10-27 21:08:49', '2025-10-27 21:08:57', 0),
+(21, 6, '1761570688.145991', '2025-10-27 21:11:28', '2025-10-27 21:12:29', 0),
+(22, 6, '1761570776.781808', '2025-10-27 21:12:56', '2025-10-27 21:13:18', 0),
+(23, 6, '1761570830.164262', '2025-10-27 21:13:50', '2025-10-27 21:13:53', 0);
 
 -- --------------------------------------------------------
 
@@ -594,8 +613,9 @@ INSERT INTO `share_page` (`id`, `user_id`, `share_date`, `share_text`, `share_co
 (34, 17, '2025-09-05', 'awdawd', NULL, 2),
 (35, 17, '2025-09-05', 'wdawdawd', NULL, 1),
 (36, 17, '2025-10-01', '測試123456789', 'record_pic\\17_group1.png', 0),
-(37, 17, '2025-10-01', '第二次測試23456789', 'record_pic\\17_group3.png', 0),
-(38, 17, '2025-10-15', '', 'record_pic\\17_group1.png', 0);
+(37, 17, '2025-10-01', '第二次測試23456789', 'record_pic\\17_group3.png', 1),
+(38, 17, '2025-10-15', '', 'record_pic\\17_group1.png', 1),
+(39, 6, '2025-10-27', '密馬', 'post_images\\螢幕擷取畫面 (144).png', 0);
 
 -- --------------------------------------------------------
 
@@ -649,23 +669,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_account`, `user_password`, `user_picture`, `age`, `gender`, `register_date`, `email`) VALUES
-(1, 'non', '00000000', 'icons/non user.png', 0, '', NULL, 'deafult'),
-(2, 'bob456', 'bobpass456', 'icons/pre.png', 30, 'Male', '2024-06-03 14:20:00', 'bob@gmail.com'),
-(3, 'charlie789', 'charlie789', 'icons/quit.png', 28, 'Male', '2024-06-05 09:45:00', 'charlie@gmail.com'),
-(4, 'diana007', 'diana007pass', 'icons/remove.jpg', 22, 'Female', '2024-06-07 17:30:00', 'diana@gmail.com'),
-(5, 'eve321', 'evesecret321', 'icons/stop.png', 26, '', '2024-06-10 11:00:00', 'eve@gmail.com'),
-(6, 'David_Sun', 'ja0126047', 'icon/non user.png', 18, 'Male', '2025-05-16 15:44:02', 'vortexbluster@gmail.com'),
-(10, 'alice123', 'password123', 'icons/play.png', 25, 'Female', '2024-06-01 10:00:00', 'alice@gmail.com'),
-(12, 'a a', '3333', 'icons/non user.png', NULL, '', NULL, 'a@gmail.com'),
-(13, 'g g', '9999', 'icons/non user.png', NULL, '', NULL, 'b@gmail.com'),
-(14, 'q ', '111', 'icons/non user.png', NULL, '', '2025-06-11 22:32:44', 'q@gmail.com'),
-(15, 'test', '444', 'icons/non user.png', 30, '', '2025-06-11 22:50:53', 'tset@gmail.com'),
-(16, 'sun', '1234567', 'icons/non user.png', 32, '', '2025-06-12 01:06:09', 'sun@gmail.com'),
-(17, 'w', '2222', 'icons/non user.png', 20, 'Male', '2025-06-12 01:56:49', 'w@gmail.com'),
-(18, 'ui ', '888', 'icons/non user.png', NULL, '', '2025-06-12 20:37:00', 'ui@gmail.com'),
-(19, 'lol James', 'loljames123', 'icons/non user.png', NULL, '', '2025-06-28 16:06:20', 'loljames123@gmail.com'),
-(26, 'test test', 'Test123', 'icons/non user.png', 18, 'Female', '2025-07-08 20:48:20', 'test@test.com'),
-(29, 'Yu Lun Wu', 'Gary123', 'icons/non user.png', 21, 'Male', '2025-07-08 21:46:27', 'gary8321233@gmail.com');
+(1, 'non', '7e071fd9b023ed8f18458a73613a0834f6220bd5cc50357ba3493c6040a9ea8c', 'icons/non user.png', 0, '', NULL, 'deafult'),
+(2, 'bob456', '2311c2f312e17b94e940ef18c9d622888610fd9c8339ba3b731db9a2ffe93fa3', 'icons/pre.png', 30, 'Male', '2024-06-03 14:20:00', 'bob@gmail.com'),
+(3, 'charlie789', '22ad18a03fd26627225366c2337f1c93693c89fc89b62b8dff3d393e9761d139', 'icons/quit.png', 28, 'Male', '2024-06-05 09:45:00', 'charlie@gmail.com'),
+(4, 'diana007', '35cf1a155c967f2691fe981b7e7a8d87595424c3d65ad4f758749099b26f447d', 'icons/remove.jpg', 22, 'Female', '2024-06-07 17:30:00', 'diana@gmail.com'),
+(5, 'eve321', 'f6570096699bc1028b0467941aa2cd0fe755ad778362ddbe3be90b0042e022fe', 'icons/stop.png', 26, '', '2024-06-10 11:00:00', 'eve@gmail.com'),
+(6, 'David_Sun', '0c25006302071aab33fdacdc050915728b8d85f0b4bcd910991c617783aef9b9', 'icons/user_6.png', 18, 'Male', '2025-05-16 15:44:02', 'vortexbluster@gmail.com'),
+(10, 'alice123', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 'icons/play.png', 25, 'Female', '2024-06-01 10:00:00', 'alice@gmail.com'),
+(12, 'a a', '318aee3fed8c9d040d35a7fc1fa776fb31303833aa2de885354ddf3d44d8fb69', 'icons/non user.png', NULL, '', NULL, 'a@gmail.com'),
+(13, 'g g', '888df25ae35772424a560c7152a1de794440e0ea5cfee62828333a456a506e05', 'icons/non user.png', NULL, '', NULL, 'b@gmail.com'),
+(14, 'q ', 'f6e0a1e2ac41945a9aa7ff8a8aaa0cebc12a3bcc981a929ad5cf810a090e11ae', 'icons/non user.png', NULL, '', '2025-06-11 22:32:44', 'q@gmail.com'),
+(15, 'test', '3538a1ef2e113da64249eea7bd068b585ec7ce5df73b2d1e319d8c9bf47eb314', 'icons/non user.png', 30, '', '2025-06-11 22:50:53', 'tset@gmail.com'),
+(16, 'sun', '8bb0cf6eb9b17d0f7d22b456f121257dc1254e1f01665370476383ea776df414', 'icons/non user.png', 32, '', '2025-06-12 01:06:09', 'sun@gmail.com'),
+(17, 'w', 'edee29f882543b956620b26d0ee0e7e950399b1c4222f5de05e06425b4c995e9', 'icons/non user.png', 20, 'Male', '2025-06-12 01:56:49', 'w@gmail.com'),
+(18, 'ui ', '5e968ce47ce4a17e3823c29332a39d049a8d0afb08d157eb6224625f92671a51', 'icons/non user.png', NULL, '', '2025-06-12 20:37:00', 'ui@gmail.com'),
+(19, 'lol James', 'c4eebe393706b3d3814f56a2398b447317693eb298add76ee75cb50d97a28c79', 'icons/non user.png', NULL, '', '2025-06-28 16:06:20', 'loljames123@gmail.com'),
+(26, 'test test', 'd9b5f58f0b38198293971865a14074f59eba3e82595becbe86ae51f1d9f1f65e', 'icons/non user.png', 18, 'Female', '2025-07-08 20:48:20', 'test@test.com'),
+(29, 'Yu Lun Wu', '65cbea97698530c3c538983441cdc249e3f0dd6bac2de4c2a04d475140f3d3e7', 'icons/non user.png', 21, 'Male', '2025-07-08 21:46:27', 'gary8321233@gmail.com');
 
 --
 -- 已傾印資料表的索引
@@ -771,7 +791,7 @@ ALTER TABLE `favorite_songs`
 -- 使用資料表自動增長(AUTO_INCREMENT) `post_like`
 --
 ALTER TABLE `post_like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- 使用資料表自動增長(AUTO_INCREMENT) `record_detail`
@@ -783,13 +803,13 @@ ALTER TABLE `record_detail`
 -- 使用資料表自動增長(AUTO_INCREMENT) `record_session`
 --
 ALTER TABLE `record_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- 使用資料表自動增長(AUTO_INCREMENT) `share_page`
 --
 ALTER TABLE `share_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- 使用資料表自動增長(AUTO_INCREMENT) `songs`

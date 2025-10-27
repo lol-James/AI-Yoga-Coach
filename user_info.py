@@ -1,8 +1,10 @@
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QMessageBox,QFileDialog
 from PyQt5.QtCore import QObject, pyqtSignal
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
 from notification import NotificationLabel
 import re
+import os
+import shutil
 
 class User_Info(QObject):
     del_user_account_signal = pyqtSignal(bool)
@@ -58,6 +60,7 @@ class User_Info(QObject):
         self.password_confirm.clicked.connect(self.change_password)
         self.adjust_confirm.clicked.connect(self.change_info)
         self.delete_account_btn.clicked.connect(self.delete_account)
+        self.user_picture.clicked.connect(self.change_picture)
         
         #user info dict
         self.user_dict=self.get_sql_data()
@@ -74,12 +77,17 @@ class User_Info(QObject):
     
     # initialize/change user info acording to user_id
     def initialize_user_info(self):
+        print("whos picture path:", self.user_dict['user_account'],self.user_dict['user_picture'])
         self.user_name.setText(self.user_dict['user_account'])
         self.user_account.setText(self.user_dict['email'])
         self.user_age.setText(str(self.user_dict['age']))
         self.user_gender.setText(self.user_dict['gender'])
         self.user_register_time.setText(str(self.user_dict['register_date']))
-        self.user_picture.setPixmap(QPixmap(self.user_dict['user_picture']))  # Assuming profile_picture is a QPixmap or similar
+        pixmap = QPixmap(self.user_dict['user_picture'])
+        icon = QIcon(pixmap)
+        self.user_picture.setIcon(icon)
+        self.user_picture.setIconSize(self.user_picture.size())  # 圖片大小
+        self.user_picture.setText("")  # 移除按鈕文字  # Assuming profile_picture is a QPixmap or similar
         
     def set_placeholder(self):
         self.user_dict=self.get_sql_data()
@@ -229,6 +237,37 @@ class User_Info(QObject):
                 NotificationLabel(self.ui, "Account deletion canceled.", success=False, duration=2000)
         else:
             NotificationLabel(self.ui, "Account deletion canceled.", success=False, duration=2000)
+    
+    def change_picture(self):
+        if self.user_id==1:
+            NotificationLabel(self.ui, "Cannot change the picture of admin account.", success=False, duration=3000)
+            return
+        file_path, _ = QFileDialog.getOpenFileName(
+        self.ui,
+        "選擇頭貼圖片",
+        "",
+        "Images (*.png *.jpg *.jpeg *.bmp)")
+
+        if not file_path:
+            return  # 使用者取消
+        
+        dest_folder = os.path.join(os.getcwd(), "icons")
+        os.makedirs(dest_folder, exist_ok=True)
+
+        file_name = f"user_{self.user_id}.png"
+        dest_path = os.path.join(dest_folder, file_name)
+        shutil.copy(file_path, dest_path)
+
+        # 更新資料庫
+        with self.db.cursor() as cursor:
+            sql = "UPDATE users SET user_picture = %s WHERE user_id = %s"
+            cursor.execute(sql, (f"icons/{file_name}", self.user_id))
+            self.db.commit()
+
+        # 更新按鈕顯示
+        pixmap = QPixmap(dest_path)
+        self.user_picture.setIcon(QIcon(pixmap))
+        self.user_picture.setIconSize(self.user_picture.size())
 
           
         

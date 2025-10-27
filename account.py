@@ -5,6 +5,7 @@ from notification import NotificationLabel
 import smtplib
 import random
 import re
+import hashlib
 
 class Account(QObject):
     user_id_signal = pyqtSignal(int)
@@ -157,8 +158,9 @@ class Account(QObject):
             
             # the email existent
             if result:
+                hash_value = hashlib.sha256(password.encode('utf-8')).hexdigest()
                 # check password
-                if password == result['user_password']:
+                if hash_value == result['user_password']:
                     self.user_id= result['user_id']
                     self.login_flag = True
                     NotificationLabel(self.ui, "Login success", success=True)
@@ -183,7 +185,7 @@ class Account(QObject):
         password = self.reg_password_lineedit.text()
         confirm_password = self.reg_confirm_password_lineedit.text()
         register_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
+        hash_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         # form validation
         if not firstname or not lastname or not age or not email or not password or not confirm_password:
             NotificationLabel(self.ui, "All fields are required.", success=False, duration=3000)
@@ -214,7 +216,6 @@ class Account(QObject):
                 return
             
             try:
-                print(gender)
                 cursor.execute("SELECT * FROM users LIMIT 0")
                 columns = [desc[0] for desc in cursor.description]
                 columns = [col for col in columns if col != 'user_id']
@@ -226,7 +227,7 @@ class Account(QObject):
                 sql = f"INSERT INTO users ({columns_sql}) VALUES ({placeholders})"
                 
                 #要新增的元組
-                value=(firstname + ' ' + lastname, password, 'icons/non user.png', age, gender, register_time, email)
+                value=(firstname + ' ' + lastname, hash_password, 'icons/non user.png', age, gender, register_time, email)
                 
                 cursor.execute(sql, value)
                 self.db.commit()
@@ -298,7 +299,7 @@ class Account(QObject):
         email = self.sent_email
         password = self.reset_password_lineedit.text()
         confirm_password = self.reset_confirm_password_lineedit.text()
-
+        hash_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         if not password or not confirm_password:
             NotificationLabel(self.ui, "All fields are required.", success=False, duration=3000)
             return
@@ -315,7 +316,7 @@ class Account(QObject):
         try:
             with self.ui.db.cursor() as cursor:
                 sql = "UPDATE users SET user_password = %s WHERE email = %s"
-                cursor.execute(sql, (password, email))
+                cursor.execute(sql, (hash_password, email))
                 self.ui.db.commit()
 
             NotificationLabel(self.ui, "Password has been reset successfully.", success=True)
