@@ -251,7 +251,7 @@ class User_Info(QObject):
         if not file_path:
             return  # 使用者取消
         
-        dest_folder = os.path.join(os.getcwd(), "icons")
+        dest_folder = os.path.join(os.getcwd(), "profile_picture")
         os.makedirs(dest_folder, exist_ok=True)
 
         file_name = f"user_{self.user_id}.png"
@@ -261,7 +261,7 @@ class User_Info(QObject):
         # 更新資料庫
         with self.db.cursor() as cursor:
             sql = "UPDATE users SET user_picture = %s WHERE user_id = %s"
-            cursor.execute(sql, (f"icons/{file_name}", self.user_id))
+            cursor.execute(sql, (f"profile_picture/{file_name}", self.user_id))
             self.db.commit()
 
         # 更新按鈕顯示

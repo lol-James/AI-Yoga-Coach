@@ -957,7 +957,7 @@ QPushButton:focus {
           <item row="2" column="0">
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>4</number>
+             <number>6</number>
             </property>
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
