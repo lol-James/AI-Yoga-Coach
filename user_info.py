@@ -5,6 +5,7 @@ from notification import NotificationLabel
 import re
 import os
 import shutil
+import hashlib
 
 class User_Info(QObject):
     del_user_account_signal = pyqtSignal(bool)
@@ -156,14 +157,16 @@ class User_Info(QObject):
             NotificationLabel(self.ui, "Confirm password do not match.", success=False, duration=3000)
             return
         
+        old_hashed = hashlib.sha256(old_password.encode('utf-8')).hexdigest()
+        new_hashed = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
         self.user_dict=self.get_sql_data()
         with self.db.cursor() as cursor:
             sql = "SELECT user_password FROM users WHERE user_id = %s"
             cursor.execute(sql, (self.user_id,))
             
-            if self.user_dict['user_password'] == old_password:
+            if self.user_dict['user_password'] == old_hashed:
                 update_sql = "UPDATE users SET user_password = %s WHERE user_id = %s"
-                cursor.execute(update_sql, (new_password, self.user_id))
+                cursor.execute(update_sql, (new_hashed, self.user_id))
                 self.db.commit()
                 NotificationLabel(self.ui, "Password update success.", success=True)
                 self.old_password.clear()
