@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-10-27 23:15:37
+-- 產生時間： 2025-10-29 09:25:30
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -76,7 +76,29 @@ CREATE TABLE `comment_page` (
 --
 
 INSERT INTO `comment_page` (`id`, `comment_user_id`, `post_id`, `comment_date`, `comment_text`, `comment_like`, `comment_dislike`) VALUES
-(41, 19, 40, '2025-10-27', 'excellent', 2, 0);
+(41, 19, 40, '2025-10-27', 'excellent', 2, 0),
+(42, 6, 40, '2025-10-27', '太大了', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `discord_users`
+--
+
+CREATE TABLE `discord_users` (
+  `discord_id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `bind_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `discord_users`
+--
+
+INSERT INTO `discord_users` (`discord_id`, `user_id`, `bind_date`) VALUES
+(862899190287171614, 19, '2025-10-29 06:16:13'),
+(991162658206261298, 29, '2025-10-29 05:20:41'),
+(1057175294164877322, 6, '2025-10-29 05:16:34');
 
 -- --------------------------------------------------------
 
@@ -98,7 +120,11 @@ INSERT INTO `favorite_songs` (`id`, `user_id`, `song_name`) VALUES
 (19, 19, '周杰倫 - 蒲公英的約定.mp3'),
 (20, 19, '周杰倫 - 夜曲.mp3'),
 (21, 19, '周杰倫 - 晴天.mp3'),
-(22, 19, '周杰倫 - 七里香.mp3');
+(22, 19, '周杰倫 - 七里香.mp3'),
+(23, 6, '周杰倫 - 七里香.mp3'),
+(24, 6, '周杰倫 - 以父之名.mp3'),
+(25, 6, '周杰倫 - 白色風車.mp3'),
+(26, 6, '周杰倫 - 夜曲.mp3');
 
 -- --------------------------------------------------------
 
@@ -118,7 +144,8 @@ CREATE TABLE `post_like` (
 
 INSERT INTO `post_like` (`id`, `post_id`, `user_id`) VALUES
 (12, 40, 19),
-(13, 41, 29);
+(13, 41, 29),
+(14, 40, 6);
 
 -- --------------------------------------------------------
 
@@ -529,7 +556,34 @@ INSERT INTO `record_session` (`id`, `user_id`, `session_id`, `start_time`, `end_
 (29, 19, '1761575110.52153', '2025-10-27 22:25:10', NULL, 0),
 (30, 29, '1761575171.194109', '2025-10-27 22:26:11', '2025-10-27 22:37:11', 0),
 (31, 29, '1761576276.63306', '2025-10-27 22:44:36', '2025-10-27 22:45:57', 0),
-(32, 29, '1761576417.12709', '2025-10-27 22:46:57', '2025-10-27 22:47:06', 0);
+(32, 29, '1761576417.12709', '2025-10-27 22:46:57', '2025-10-27 22:47:06', 0),
+(33, 29, '1761578327.703465', '2025-10-27 23:18:47', '2025-10-27 23:26:05', 0),
+(34, 6, '1761578359.408911', '2025-10-27 23:19:19', '2025-10-27 23:25:11', 0),
+(35, 6, '1761580148.111537', '2025-10-27 23:49:08', '2025-10-27 23:49:47', 0),
+(36, 6, '1761580187.905637', '2025-10-27 23:49:47', '2025-10-28 00:19:37', 0),
+(37, 6, '1761580217.353606', '2025-10-27 23:50:17', '2025-10-27 23:51:27', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `reminders`
+--
+
+CREATE TABLE `reminders` (
+  `reminder_id` int(11) NOT NULL,
+  `discord_id` bigint(20) NOT NULL,
+  `hour` int(11) NOT NULL,
+  `minute` int(11) NOT NULL,
+  `reminder_date` date DEFAULT NULL,
+  `weekday` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `reminders`
+--
+
+INSERT INTO `reminders` (`reminder_id`, `discord_id`, `hour`, `minute`, `reminder_date`, `weekday`) VALUES
+(9, 862899190287171614, 15, 36, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -551,8 +605,9 @@ CREATE TABLE `share_page` (
 --
 
 INSERT INTO `share_page` (`id`, `user_id`, `share_date`, `share_text`, `share_content`, `share_like`) VALUES
-(40, 29, '2025-10-27', 'New Post', 'post_images\\test_image.jpg', 1),
-(41, 19, '2025-10-27', 'good night!!!! everyone', NULL, 1);
+(40, 29, '2025-10-27', 'New Post', 'post_images\\test_image.jpg', 2),
+(41, 19, '2025-10-27', 'good night!!!! everyone', NULL, 1),
+(42, 6, '2025-10-27', '工學院', 'post_images\\工學院.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -611,7 +666,7 @@ INSERT INTO `users` (`user_id`, `user_account`, `user_password`, `user_picture`,
 (3, 'charlie789', '22ad18a03fd26627225366c2337f1c93693c89fc89b62b8dff3d393e9761d139', 'profile_picture/non user.png', 28, 'Male', '2024-06-05 09:45:00', 'charlie@gmail.com'),
 (4, 'diana007', '35cf1a155c967f2691fe981b7e7a8d87595424c3d65ad4f758749099b26f447d', 'profile_picture/non user.png', 22, 'Female', '2024-06-07 17:30:00', 'diana@gmail.com'),
 (5, 'eve321', 'f6570096699bc1028b0467941aa2cd0fe755ad778362ddbe3be90b0042e022fe', 'profile_picture/non user.png', 26, '', '2024-06-10 11:00:00', 'eve@gmail.com'),
-(6, 'David_Sun', '0c25006302071aab33fdacdc050915728b8d85f0b4bcd910991c617783aef9b9', 'profile_picture/non user.png', 18, 'Male', '2025-05-16 15:44:02', 'vortexbluster@gmail.com'),
+(6, 'David_Sun', '0c25006302071aab33fdacdc050915728b8d85f0b4bcd910991c617783aef9b9', 'profile_picture/user_6.png', 18, 'Male', '2025-05-16 15:44:02', 'vortexbluster@gmail.com'),
 (10, 'alice123', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 'profile_picture/non user.png', 25, 'Female', '2024-06-01 10:00:00', 'alice@gmail.com'),
 (12, 'a a', '318aee3fed8c9d040d35a7fc1fa776fb31303833aa2de885354ddf3d44d8fb69', 'profile_picture/non user.png', NULL, '', NULL, 'a@gmail.com'),
 (13, 'g g', '888df25ae35772424a560c7152a1de794440e0ea5cfee62828333a456a506e05', 'profile_picture/non user.png', NULL, '', NULL, 'b@gmail.com'),
@@ -649,6 +704,13 @@ ALTER TABLE `comment_page`
   ADD KEY `comment_user_id` (`comment_user_id`);
 
 --
+-- 資料表索引 `discord_users`
+--
+ALTER TABLE `discord_users`
+  ADD PRIMARY KEY (`discord_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- 資料表索引 `favorite_songs`
 --
 ALTER TABLE `favorite_songs`
@@ -674,6 +736,12 @@ ALTER TABLE `record_session`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `session_id` (`session_id`);
+
+--
+-- 資料表索引 `reminders`
+--
+ALTER TABLE `reminders`
+  ADD PRIMARY KEY (`reminder_id`);
 
 --
 -- 資料表索引 `share_page`
@@ -716,19 +784,19 @@ ALTER TABLE `comment_like`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comment_page`
 --
 ALTER TABLE `comment_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `favorite_songs`
 --
 ALTER TABLE `favorite_songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post_like`
 --
 ALTER TABLE `post_like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `record_detail`
@@ -740,13 +808,19 @@ ALTER TABLE `record_detail`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `record_session`
 --
 ALTER TABLE `record_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `reminders`
+--
+ALTER TABLE `reminders`
+  MODIFY `reminder_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_page`
 --
 ALTER TABLE `share_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `songs`
@@ -770,6 +844,12 @@ ALTER TABLE `users`
 ALTER TABLE `comment_page`
   ADD CONSTRAINT `comment_page_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `share_page` (`id`),
   ADD CONSTRAINT `comment_page_ibfk_2` FOREIGN KEY (`comment_user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- 資料表的限制式 `discord_users`
+--
+ALTER TABLE `discord_users`
+  ADD CONSTRAINT `discord_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- 資料表的限制式 `share_page`
