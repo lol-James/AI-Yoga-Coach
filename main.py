@@ -773,42 +773,43 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.show_current_group()
 
     def on_share_post_clicked(self):
-        """Save post text and chart to database when share button is clicked."""
-        user_id = self.account.user_id
-        if not user_id:
+        """Share post to BLB database (share_page table)."""
+        if not self.account.login_flag:
             NotificationLabel(self, "Please login first.", success=False)
             return
 
-        # Allow empty share text
-        share_text = self.plainTextEdit.toPlainText().strip()
-
-        # Check if chart (label_3) is empty
-        if not self.chart_paths or not (0 <= self.current_group_index < len(self.chart_paths)):
-            NotificationLabel(self, "Please generate a chart before sharing.", success=False)
+        content = self.plainTextEdit.toPlainText().strip()
+        if not content:
+            NotificationLabel(self, "Post content cannot be empty.", success=False)
             return
 
-        chart_path = self.chart_paths[self.current_group_index]
-        chart_rel_path = os.path.relpath(chart_path).replace("/", "\\")
+        user_id = self.account.user_id
+        share_date = datetime.now().strftime("%Y-%m-%d")
+
+        # Get image path if available
+        image_path = None
+        if hasattr(self, "post_dialog") and hasattr(self.post_dialog, "selected_image_path"):
+            image_path = self.post_dialog.selected_image_path
 
         try:
             with self.db.cursor() as cursor:
-                cursor.execute(
-                    """
-                    INSERT INTO share_page (user_id, share_date, share_text, share_content)
-                    VALUES (%s, CURDATE(), %s, %s)
-                    """,
-                    (user_id, share_text, chart_rel_path)
-                )
-            self.db.commit()
+                sql = """
+                INSERT INTO share_page (user_id, share_date, share_text, share_content, share_like)
+                VALUES (%s, %s, %s, %s, %s)
+                """
+                cursor.execute(sql, (user_id, share_date, content, image_path, 0))
+                self.db.commit()
 
-            self.post_dialog.load_posts()
-            
             NotificationLabel(self, "Post shared successfully.", success=True)
             self.plainTextEdit.clear()
-            self.plainTextEdit.setPlaceholderText("請輸入貼文內容...")
+
+            # Refresh post list if available
+            if hasattr(self, "post_dialog"):
+                self.post_dialog.load_posts()
+
         except Exception as e:
-            print("on_share_post_clicked DB error:", e)
-            NotificationLabel(self, "Database error.", success=False)
+            self.db.rollback()
+            NotificationLabel(self, f"Failed to share post: {e}", success=False)
 
     def reset_share_input(self, user_id):
         """Clear PlainTextEdit when user logs in or out."""
