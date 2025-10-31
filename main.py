@@ -786,10 +786,13 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         user_id = self.account.user_id
         share_date = datetime.now().strftime("%Y-%m-%d")
 
-        # Get image path if available
-        image_path = None
+        # 讀取圖片並轉成 BLOB
+        image_blob = None
         if hasattr(self, "post_dialog") and hasattr(self.post_dialog, "selected_image_path"):
             image_path = self.post_dialog.selected_image_path
+            if image_path:
+                with open(image_path, "rb") as f:
+                    image_blob = f.read()
 
         try:
             with self.db.cursor() as cursor:
@@ -797,7 +800,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 INSERT INTO share_page (user_id, share_date, share_text, share_content, share_like)
                 VALUES (%s, %s, %s, %s, %s)
                 """
-                cursor.execute(sql, (user_id, share_date, content, image_path, 0))
+                cursor.execute(sql, (user_id, share_date, content, image_blob, 0))
                 self.db.commit()
 
             NotificationLabel(self, "Post shared successfully.", success=True)
