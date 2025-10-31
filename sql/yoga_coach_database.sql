@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-10-29 09:25:30
+-- 產生時間： 2025-10-31 13:24:06
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -596,7 +596,7 @@ CREATE TABLE `share_page` (
   `user_id` int(11) NOT NULL,
   `share_date` date NOT NULL,
   `share_text` text DEFAULT NULL,
-  `share_content` varchar(255) DEFAULT NULL,
+  `share_content` longblob DEFAULT NULL,
   `share_like` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -605,9 +605,9 @@ CREATE TABLE `share_page` (
 --
 
 INSERT INTO `share_page` (`id`, `user_id`, `share_date`, `share_text`, `share_content`, `share_like`) VALUES
-(40, 29, '2025-10-27', 'New Post', 'post_images\\test_image.jpg', 2),
+(40, 29, '2025-10-27', 'New Post', NULL, 2),
 (41, 19, '2025-10-27', 'good night!!!! everyone', NULL, 1),
-(42, 6, '2025-10-27', '工學院', 'post_images\\工學院.jpg', 0);
+(42, 6, '2025-10-27', '工學院', NULL, 0);
 
 -- --------------------------------------------------------
 

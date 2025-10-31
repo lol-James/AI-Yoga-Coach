@@ -3,10 +3,11 @@ import shutil
 import pymysql
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import *
 from PyQt5 import uic
 from datetime import datetime
 from functools import partial
+from notification import NotificationLabel
 
 scrollbar_style = """
     QScrollBar:vertical {
@@ -55,6 +56,8 @@ class PostDialog:
 
         self.ui.link_button.clicked.connect(self.select_image)
         self.ui.pushButton_10.clicked.connect(self.submit_post)
+
+        self.ui.refresh_btn.clicked.connect(self.refresh_posts)
 
         self.ui.label_5.setAlignment(Qt.AlignCenter)
         self.ui.label_5.setText("請點擊左側按鈕選擇圖片")
@@ -174,9 +177,36 @@ class PostDialog:
                 if child.widget():
                     child.widget().deleteLater()
 
+            available_width = self.ui.scrollArea.width() - 60  
+
             for post in posts:
                 frame = self.create_share_frame(post)
-                self.ui.verticalLayout_47.addWidget(frame)
+
+                image_data = post["share_content"]
+                if image_data:
+                    pixmap = QPixmap()
+                    if isinstance(image_data, (bytes, bytearray)): 
+                        pixmap.loadFromData(image_data)
+                    elif isinstance(image_data, str) and os.path.exists(image_data):  
+                        pixmap = QPixmap(image_data)
+                    else:
+                        pixmap = QPixmap()
+
+                    scaled_pixmap = pixmap.scaledToWidth(
+                        available_width,
+                        Qt.SmoothTransformation
+                    )
+
+                    frame.put_picture.setPixmap(scaled_pixmap)
+                    frame.put_picture.setScaledContents(False)
+                    frame.put_picture.setAlignment(Qt.AlignCenter)
+                    frame.put_picture.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+                    frame.put_picture.adjustSize()
+
+                else:
+                    frame.put_picture.clear()
+
+                layout.addWidget(frame)
 
         except pymysql.MySQLError as e:
             QMessageBox.critical(None, "載入貼文失敗", str(e))
@@ -360,4 +390,9 @@ class PostDialog:
         self.ui.label_5.setText("點擊左側按鈕選擇圖片")
         self.ui.textEdit_2.clear()
     
-    
+    def refresh_posts(self):
+        try:
+            self.load_posts()
+            NotificationLabel(self.ui, "Posts refreshed", success=True)
+        except Exception as e:
+            NotificationLabel(self.ui, f"Failed to refresh posts：{e}", success=False)  
