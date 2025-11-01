@@ -156,7 +156,7 @@ class PostDialog:
             else:
                 pixmap = QPixmap()  
 
-            if pixmap and not pixmap.isNull():
+            if isinstance(pixmap, QPixmap) and not pixmap.isNull():
                 scaled_pixmap = pixmap.scaledToWidth(300, Qt.SmoothTransformation)
                 frame.put_picture.setPixmap(scaled_pixmap)
                 frame.put_picture.setVisible(True)
@@ -408,6 +408,9 @@ class PostDialog:
     
     def refresh_posts(self):
         try:
+            self.db_conn.ping(reconnect=True)
+            self.db_conn.commit()
+
             self.load_posts()
             NotificationLabel(self.ui, "Posts refreshed", success=True)
         except Exception as e:
