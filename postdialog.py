@@ -85,41 +85,42 @@ class PostDialog:
         text = self.ui.textEdit_2.toPlainText().strip()
 
         if not text and not self.selected_image_path:
-            QMessageBox.warning(None, "錯誤", "請輸入文字或選擇圖片")
+            NotificationLabel(self.ui, "❌ 請輸入文字或選擇圖片", success=False)
             return
 
         share_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        image_path_in_db = None
 
+        image_data = None
         if self.selected_image_path:
-            save_dir = "post_images"
-            os.makedirs(save_dir, exist_ok=True)
-            filename = os.path.basename(self.selected_image_path)
-            dest_path = os.path.join(save_dir, filename)
             try:
-                shutil.copy(self.selected_image_path, dest_path)
-                image_path_in_db = dest_path
+                with open(self.selected_image_path, "rb") as f:
+                    image_data = f.read()  
             except Exception as e:
-                QMessageBox.warning(None, "圖片儲存錯誤", str(e))
+                NotificationLabel(self.ui, f"❌ 無法讀取圖片：{e}", success=False)
                 return
 
         try:
             with self.db_conn.cursor() as cursor:
-                sql = "INSERT INTO share_page (user_id, share_date, share_text, share_content, share_like) VALUES (%s, %s, %s, %s, 0)"
-                cursor.execute(sql, (self.user_id, share_date, text, image_path_in_db))
+                sql = """
+                    INSERT INTO share_page (user_id, share_date, share_text, share_content, share_like)
+                    VALUES (%s, %s, %s, %s, 0)
+                """
+                cursor.execute(sql, (self.user_id, share_date, text, image_data))
                 self.db_conn.commit()
 
-            QMessageBox.information(None, "成功", "貼文已發送")
-            print("發送貼文的 user_id：", self.user_id)
+            NotificationLabel(self.ui, "✅ 貼文已成功發送", success=True)
+
             self.ui.textEdit_2.clear()
             self.ui.label_5.clear()
             self.ui.label_5.setText("請點擊左側按鈕選擇圖片")
             self.selected_image_path = None
+
             self.load_posts()
             self.ui.scrollArea.verticalScrollBar().setValue(0)
 
         except Exception as e:
-            QMessageBox.critical(None, "資料庫錯誤", str(e))
+            NotificationLabel(self.ui, f"❌ 資料庫錯誤：{e}", success=False)
+
 
     def create_share_frame(self, post):
         frame = uic.loadUi("share_frame.ui")
@@ -136,19 +137,33 @@ class PostDialog:
             frame.share_user_icon.clear()
 
         if post['share_text']:
-            frame.put_word.setText(post['share_text'])         
-            frame.put_word.setWordWrap(True)                  
-            frame.put_word.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred) 
-            frame.put_word.setTextInteractionFlags(Qt.TextSelectableByMouse)  
-
+            frame.put_word.setText(post['share_text'])
+            frame.put_word.setWordWrap(True)
+            frame.put_word.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+            frame.put_word.setTextInteractionFlags(Qt.TextSelectableByMouse)
         else:
             frame.put_word.clear()
             frame.put_word.setVisible(False)
 
-        if post['share_content'] and os.path.exists(post['share_content']):
-            pixmap = QPixmap(post['share_content']).scaledToWidth(300, Qt.SmoothTransformation)
-            frame.put_picture.setPixmap(pixmap)
-            frame.put_picture.setVisible(True)
+        image_data = post.get("share_content")
+
+        if image_data:
+            pixmap = QPixmap()
+            if isinstance(image_data, (bytes, bytearray)):  
+                pixmap.loadFromData(image_data)
+            elif isinstance(image_data, str) and os.path.exists(image_data): 
+                pixmap.load(image_data)
+            else:
+                pixmap = QPixmap()  
+
+            if pixmap and not pixmap.isNull():
+                scaled_pixmap = pixmap.scaledToWidth(300, Qt.SmoothTransformation)
+                frame.put_picture.setPixmap(scaled_pixmap)
+                frame.put_picture.setVisible(True)
+            else:
+                frame.put_picture.clear()
+                frame.put_picture.setVisible(False)
+
         else:
             frame.put_picture.clear()
             frame.put_picture.setVisible(False)
@@ -159,6 +174,7 @@ class PostDialog:
         frame.share_comment_btn.clicked.connect(lambda _, pid=post_id: self.toggle_share_comment_widget(pid))
 
         return frame
+
 
     def load_posts(self):
         try:
