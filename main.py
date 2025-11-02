@@ -398,6 +398,14 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 port=3306,
                 cursorclass=pymysql.cursors.DictCursor
             )
+            # db = pymysql.connect(
+            #     host='127.0.0.1',
+            #     user='root',
+            #     password='root123456',
+            #     database='yoga_coach_database',
+            #     port=3306,
+            #     cursorclass=pymysql.cursors.DictCursor
+            # )
             print("pymysql connected successfully")
             return db
         except Exception as e:

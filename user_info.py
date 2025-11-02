@@ -78,17 +78,22 @@ class User_Info(QObject):
     
     # initialize/change user info acording to user_id
     def initialize_user_info(self):
-        print("whos picture path:", self.user_dict['user_account'],self.user_dict['user_picture'])
         self.user_name.setText(self.user_dict['user_account'])
         self.user_account.setText(self.user_dict['email'])
         self.user_age.setText(str(self.user_dict['age']))
         self.user_gender.setText(self.user_dict['gender'])
         self.user_register_time.setText(str(self.user_dict['register_date']))
-        pixmap = QPixmap(self.user_dict['user_picture'])
+        
+        image_data = self.user_dict['user_picture']
+        if image_data is None:
+            pass
+        pixmap = QPixmap()
+        pixmap.loadFromData(image_data)
         icon = QIcon(pixmap)
         self.user_picture.setIcon(icon)
-        self.user_picture.setIconSize(self.user_picture.size())  # 圖片大小
-        self.user_picture.setText("")  # 移除按鈕文字  # Assuming profile_picture is a QPixmap or similar
+        self.user_picture.setIconSize(self.user_picture.size())
+        self.user_picture.setText("")
+        
         
     def set_placeholder(self):
         self.user_dict=self.get_sql_data()
@@ -254,23 +259,25 @@ class User_Info(QObject):
         if not file_path:
             return  # 使用者取消
         
-        dest_folder = os.path.join(os.getcwd(), "profile_picture")
-        os.makedirs(dest_folder, exist_ok=True)
+        with open(file_path, 'rb') as f:
+            image_data = f.read()
 
-        file_name = f"user_{self.user_id}.png"
-        dest_path = os.path.join(dest_folder, file_name)
-        shutil.copy(file_path, dest_path)
+        # 更新資料庫中的 BLOB 欄位
+        try:
+            with self.db.cursor() as cursor:
+                sql = "UPDATE users SET user_picture = %s WHERE user_id = %s"
+                cursor.execute(sql, (image_data, self.user_id))
+                self.db.commit()
 
-        # 更新資料庫
-        with self.db.cursor() as cursor:
-            sql = "UPDATE users SET user_picture = %s WHERE user_id = %s"
-            cursor.execute(sql, (f"profile_picture/{file_name}", self.user_id))
-            self.db.commit()
+            NotificationLabel(self.ui, "Profile picture updated successfully!", success=True, duration=2000)
 
-        # 更新按鈕顯示
-        pixmap = QPixmap(dest_path)
-        self.user_picture.setIcon(QIcon(pixmap))
-        self.user_picture.setIconSize(self.user_picture.size())
+            # 更新按鈕顯示（直接從檔案載入）
+            pixmap = QPixmap(file_path)
+            self.user_picture.setIcon(QIcon(pixmap))
+            self.user_picture.setIconSize(self.user_picture.size())
+
+        except Exception as e:
+            NotificationLabel(self.ui, f"Failed to update picture: {e}", success=False, duration=4000)
 
           
         
