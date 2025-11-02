@@ -957,7 +957,7 @@ QPushButton:focus {
           <item row="2" column="0">
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>6</number>
             </property>
             <widget class="QWidget" name="home_page">
              <property name="styleSheet">
@@ -3700,7 +3700,7 @@ QTabBar::tab:hover {
 </string>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="p1">
                  <attribute name="title">
@@ -6359,7 +6359,7 @@ padding-bottom:7px;</string>
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
+                 <pixmap>:/icons/icons/non user.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
