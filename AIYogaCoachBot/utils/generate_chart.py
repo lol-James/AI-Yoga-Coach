@@ -2,7 +2,6 @@ import os
 import math
 import matplotlib.pyplot as plt
 from datetime import datetime
-from datetime import date
 
 async def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_date):
     mode_map = {"PRACTICE": 0, "EASY": 1, "HARD": 2}

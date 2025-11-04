@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-11-02 14:16:55
+-- 產生時間： 2025-11-04 07:50:59
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `yoga_coach_database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `bot_message_queue`
+--
+
+CREATE TABLE `bot_message_queue` (
+  `id` int(11) NOT NULL,
+  `discord_id` bigint(20) NOT NULL,
+  `mode` varchar(16) NOT NULL,
+  `posture` varchar(32) NOT NULL,
+  `start_date` varchar(32) NOT NULL,
+  `end_date` varchar(32) NOT NULL,
+  `is_received` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `bot_message_queue`
+--
+
+INSERT INTO `bot_message_queue` (`id`, `discord_id`, `mode`, `posture`, `start_date`, `end_date`, `is_received`) VALUES
+(3, 862899190287171614, 'EASY', 'Chair Pose', '2025-11-02', '2025-11-02', 1),
+(4, 862899190287171614, 'EASY', 'Downward-Facing Dog', '2025-11-02', '2025-11-02', 1);
 
 -- --------------------------------------------------------
 
@@ -632,7 +656,10 @@ INSERT INTO `record_session` (`id`, `user_id`, `session_id`, `start_time`, `end_
 (49, 29, '1762071024.368544', '2025-11-02 16:10:24', '2025-11-02 16:10:46', 0),
 (50, 19, '1762082344.679958', '2025-11-02 19:19:04', '2025-11-02 19:19:19', 0),
 (51, 19, '1762086112.357349', '2025-11-02 20:21:52', '2025-11-02 20:53:02', 0),
-(52, 19, '1762087982.284759', '2025-11-02 20:53:02', NULL, 0);
+(52, 19, '1762087982.284759', '2025-11-02 20:53:02', '2025-11-04 05:28:33', 0),
+(53, 19, '1762205313.442921', '2025-11-04 05:28:33', '2025-11-04 05:29:44', 0),
+(54, 19, '1762205411.055429', '2025-11-04 05:30:11', '2025-11-04 05:30:56', 0),
+(55, 19, '1762235075.060995', '2025-11-04 13:44:35', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -655,11 +682,9 @@ CREATE TABLE `reminders` (
 --
 
 INSERT INTO `reminders` (`reminder_id`, `discord_id`, `hour`, `minute`, `reminder_date`, `weekday`, `reminder_string`) VALUES
-(10, 862899190287171614, 8, 5, NULL, NULL, 'Just For Test!!!'),
-(11, 862899190287171614, 8, 7, NULL, 6, '🧘‍♀️ Time for your Yoga exercise! 🧘‍♂️'),
-(12, 862899190287171614, 8, 20, NULL, NULL, '🧘‍♀️ Time for your Yoga exercise! 🧘‍♂️'),
-(13, 862899190287171614, 8, 18, NULL, NULL, '🧘‍♀️ Time for your Yoga exercise! 🧘‍♂️'),
-(14, 862899190287171614, 20, 20, NULL, NULL, '🧘‍♀️ Time for your Yoga exercise! 🧘‍♂️');
+(17, 862899190287171614, 10, 0, NULL, 4, '🧘‍♀️ Time for your Yoga exercise! 🧘‍♂️'),
+(20, 862899190287171614, 8, 0, NULL, NULL, '該吃早餐了'),
+(21, 862899190287171614, 18, 0, NULL, 1, '🧘‍♀️ Time for your Yoga exercise! 🧘‍♂️');
 
 -- --------------------------------------------------------
 
@@ -767,6 +792,12 @@ INSERT INTO `users` (`user_id`, `user_account`, `user_password`, `user_picture`,
 --
 
 --
+-- 資料表索引 `bot_message_queue`
+--
+ALTER TABLE `bot_message_queue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `comment_dislike`
 --
 ALTER TABLE `comment_dislike`
@@ -852,6 +883,12 @@ ALTER TABLE `users`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `bot_message_queue`
+--
+ALTER TABLE `bot_message_queue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comment_dislike`
 --
 ALTER TABLE `comment_dislike`
@@ -891,13 +928,13 @@ ALTER TABLE `record_detail`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `record_session`
 --
 ALTER TABLE `record_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `reminders`
 --
 ALTER TABLE `reminders`
-  MODIFY `reminder_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `reminder_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_page`
