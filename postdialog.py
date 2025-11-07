@@ -129,13 +129,25 @@ class PostDialog:
         frame.share_user_name.setText(post['user_account'])
         frame.likeCount.setText(str(post['share_like']))
 
-        if post['user_picture'] and os.path.exists(post['user_picture']):
-            icon = QPixmap(post['user_picture']).scaled(
-                frame.share_user_icon.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
-            frame.share_user_icon.setPixmap(icon)
+        #使用者頭貼
+        user_pic_data = post.get("user_picture")
+        if user_pic_data:
+            pixmap = QPixmap()
+            if isinstance(user_pic_data, (bytes, bytearray)):
+                pixmap.loadFromData(user_pic_data)
+            elif isinstance(user_pic_data, str) and os.path.exists(user_pic_data):
+                pixmap.load(user_pic_data)
+
+            if not pixmap.isNull():
+                frame.share_user_icon.setPixmap(
+                    pixmap.scaled(50, 50, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+                )
+            else:
+                frame.share_user_icon.clear()
         else:
             frame.share_user_icon.clear()
 
+        #貼文內容
         if post['share_text']:
             frame.put_word.setText(post['share_text'])
             frame.put_word.setWordWrap(True)
@@ -145,6 +157,7 @@ class PostDialog:
             frame.put_word.clear()
             frame.put_word.setVisible(False)
 
+        #貼文圖片
         image_data = post.get("share_content")
 
         if image_data:
@@ -168,6 +181,9 @@ class PostDialog:
             frame.put_picture.clear()
             frame.put_picture.setVisible(False)
 
+        #貼文分割線
+        frame.frame_line.setVisible(True)
+        
         post_id = post['id']
         frame.share_like_btn.clicked.connect(lambda _, pid=post_id, label=frame.likeCount: self.handle_like(pid, label))
 
@@ -178,6 +194,9 @@ class PostDialog:
 
     def load_posts(self):
         try:
+            self.db_conn.ping(reconnect=True)
+            self.db_conn.commit()
+
             cursor = self.db_conn.cursor(pymysql.cursors.DictCursor)
             cursor.execute("""
                 SELECT s.*, u.user_account, u.user_picture 
@@ -193,32 +212,26 @@ class PostDialog:
                 if child.widget():
                     child.widget().deleteLater()
 
-            available_width = self.ui.scrollArea.width() - 60  
+            available_width = self.ui.scrollArea.width() - 60
 
             for post in posts:
                 frame = self.create_share_frame(post)
 
-                image_data = post["share_content"]
-                if image_data:
+                image_data = post.get("share_content")
+                if isinstance(image_data, (bytes, bytearray)) and image_data:
                     pixmap = QPixmap()
-                    if isinstance(image_data, (bytes, bytearray)): 
-                        pixmap.loadFromData(image_data)
-                    elif isinstance(image_data, str) and os.path.exists(image_data):  
-                        pixmap = QPixmap(image_data)
+                    if pixmap.loadFromData(image_data):
+                        scaled_pixmap = pixmap.scaledToWidth(
+                            available_width,
+                            Qt.SmoothTransformation
+                        )
+                        frame.put_picture.setPixmap(scaled_pixmap)
+                        frame.put_picture.setScaledContents(False)
+                        frame.put_picture.setAlignment(Qt.AlignCenter)
+                        frame.put_picture.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+                        frame.put_picture.adjustSize()
                     else:
-                        pixmap = QPixmap()
-
-                    scaled_pixmap = pixmap.scaledToWidth(
-                        available_width,
-                        Qt.SmoothTransformation
-                    )
-
-                    frame.put_picture.setPixmap(scaled_pixmap)
-                    frame.put_picture.setScaledContents(False)
-                    frame.put_picture.setAlignment(Qt.AlignCenter)
-                    frame.put_picture.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-                    frame.put_picture.adjustSize()
-
+                        frame.put_picture.clear()
                 else:
                     frame.put_picture.clear()
 
@@ -226,6 +239,7 @@ class PostDialog:
 
         except pymysql.MySQLError as e:
             QMessageBox.critical(None, "載入貼文失敗", str(e))
+
 
     def handle_like(self, post_id, like_label):
         try:
@@ -272,6 +286,9 @@ class PostDialog:
                 if item.widget():
                     item.widget().deleteLater()
 
+            self.db_conn.ping(reconnect=True)
+            self.db_conn.commit()
+
             cursor = self.db_conn.cursor(pymysql.cursors.DictCursor)
             cursor.execute("""
                 SELECT c.*, u.user_account, u.user_picture 
@@ -295,25 +312,35 @@ class PostDialog:
                 comment_frame.like_number_5.setText(str(comment['comment_like']))
                 comment_frame.dislike_number_5.setText(str(comment['comment_dislike']))
 
-                if comment['user_picture'] and os.path.exists(comment['user_picture']):
-                    pixmap = QPixmap(comment['user_picture']).scaled(
-                        comment_frame.user_comment_icon_5.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
-                    comment_frame.user_comment_icon_5.setPixmap(pixmap)
+                user_pic_data = comment.get("user_picture")
+                if isinstance(user_pic_data, (bytes, bytearray)) and user_pic_data:
+                    pixmap = QPixmap()
+                    if pixmap.loadFromData(user_pic_data):
+                        scaled_icon = pixmap.scaled(
+                            comment_frame.user_comment_icon_5.width(),
+                            comment_frame.user_comment_icon_5.height(),
+                            Qt.KeepAspectRatio,
+                            Qt.SmoothTransformation
+                        )
+                        comment_frame.user_comment_icon_5.setPixmap(scaled_icon)
+                    else:
+                        comment_frame.user_comment_icon_5.clear()
                 else:
                     comment_frame.user_comment_icon_5.clear()
 
                 comment_id = comment['id']
                 comment_frame.like_button_5.clicked.connect(
-                    partial(self.like_comment, comment['id'], comment_frame.like_number_5)
+                    partial(self.like_comment, comment_id, comment_frame.like_number_5)
                 )
                 comment_frame.dislike_button_5.clicked.connect(
-                    partial(self.dislike_comment, comment['id'], comment_frame.dislike_number_5)
+                    partial(self.dislike_comment, comment_id, comment_frame.dislike_number_5)
                 )
 
                 layout.addWidget(comment_frame)
 
         except Exception as e:
             QMessageBox.critical(None, "載入留言失敗", str(e))
+
 
 
         
@@ -412,6 +439,9 @@ class PostDialog:
             self.db_conn.commit()
 
             self.load_posts()
+            if getattr(self, "comment_target_post_id", None):
+                self.load_comments(self.comment_target_post_id)
+
             NotificationLabel(self.ui, "Posts refreshed", success=True)
         except Exception as e:
             NotificationLabel(self.ui, f"Failed to refresh posts：{e}", success=False)  
