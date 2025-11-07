@@ -28,7 +28,6 @@ class User_Info(QObject):
         self.change_password_cancel=self.ui.change_password_cancel
         self.password_confirm=self.ui.password_confirm
         self.adjust_confirm=self.ui.adjust_confirm
-        self.delete_account_btn=self.ui.delete_account
        
         #user info ui elements initialization
         self.user_name=self.ui.user_name
@@ -60,7 +59,6 @@ class User_Info(QObject):
         self.change_password_cancel.clicked.connect(self.change_user_info_widget)
         self.password_confirm.clicked.connect(self.change_password)
         self.adjust_confirm.clicked.connect(self.change_info)
-        self.delete_account_btn.clicked.connect(self.delete_account)
         self.user_picture.clicked.connect(self.change_picture)
         
         #user info dict
@@ -224,27 +222,6 @@ class User_Info(QObject):
             self.initialize_user_info()
             NotificationLabel(self.ui, "Confirm success.", success=True)
 
-    def delete_account(self):
-        reply1 = QMessageBox.question(self.ui, "Delete account", "Are you sure to delete account?", 
-            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-        
-        if reply1 == QMessageBox.Yes:
-            reply2 = QMessageBox.question(self.ui, "Delete account", "Are you really sure to delete account?", 
-                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-            
-            if reply2 == QMessageBox.Yes:
-                with self.db.cursor() as cursor:
-                    user_id = self.user_id
-                    self.del_user_account_signal.emit(True)
-                    sql = "DELETE FROM users WHERE user_id = %s"
-                    cursor.execute(sql, (user_id,))
-                    self.db.commit()
-
-                NotificationLabel(self.ui, "Your account has been deleted.", success=True, duration=4000)
-            else:
-                NotificationLabel(self.ui, "Account deletion canceled.", success=False, duration=2000)
-        else:
-            NotificationLabel(self.ui, "Account deletion canceled.", success=False, duration=2000)
     
     def change_picture(self):
         if self.user_id==1:

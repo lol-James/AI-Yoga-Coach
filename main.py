@@ -388,20 +388,35 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             NotificationLabel(self, f"Gesture control disabled", success=False)
 
     #connect to database
+    # def connect_db(self):
+    #     try:
+    #         db = pymysql.connect(
+    #             host='127.0.0.1',
+    #             user='root',
+    #             password='123456',
+    #             database='yoga_coach_database',
+    #             port=3306,
+    #             cursorclass=pymysql.cursors.DictCursor
+    #         )
+    #         print("pymysql connected successfully")
+    #         return db
+    #     except Exception as e:
+    #         print("pymysql connection error: ", e)
     def connect_db(self):
         try:
             db = pymysql.connect(
-                host='127.0.0.1',
+                host='0.tcp.jp.ngrok.io',
                 user='yoga_app',
                 password='yoga_app123456',
                 database='yoga_coach_database',
-                port=3306,
+                port=15075,
                 cursorclass=pymysql.cursors.DictCursor
             )
             print("pymysql connected successfully")
             return db
         except Exception as e:
             print("pymysql connection error: ", e)
+        
 
     def cache_pose_index(self, pose_index):
         self.current_pose_index = pose_index
