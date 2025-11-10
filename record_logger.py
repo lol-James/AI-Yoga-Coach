@@ -149,22 +149,6 @@ class RecordLogger:
             return
 
         mode_int = self._mode_to_int(mode)
-
-        # Ensure there is a session before inserting records
-        if not self._current_session_id:
-            self._session_start_time = datetime.now()
-            self._current_session_id = str(self._session_start_time.timestamp())
-            self._current_session_mode = mode_int
-            try:
-                with self.db.cursor() as cursor:
-                    cursor.execute(
-                        "INSERT INTO record_session (user_id, session_id, start_time, mode) VALUES (%s, %s, %s, %s)",
-                        (self.user_id, self._current_session_id, self._session_start_time, mode_int)
-                    )
-                self.db.commit()
-            except Exception as e:
-                print("record_session insert error:", e)
-
         ts = datetime.now()
         session_id = self._current_session_id
 
@@ -458,12 +442,16 @@ class RecordLogger:
                 sess_rows = cursor.fetchall()
                 for s in sess_rows:
                     st = s.get("start_time")
-                    et = s.get("end_time") or datetime.now()
+                    et = s.get("end_time")
+                    if et is None or et < st:  # fix invalid end_time
+                        et = st
                     if isinstance(st, str):
                         st = datetime.fromisoformat(st)
                     if isinstance(et, str):
                         et = datetime.fromisoformat(et)
                     dur = max(0.0, (et - st).total_seconds() / 3600.0)
+                    if dur <= 0 or dur > 24.0:
+                        dur = 0.0
                     session_durations.append(dur)
                     day = st.date()
                     rec = day_map.setdefault(day, {"opens": 0})
@@ -480,13 +468,15 @@ class RecordLogger:
                 for r in rows:
                     st = r.get("st")
                     et = r.get("et") or st
+                    if et is None or et < st: 
+                        et = st
                     if isinstance(st, str):
                         st = datetime.fromisoformat(st)
                     if isinstance(et, str):
                         et = datetime.fromisoformat(et)
                     dur = max(0.0, (et - st).total_seconds() / 3600.0)
-                    if dur > 24:
-                        dur = 24.0
+                    if dur <= 0 or dur > 24.0:
+                        dur = 0.0
                     session_durations.append(dur)
                     day = st.date()
                     rec = day_map.setdefault(day, {"opens": 0})

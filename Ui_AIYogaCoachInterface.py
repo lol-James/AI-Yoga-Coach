@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
-<<<<<<< HEAD
 # Form implementation generated from reading ui file 'AIYogaCoachInterface.ui'
-=======
-# Form implementation generated from reading ui file 'c:\Users\user\Desktop\code base\畢業專題\AI-Yoga-Coach\AIYogaCoachInterface.ui'
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -2044,11 +2040,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton.setText("")
         icon32 = QtGui.QIcon()
-<<<<<<< HEAD
         icon32.addPixmap(QtGui.QPixmap("icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon32.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/arrow_left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.pushButton.setIcon(icon32)
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_61.addWidget(self.pushButton)
@@ -2068,11 +2060,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_2.setText("")
         icon33 = QtGui.QIcon()
-<<<<<<< HEAD
         icon33.addPixmap(QtGui.QPixmap("icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon33.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/arrow_right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.pushButton_2.setIcon(icon33)
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout_61.addWidget(self.pushButton_2)
@@ -3206,11 +3194,7 @@ class Ui_MainWindow(object):
 "")
         self.share_comment_btn.setText("")
         icon34 = QtGui.QIcon()
-<<<<<<< HEAD
         icon34.addPixmap(QtGui.QPixmap("icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon34.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/comment.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.share_comment_btn.setIcon(icon34)
         self.share_comment_btn.setIconSize(QtCore.QSize(40, 40))
         self.share_comment_btn.setObjectName("share_comment_btn")
@@ -3294,11 +3278,7 @@ class Ui_MainWindow(object):
 "")
         self.link_button.setText("")
         icon35 = QtGui.QIcon()
-<<<<<<< HEAD
         icon35.addPixmap(QtGui.QPixmap("icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon35.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/link_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.link_button.setIcon(icon35)
         self.link_button.setIconSize(QtCore.QSize(50, 50))
         self.link_button.setObjectName("link_button")
@@ -3322,11 +3302,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_10.setText("")
         icon36 = QtGui.QIcon()
-<<<<<<< HEAD
         icon36.addPixmap(QtGui.QPixmap("icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon36.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/send_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.pushButton_10.setIcon(icon36)
         self.pushButton_10.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_10.setObjectName("pushButton_10")
@@ -3350,11 +3326,7 @@ class Ui_MainWindow(object):
 "")
         self.share_cancel_btn.setText("")
         icon37 = QtGui.QIcon()
-<<<<<<< HEAD
         icon37.addPixmap(QtGui.QPixmap("icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon37.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.share_cancel_btn.setIcon(icon37)
         self.share_cancel_btn.setIconSize(QtCore.QSize(50, 50))
         self.share_cancel_btn.setObjectName("share_cancel_btn")
@@ -3511,11 +3483,7 @@ class Ui_MainWindow(object):
 "")
         self.dislike_button.setText("")
         icon38 = QtGui.QIcon()
-<<<<<<< HEAD
         icon38.addPixmap(QtGui.QPixmap("icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-=======
-        icon38.addPixmap(QtGui.QPixmap("c:\\Users\\user\\Desktop\\code base\\畢業專題\\AI-Yoga-Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
->>>>>>> 0355d5de8318e4e8666ea5ffd5c48ed525d8c8d6
         self.dislike_button.setIcon(icon38)
         self.dislike_button.setObjectName("dislike_button")
         self.horizontalLayout_68.addWidget(self.dislike_button)
@@ -5044,7 +5012,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(6)
         self.tabWidget.setCurrentIndex(0)
         self.select_gender.setCurrentIndex(0)
         self.menu_btn.toggled['bool'].connect(self.icon_only_frame.setHidden) # type: ignore
