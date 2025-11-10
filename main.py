@@ -388,6 +388,20 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             NotificationLabel(self, f"Gesture control disabled", success=False)
 
     #connect to database
+    # def connect_db(self):
+    #     try:
+    #         db = pymysql.connect(
+    #             host='127.0.0.1',
+    #             user='root',
+    #             password='123456',
+    #             database='yoga_coach_database',
+    #             port=3306,
+    #             cursorclass=pymysql.cursors.DictCursor
+    #         )
+    #         print("pymysql connected successfully")
+    #         return db
+    #     except Exception as e:
+    #         print("pymysql connection error: ", e)
     def connect_db(self):
         try:
             db = pymysql.connect(
@@ -402,6 +416,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             return db
         except Exception as e:
             print("pymysql connection error: ", e)
+        
 
     def cache_pose_index(self, pose_index):
         self.current_pose_index = pose_index
@@ -734,6 +749,32 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.current_group_index = 0
             self.show_current_group()
 
+            # Send charts to user Discord DM via bot (if linked)
+            reply = QMessageBox.question(
+                self,
+                "Send to Discord DM?",
+                "Do you want to send the generated charts to your Discord DM (if linked)?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+            if reply == QMessageBox.Yes:
+                sql = "SELECT discord_id FROM discord_users WHERE user_id = %s"
+                try:
+                    with self.db.cursor() as cursor:
+                        cursor.execute(sql, (user_id,))
+                        result = cursor.fetchone()
+                        if result and result.get("discord_id"):
+                            discord_id = result['discord_id']
+                            sql = "INSERT INTO bot_message_queue (discord_id, mode, posture, start_date, end_date) VALUES (%s, %s, %s, %s, %s)"
+                            with self.db.cursor() as cursor:
+                                cursor.execute(sql, (discord_id, mode_text, posture_text, start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d")))
+                                self.db.commit()
+                                NotificationLabel(self, "Request sent to Discord bot. Check your DM later.", success=True)
+                        else:
+                            NotificationLabel(self, "No Discord account linked. Please link your account first.", success=False)    
+                except Exception as e:
+                    print("Discord DM DB error:", e)
+                    NotificationLabel(self, "Database error when sending to Discord bot.", success=False)    
         except Exception as e:
             print("generate_score_plot error:", e)
             NotificationLabel(self, "Error generating chart.", success=False)

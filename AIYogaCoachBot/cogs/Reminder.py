@@ -1,8 +1,8 @@
 import discord
 from discord import app_commands
 from discord.ext import commands, tasks
-from discord.ui import  View, Select, Button
-from datetime import datetime, date
+from discord.ui import  View, Button
+from datetime import datetime
 
 from utils.db import (
     remove_specific_reminder,
@@ -27,7 +27,8 @@ class Reminder(commands.Cog):
             now = datetime.now()
             today = now.date()
             weekday = now.weekday()  # Monday is 0 and Sunday is 6
-            reminders = await get_all_reminders(self.bot.db)
+            async with self.bot.db_lock:
+                reminders = await get_all_reminders(self.bot.db)
             for reminder in reminders:
                 match_date = reminder['reminder_date'] is None or reminder['reminder_date'] == today
                 match_weekday = reminder['weekday'] is None or reminder['weekday'] == weekday
@@ -41,7 +42,8 @@ class Reminder(commands.Cog):
                         except Exception as e:
                             print(f"Failed to send DM reminder to user {reminder['discord_id']}: {e}")
             # Clean up outdated reminders
-            await remove_outdated_reminders(self.bot.db)
+            async with self.bot.db_lock:
+                await remove_outdated_reminders(self.bot.db)
         except Exception as e:
             print("Error in reminder task:", e)
             
@@ -49,14 +51,13 @@ class Reminder(commands.Cog):
     async def before_check_reminders(self):
         await self.bot.wait_until_ready()
     
-    
     @commands.hybrid_command(
         name="set_reminder",
         description="Set a reminder for your Yoga exercise."
     )
     @app_commands.describe(
         time_str="Time in HH:MM format",
-        reminder_type="Type of reminder",
+        reminder_type="Type of reminder(daily/weekday/date)",
         value="Optional: weekday number 1–7 or date YYYY-MM-DD",
         reminder_string="Optional: Customize the reminder content\nDefault: <Time for your Yoga exercise!>"
     )
@@ -90,7 +91,8 @@ class Reminder(commands.Cog):
         reminder_type = reminder_type.lower()
 
         if reminder_type == "daily":
-            await set_user_reminder(self.bot.db, ctx.author.id, hour, minute, None, None, reminder_string)
+            async with self.bot.db_lock:
+                await set_user_reminder(self.bot.db, ctx.author.id, hour, minute, None, None, reminder_string)
             msg = f"✅ Daily reminder set at `{hour:02d}:{minute:02d}`"
         elif reminder_type == "weekday":
             if value is None or not value.isdigit() or not (1 <= int(value) <= 7):
@@ -99,7 +101,7 @@ class Reminder(commands.Cog):
             weekday = int(value)
             await set_user_reminder(self.bot.db, ctx.author.id, hour, minute, None, weekday, reminder_string)
             weekday_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-            msg = f"✅ Weekly reminder set for `{weekday_names[weekday - 1]}` at `{hour:02d}:{minute:02d}`\nReminder Content: {reminder_string}"
+            msg = f"✅ Weekly reminder set for every `{weekday_names[weekday - 1]}` at `{hour:02d}:{minute:02d}`\nReminder Content: {reminder_string}"
         elif reminder_type == "date":
             try:
                 reminder_date = datetime.strptime(value, "%Y-%m-%d").date()
@@ -131,7 +133,8 @@ class Reminder(commands.Cog):
                 await interaction.response.send_message("This is not for you.", ephemeral=True)
                 return
             try:
-                await remove_user_reminder(self.bot.db, ctx.author.id)
+                async with self.bot.db_lock:
+                    await remove_user_reminder(self.bot.db, ctx.author.id)
                 await interaction.response.edit_message(content=f"{mention} ✅ All reminders removed.", view=None)
             except Exception as e:
                 await interaction.response.edit_message(content=f"{mention} ❌ Failed to remove reminders.", view=None)
@@ -157,7 +160,8 @@ class Reminder(commands.Cog):
     )
     async def list_reminders(self, ctx):
         mention = f"<@{ctx.author.id}>"
-        reminders = await get_user_reminders(self.bot.db, ctx.author.id)
+        async with self.bot.db_lock:
+            reminders = await get_user_reminders(self.bot.db, ctx.author.id)
         if not reminders:
             await ctx.reply(f"{mention} ⚠️ You have no reminders set.", ephemeral=True)
             return
@@ -181,12 +185,13 @@ class Reminder(commands.Cog):
                     return
 
                 try:
-                    await remove_specific_reminder(
-                        self.bot.db, ctx.author.id, rem["hour"], rem["minute"], rem["reminder_date"], rem["weekday"]
-                    )
-                    
+                    async with self.bot.db_lock:
+                        await remove_specific_reminder(
+                            self.bot.db, ctx.author.id, rem["hour"], rem["minute"], rem["reminder_date"], rem["weekday"]
+                        )
+                        
                     if not interaction.response.is_done():
-                        await interaction.response.send_message(f"✅ Deleted reminder `{text}`", ephemeral=True)
+                        await interaction.response.send_message(f"✅ Delete selected reminder successfully", ephemeral=True)
 
                     btn.disabled = True
                     try:

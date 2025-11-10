@@ -1,4 +1,3 @@
-import asyncio
 import discord
 from discord.ext import commands
 from discord.ui import View, Button
@@ -18,15 +17,18 @@ class AccountBinding(commands.Cog):
             await ctx.reply(
                 f'{mention} Checking your email and password, please wait...\n'
                 f'-# The account password you entered has been automatically deleted to ensure security', ephemeral=True)
-            user_id = await get_user_id(self.bot.db, email, password)
+            async with self.bot.db_lock:
+                user_id = await get_user_id(self.bot.db, email, password)
             if user_id == -1:
                 await ctx.reply(
                     f"{mention} ❌ **Invalid email or password.**\nPlease check your credentials and try again.", ephemeral=True)
                 return
-
-            success = await bind_discord_user(self.bot.db, ctx.author.id, user_id)
+            
+            async with self.bot.db_lock:
+                success = await bind_discord_user(self.bot.db, ctx.author.id, user_id)
             if success:
-                self.user_info = await get_user_info(self.bot.db, user_id)
+                async with self.bot.db_lock:
+                    self.user_info = await get_user_info(self.bot.db, user_id)
                 await ctx.reply(
                     f"{mention} ✅ **Successfully bound your Discord account to your AI Yoga Coach account!**\n"
                     f"**Username:** `{self.user_info['user_account']}`\n", ephemeral=True)
@@ -60,7 +62,8 @@ class AccountBinding(commands.Cog):
                     await interaction.response.send_message("This button is not for you.", ephemeral=True)
                     return
                 if interaction.data["custom_id"] == confirm_btn.custom_id:
-                    success = await unbind_discord_user(self.bot.db, ctx.author.id)
+                    async with self.bot.db_lock:
+                        success = await unbind_discord_user(self.bot.db, ctx.author.id)
                     result["done"] = True
                     result["success"] = success
                     reply_text = f"{mention} ✅ **Successfully unbound your Discord account!**" if success else f"{mention} ⚠️ **Failed to unbind account. Please try again later.**"

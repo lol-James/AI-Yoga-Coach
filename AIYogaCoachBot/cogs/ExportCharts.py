@@ -51,8 +51,8 @@ class ExportCharts(commands.Cog):
         end_date: str = date.today().strftime("%Y-%m-%d")
     ):
         mention = f"<@{ctx.author.id}>"
-        
-        user_id = await get_user_id_by_discord_id(self.bot.db, ctx.author.id)
+        async with self.bot.db_lock:
+            user_id = await get_user_id_by_discord_id(self.bot.db, ctx.author.id)
         if user_id == -1:
             await ctx.reply(f"❌ {mention} You need to bind your account first using /bind_account.", ephemeral=True)
             return
@@ -81,7 +81,8 @@ class ExportCharts(commands.Cog):
             return
         await ctx.reply(f"⏳ {mention} Generating charts, please wait...", ephemeral=True)
         
-        data = await fetch_and_group_data(user_id, mode, posture, self.bot.db, start_dt, end_dt)
+        async with self.bot.db_lock:
+            data = await fetch_and_group_data(user_id, mode, posture, self.bot.db, start_dt, end_dt)
         
         if not data:
             if isinstance(ctx, discord.Interaction):

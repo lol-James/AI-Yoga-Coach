@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_24" stretch="1,1,1,1,1">
+    <layout class="QVBoxLayout" name="verticalLayout_24" stretch="0,0,0,0,0,0">
      <property name="spacing">
       <number>1</number>
      </property>
@@ -81,7 +81,7 @@
         <widget class="QLabel" name="share_user_name">
          <property name="font">
           <font>
-           <family>Segoe UI</family>
+           <family>Arial</family>
            <pointsize>10</pointsize>
           </font>
          </property>
@@ -94,7 +94,7 @@
         <widget class="QLabel" name="share_time">
          <property name="font">
           <font>
-           <family>Segoe UI</family>
+           <family>Arial</family>
            <pointsize>8</pointsize>
           </font>
          </property>
@@ -181,8 +181,8 @@
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI</family>
-           <pointsize>11</pointsize>
+           <family>Arial</family>
+           <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
@@ -310,7 +310,7 @@ QPushButton:pressed {
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>15</width>
+           <width>20</width>
            <height>20</height>
           </size>
          </property>
@@ -320,7 +320,7 @@ QPushButton:pressed {
         <widget class="QLabel" name="likeCount">
          <property name="font">
           <font>
-           <family>Segoe UI</family>
+           <family>Arial</family>
           </font>
          </property>
          <property name="text">
@@ -335,13 +335,30 @@ QPushButton:pressed {
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>30</width>
            <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
       </layout>
+     </item>
+     <item>
+      <widget class="Line" name="frame_line">
+       <property name="styleSheet">
+        <string notr="true">QFrame#frame_line {
+    background-color: #c0c0c0;
+    border: none;
+    min-height: 1px;
+    max-height: 1px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}</string>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
