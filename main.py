@@ -395,7 +395,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 user='yoga_app',
                 password='yoga_app123456',
                 database='yoga_coach_database',
-                port=15657,
+                port=15075,
                 cursorclass=pymysql.cursors.DictCursor
             )
             print("pymysql connected successfully")
@@ -552,8 +552,12 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.label_29.setText(str(usage.get("daily_max_app_opens", 0)))
 
             # Max/min daily usage hours → show 4 decimal places to avoid rounding short durations to 0.00
-            self.label_73.setText(f"{usage.get('max_daily_usage_hours', 0.0):.4f}")
-            self.label_75.setText(f"{usage.get('min_daily_usage_hours', 0.0):.4f}")
+            max_usage = usage.get("max_daily_usage_hours", 0.0)
+            min_usage = usage.get("min_daily_usage_hours", 0.0)
+            if max_usage > 24:
+                max_usage = 24.0
+            self.label_73.setText(f"{max_usage:.4f}")
+            self.label_75.setText(f"{min_usage:.4f}")
 
             # Longest continuous streak
             self.label_27.setText(str(usage.get("longest_streak_days", 0)))

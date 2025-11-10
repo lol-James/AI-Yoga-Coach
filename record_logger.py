@@ -485,6 +485,8 @@ class RecordLogger:
                     if isinstance(et, str):
                         et = datetime.fromisoformat(et)
                     dur = max(0.0, (et - st).total_seconds() / 3600.0)
+                    if dur > 24:
+                        dur = 24.0
                     session_durations.append(dur)
                     day = st.date()
                     rec = day_map.setdefault(day, {"opens": 0})
