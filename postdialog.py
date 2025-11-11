@@ -273,6 +273,38 @@ class PostDialog:
             self.comment_target_post_id = post_id
             self.load_comments(post_id)
 
+            try:
+                cursor = self.db_conn.cursor(pymysql.cursors.DictCursor)
+                cursor.execute("SELECT user_picture FROM users WHERE user_id = %s", (self.user_id,))
+                result = cursor.fetchone()
+
+                if result and result["user_picture"]:
+                    pixmap = QPixmap()
+                    user_pic_data = result["user_picture"]
+
+                    if isinstance(user_pic_data, (bytes, bytearray)):
+                        pixmap.loadFromData(user_pic_data)
+                    elif isinstance(user_pic_data, str) and os.path.exists(user_pic_data):
+                        pixmap.load(user_pic_data)
+
+                    if not pixmap.isNull():
+                        scaled_pixmap = pixmap.scaled(
+                            self.ui.comment_self_icon.width(),
+                            self.ui.comment_self_icon.height(),
+                            Qt.KeepAspectRatio,
+                            Qt.SmoothTransformation
+                        )
+                        self.ui.comment_self_icon.setPixmap(scaled_pixmap)
+                    else:
+                        self.ui.comment_self_icon.clear()
+                else:
+                    self.ui.comment_self_icon.clear()
+
+            except Exception as e:
+                print(f"載入使用者頭像時發生錯誤：{e}")
+                self.ui.comment_self_icon.clear()
+
+
 
 
 
@@ -330,12 +362,12 @@ class PostDialog:
 
                 comment_id = comment['id']
                 comment_frame.like_button_5.clicked.connect(
-                    partial(self.like_comment, comment_id, comment_frame.like_number_5)
+                    partial(self.like_comment, comment['id'], comment_frame.like_number_5, comment_frame.dislike_number_5)
                 )
                 comment_frame.dislike_button_5.clicked.connect(
-                    partial(self.dislike_comment, comment_id, comment_frame.dislike_number_5)
+                    partial(self.dislike_comment, comment['id'], comment_frame.dislike_number_5, comment_frame.like_number_5)
                 )
-
+                comment_frame.comment_line.setVisible(True)
                 layout.addWidget(comment_frame)
 
         except Exception as e:
@@ -371,13 +403,19 @@ class PostDialog:
         except Exception as e:
             QMessageBox.critical(None, "留言失敗", str(e))
 
-    def like_comment(self, comment_id, label):
+    def like_comment(self, comment_id, like_label, dislike_label):
         try:
             with self.db_conn.cursor() as cursor:
                 cursor.execute("SELECT * FROM comment_like WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
-                result = cursor.fetchone()
+                liked = cursor.fetchone()
+                cursor.execute("SELECT * FROM comment_dislike WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                disliked = cursor.fetchone()
 
-                if result:
+                if disliked:
+                    cursor.execute("DELETE FROM comment_dislike WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                    cursor.execute("UPDATE comment_page SET comment_dislike = comment_dislike - 1 WHERE id = %s", (comment_id,))
+
+                if liked:
                     cursor.execute("DELETE FROM comment_like WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
                     cursor.execute("UPDATE comment_page SET comment_like = comment_like - 1 WHERE id = %s", (comment_id,))
                 else:
@@ -386,20 +424,31 @@ class PostDialog:
 
                 self.db_conn.commit()
 
-                cursor.execute("SELECT comment_like FROM comment_page WHERE id = %s", (comment_id,))
+                # 🟦 重新查詢兩個數量，立即更新畫面
+                cursor.execute("SELECT comment_like, comment_dislike FROM comment_page WHERE id = %s", (comment_id,))
                 result = cursor.fetchone()
                 if result:
-                    label.setText(str(result['comment_like']))
+                    like_label.setText(str(result['comment_like']))
+                    dislike_label.setText(str(result['comment_dislike']))
+
         except Exception as e:
             QMessageBox.critical(None, "留言按讚失敗", str(e))
 
-    def dislike_comment(self, comment_id, label):
+
+
+    def dislike_comment(self, comment_id, dislike_label, like_label):
         try:
             with self.db_conn.cursor() as cursor:
                 cursor.execute("SELECT * FROM comment_dislike WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
-                result = cursor.fetchone()
+                disliked = cursor.fetchone()
+                cursor.execute("SELECT * FROM comment_like WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                liked = cursor.fetchone()
 
-                if result:
+                if liked:
+                    cursor.execute("DELETE FROM comment_like WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
+                    cursor.execute("UPDATE comment_page SET comment_like = comment_like - 1 WHERE id = %s", (comment_id,))
+
+                if disliked:
                     cursor.execute("DELETE FROM comment_dislike WHERE comment_id = %s AND user_id = %s", (comment_id, self.user_id))
                     cursor.execute("UPDATE comment_page SET comment_dislike = comment_dislike - 1 WHERE id = %s", (comment_id,))
                 else:
@@ -408,12 +457,17 @@ class PostDialog:
 
                 self.db_conn.commit()
 
-                cursor.execute("SELECT comment_dislike FROM comment_page WHERE id = %s", (comment_id,))
+                # 🟩 同步刷新兩個數量
+                cursor.execute("SELECT comment_like, comment_dislike FROM comment_page WHERE id = %s", (comment_id,))
                 result = cursor.fetchone()
                 if result:
-                    label.setText(str(result['comment_dislike']))
+                    like_label.setText(str(result['comment_like']))
+                    dislike_label.setText(str(result['comment_dislike']))
+
         except Exception as e:
             QMessageBox.critical(None, "留言倒讚失敗", str(e))
+
+
 
 
     def update_user_id(self, new_user_id):

@@ -20,6 +20,14 @@ class Ui_Frame(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Frame.sizePolicy().hasHeightForWidth())
         Frame.setSizePolicy(sizePolicy)
+        Frame.setStyleSheet("QFrame#frame_line {\n"
+"    background-color: #c0c0c0;\n"
+"    border: none;\n"
+"    min-height: 1px;\n"
+"    max-height: 1px;\n"
+"    margin-top: 6px;\n"
+"    margin-bottom: 6px;\n"
+"}")
         self.verticalLayout = QtWidgets.QVBoxLayout(Frame)
         self.verticalLayout.setObjectName("verticalLayout")
         self.verticalLayout_25 = QtWidgets.QVBoxLayout()
@@ -134,6 +142,20 @@ class Ui_Frame(object):
         self.comment_text_5.setWordWrap(True)
         self.comment_text_5.setObjectName("comment_text_5")
         self.verticalLayout_48.addWidget(self.comment_text_5)
+        self.comment_line = QtWidgets.QFrame(self.comment_area)
+        self.comment_line.setWindowModality(QtCore.Qt.NonModal)
+        self.comment_line.setStyleSheet("QFrame#comment_line {\n"
+"    background-color: #c0c0c0;\n"
+"    border: none;\n"
+"    min-height: 1px;\n"
+"    max-height: 1px;\n"
+"    margin-top: 6px;\n"
+"    margin-bottom: 6px;\n"
+"}")
+        self.comment_line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.comment_line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.comment_line.setObjectName("comment_line")
+        self.verticalLayout_48.addWidget(self.comment_line)
         self.verticalLayout_25.addWidget(self.comment_area)
         self.verticalLayout.addLayout(self.verticalLayout_25)
 
