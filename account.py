@@ -170,6 +170,19 @@ class Account(QObject):
                     self.stackedWidget.setCurrentIndex(0)
                     self.account_status_label.setText(result['user_account'])
                     self.login_ui.hide()
+                    # write login succcess notification to login_notification_queue
+                    sql = "SELECT discord_id FROM discord_users WHERE user_id = %s"
+                    try:
+                        with self.ui.db.cursor() as cursor:
+                            cursor.execute(sql, (self.user_id,))
+                            discord_result = cursor.fetchone()
+                            if discord_result and discord_result.get('discord_id'):
+                                discord_id = discord_result['discord_id']
+                                sql = "INSERT INTO login_notification_queue (user_id, discord_id) VALUES (%s, %s)"
+                                cursor.execute(sql, (self.user_id, discord_id))
+                                self.ui.db.commit()
+                    except Exception as e:
+                        pass
                 else:
                     NotificationLabel(self.ui, "The account or password you entered is incorrect. Please try again.", success=False, duration=3000)
             else:

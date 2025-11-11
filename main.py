@@ -267,33 +267,33 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     
     def on_camera_btn_toggled(self):
         if self.account.login_flag:
-                if self.stackedWidget.currentIndex() == 0:
-                    if self.camera_btn.isChecked():
-                        self.camera_thread.start()
-                        self.detector.start()
-                        self.gesture_analyzer.start()
-                        self.countdown_timer.camera_is_running = True
-                        NotificationLabel(self, "Camera opened", success=True)
+            if self.stackedWidget.currentIndex() == 0:
+                if self.camera_btn.isChecked():
+                    self.camera_thread.start()
+                    self.detector.start()
+                    self.gesture_analyzer.start()
+                    self.countdown_timer.camera_is_running = True
+                    NotificationLabel(self, "Camera opened", success=True)
 
-                    else:
-                        self.camera_thread.stop()
-                        self.detector.stop()
-                        self.gesture_analyzer.stop()
-                        self.countdown_timer.camera_is_running = False
-                        if self.countdown_timer.timer_is_running:
-                            self.countdown_timer._stop_timer()
-                        QTimer.singleShot(100, lambda: self.clear_camera_label())
-                        NotificationLabel(self, "Camera closed", success=True)
-
-                elif self.camera_btn.isChecked():
-                    self.camera_btn.setChecked(False)
+                else:
                     self.camera_thread.stop()
                     self.detector.stop()
                     self.gesture_analyzer.stop()
                     self.countdown_timer.camera_is_running = False
-                    self.countdown_timer._stop_timer()
+                    if self.countdown_timer.timer_is_running:
+                        self.countdown_timer._stop_timer()
                     QTimer.singleShot(100, lambda: self.clear_camera_label())
-                    NotificationLabel(self, "Camera closed", success=False)
+                    NotificationLabel(self, "Camera closed", success=True)
+
+            elif self.camera_btn.isChecked():
+                self.camera_btn.setChecked(False)
+                self.camera_thread.stop()
+                self.detector.stop()
+                self.gesture_analyzer.stop()
+                self.countdown_timer.camera_is_running = False
+                self.countdown_timer._stop_timer()
+                QTimer.singleShot(100, lambda: self.clear_camera_label())
+                NotificationLabel(self, "Camera closed", success=False)
 
         else:
             self.camera_btn.setChecked(False)
@@ -304,7 +304,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.camera_label.setText('Lens screen not found')
             
     def show_share_page_widget(self):
-                self.frame_12.show()
+        self.frame_12.show()
     
     def toggle_share_comment_widget(self):
         if self.share_comment_frame.isVisible():
@@ -313,8 +313,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             self.share_comment_frame.show()
     
     def hide_share_page_widget(self):
-                self.frame_12.hide()
-                self.post_dialog.reset_post_fields()
+        self.frame_12.hide()
+        self.post_dialog.reset_post_fields()
     
     def load_demo_image(self):
         self.image_dir = r"YOLO\demo_images"
@@ -393,7 +393,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     #         db = pymysql.connect(
     #             host='127.0.0.1',
     #             user='root',
-    #             password='123456',
+    #             password='root123456',
     #             database='yoga_coach_database',
     #             port=3306,
     #             cursorclass=pymysql.cursors.DictCursor
@@ -409,7 +409,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 user='yoga_app',
                 password='yoga_app123456',
                 database='yoga_coach_database',
-                port=15075,
+                port=11506,
                 cursorclass=pymysql.cursors.DictCursor
             )
             print("pymysql connected successfully")

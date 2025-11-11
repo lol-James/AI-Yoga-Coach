@@ -8,6 +8,7 @@ from cogs.Reminder import Reminder
 from cogs.GameHanoi import HanoiGame
 from cogs.ExportCharts import ExportCharts
 from cogs.DMChartSender import DMChartSender
+from cogs.LoginNotification import LoginNotification
 from config import BOT_TOKEN, COMMAND_PREFIX, ACTIVITY_STATUS, STATUS_TYPE
 
 logging.basicConfig(level=logging.INFO) 
@@ -28,6 +29,7 @@ class AIYogaCoachBot(commands.Bot):
         await self.add_cog(HanoiGame(self))
         await self.add_cog(ExportCharts(self))
         await self.add_cog(DMChartSender(self))
+        await self.add_cog(LoginNotification(self))
         await self.tree.sync()
     
     async def on_ready(self):
