@@ -3700,7 +3700,7 @@ QTabBar::tab:hover {
 </string>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="p1">
                  <attribute name="title">
@@ -6346,7 +6346,7 @@ color: rgba(0, 0, 0, 240);
 padding-bottom:7px;</string>
                 </property>
                </widget>
-               <widget class="QLabel" name="comment_2">
+               <widget class="QLabel" name="comment_self_icon">
                 <property name="geometry">
                  <rect>
                   <x>30</x>
@@ -6359,7 +6359,7 @@ padding-bottom:7px;</string>
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>:/icons/icons/non user.png</pixmap>
+                 <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
