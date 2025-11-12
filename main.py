@@ -222,6 +222,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.account.user_id_signal.connect(self.reset_chart_and_dates)
         # reset button click
         self.rst_btn.clicked.connect(self.on_reset_clicked)
+        # Buffer to store per-second pose data before uploading
+        self.pose_record_buffer = []
         
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -409,7 +411,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 user='yoga_app',
                 password='yoga_app123456',
                 database='yoga_coach_database',
-                port=11506,
+                port=19797,
                 cursorclass=pymysql.cursors.DictCursor
             )
             print("pymysql connected successfully")
@@ -424,10 +426,15 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def perform_pose_scoring(self):
         """Perform pose detection, scoring, and save results with countdown and timestamp."""
 
-        # If any preconditions are not met, notify timer that no pose is detected
+        # If state not Exercise -> flush buffered data
+        if self.state_reg_label.text() != "Exercise":
+            self.flush_pose_buffer()
+            self.countdown_timer.on_pose_detected(False)
+            return
+
+        # Skip if detector/frame invalid
         if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) \
-            or not self.countdown_timer.camera_is_running or self.state_reg_label.text() != "Exercise" \
-            or self.detector.frame is None:
+            or not self.countdown_timer.camera_is_running or self.detector.frame is None:
             self.countdown_timer.on_pose_detected(False)
             return
 
@@ -493,13 +500,13 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 ts = datetime.now()
 
                 countdown_value = self.countdown_timer.get_remaining_seconds()
-                self.logger.add_picture_record(
-                    posture_id=self.current_pose_index,
-                    posture_name=detected_pose_name,
-                    accuracy=avg,
-                    mode=mode,
-                    countdown=countdown_value
-                )
+                self.pose_record_buffer.append({
+                    "posture_id": self.current_pose_index,
+                    "posture_name": detected_pose_name,
+                    "accuracy": avg,
+                    "mode": mode,
+                    "countdown": countdown_value
+                })
             except Exception as e:
                 print("add_picture_record error:", e)
             # ----------------------------------------------------------------------
@@ -887,3 +894,24 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             NotificationLabel(self, "Reset successful. Count increased.", success=True)
         except Exception as e:
             print("on_reset_clicked error:", e)
+    
+    def flush_pose_buffer(self):
+        """Upload buffered pose data to DB once Exercise ends"""
+        if not self.pose_record_buffer:
+            return
+        try:
+            # Upload buffered data to database
+            for record in self.pose_record_buffer:
+                self.logger.add_picture_record(
+                    posture_id=record["posture_id"],
+                    posture_name=record["posture_name"],
+                    accuracy=record["accuracy"],
+                    mode=record["mode"],
+                    countdown=record["countdown"]
+                )
+
+            # Clear buffer after upload
+            self.pose_record_buffer.clear()
+
+        except Exception as e:
+            print("flush_pose_buffer error:", e)
