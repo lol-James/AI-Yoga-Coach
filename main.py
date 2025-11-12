@@ -26,6 +26,7 @@ from pose_thresholds import is_pose_score_valid
 from pose_thresholds import display_standard_score
 from critical_bone import Critical_Bone
 from yoga_pose_feedback import YogaPoseFeedback
+from keep_db_alive_timer import start_keep_db_alive_timer
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -57,6 +58,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         # sql variables
         self.db=self.connect_db()
+        self.keep_db_alive_timer = start_keep_db_alive_timer(self.db)
         
         # camera and yoga detector initializations
         self.camera_thread = CameraThread()

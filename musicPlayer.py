@@ -261,6 +261,8 @@ class MusicPlayer:
             if self.stackedWidget_2.currentIndex() == 0:
                 current_media = self.player.media()
                 current_song_url = current_media.canonicalUrl().toLocalFile()
+                if current_song_url == "":
+                    return
                 current_song_index = songs.current_song_list.index(current_song_url)
                 next_index = (current_song_index + 1) % len(songs.current_song_list)
                 current_song = songs.current_song_list[next_index]
@@ -268,6 +270,8 @@ class MusicPlayer:
             elif self.stackedWidget_2.currentIndex() == 1:
                 current_media = self.player.media()
                 current_song_url = current_media.canonicalUrl().toLocalFile()
+                if current_song_url == "":
+                    return
                 current_song_index = songs.favorites_songs_list.index(current_song_url)
                 next_index = (current_song_index + 1) % len(songs.favorites_songs_list)
                 current_song = songs.favorites_songs_list[next_index]
@@ -291,11 +295,15 @@ class MusicPlayer:
                 current_media = self.player.media()
                 current_song_url = current_media.canonicalUrl().toLocalFile()
                 current_song_index = songs.current_song_list.index(current_song_url)
+                if current_song_url == "":
+                    return
                 current_song = songs.current_song_list[current_song_index]
                 self.song_listWidget.setCurrentRow(current_song_index)
             elif self.stackedWidget_2.currentIndex() == 1:
                 current_media = self.player.media()
                 current_song_url = current_media.canonicalUrl().toLocalFile()
+                if current_song_url == "":
+                    return
                 current_song_index = songs.favorites_songs_list.index(current_song_url)
                 current_song = songs.favorites_songs_list[current_song_index]
                 self.favorites_listWidget.setCurrentRow(current_song_index)
@@ -367,6 +375,8 @@ class MusicPlayer:
             if self.stackedWidget_2.currentIndex() == 0:
                 current_media = self.player.media()
                 current_song_url = current_media.canonicalUrl().toLocalFile()
+                if current_song_url == "":
+                    return
                 current_song_index = songs.current_song_list.index(current_song_url)
                 previous_index = (current_song_index - 1) % len(songs.current_song_list)
                 current_song = songs.current_song_list[previous_index]
@@ -374,6 +384,8 @@ class MusicPlayer:
             elif self.stackedWidget_2.currentIndex() == 1:
                 current_media = self.player.media()
                 current_song_url = current_media.canonicalUrl().toLocalFile()
+                if current_song_url == "":
+                    return  
                 current_song_index = songs.favorites_songs_list.index(current_song_url)
                 previous_index = (current_song_index - 1) % len(songs.favorites_songs_list)
                 current_song = songs.favorites_songs_list[previous_index]
@@ -567,7 +579,10 @@ class MusicPlayer:
         removed_song = song_list[current_row]
         current_media = self.player.media()
         current_song_url = current_media.canonicalUrl().toLocalFile()
-
+        if current_song_url == "":  
+            QMessageBox.information(self.ui, 'Remove Song', 'No song is currently playing.')
+            return
+        
         reply = QMessageBox.question(
             self.ui, 'Confirm Removal',
             'Are you sure you want to remove the selected song?',
