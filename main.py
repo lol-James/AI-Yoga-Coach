@@ -226,6 +226,10 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.rst_btn.clicked.connect(self.on_reset_clicked)
         # Buffer to store per-second pose data before uploading
         self.pose_record_buffer = []
+        # buffer for accuracy updates
+        self.pose_accuracy_buffer = []
+        # stats buffer to reduce real-time DB queries
+        self.stats_buffer = {}
         
     def navigate_with_auth(self, index, checked, button):
         if not checked:
@@ -365,12 +369,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         self.image_index = (self.image_index + 1) % len(self.image_list)
         self.display_image(self.image_list[self.image_index])
-
-        try:
-            # Only refresh the statistics page display, do not call update_detail_from_tree again
-            self.update_progress_page_statistics(self.countdown_timer.mode)
-        except Exception as e:
-            print("update_progress_page_statistics error:", e)
         
     def previous_pose(self, skip_flag):
         print('Prvious Pose')
@@ -427,19 +425,20 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
     def perform_pose_scoring(self):
         """Perform pose detection, scoring, and save results with countdown and timestamp."""
-
-        # If state not Exercise -> flush buffered data
-        if self.state_reg_label.text() != "Exercise":
+        # Flush buffer only when state is 'Pause' or 'N/A'
+        current_state = self.state_reg_label.text()
+        if current_state in ["Pause", "N/A"]:
             self.flush_pose_buffer()
             self.countdown_timer.on_pose_detected(False)
             return
 
-        # Skip if detector/frame invalid
+        # Skip if frame or detector invalid
         if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) \
             or not self.countdown_timer.camera_is_running or self.detector.frame is None:
             self.countdown_timer.on_pose_detected(False)
             return
 
+        # Skip if no demo pose selected
         current_demo_item = self.demo_list.currentItem()
         if current_demo_item is None:
             self.countdown_timer.on_pose_detected(False)
@@ -449,58 +448,26 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         selected_pose_name = self.pose_name_map.get(selected_display_name)
         detected_pose_name = self.detector.pose_names[self.current_pose_index]
 
-        # If the displayed demo pose does not match the detected pose, treat as no pose
+        # Skip if mismatch between demo and detected pose
         if selected_pose_name is None or detected_pose_name != selected_pose_name:
             self.countdown_timer.on_pose_detected(False)
             return
 
-        # Evaluate pose and get average score
+        # Evaluate pose score
         avg = self.pose_calculator.evaluate_pose(
             self.detector.frame,
             self.current_pose_index,
             self.pose_reg_label
         )
 
-        detected = False   # Whether a valid pose score was produced
-        updated = False    # Whether historical stats should be updated
-
+        detected = False
         if avg and avg > 0:
-            detected = True  # Pose successfully detected and scored
-
-            mode = self.countdown_timer.mode  # "Practice", "Easy", or "Hard"
-
-            # Display the standard threshold score for the current pose and mode
+            detected = True
+            mode = self.countdown_timer.mode
             display_standard_score(self.standard_score, detected_pose_name, mode)
 
-            # --- NEW: Save the per-second score into record_picture with countdown and timestamp ---
-            from datetime import datetime
+            # Buffer pose record (per second)
             try:
-                # Read current countdown value from QLCDNumber (supports "mm:ss" format)
-                try:
-                    # Try to get the text displayed on the LCD
-                    lcd_text = self.timer_lcdnumber.value() if hasattr(self.timer_lcdnumber, "value") else ""
-                    if not lcd_text:
-                        lcd_text = self.timer_lcdnumber.property("intValue") or ""
-                    if not lcd_text or str(lcd_text) == "0":
-                        # Fallback: QLCDNumber does not store text, so read from label display text
-                        lcd_text = self.timer_lcdnumber.findChild(QLabel)
-                        lcd_text = lcd_text.text() if lcd_text else ""
-
-                    # If format is "mm:ss", convert it into total seconds
-                    if isinstance(lcd_text, str) and ":" in lcd_text:
-                        parts = lcd_text.split(":")
-                        minutes = int(parts[0]) if parts[0].isdigit() else 0
-                        seconds = int(parts[1]) if parts[1].isdigit() else 0
-                        countdown_value = minutes * 60 + seconds
-                    else:
-                        countdown_value = int(float(lcd_text)) if str(lcd_text).isdigit() else 0
-                except Exception as e:
-                    print("countdown parse error:", e)
-                    countdown_value = 0
-
-                # Current timestamp (for reference, record_logger also uses datetime.now())
-                ts = datetime.now()
-
                 countdown_value = self.countdown_timer.get_remaining_seconds()
                 self.pose_record_buffer.append({
                     "posture_id": self.current_pose_index,
@@ -510,34 +477,19 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                     "countdown": countdown_value
                 })
             except Exception as e:
-                print("add_picture_record error:", e)
-            # ----------------------------------------------------------------------
+                print("pose_record_buffer append error:", e)
 
-            # If current score passes threshold, update historical max/min accuracy only
+            # If valid score → buffer accuracy update (no DB write now)
             try:
                 if is_pose_score_valid(self.current_pose_index, avg, mode):
-                    updated = True
                     if not self.countdown_timer.timer.isActive():
                         self.countdown_timer.timer.start(1000)
-                    try:
-                        # Update historical max/min accuracy (no change to completion counts)
-                        try:
-                            self.logger.update_pose_accuracy(
-                                posture_id=self.current_pose_index,
-                                posture_name=detected_pose_name,
-                                mode=mode,
-                                accuracy=avg
-                            )
-                        except Exception as e:
-                            print("update_pose_accuracy error:", e)
-
-                        # Only refresh UI (counts are updated elsewhere)
-                        try:
-                            self.update_progress_page_statistics(mode)
-                        except Exception as e:
-                            print("update_progress_page_statistics error:", e)
-                    except Exception as e:
-                        print("is_pose_score_valid inner error:", e)
+                    self.pose_accuracy_buffer.append({
+                        "posture_id": self.current_pose_index,
+                        "posture_name": detected_pose_name,
+                        "mode": mode,
+                        "accuracy": avg
+                    })
                 else:
                     if mode in ["Easy", "Hard"]:
                         if self.countdown_timer.timer_is_running:
@@ -546,47 +498,40 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             except Exception as e:
                 print("is_pose_score_valid error:", e)
 
-        # Notify timer about whether pose detection succeeded
+        # Notify timer about detection
         self.countdown_timer.on_pose_detected(detected)
 
-    def update_progress_page_statistics(self, mode):
+    def update_progress_page_statistics(self, mode, force_refresh=False):
+        """Cache statistics; only update UI when force_refresh=True."""
         try:
-            stats = self.logger.load_statistics(mode)
-            stats_all = self.logger.load_statistics("ALL")  # ALL mode
+            # use cached stats unless force refresh
+            if not force_refresh and mode in self.stats_buffer:
+                stats = self.stats_buffer[mode]['stats']
+                stats_all = self.stats_buffer[mode]['stats_all']
+            else:
+                stats = self.logger.load_statistics(mode)
+                stats_all = self.logger.load_statistics("ALL")
+                self.stats_buffer[mode] = {'stats': stats, 'stats_all': stats_all}
         except Exception as e:
             print("update_progress_page_statistics load_statistics error:", e)
-            stats = None
-            stats_all = None
+            return
 
-        # --- Overall statistics across all modes ---
+        # skip UI update if not forced
+        if not force_refresh:
+            return
+
+        # --- update overall stats ---
         if stats_all:
             self.label_18.setText(str(stats_all["total_count"]))
             usage = stats_all.get("usage", {})
-            # Display total usage **in days, with 4 decimal places**
-            total_usage_days = usage.get("total_usage_days")
-            if total_usage_days is None:
-                # fallback: compute from hours if not present
-                try:
-                    total_usage_days = round(float(usage.get("total_usage_hours", 0.0) or 0.0) / 24.0, 4)
-                except Exception:
-                    total_usage_days = 0.0
+            total_usage_days = usage.get("total_usage_days", 0.0)
             self.label_21.setText(f"{total_usage_days:.4f}")
-
-            # Daily max app opens (integer)
             self.label_29.setText(str(usage.get("daily_max_app_opens", 0)))
-
-            # Max/min daily usage hours → show 4 decimal places to avoid rounding short durations to 0.00
-            max_usage = usage.get("max_daily_usage_hours", 0.0)
-            min_usage = usage.get("min_daily_usage_hours", 0.0)
-            if max_usage > 24:
-                max_usage = 24.0
-            self.label_73.setText(f"{max_usage:.4f}")
-            self.label_75.setText(f"{min_usage:.4f}")
-
-            # Longest continuous streak
+            self.label_73.setText(f"{usage.get('max_daily_usage_hours', 0.0):.4f}")
+            self.label_75.setText(f"{usage.get('min_daily_usage_hours', 0.0):.4f}")
             self.label_27.setText(str(usage.get("longest_streak_days", 0)))
 
-        # --- Pose statistics for the current mode ---
+        # --- update pose stats ---
         if stats:
             max_pose_name, max_pose_count = stats.get("max_pose", (None, 0))
             min_pose_name, min_pose_count = stats.get("min_pose", (None, 0))
@@ -611,11 +556,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                     min_lbl.setText(f"{min_a:.1f}" if min_a is not None else "0")
 
     def on_mode_changed(self, mode_name):
-        """Update small label when mode button is clicked."""
+        """Refresh UI only when mode changes."""
         self.label_16.setText(mode_name)
-        # also refresh progress page stats for this mode
         try:
-            self.update_progress_page_statistics(mode_name)
+            # refresh UI using cached stats
+            self.update_progress_page_statistics(mode_name, force_refresh=True)
         except Exception as e:
             print("on_mode_changed error:", e)
     
@@ -648,11 +593,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                     mode=self.countdown_timer.mode,
                     delta=delta
                 )
-                # Update UI display (counts and accuracies)
-                try:
-                    self.update_progress_page_statistics(self.countdown_timer.mode)
-                except Exception:
-                    pass
 
             # Update snapshot (sync to latest)
             if idx < len(self._tree_counts_snapshot):
@@ -898,22 +838,30 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             print("on_reset_clicked error:", e)
     
     def flush_pose_buffer(self):
-        """Upload buffered pose data to DB once Exercise ends"""
-        if not self.pose_record_buffer:
-            return
+        """Upload all buffered data (pose + accuracy) to DB when Exercise ends."""
         try:
-            # Upload buffered data to database
-            for record in self.pose_record_buffer:
-                self.logger.add_picture_record(
-                    posture_id=record["posture_id"],
-                    posture_name=record["posture_name"],
-                    accuracy=record["accuracy"],
-                    mode=record["mode"],
-                    countdown=record["countdown"]
-                )
+            # Upload pose records
+            if self.pose_record_buffer:
+                for record in self.pose_record_buffer:
+                    self.logger.add_picture_record(
+                        posture_id=record["posture_id"],
+                        posture_name=record["posture_name"],
+                        accuracy=record["accuracy"],
+                        mode=record["mode"],
+                        countdown=record["countdown"]
+                    )
+                self.pose_record_buffer.clear()
 
-            # Clear buffer after upload
-            self.pose_record_buffer.clear()
+            # Upload accuracy records
+            if getattr(self, "pose_accuracy_buffer", None):
+                for acc in self.pose_accuracy_buffer:
+                    self.logger.update_pose_accuracy(
+                        posture_id=acc["posture_id"],
+                        posture_name=acc["posture_name"],
+                        mode=acc["mode"],
+                        accuracy=acc["accuracy"]
+                    )
+                self.pose_accuracy_buffer.clear()
 
         except Exception as e:
             print("flush_pose_buffer error:", e)
