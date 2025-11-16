@@ -27,99 +27,164 @@ from pose_thresholds import display_standard_score
 from critical_bone import Critical_Bone
 from yoga_pose_feedback import YogaPoseFeedback
 from keep_db_alive_timer import start_keep_db_alive_timer
+import numpy as np
 
 class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        # gui initialization
+
+        # -----------------------------
+        # GUI WINDOW INITIALIZATION
+        # -----------------------------
         self.window = Ui_MainWindow()
         self.setupUi(self)
+
+        # Make the window frameless + transparent background
         self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+
+        # Application icon
         self.setWindowIcon(QIcon("icons/yoga-logo.png"))
+
+        # Window control buttons formatting
         self.maximize_btn.setCheckable(True)
-        self.maximize_btn.clicked.connect(lambda: self.showNormal() if self.isFullScreen() else self.showFullScreen())
+        self.maximize_btn.clicked.connect(
+            lambda: self.showNormal() if self.isFullScreen() else self.showFullScreen()
+        )
         self.minimize_btn.clicked.connect(self.showMinimized)
         self.close_btn.clicked.connect(self.close)
+
+        # Variables for moving the frameless window
         self.old_pos = self.pos()
         self.mouse_pressed = False
+
+        # Set full side menu initially hidden
         self.full_menu_frame.setHidden(True)
         self.full_home_btn.setCheckable(True)
+
+        # -----------------------------
+        # PAGE NAVIGATION SETUP
+        # Each button maps to a stackedWidget index
+        # -----------------------------
         button_index_map = {
-            self.home_btn: 0, self.full_home_btn: 0, self.music_btn: 1, self.full_music_btn: 1,
-            self.progress_btn: 2, self.full_progress_btn: 2, self.share_btn: 3, self.full_share_btn: 3,  
-            self.account_btn: 4, self.full_account_btn: 4, self.info_btn: 5, self.full_info_btn: 5
+            self.home_btn: 0, self.full_home_btn: 0,
+            self.music_btn: 1, self.full_music_btn: 1,
+            self.progress_btn: 2, self.full_progress_btn: 2,
+            self.share_btn: 3, self.full_share_btn: 3,
+            self.account_btn: 4, self.full_account_btn: 4,
+            self.info_btn: 5, self.full_info_btn: 5
         }
+
+        # When a button is toggled → navigate (with login check)
         for btn, index in button_index_map.items():
             btn.toggled.connect(lambda checked, i=index, b=btn: self.navigate_with_auth(i, checked, b))
+
+        # -----------------------------
+        # HOME PAGE DEMO IMAGES
+        # -----------------------------
         self.image_index = 0
         self.demo_list.setEnabled(False)
         self.load_demo_image()
 
-        # sql variables
-        self.db=self.connect_db()
+        # -----------------------------
+        # SQL / DATABASE CONNECTION
+        # -----------------------------
+        self.db = self.connect_db()
         self.keep_db_alive_timer = start_keep_db_alive_timer(self.db)
-        
-        # camera and yoga detector initializations
+
+        # -----------------------------
+        # CAMERA THREAD + YOLO DETECTOR
+        # -----------------------------
         self.camera_thread = CameraThread()
         self.camera_thread.new_frame.connect(self.update_current_frame)
+
         self.detector = YogaPoseDetector()
         self.detector.result_image_signal.connect(self.update_GUI_frame)
+
+        # Camera toggle button
         self.camera_btn.toggled.connect(self.on_camera_btn_toggled)
 
-        # share page
+        # -----------------------------
+        # SHARE PAGE INITIALIZATION
+        # -----------------------------
         self.addShareicon.setCheckable(False)
         self.share_comment_btn.setCheckable(True)
         self.share_cancel_btn.setCheckable(False)
+
         self.frame_12.hide()
         self.share_comment_frame.hide()
+
         self.addShareicon.clicked.connect(self.show_share_page_widget)
         self.share_comment_btn.clicked.connect(self.toggle_share_comment_widget)
         self.share_cancel_btn.clicked.connect(self.hide_share_page_widget)
 
-        # account
+        # -----------------------------
+        # ACCOUNT SYSTEM
+        # -----------------------------
         self.account = Account(self, self.on_camera_btn_toggled)
-        
-        # user info
-        self.user_info= User_Info(self, self.account.user_id)
+
+        # USER INFO PAGE
+        self.user_info = User_Info(self, self.account.user_id)
         print("start")
 
-        # Music Player
+        # -----------------------------
+        # MUSIC PLAYER
+        # -----------------------------
         self.music_player = MusicPlayer(self)
 
-        #Share Page Funtions
+        # -----------------------------
+        # SHARE PAGE: load existing posts
+        # -----------------------------
         self.post_dialog = PostDialog(self, self.account.user_id, self.db)
         self.post_dialog.load_posts()
-        # mediapipe gesture analyzer initialization
+
+        # -----------------------------
+        # HAND GESTURE ANALYZER (MediaPipe)
+        # -----------------------------
         self.gesture_analyzer = GestureAnalyzer()
         self.gesture_interpreter = GestureInterpreter(self)
+
+        # Connect gesture signals
         self.gesture_analyzer.result_str_signal.connect(self.gesture_interpreter.interpret)
         self.gesture_analyzer.touch_note_signal.connect(self.toggle_touch_note)
+
         self.show()
 
-        # timer
+        # -----------------------------
+        # COUNTDOWN TIMER
+        # -----------------------------
         self.countdown_timer = Timer(self)
 
-        # record logger (MODIFIED: session handling)
+        # -----------------------------
+        # RECORD LOGGER
+        # Handles session logging, posture data, statistics
+        # -----------------------------
         self.logger = RecordLogger(ui=self, db=self.db)
 
-        # keep record_detail prepared when account emits user_id
+        # Update logger user id when account emits id
         self.account.user_id_signal.connect(self.logger.set_user_id)
 
-        # start a session when login (uid truthy) and end session when logout (uid falsy)
-        # pass current mode into start_session so session row has mode assigned
+        # Start session upon login, end session on logout
         self.account.user_id_signal.connect(
-            lambda uid: self.logger.start_session(self.countdown_timer.mode) if uid else self.logger.end_session()
+            lambda uid: self.logger.start_session(self.countdown_timer.mode)
+            if uid else self.logger.end_session()
         )
 
-        # existing connections (keep these)
-        self.account.user_id_signal.connect(lambda uid: self.update_progress_page_statistics(self.countdown_timer.mode))
+        # Other update operations triggered by login/logout
+        self.account.user_id_signal.connect(
+            lambda uid: self.update_progress_page_statistics(self.countdown_timer.mode)
+        )
         self.account.user_id_signal.connect(self.user_info.on_signal_received)
         self.account.user_id_signal.connect(self.music_player.update_user_id)
         self.account.user_id_signal.connect(self.post_dialog.update_user_id)
+
+        # Delete user action
         self.user_info.del_user_account_signal.connect(self.account.logout)
 
-        # Initialize snapshot (record the number of each posture of the current treewidget)
+        # -----------------------------
+        # INIT STATISTICS SNAPSHOT
+        # Used for computing delta for each pose category
+        # -----------------------------
         self._tree_counts_snapshot = []
         for i in range(len(self.logger.pose_names)):
             item = self.countdown_timer.statistics_treewidget.topLevelItem(i)
@@ -129,46 +194,55 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 v = 0
             self._tree_counts_snapshot.append(v)
 
-        # Connect itemChanged event (this handler calculates delta based on snapshot)
+        # When tree item changes → compute statistics difference
         self.countdown_timer.statistics_treewidget.itemChanged.connect(self.on_tree_item_changed)
 
-        # default mode label
+        # -----------------------------
+        # MODE: Practice / Easy / Hard
+        # -----------------------------
         self.label_16.setText("Practice")
 
-        # keep label_16 in sync with selected mode
         self.practice_btn.clicked.connect(lambda: self.on_mode_changed("Practice"))
         self.easy_btn.clicked.connect(lambda: self.on_mode_changed("Easy"))
         self.hard_btn.clicked.connect(lambda: self.on_mode_changed("Hard"))
+
         self.difficulties = ["Practice", "Easy", "Hard"]
         self.pushButton_7.clicked.connect(self.on_prev_mode)
         self.pushButton_8.clicked.connect(self.on_next_mode)
 
-        # Lock/unlock mode buttons when timer starts/stops
+        # Lock mode buttons while timer is running
         self.countdown_timer.timer_started_signal.connect(lambda: self.toggle_mode_buttons(False))
         self.countdown_timer.timer_stopped_signal.connect(lambda: self.toggle_mode_buttons(True))
 
-        # calculate score and display the bone
+        # -----------------------------
+        # POSE SCORING SYSTEM
+        # Mediapipe angle scoring + incorrect bone highlighting
+        # -----------------------------
         self.pose_calculator = PoseCalculate()
         self.critical_bone = Critical_Bone()
         self.yoga_pose_feedback = YogaPoseFeedback(self)
-        
-        self.pose_calculator.score_result.connect(lambda score,result,frame:self.critical_bone.process
-                                                    (self.current_pose_index,self.countdown_timer.mode,score,result,frame))
-        self.pose_calculator.score_result.connect(lambda score,result,frame:self.yoga_pose_feedback.process
-                                                    (self.current_pose_index,self.countdown_timer.mode,score))
-         
-         # connect critical bone signal to update GUI
-        try:
-            self.critical_bone.bone_image.connect(self.update_GUI_frame)
-        except Exception as e:
-            print("critical_bone connect error:", e)
-        
-        
+
+        # Receive scoring result from pose_calculator
+        self.pose_calculator.score_result.connect(
+            lambda score, result: self.set_draw_bone_variable(score, result)
+        )
+
+        # Display textual feedback
+        self.pose_calculator.score_result.connect(
+            lambda score, result: self.yoga_pose_feedback.process(
+                self.current_pose_index, self.countdown_timer.mode, score
+            )
+        )
+
+        # YOLO pose index cache
         self.detector.result_pose_signal.connect(self.cache_pose_index)
+
+        # Timer for pose scoring every second
         self.pose_score_timer = QTimer()
         self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
-        self.pose_score_timer.start(1000)  
+        self.pose_score_timer.start(1000)
 
+        # Mapping display names → YOLO pose names
         self.pose_name_map = {
             "Bridge Pose": "Bridge_Pose",
             "Chair Pose": "Chair_Pose",
@@ -182,14 +256,14 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Warrior 3": "Warrior_III"
         }
 
-        # Mode & posture mapping (for chart usage)
+        # Mode mapping (used in charts)
         self.MODE_MAP = {
             "PRACTICE": 0,
             "EASY": 1,
             "HARD": 2,
         }
-        
-        # Corresponds to record_picture.posture_id, order must match pose_names (index 0..9)
+
+        # Posture mapping (record_picture.posture_id)
         self.POSTURE_MAP = {
             "Bridge Pose": 0,
             "Chair Pose": 1,
@@ -202,52 +276,70 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             "Warrior 2": 8,
             "Warrior 3": 9,
         }
-        # Set default start and end date to today
+
+        # Default dates = today
         today = datetime.today().date()
         self.dateEdit.setDate(today)
         self.dateEdit_2.setDate(today)
 
-        # chart_button
+        # -----------------------------
+        # CHART BUTTON + DATA
+        # -----------------------------
         self.pushButton_6.clicked.connect(self.generate_score_plot)
         self.chart_groups = []
         self.chart_paths = []
         self.current_group_index = 0
         self.pushButton.clicked.connect(self.show_prev_group)
         self.pushButton_2.clicked.connect(self.show_next_group)
-        # PlainTextEdit placeholder
+
+        # Share input placeholder
         self.plainTextEdit.setPlaceholderText("請輸入貼文內容...")
-        # Share post button
         self.pushButton_3.clicked.connect(self.on_share_post_clicked)
-        # Reset input on login/logout
+
+        # Reset inputs on login/logout
         self.account.user_id_signal.connect(self.reset_share_input)
-        # Reset chart and date fields on logout
         self.account.user_id_signal.connect(self.reset_chart_and_dates)
-        # reset button click
+
+        # Reset button logic
         self.rst_btn.clicked.connect(self.on_reset_clicked)
-        # Buffer to store per-second pose data before uploading
-        self.pose_record_buffer = []
-        # buffer for accuracy updates
-        self.pose_accuracy_buffer = []
-        # stats buffer to reduce real-time DB queries
-        self.stats_buffer = {}
-        
+
+        # -----------------------------
+        # Buffers for recording pose data
+        # -----------------------------
+        self.pose_record_buffer = []     # per-second pose data
+        self.pose_accuracy_buffer = []   # accuracy for each pose
+        self.stats_buffer = {}           # reduce DB load
+
+        # Variables for bone drawing
+        self.result = None
+        self.valid_score = True
+        self.score_dict = {}
+
+    # Store scoring result from PoseCalculate
+    def set_draw_bone_variable(self, score_dict, result):
+        self.result = result
+        self.score_dict = score_dict
+
+    # Navigation with login checking
     def navigate_with_auth(self, index, checked, button):
         if not checked:
-            return  
+            return
 
+        # Pages that require login
         if index not in [1, 5] and not self.account.login_flag:
             NotificationLabel(self, "Please login first to unlock the features.", success=False)
             button.setChecked(False)
             return
-        
+
+        # If switching page, turn off the camera
         if self.stackedWidget.currentIndex() != 0:
-            self.on_camera_btn_toggled()  
-        
+            self.on_camera_btn_toggled()
+
         self.stackedWidget.setCurrentIndex(index)
 
-
+    # Window dragging behavior for frameless UI
     def mousePressEvent(self, event):
-        if self.title_frame.underMouse():  
+        if self.title_frame.underMouse():
             self.old_pos = event.globalPos()
             self.mouse_pressed = True
 
@@ -256,22 +348,36 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             delta = QPoint(event.globalPos() - self.old_pos)
             self.move(self.x() + delta.x(), self.y() + delta.y())
             self.old_pos = event.globalPos()
-            
+
     def mouseReleaseEvent(self, event):
         self.mouse_pressed = False
 
+    # Receive new frame from CameraThread
     def update_current_frame(self, frame):
         self.detector.frame = frame
         self.gesture_analyzer.frame = frame
-        
+  
     def update_GUI_frame(self, processed_frame):
         if not processed_frame is None:
+            try:
+                if self.result and not self.valid_score and self.score_dict:
+                    draw_frame=self.critical_bone.process(self.score_dict,self.result,processed_frame)
+                    processed_frame=draw_frame
+                else:
+                    pass
+            except Exception as e:
+                print("draw critical bone error:", e)
+                
             rgb_frame = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
             h, w, ch = rgb_frame.shape
             bytes_per_line = ch * w
             qt_image = QImage(rgb_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
             pixmap = QPixmap.fromImage(qt_image)
             self.camera_label.setPixmap(pixmap)
+        else:
+            blank = np.zeros_like(self.prev_frame) if hasattr(self, "prev_frame") else None
+            self._show_frame(blank)
+            return
     
     def on_camera_btn_toggled(self):
         if self.account.login_flag:
@@ -425,20 +531,29 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
     def perform_pose_scoring(self):
         """Perform pose detection, scoring, and save results with countdown and timestamp."""
-        # Flush buffer only when state is 'Pause' or 'N/A'
+
+        # -----------------------------
+        # 1️ If the app is paused or not active, flush buffers
+        # -----------------------------
         current_state = self.state_reg_label.text()
         if current_state in ["Pause", "N/A"]:
-            self.flush_pose_buffer()
+            self.flush_pose_buffer()  # Clear buffered pose data
             self.countdown_timer.on_pose_detected(False)
             return
 
-        # Skip if frame or detector invalid
-        if not hasattr(self, 'current_pose_index') or not getattr(self.detector, "yolo_has_person", False) \
-            or not self.countdown_timer.camera_is_running or self.detector.frame is None:
+        # -----------------------------
+        # 2️ Skip if frame, detector, or camera not ready
+        # -----------------------------
+        if (not hasattr(self, 'current_pose_index') or 
+            not getattr(self.detector, "yolo_has_person", False) or 
+            not self.countdown_timer.camera_is_running or 
+            self.detector.frame is None):
             self.countdown_timer.on_pose_detected(False)
             return
 
-        # Skip if no demo pose selected
+        # -----------------------------
+        # 3️ Skip if no demo pose selected
+        # -----------------------------
         current_demo_item = self.demo_list.currentItem()
         if current_demo_item is None:
             self.countdown_timer.on_pose_detected(False)
@@ -448,12 +563,16 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         selected_pose_name = self.pose_name_map.get(selected_display_name)
         detected_pose_name = self.detector.pose_names[self.current_pose_index]
 
-        # Skip if mismatch between demo and detected pose
+        # -----------------------------
+        # 4️ Skip if detected pose doesn't match selected demo pose
+        # -----------------------------
         if selected_pose_name is None or detected_pose_name != selected_pose_name:
             self.countdown_timer.on_pose_detected(False)
             return
 
-        # Evaluate pose score
+        # -----------------------------
+        # 5️ Evaluate pose score using PoseCalculate
+        # -----------------------------
         avg = self.pose_calculator.evaluate_pose(
             self.detector.frame,
             self.current_pose_index,
@@ -464,9 +583,13 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         if avg and avg > 0:
             detected = True
             mode = self.countdown_timer.mode
+
+            # Update standard score display for this pose
             display_standard_score(self.standard_score, detected_pose_name, mode)
 
-            # Buffer pose record (per second)
+            # -----------------------------
+            # 6️ Buffer per-second pose record
+            # -----------------------------
             try:
                 countdown_value = self.countdown_timer.get_remaining_seconds()
                 self.pose_record_buffer.append({
@@ -479,11 +602,17 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             except Exception as e:
                 print("pose_record_buffer append error:", e)
 
-            # If valid score → buffer accuracy update (no DB write now)
+            # -----------------------------
+            # 7️ Buffer pose accuracy updates (do not write to DB immediately)
+            # -----------------------------
             try:
-                if is_pose_score_valid(self.current_pose_index, avg, mode):
+                self.valid_score = is_pose_score_valid(self.current_pose_index, avg, mode)
+
+                if self.valid_score:
+                    # Ensure countdown timer is running
                     if not self.countdown_timer.timer.isActive():
                         self.countdown_timer.timer.start(1000)
+
                     self.pose_accuracy_buffer.append({
                         "posture_id": self.current_pose_index,
                         "posture_name": detected_pose_name,
@@ -491,6 +620,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                         "accuracy": avg
                     })
                 else:
+                    # If score invalid and mode is challenging → pause timer
                     if mode in ["Easy", "Hard"]:
                         if self.countdown_timer.timer_is_running:
                             self.countdown_timer.timer.stop()
@@ -498,8 +628,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             except Exception as e:
                 print("is_pose_score_valid error:", e)
 
-        # Notify timer about detection
+        # -----------------------------
+        # 8️ Notify countdown timer whether a pose was detected
+        # -----------------------------
         self.countdown_timer.on_pose_detected(detected)
+
 
     def update_progress_page_statistics(self, mode, force_refresh=False):
         """Cache statistics; only update UI when force_refresh=True."""

@@ -6,14 +6,18 @@ import time
 from notification import NotificationLabel
 
 class YogaPoseFeedback(QThread):
+    """Thread for giving feedback on yoga poses with optional voice broadcast."""
+    
     def __init__(self, ui):
         super().__init__()
         self.ui = ui
-        self.suggesstion_text_label = self.ui.suggestion_text_label
+        self.suggesstion_text_label = self.ui.suggestion_text_label  # Label to show feedback text
         
+        # Enable or disable voice feedback (linked to a toggle button)
         self.enable_voice_feedback = False
         self.ui.voice_broadcast_btn.toggled.connect(self.on_voice_toggle)
         
+        # Threshold scores for each pose at different difficulty levels
         self.POSE_THRESHOLDS = {
             "bridge": {"Easy": 88, "Hard": 95},
             "chair": {"Easy": 78, "Hard": 90},
@@ -26,6 +30,8 @@ class YogaPoseFeedback(QThread):
             "warrior2": {"Easy": 83, "Hard": 91},
             "warrior3": {"Easy": 77, "Hard": 88}
         }
+        
+        # Map pose index to pose names
         self.INDEX_TO_KEY = {
             0: "downward_facing_dog",
             1: "warrior1",
@@ -39,22 +45,31 @@ class YogaPoseFeedback(QThread):
             9: "bridge"
         }
         
+        # Control voice feedback frequency
         self.last_speech_time = 0
-        self.speech_interval = 3
-        self.tts_lock = Lock()
+        self.speech_interval = 3  # Minimum seconds between voice feedbacks
+        self.tts_lock = Lock()    # Prevent overlapping TTS threads
         
+        # Timer to automatically clear feedback text after 3 seconds
         self.clear_timer = QTimer()
-        self.clear_timer.setInterval(3000) # Clear after 3 seconds
+        self.clear_timer.setInterval(3000)
         self.clear_timer.timeout.connect(lambda: self.suggesstion_text_label.clear())
         self.clear_timer.start()
-        
+    
+    # -----------------------------
+    # Process the pose scores and generate feedback
+    # -----------------------------
     def process(self, pose_index, mode, scores):
         pose_name = self.INDEX_TO_KEY.get(pose_index, None)
         if not pose_name or not scores:
             return
         if mode not in ["Easy", "Hard"]:
             return
+        
+        # Get threshold for current pose and mode
         threshold = self.POSE_THRESHOLDS[pose_name][mode]
+        
+        # Map pose name to its corresponding feedback function
         feedback_func_map = {
             "bridge": bridge_feedback.get_bridge_feedbackstr,
             "chair": chair_feedback.get_chair_feedbackstr,
@@ -67,43 +82,54 @@ class YogaPoseFeedback(QThread):
             "warrior2": warrior2_feedback.get_warrior2_feedbackstr,
             "warrior3": warrior3_feedback.get_warrior3_feedbackstr    
         }
+        
         feedback_func = feedback_func_map.get(pose_name, None)
         if not feedback_func:
             return
         
+        # Get feedback: has_error indicates if the pose is incorrect
         has_error, feedback_str = feedback_func(scores, threshold)
-        self.suggesstion_text_label.setText(feedback_str)   
         
+        # Display feedback in UI label
+        self.suggesstion_text_label.setText(feedback_str)
+        
+        # Trigger voice feedback if enabled and enough time has passed
         if has_error:
             current_time = time.time()
             if current_time - self.last_speech_time >= self.speech_interval and self.enable_voice_feedback:
                 self._speak(feedback_str)
-            else:
-                pass
-        
+    
+    # -----------------------------
+    # Run text-to-speech in a separate thread
+    # -----------------------------
     def _speak(self, text):
-            def tts():
-                if not self.tts_lock.acquire(blocking=False):
-                    return 
-                try:
-                    engine = pyttsx3.init()
-                    engine.setProperty('rate', 200)
-                    engine.setProperty('volume', 0.8)
-                    engine.say(text)
-                    engine.runAndWait()
-                except Exception as e:
-                    print(f"Error in TTS thread: {e}")
-                finally:
-                    self.last_speech_time = time.time() 
-                    self.tts_lock.release() 
-            
-            Thread(target=tts, daemon=True).start()
-                
+        def tts():
+            # Acquire lock to prevent overlapping TTS
+            if not self.tts_lock.acquire(blocking=False):
+                return
+            try:
+                engine = pyttsx3.init()
+                engine.setProperty('rate', 200)   # Speech speed
+                engine.setProperty('volume', 0.8) # Volume
+                engine.say(text)
+                engine.runAndWait()
+            except Exception as e:
+                print(f"Error in TTS thread: {e}")
+            finally:
+                # Update last speech time and release lock
+                self.last_speech_time = time.time()
+                self.tts_lock.release()
+        
+        # Run TTS in a daemon thread
+        Thread(target=tts, daemon=True).start()
+    
+    # -----------------------------
+    # Handle toggle button for voice feedback
+    # -----------------------------
     def on_voice_toggle(self, checked):
         if checked:
-            NotificationLabel(self.ui, "Voice Feedback Enabled ", success=True)
+            NotificationLabel(self.ui, "Voice Feedback Enabled", success=True)
             self.enable_voice_feedback = True
         else:
             NotificationLabel(self.ui, "Voice Feedback Disabled", success=False)
             self.enable_voice_feedback = False
-    

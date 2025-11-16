@@ -30,7 +30,7 @@ class PoseCalculate(QObject):
         8: "triangle",
         9: "bridge",
     }
-    score_result =pyqtSignal(object,object,object) 
+    score_result =pyqtSignal(object,object) 
     def __init__(self):
         # Initialize MediaPipe pose model
         super().__init__()
@@ -109,7 +109,7 @@ class PoseCalculate(QObject):
 
         # Compute the overall (average) score for the pose
         if scores:
-            self.score_result.emit(scores,result,frame)
+            self.score_result.emit(scores,result)
         avg = self._calculate_average_score(scores)
 
         # Create display text showing pose name and accuracy
