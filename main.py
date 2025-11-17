@@ -316,6 +316,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.valid_score = True
         self.score_dict = {}
 
+        # connect tab change signal
+        self.tabWidget.currentChanged.connect(self.on_tab_changed)
+
     # Store scoring result from PoseCalculate
     def set_draw_bone_variable(self, score_dict, result):
         self.result = result
@@ -1007,3 +1010,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         except Exception as e:
             print("flush_pose_buffer error:", e)
+    
+    def on_tab_changed(self, index):
+        # refresh stats when p2 is selected
+        if index == 1:
+            self.update_progress_page_statistics(self.countdown_timer.mode, force_refresh=True)
