@@ -163,6 +163,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         # Update logger user id when account emits id
         self.account.user_id_signal.connect(self.logger.set_user_id)
+        self.account.user_id_signal.connect(lambda uid: self.on_reset_clicked() if uid else None)
 
         # Start session upon login, end session on logout
         self.account.user_id_signal.connect(
@@ -536,8 +537,13 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # 1️ If the app is paused or not active, flush buffers
         # -----------------------------
         current_state = self.state_reg_label.text()
-        if current_state in ["Pause", "N/A"]:
-            self.flush_pose_buffer()  # Clear buffered pose data
+
+        if current_state != "Exercise":
+            if current_state in ["Pause", "N/A"]:
+                self.flush_pose_buffer()  
+                self.countdown_timer.on_pose_detected(False)
+                return
+
             self.countdown_timer.on_pose_detected(False)
             return
 
@@ -583,6 +589,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         if avg and avg > 0:
             detected = True
             mode = self.countdown_timer.mode
+            ts = datetime.now()
 
             # Update standard score display for this pose
             display_standard_score(self.standard_score, detected_pose_name, mode)
@@ -597,7 +604,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                     "posture_name": detected_pose_name,
                     "accuracy": avg,
                     "mode": mode,
-                    "countdown": countdown_value
+                    "countdown": countdown_value,
+                    "timestamp":ts
                 })
             except Exception as e:
                 print("pose_record_buffer append error:", e)
@@ -981,7 +989,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                         posture_name=record["posture_name"],
                         accuracy=record["accuracy"],
                         mode=record["mode"],
-                        countdown=record["countdown"]
+                        countdown=record["countdown"],
+                        timestamp=record["timestamp"]
                     )
                 self.pose_record_buffer.clear()
 

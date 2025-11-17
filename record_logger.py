@@ -143,13 +143,16 @@ class RecordLogger:
             self._current_session_mode = None
 
     # --- write per-second sample (record_picture) ---
-    def add_picture_record(self, posture_id, posture_name, accuracy, mode, countdown=None):
+    def add_picture_record(self, posture_id, posture_name, accuracy, mode, countdown=None, timestamp=None):
         """Insert a picture record into the database, including countdown and count columns."""
         if not self.user_id:
             return
 
         mode_int = self._mode_to_int(mode)
-        ts = datetime.now()
+        if timestamp is None:
+            ts = datetime.now()
+        else:
+            ts = timestamp
         session_id = self._current_session_id
 
         try:

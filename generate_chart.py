@@ -49,7 +49,7 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
 
     merged_rows = {}
     for r in rows:
-        key = (r["count"], r["countdown"])
+        key = (r["count"], r["countdown"], r["timestamp"])
         if key not in merged_rows:
             merged_rows[key] = {"sum": r["accuracy"], "cnt": 1, "row": r}
         else:
@@ -68,48 +68,73 @@ def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date, end_d
 
     final_groups = []
     for major_key, rows_in_group in major_groups.items():
-        rows_in_group.sort(key=lambda r: r["countdown"], reverse=True)
-        cds = [int(r["countdown"]) for r in rows_in_group if r["countdown"] is not None]
-        if not cds:
-            continue
-        cd_max, cd_min = max(cds), min(cds)
-
-        cd_map = {int(r["countdown"]): float(r["accuracy"]) for r in rows_in_group}
-        cd_time_map = {int(r["countdown"]): r["timestamp"] for r in rows_in_group if r["timestamp"] is not None}
-        filled_rows = []
-        last_acc = None
-        last_time = None
-        for cd in range(cd_max, cd_min - 1, -1):
-            acc = cd_map.get(cd, last_acc)
-            tstamp = cd_time_map.get(cd, last_time)
-            if acc is not None:
-                fake_row = rows_in_group[0].copy()
-                fake_row["countdown"] = cd
-                fake_row["accuracy"] = acc
-                fake_row["timestamp"] = tstamp
-                filled_rows.append(fake_row)
-            if cd in cd_map:
-                last_acc = cd_map[cd]
-            if cd in cd_time_map:
-                last_time = cd_time_map[cd]
-
-        sub_groups, temp = [], []
+        rows_in_group.sort(key=lambda r: r["timestamp"] or datetime.min)  # sort by time
+        cycles = []
+        current_cycle = []
         prev_cd = None
-        for r in filled_rows:
-            cd = int(r["countdown"])
-            if prev_cd is not None and cd > prev_cd:
-                sub_groups.append(temp)
-                temp = []
-            temp.append(r)
-            prev_cd = cd
-        if temp:
-            sub_groups.append(temp)
+        for r in rows_in_group:
+            if r.get("countdown") is None:
+                continue
+            try:
+                cd = int(r["countdown"])
+            except Exception:
+                continue
 
-        for idx, sg in enumerate(sub_groups, start=1):
+            if prev_cd is None:
+                current_cycle = [r]
+            else:
+                if cd > prev_cd:  # new cycle
+                    if current_cycle:
+                        cycles.append(current_cycle)
+                    current_cycle = [r]
+                else:
+                    current_cycle.append(r)
+            prev_cd = cd
+        if current_cycle:
+            cycles.append(current_cycle)
+
+        for idx, cycle in enumerate(cycles, start=1):
+            obs_map = {}
+            time_map = {}
+            for rr in cycle:
+                try:
+                    k = int(rr["countdown"])
+                except Exception:
+                    continue
+                if k not in obs_map:
+                    obs_map[k] = float(rr["accuracy"])
+                    time_map[k] = rr.get("timestamp")
+
+            if not obs_map:
+                continue
+
+            cd_max = max(obs_map.keys())
+            cd_min = min(obs_map.keys())
+
+            filled_rows = []
+            last_acc = None
+            last_time = None
+            for cd in range(cd_max, cd_min - 1, -1):
+                if cd in obs_map:
+                    last_acc = obs_map[cd]
+                    last_time = time_map.get(cd, last_time)
+                    fake_row = cycle[0].copy()
+                    fake_row["countdown"] = cd
+                    fake_row["accuracy"] = last_acc
+                    fake_row["timestamp"] = last_time
+                    filled_rows.append(fake_row)
+                else:
+                    if last_acc is not None:
+                        fake_row = cycle[0].copy()
+                        fake_row["countdown"] = cd
+                        fake_row["accuracy"] = last_acc
+                        fake_row["timestamp"] = last_time
+                        filled_rows.append(fake_row)
+
             final_groups.append({
                 "major": major_key,
                 "minor": idx,
-                "rows": sg
+                "rows": filled_rows
             })
 
     return final_groups
