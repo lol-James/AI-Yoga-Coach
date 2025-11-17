@@ -159,7 +159,7 @@ class Critical_Bone(QThread):
     # -----------------------------
     # Draw arm with an arc representing angle
     # -----------------------------
-    def draw_arm(self, image, result, mp_pose, color):
+    def draw_arm(self, image, result, mp_pose):
         self.draw_bone(image, result, 'Arm_Bone')
         h, w, _ = image.shape
         landmarks = result.pose_landmarks.landmark
@@ -175,7 +175,7 @@ class Critical_Bone(QThread):
         radius = max(radius, 15)
         start_angle = np.degrees(np.arctan2(-v_right[1], v_right[0]))
         end_angle = np.degrees(np.arctan2(-v_left[1], v_left[0]))
-        cv2.ellipse(image, center, (radius, radius), 0, start_angle, end_angle, color, 2)
+        cv2.ellipse(image, center, (radius, radius), 0, start_angle, end_angle,(0,255,0), 2)
 
     # -----------------------------
     # Draw leg angle arc
