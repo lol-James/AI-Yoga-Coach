@@ -16,6 +16,9 @@ def get_warrior2_feedbackstr(scores: dict, threshold: int) -> tuple[bool, str]:
     if len(feedbacks) > 0:
         return True, '\n'.join(feedbacks)
     else:
-        return False, "Warrior II姿勢良好，請繼續保持！"
+        if scores.get("average_score", 0) >= threshold:
+            return False, "Warrior II姿勢良好，請繼續保持！"
+        else:
+            return False, "欸，怎麼會是0分？"
 
 

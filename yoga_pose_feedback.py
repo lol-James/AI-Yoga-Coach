@@ -5,6 +5,8 @@ import pyttsx3
 import time
 from notification import NotificationLabel
 
+# 加上feedback suggestion至少停留一秒
+
 class YogaPoseFeedback(QThread):
     """Thread for giving feedback on yoga poses with optional voice broadcast."""
     
@@ -55,7 +57,10 @@ class YogaPoseFeedback(QThread):
         self.clear_timer.setInterval(3000)
         self.clear_timer.timeout.connect(lambda: self.suggesstion_text_label.clear())
         self.clear_timer.start()
-    
+
+        # message in suggesstion_text_label at least exist for 1 second
+        self.label_lock_timer = 0
+        
     # -----------------------------
     # Process the pose scores and generate feedback
     # -----------------------------
@@ -91,7 +96,11 @@ class YogaPoseFeedback(QThread):
         has_error, feedback_str = feedback_func(scores, threshold)
         
         # Display feedback in UI label
-        self.suggesstion_text_label.setText(feedback_str)
+        if time.time() - self.label_lock_timer < 1:
+            return
+        else:
+            self.label_lock_timer = time.time()
+            self.suggesstion_text_label.setText(feedback_str)
         
         # Trigger voice feedback if enabled and enough time has passed
         if has_error:
