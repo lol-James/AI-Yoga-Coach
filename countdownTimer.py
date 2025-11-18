@@ -7,6 +7,7 @@ class Timer(QThread):
     # Signals to notify when the timer starts or stops
     timer_started_signal = pyqtSignal()
     timer_stopped_signal = pyqtSignal()
+    pose_scoring_request = pyqtSignal()
 
     def __init__(self, ui):
         super().__init__()
@@ -36,6 +37,7 @@ class Timer(QThread):
         self.timer_is_running = False
         self.initial = False
         self.three_sec_startup = False
+        self.is_first_startup = True
 
         self.default_exercise_time = 15000  # 15 seconds per pose
         self.default_rest_time = 10000      # 10 seconds rest
@@ -56,19 +58,21 @@ class Timer(QThread):
         self.set_time_btn.clicked.connect(self.set_timer)
         self.start_btn.clicked.connect(self.toggled_start_pause_timer)
         self.rst_btn.clicked.connect(self.reset_timer)
+        
+        # -----------------------------
+        # 4 3 sec QTimer setup
+        # -----------------------------
+        self.startup_timer = QTimer(self.ui)
+        self.startup_count = 3  
+        self.startup_timer.timeout.connect(self._update_startup_countdown)
 
         # -----------------------------
-        # 4️ Mode selection buttons
+        # 5 Mode selection buttons
         # -----------------------------
         self.mode = "Practice"
         self.practice_btn.clicked.connect(self.mode_selection)
         self.easy_btn.clicked.connect(self.mode_selection)
         self.hard_btn.clicked.connect(self.mode_selection)
-
-        # -----------------------------
-        # 5️ Pose detection history (last 3 frames)
-        # -----------------------------
-        self.pose_history = deque(maxlen=3)
 
     # -----------------------------
     # Update the LCD display based on remaining time
@@ -109,6 +113,7 @@ class Timer(QThread):
                 self.ui.suggestion_text_label.setText("")  
                 self.ui.standard_score.setText("")  
             else:
+                self.pose_scoring_request.emit()
                 self.exercise_time -= 1000  # decrement 1 second
         elif self.state == 'Rest':
             if self.rest_time == 0:
@@ -178,6 +183,51 @@ class Timer(QThread):
             self.show_setting_dialog()
 
     # -----------------------------
+    # 3 sec QTimer Tick
+    # -----------------------------
+    def _update_startup_countdown(self):
+        if self.startup_count > 0:
+            self.state_reg_label.setText(str(self.startup_count))
+            self.startup_count -= 1
+        else:
+            self.startup_timer.stop()
+            self.startup_count = 3
+            self._start_timer()
+            self.three_sec_startup = True
+            self.is_first_startup = False
+
+    # -----------------------------
+    # Reset 3-second startup timer and associated states
+    # -----------------------------
+    def _reset_startup_state(self):
+        if self.startup_timer.isActive():
+            self.startup_timer.stop()
+            
+        self.startup_count = 3 
+        self.three_sec_startup = False 
+        
+        self.state_reg_label.setText(self.states[3])
+        
+        self.set_time_btn.setEnabled(True)
+        self.start_btn.setEnabled(True)
+        self.rst_btn.setEnabled(True)
+        self.practice_btn.setEnabled(True)
+        self.easy_btn.setEnabled(True)
+        self.hard_btn.setEnabled(True)
+        self.reset_timer()
+
+    def _reset_partially_startup_state(self):
+        if self.startup_timer.isActive():
+            self.startup_timer.stop()
+            
+        self.startup_count = 3 
+        self.three_sec_startup = False 
+        self.start_btn.setEnabled(True)
+        self.rst_btn.setEnabled(True)
+        
+
+
+    # -----------------------------
     # Toggle timer start/pause
     # -----------------------------
     def toggled_start_pause_timer(self):
@@ -195,10 +245,8 @@ class Timer(QThread):
             self.hard_btn.setEnabled(False)
             self.three_sec_startup = True
             self.state_reg_label.setText("Ready...")
-            QTimer.singleShot(1000, lambda: self.state_reg_label.setText("3"))
-            QTimer.singleShot(2000, lambda: self.state_reg_label.setText("2"))
-            QTimer.singleShot(3000, lambda: self.state_reg_label.setText("1"))
-            QTimer.singleShot(4000, self._start_timer)
+            self.startup_count = 3 
+            self.startup_timer.start(1000) 
 
         elif self.camera_is_running:
             if not self.timer_is_running:
@@ -244,12 +292,11 @@ class Timer(QThread):
     # Called when a pose is detected (or missed)
     # -----------------------------
     def on_pose_detected(self, isUpdated: bool):
-        self.pose_history.append(isUpdated)
-
         if self.state == "Exercise" and self.timer_is_running: 
-            if not self.timer.isActive():  
-                self.timer.start(1000)  # restart timer
-            if not any(self.pose_history):  
+            if isUpdated:
+                if not self.timer.isActive():  
+                    self.timer.start(1000)  # restart timer
+            else:
                 self.timer.stop()  # stop if pose missing
                 NotificationLabel(self.ui, "Mediapipe detection failure", success=False, duration=1000)
 
@@ -262,6 +309,7 @@ class Timer(QThread):
         self.state_reg_label.setText(self.state)
         self.timer_is_running = False
         self.three_sec_startup = False
+        self.is_first_startup = True
         self.timer.stop()
         self.start_btn.setText('Start')
         self.start_btn.setIcon(QIcon("icons/icons8-start-60.png"))

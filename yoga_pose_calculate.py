@@ -95,7 +95,7 @@ class PoseCalculate(QObject):
 
         # Check if pose landmarks were detected
         if not result.pose_landmarks:
-            self._set_label(label_widget, f"Error: Pose detected but no landmarks")
+            self._set_label(label_widget, f"Pose detected but no landmarks")
             return None
 
         # Retrieve the correct evaluator function for the current pose
@@ -115,9 +115,10 @@ class PoseCalculate(QObject):
         # Create display text showing pose name and accuracy
         text = f"{display_name} {avg:.1f}"
         # Update the label widget to show the result
-        self._set_label(label_widget, text, font_size=12)
 
-        return avg
+        #self._set_label(label_widget, text, font_size=12)
+
+        return text, avg
 
     def _calculate_average_score(self, scores):
         """
@@ -136,9 +137,6 @@ class PoseCalculate(QObject):
                 return float(sum(scores.values()) / len(scores))
             else:
                 return 0.0
-        elif isinstance(scores, (int, float)):
-            # If single numeric score, convert to float
-            return float(scores)
         else:
             # Unknown format, return 0
             return 0.0

@@ -2,7 +2,7 @@ from yoga_pose_calculate import PoseCalculate
 
 # Threshold scores for each yoga pose
 POSE_THRESHOLDS = {
-    "bridge": {"Easy": 88, "Hard": 95},
+    "bridge": {"Easy": 88, "Hard": 98},
     "chair": {"Easy": 78, "Hard": 90},
     "downward_facing_dog": {"Easy": 83, "Hard": 94},
     "locust": {"Easy": 80, "Hard": 90},

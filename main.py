@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, time as dtime
 from Ui_AIYogaCoachInterface import Ui_MainWindow
 from PyQt5.QtCore import Qt, QPoint, QTimer
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QImage, QPixmap, QIcon
+from PyQt5.QtGui import QImage, QPixmap, QIcon, QFont
 from camera import CameraThread
 from yoga_pose_detector import YogaPoseDetector
 from musicPlayer import MusicPlayer
@@ -239,9 +239,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         self.detector.result_pose_signal.connect(self.cache_pose_index)
 
         # Timer for pose scoring every second
-        self.pose_score_timer = QTimer()
-        self.pose_score_timer.timeout.connect(self.perform_pose_scoring)
-        self.pose_score_timer.start(1000)
+        self.countdown_timer.pose_scoring_request.connect(self.perform_pose_scoring)
+
+        self.wakeup_timer_timer = QTimer(self)
+        self.wakeup_timer_timer.timeout.connect(self.wakeup_timer)
+        self.wakeup_timer_timer.start(100)
 
         # Mapping display names → YOLO pose names
         self.pose_name_map = {
@@ -408,10 +410,17 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 self.camera_thread.stop()
                 self.detector.stop()
                 self.gesture_analyzer.stop()
+                if self.countdown_timer.initial:
+                    self.countdown_timer._stop_timer()
+                    if self.countdown_timer.startup_timer.isActive() and self.countdown_timer.is_first_startup:
+                        self.countdown_timer._reset_startup_state()
+                    elif self.countdown_timer.startup_timer.isActive():
+                        self.countdown_timer._reset_partially_startup_state()
                 self.countdown_timer.camera_is_running = False
-                self.countdown_timer._stop_timer()
+
                 QTimer.singleShot(100, lambda: self.clear_camera_label())
                 NotificationLabel(self, "Camera closed", success=False)
+                
 
         else:
             self.camera_btn.setChecked(False)
@@ -521,7 +530,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 user='yoga_app',
                 password='yoga_app123456',
                 database='yoga_coach_database',
-                port=19797,
+                port=18327,
                 cursorclass=pymysql.cursors.DictCursor
             )
             print("pymysql connected successfully")
@@ -582,36 +591,21 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # -----------------------------
         # 5️ Evaluate pose score using PoseCalculate
         # -----------------------------
-        avg = self.pose_calculator.evaluate_pose(
-            self.detector.frame,
-            self.current_pose_index,
-            self.pose_reg_label
-        )
-
-        detected = False
-        if avg and avg > 0:
-            detected = True
+        try:
+            text, avg = self.pose_calculator.evaluate_pose(
+                self.detector.frame,
+                self.current_pose_index,
+                self.pose_reg_label
+            )
+        except Exception as e:
+            avg = None
+        
+        if avg and avg > 0.0:
             mode = self.countdown_timer.mode
             ts = datetime.now()
 
             # Update standard score display for this pose
             display_standard_score(self.standard_score, detected_pose_name, mode)
-
-            # -----------------------------
-            # 6️ Buffer per-second pose record
-            # -----------------------------
-            try:
-                countdown_value = self.countdown_timer.get_remaining_seconds()
-                self.pose_record_buffer.append({
-                    "posture_id": self.current_pose_index,
-                    "posture_name": detected_pose_name,
-                    "accuracy": avg,
-                    "mode": mode,
-                    "countdown": countdown_value,
-                    "timestamp":ts
-                })
-            except Exception as e:
-                print("pose_record_buffer append error:", e)
 
             # -----------------------------
             # 7️ Buffer pose accuracy updates (do not write to DB immediately)
@@ -620,29 +614,55 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 self.valid_score = is_pose_score_valid(self.current_pose_index, avg, mode)
 
                 if self.valid_score:
+
                     # Ensure countdown timer is running
                     if not self.countdown_timer.timer.isActive():
                         self.countdown_timer.timer.start(1000)
-
+                    font = QFont("Arial", 14)         # Set font style and size
+                    self.pose_reg_label.setFont(font)               # Apply font to widget
+                    self.pose_reg_label.setPlainText(text)
+                    countdown_value = self.countdown_timer.get_remaining_seconds()
+                    self.pose_record_buffer.append({
+                        "posture_id": self.current_pose_index,
+                        "posture_name": detected_pose_name,
+                        "accuracy": avg,
+                        "mode": mode,
+                        "countdown": countdown_value,
+                        "timestamp":ts
+                    })
                     self.pose_accuracy_buffer.append({
                         "posture_id": self.current_pose_index,
                         "posture_name": detected_pose_name,
                         "mode": mode,
                         "accuracy": avg
                     })
-                else:
+                else:  
                     # If score invalid and mode is challenging → pause timer
                     if mode in ["Easy", "Hard"]:
-                        if self.countdown_timer.timer_is_running:
+                        if self.countdown_timer.timer.isActive():
                             self.countdown_timer.timer.stop()
                             NotificationLabel(self, "Score below threshold! Timer paused.", success=False)
             except Exception as e:
                 print("is_pose_score_valid error:", e)
+        elif self.countdown_timer.mode in ["Easy", "Hard"]:
+            if self.countdown_timer.timer.isActive():
+                self.countdown_timer.timer.stop()
+                NotificationLabel(self, "Timer paused.", success=False)
+        elif avg is None:
+            font = QFont("Arial", 12)         # Set font style and size
+            self.pose_reg_label.setFont(font)               # Apply font to widget
+            self.pose_reg_label.setPlainText("Pose detected but no landmarks")
+
 
         # -----------------------------
         # 8️ Notify countdown timer whether a pose was detected
         # -----------------------------
-        self.countdown_timer.on_pose_detected(detected)
+        
+    
+    def wakeup_timer(self):
+        """Check if the countdown timer has stopped; if so, flush buffers."""
+        if not self.countdown_timer.timer.isActive():
+            self.perform_pose_scoring()
 
 
     def update_progress_page_statistics(self, mode, force_refresh=False):
