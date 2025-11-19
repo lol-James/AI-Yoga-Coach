@@ -439,6 +439,10 @@ class MusicPlayer:
             print(f"Error loading favorites: {e}")
         
     def favorites_function(self):
+        if self.user_id == 1:
+            NotificationLabel(self.ui, "Please log in to manage favorites.", success=False)
+            return
+        
         current_index = self.stackedWidget_2.currentIndex()
 
         if current_index == 0:
