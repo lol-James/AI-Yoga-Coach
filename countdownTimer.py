@@ -99,6 +99,7 @@ class Timer(QThread):
     def update_timer(self):
         if self.state == 'Exercise':
             if self.exercise_time == 0:
+                self.pose_scoring_request.emit()
                 # Switch to Rest state when exercise ends
                 self.state_index = 1 
                 self.state = self.states[1]
@@ -113,6 +114,8 @@ class Timer(QThread):
                 self.ui.suggestion_text_label.setText("")  
                 self.ui.standard_score.setText("")  
             else:
+                if self.exercise_time == self.default_exercise_time:
+                    self.pose_scoring_request.emit()
                 self.pose_scoring_request.emit()
                 self.exercise_time -= 1000  # decrement 1 second
         elif self.state == 'Rest':
