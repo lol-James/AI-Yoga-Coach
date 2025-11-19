@@ -607,20 +607,21 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             # Update standard score display for this pose
             display_standard_score(self.standard_score, detected_pose_name, mode)
 
+            font = QFont("Arial", 14)         # Set font style and size
+            self.pose_reg_label.setFont(font)               # Apply font to widget
+            self.pose_reg_label.setPlainText(text)
+
             # -----------------------------
             # 7️ Buffer pose accuracy updates (do not write to DB immediately)
             # -----------------------------
             try:
                 self.valid_score = is_pose_score_valid(self.current_pose_index, avg, mode)
-
                 if self.valid_score:
 
                     # Ensure countdown timer is running
                     if not self.countdown_timer.timer.isActive():
                         self.countdown_timer.timer.start(1000)
-                    font = QFont("Arial", 14)         # Set font style and size
-                    self.pose_reg_label.setFont(font)               # Apply font to widget
-                    self.pose_reg_label.setPlainText(text)
+                    
                     countdown_value = self.countdown_timer.get_remaining_seconds()
                     self.pose_record_buffer.append({
                         "posture_id": self.current_pose_index,
