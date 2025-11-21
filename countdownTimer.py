@@ -114,8 +114,6 @@ class Timer(QThread):
                 self.ui.suggestion_text_label.setText("")  
                 self.ui.standard_score.setText("")  
             else:
-                if self.exercise_time == self.default_exercise_time:
-                    self.pose_scoring_request.emit()
                 self.pose_scoring_request.emit()
                 self.exercise_time -= 1000  # decrement 1 second
         elif self.state == 'Rest':
@@ -125,6 +123,8 @@ class Timer(QThread):
                 self.state = self.states[0]
                 self.state_reg_label.setText(self.state)
                 self.rest_time = self.default_rest_time
+                self.pose_scoring_request.emit()
+                self.timer.stop()
             else:
                 self.rest_time -= 1000  # decrement 1 second
         self.update_lcdnumber()

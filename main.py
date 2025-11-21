@@ -526,11 +526,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def connect_db(self):
         try:
             db = pymysql.connect(
-                host='0.tcp.jp.ngrok.io',
+                host='26.205.73.65',
                 user='yoga_app',
                 password='yoga_app123456',
                 database='yoga_coach_database',
-                port=18327,
+                port=3306,
                 cursorclass=pymysql.cursors.DictCursor
             )
             print("pymysql connected successfully")
