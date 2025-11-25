@@ -422,9 +422,9 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
                 NotificationLabel(self, "Camera closed", success=False)
                 
 
-        else:
+        elif not self.account.login_flag:
             self.camera_btn.setChecked(False)
-            NotificationLabel(self, "Please login first to unlock all features.", success=False)
+            # NotificationLabel(self, "Please login first to unlock all features.", success=False)
         
     def clear_camera_label(self):
         self.camera_label.setPixmap(QPixmap())

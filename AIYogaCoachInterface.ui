@@ -3700,7 +3700,7 @@ QTabBar::tab:hover {
 </string>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="p1">
                  <attribute name="title">
@@ -6359,7 +6359,7 @@ padding-bottom:7px;</string>
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="resource.qrc">:/icons/icons/non user.png</pixmap>
+                 <pixmap>:/icons/icons/non user.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
@@ -8161,7 +8161,786 @@ QPushButton:hover {
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="info_page"/>
+            <widget class="QWidget" name="info_page">
+             <layout class="QVBoxLayout" name="verticalLayout_42">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_48">
+                <item>
+                 <widget class="QTabWidget" name="tabWidget_2">
+                  <property name="styleSheet">
+                   <string notr="true">QTabWidget::pane {
+    border: 2px solid #A9CCE3;
+    background: #E0F0FF;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+QTabBar::tab {
+    background: #D6ECF9;
+    color: #333;
+    border: 1px solid #A9CCE3;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    min-width: 100px;
+    min-height: 36px;
+    padding: 6px;
+    font-size: 14px;
+}
+
+QTabBar::tab:selected {
+    background: #B3E0FF;
+    font-weight: bold;
+    color: #000;
+}
+
+QTabBar::tab:hover {
+    background: #AED6F1;
+}
+
+/* 整體文字設定 */
+QWidget {
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;Segoe UI&quot;;
+    font-size: 15px;
+    color: #2c2c2c;
+}
+
+/* 大標題 */
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #1a73e8;
+}
+
+/* 小標題 */
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    color: #0b5cad;
+}
+
+/* 段落文字 */
+p {
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* 清單條列 */
+ul {
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+ul li {
+    margin-bottom: 4px;
+}
+
+/* 外框區塊（像 info card） */
+.section-box {
+    background: #f7faff;
+    border: 1px solid #cdddf5;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+}
+
+/* 強調文字 */
+.highlight {
+    font-weight: bold;
+    color: #d6336c;
+}
+
+</string>
+                  </property>
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="tab_1">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <attribute name="title">
+                    <string>Home</string>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_47">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit">
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit {
+    /* 背景色 – 柔和紙張感 */
+    background-color: #f9fafb;
+
+    /* 外框 */
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+
+    /* 內距 */
+    padding: 15px;
+
+    /* 字體 */
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;微軟正黑體&quot;, sans-serif;
+    font-size: 16px;
+    color: #333;
+
+    /* 平滑捲動 */
+    selection-background-color: #bbdefb;
+}
+
+/* 捲軸樣式 */
+QScrollBar:vertical {
+    background: #e3f2fd;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64b5f6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #42a5f5;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    height: 0px;
+}
+
+/* 水平捲軸 */
+QScrollBar:horizontal {
+    background: #e3f2fd;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #64b5f6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #42a5f5;
+}
+
+/* 禁用狀態 */
+QTextEdit:disabled {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    border: 2px solid #cccccc;
+}
+</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft JhengHei','微軟正黑體','sans-serif'; font-size:16px; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;1. 模式選擇：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;提供三種模式，分別為練習(Practice)、簡單(Easy)、困難(Hard)模式&lt;br /&gt;練習模式：不考慮準確率，純粹讓使用者練習&lt;br /&gt;簡單模式：根據每個動作有不同的門檻值&lt;br /&gt;困難模式：根據每個動作有不同的門檻值&lt;br /&gt;其中簡單模式和困難模式若未達到姿勢門檻值，計時器會停擺直至達門檻 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;2. 計時器：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;開始運動前，須點擊左上方的相機按鈕以開啟畫面；如未開啟，則無法進行運動&lt;br /&gt;計時器下方有三顆按鈕，分別為設定(Set)、開始/暫停(Start/Pause)、重置(Reset)&lt;br /&gt;設定鈕為提供使用者於開始運動前，設定一組姿勢的休息時間與運動時間（預設運動時間：15秒；休息時間：10秒）&lt;br /&gt;開始/暫停鈕是啟動和暫停計時器&lt;br /&gt;重置鈕分兩種情況，在運動情況下點擊為停止運動並上傳資料至資料庫；在非運動情況下點擊為恢復休息時間與運動時間至預設值&lt;br /&gt;每次開始運動或中途暫停準備繼續時，皆會倒數3、2、1以方便使用者準備 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;3. 計分板：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;記錄下該次運動中，使用者於每個姿勢下的運動次數 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;4. 狀態欄：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;顯示目前姿勢動作的名稱、準確率(分數)以及改善建議&lt;br /&gt;另外提供使用者語音回饋的功能，預設狀態為關閉&lt;br /&gt;若選擇簡單或困難模式，於語音回饋按鈕旁顯示該姿勢的門檻值 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;5. 手勢控制：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;預設為關閉狀態，若使用者欲開啟/關閉手勢控制，僅需以小拇指指向畫面左上角的音符符號方可觸發&lt;br /&gt;手勢如下：&lt;br /&gt;讚朝上 切換至下一個動作&lt;br /&gt;讚朝下 切換至上一個動作&lt;br /&gt;讚朝左 打開音樂清單&lt;br /&gt;讚朝右 打開最愛音樂清單&lt;br /&gt;0 開啟 / 關閉靜音&lt;br /&gt;1 播放音樂&lt;br /&gt;2 暫停音樂&lt;br /&gt;3 停止播放器&lt;br /&gt;4 切換至上一首音樂&lt;br /&gt;5 切換至下一首音樂&lt;br /&gt;6 開啟 / 關閉隨機播放&lt;br /&gt;7 開啟 / 關閉循環播放&lt;br /&gt;8 將目前音樂加入最愛清單 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;6. 骨架圖繪製：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;當使用者當下姿勢的準確率(分數)低於門檻，會於畫面中繪製最不標準的部位，便於使用者改善 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="acceptRichText">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_2">
+                   <attribute name="title">
+                    <string>Music</string>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_52">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit_3">
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit {
+    /* 背景色 – 柔和紙張感 */
+    background-color: #f9fafb;
+
+    /* 外框 */
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+
+    /* 內距 */
+    padding: 15px;
+
+    /* 字體 */
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;微軟正黑體&quot;, sans-serif;
+    font-size: 16px;
+    color: #333;
+
+    /* 平滑捲動 */
+    selection-background-color: #bbdefb;
+}
+
+/* 捲軸樣式 */
+QScrollBar:vertical {
+    background: #e3f2fd;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64b5f6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #42a5f5;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    height: 0px;
+}
+
+/* 水平捲軸 */
+QScrollBar:horizontal {
+    background: #e3f2fd;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #64b5f6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #42a5f5;
+}
+
+/* 禁用狀態 */
+QTextEdit:disabled {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    border: 2px solid #cccccc;
+}
+</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft JhengHei','微軟正黑體','sans-serif'; font-size:16px; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;1. 音樂播放器：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;支援背景音樂播放，亦提供使用者匯入/刪除音樂&lt;br /&gt;除了播放音樂，可根據使用者所偏好，調整曲目播放順序、循環播放與音量調整&lt;br /&gt;此外，也可加入個人最愛清單 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="acceptRichText">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_3">
+                   <attribute name="title">
+                    <string>Progress</string>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_64">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit_4">
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit {
+    /* 背景色 – 柔和紙張感 */
+    background-color: #f9fafb;
+
+    /* 外框 */
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+
+    /* 內距 */
+    padding: 15px;
+
+    /* 字體 */
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;微軟正黑體&quot;, sans-serif;
+    font-size: 16px;
+    color: #333;
+
+    /* 平滑捲動 */
+    selection-background-color: #bbdefb;
+}
+
+/* 捲軸樣式 */
+QScrollBar:vertical {
+    background: #e3f2fd;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64b5f6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #42a5f5;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    height: 0px;
+}
+
+/* 水平捲軸 */
+QScrollBar:horizontal {
+    background: #e3f2fd;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #64b5f6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #42a5f5;
+}
+
+/* 禁用狀態 */
+QTextEdit:disabled {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    border: 2px solid #cccccc;
+}
+</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft JhengHei','微軟正黑體','sans-serif'; font-size:16px; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;1. 圖表生成：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;支援個人運動姿勢記錄圖表生成&lt;br /&gt;透過選定模式、查詢姿勢與日期區間之設定，方可調閱記錄&lt;br /&gt;若查無資料，則彈出視窗告知&lt;br /&gt;查詢的日期區間的運動圖表可能不僅一張，可透過確認鍵下方的切換鈕切換圖表&lt;br /&gt;此外，若有連接Discord帳號，會於按下確認鍵產生圖表時彈窗詢問使用者是否傳輸圖表至個人Discord帳號&lt;br /&gt;當圖表顯示於畫面中，使用者可於右下角的一鍵分享區塊分享運動數據與文字至社群中與其他用戶分享 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;2. 詳細數據閱覽：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;此區塊可查看使用者在不同模式下的最高、最低準確率以及完成次數&lt;br /&gt;另外也可瀏覽該帳號登入的次數與使用時間以及完成次數 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="acceptRichText">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_4">
+                   <attribute name="title">
+                    <string>Share</string>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_69">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit_5">
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit {
+    /* 背景色 – 柔和紙張感 */
+    background-color: #f9fafb;
+
+    /* 外框 */
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+
+    /* 內距 */
+    padding: 15px;
+
+    /* 字體 */
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;微軟正黑體&quot;, sans-serif;
+    font-size: 16px;
+    color: #333;
+
+    /* 平滑捲動 */
+    selection-background-color: #bbdefb;
+}
+
+/* 捲軸樣式 */
+QScrollBar:vertical {
+    background: #e3f2fd;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64b5f6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #42a5f5;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    height: 0px;
+}
+
+/* 水平捲軸 */
+QScrollBar:horizontal {
+    background: #e3f2fd;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #64b5f6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #42a5f5;
+}
+
+/* 禁用狀態 */
+QTextEdit:disabled {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    border: 2px solid #cccccc;
+}
+</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft JhengHei','微軟正黑體','sans-serif'; font-size:16px; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;1. 社群：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;支援新增貼文(圖文)、留言、按讚與即時刷新頁面載入最新貼文與留言&lt;br /&gt;使用者可在這裡與其他用戶進行交流、互動 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="acceptRichText">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_5">
+                   <attribute name="title">
+                    <string>Account</string>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_70">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit_6">
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit {
+    /* 背景色 – 柔和紙張感 */
+    background-color: #f9fafb;
+
+    /* 外框 */
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+
+    /* 內距 */
+    padding: 15px;
+
+    /* 字體 */
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;微軟正黑體&quot;, sans-serif;
+    font-size: 16px;
+    color: #333;
+
+    /* 平滑捲動 */
+    selection-background-color: #bbdefb;
+}
+
+/* 捲軸樣式 */
+QScrollBar:vertical {
+    background: #e3f2fd;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64b5f6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #42a5f5;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    height: 0px;
+}
+
+/* 水平捲軸 */
+QScrollBar:horizontal {
+    background: #e3f2fd;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #64b5f6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #42a5f5;
+}
+
+/* 禁用狀態 */
+QTextEdit:disabled {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    border: 2px solid #cccccc;
+}
+</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft JhengHei','微軟正黑體','sans-serif'; font-size:16px; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;1. 個人帳戶頁面：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;提供個人資料查詢、修改&lt;br /&gt;變更頭像僅需點擊頭像即可修改&lt;br /&gt;修改個人資料時每個欄位皆需符合欄位設定 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="acceptRichText">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_6">
+                   <attribute name="title">
+                    <string>Account System</string>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_71">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit_7">
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit {
+    /* 背景色 – 柔和紙張感 */
+    background-color: #f9fafb;
+
+    /* 外框 */
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+
+    /* 內距 */
+    padding: 15px;
+
+    /* 字體 */
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;微軟正黑體&quot;, sans-serif;
+    font-size: 16px;
+    color: #333;
+
+    /* 平滑捲動 */
+    selection-background-color: #bbdefb;
+}
+
+/* 捲軸樣式 */
+QScrollBar:vertical {
+    background: #e3f2fd;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64b5f6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #42a5f5;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    height: 0px;
+}
+
+/* 水平捲軸 */
+QScrollBar:horizontal {
+    background: #e3f2fd;
+    height: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #64b5f6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #42a5f5;
+}
+
+/* 禁用狀態 */
+QTextEdit:disabled {
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    border: 2px solid #cccccc;
+}
+</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft JhengHei','微軟正黑體','sans-serif'; font-size:16px; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;1. 帳號管理：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;支援註冊、忘記密碼與登入&lt;br /&gt;其中每個欄位皆需符合欄位設定，否則操作將失敗&lt;br /&gt;當帳號註冊成功，即可登入使用所有功能&lt;br /&gt;使用者若忘記密碼，可透過E-mail驗證並傳送驗證碼來重設密碼&lt;br /&gt;在未登入的情況下，僅開放訪客使用部分功能(音樂播放器部分功能與說明文檔)，其餘功能皆鎖定 &lt;/span&gt;&lt;/p&gt;
+&lt;h2 style=&quot; margin-top:20px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:x-large; font-weight:600; color:#2c3e50;&quot;&gt;2. Discord帳號連接：&lt;/span&gt;&lt;/h2&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:150%;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;該功能需於Discord中操作&lt;br /&gt;提供帳號綁定、解除綁定、生成運動圖表、提醒事項的建立、查詢提醒事項與刪除提醒事項&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; font-weight:600; color:#5555aa;&quot;&gt;綁定帳號 (/bind)：&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;須確定帳號是已存在於資料庫中，否則綁定失敗&lt;br /&gt;綁定成功後，每當登入此系統，機器人會自動發送登入通知&lt;br /&gt;此外也享有運動圖表生成時彈窗詢問使用者是否需要將圖片以DM方式傳給使用者的Discord帳號&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; font-weight:600; color:#5555aa;&quot;&gt;解除綁定 (/unbind)：&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;不再將Discord帳號與此系統帳號連接&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; font-weight:600; color:#5555aa;&quot;&gt;生成運動圖表 (/exportcharts)：&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;類似於此系統的操作，提供候選欄位並以參數代入，其中參數須符合格式。送出後，等待數秒後，即回傳圖表&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; font-weight:600; color:#5555aa;&quot;&gt;提醒事項的建立 (/set_reminder)：&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;規範同上，須填寫時間與提醒內容並傳送。通知將於使用者所設定的時間發送提醒給使用者&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; font-weight:600; color:#5555aa;&quot;&gt;查詢提醒事項 (/list_reminders)：&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;列出目前所有的提醒事項並提供細項刪除功能&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; font-weight:600; color:#5555aa;&quot;&gt;刪除提醒事項 (/remove_all_reminders)：&lt;/span&gt;&lt;span style=&quot; font-family:'Microsoft JhengHei','sans-serif'; font-size:16px; color:#5555aa;&quot;&gt;刪除目前所有的提醒事項 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="acceptRichText">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
             <widget class="QWidget" name="login_logout_page">
              <layout class="QVBoxLayout" name="verticalLayout_33">
               <item>
