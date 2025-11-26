@@ -99,7 +99,6 @@ class Timer(QThread):
     def update_timer(self):
         if self.state == 'Exercise':
             if self.exercise_time == 0:
-                self.pose_scoring_request.emit()
                 # Switch to Rest state when exercise ends
                 self.state_index = 1 
                 self.state = self.states[1]
@@ -123,8 +122,8 @@ class Timer(QThread):
                 self.state = self.states[0]
                 self.state_reg_label.setText(self.state)
                 self.rest_time = self.default_rest_time
-                self.pose_scoring_request.emit()
                 self.timer.stop()
+                self.pose_scoring_request.emit()
             else:
                 self.rest_time -= 1000  # decrement 1 second
         self.update_lcdnumber()
@@ -329,6 +328,9 @@ class Timer(QThread):
         self.practice_btn.setEnabled(True)
         self.easy_btn.setEnabled(True)
         self.hard_btn.setEnabled(True)
+        self.practice_btn.setChecked(True)
+        self.mode = "Practice"
+        self.mode_selection_label.setText(f"Mode Selection: {self.mode}")
         self.timer_stopped_signal.emit()
         self.ui.pose_reg_label.setText("")  
         self.ui.suggestion_text_label.setText("")  

@@ -302,6 +302,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
         # Reset inputs on login/logout
         self.account.user_id_signal.connect(self.reset_share_input)
         self.account.user_id_signal.connect(self.reset_chart_and_dates)
+        self.account.user_id_signal.connect(self.countdown_timer.reset_timer)
 
         # Reset button logic
         self.rst_btn.clicked.connect(self.on_reset_clicked)
@@ -381,8 +382,8 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             pixmap = QPixmap.fromImage(qt_image)
             self.camera_label.setPixmap(pixmap)
         else:
-            blank = np.zeros_like(self.prev_frame) if hasattr(self, "prev_frame") else None
-            self._show_frame(blank)
+            # blank = np.zeros_like(self.prev_frame) if hasattr(self, "prev_frame") else None
+            # self._show_frame(blank)
             return
     
     def on_camera_btn_toggled(self):
@@ -488,6 +489,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         self.image_index = (self.image_index + 1) % len(self.image_list)
         self.display_image(self.image_list[self.image_index])
+        self.update_GUI_frame(None)
         
     def previous_pose(self, skip_flag):
         print('Prvious Pose')
