@@ -162,8 +162,8 @@ def save_group_charts(groups, user_id, posture_text, mode_text):
             times = [r["timestamp"] for r in chunk]
 
             times_sorted = sorted(times)
-            t_start = times_sorted[0].strftime("%Y:%m:%d:%H:%M:%S")
-            t_end = times_sorted[-1].strftime("%Y:%m:%d:%H:%M:%S")
+            t_start = times_sorted[0].strftime("%Y/%m/%d %H:%M:%S")
+            t_end = times_sorted[-1].strftime("%Y/%m/%d %H:%M:%S")
 
             title_main = f"{mode_text.upper()}-{posture_text} ({major}-{minor}-{page + 1})"
             title_sub = f"{t_start} - {t_end}"
