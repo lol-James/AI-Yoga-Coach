@@ -374,6 +374,9 @@ class Account(QObject):
                 self.ui.frame_12.hide()
                 self.ui.label_5.clear()
                 self.ui.textEdit_2.clear()
+                import songs
+                songs.favorites_songs_list.clear()
+                self.ui.favorites_listWidget.clear()
                 NotificationLabel(self.ui, "Logout success.", success=True, duration=3000)
         else:
             self.ui.stackedWidget.setCurrentIndex(6)
