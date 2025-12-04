@@ -489,7 +489,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         self.image_index = (self.image_index + 1) % len(self.image_list)
         self.display_image(self.image_list[self.image_index])
-        self.update_GUI_frame(self.dectector.frame)
+        self.update_GUI_frame(self.detector.frame)
         
     def previous_pose(self, skip_flag):
         print('Prvious Pose')
@@ -502,7 +502,7 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
 
         self.image_index = (self.image_index - 1) % len(self.image_list)
         self.display_image(self.image_list[self.image_index])
-        self.update_GUI_frame(self.dectector.frame)
+        self.update_GUI_frame(self.detector.frame)
     
     def toggle_touch_note(self, str):
         self.gesture_analyzer.enabled = not self.gesture_analyzer.enabled
