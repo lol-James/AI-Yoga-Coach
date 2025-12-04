@@ -2,10 +2,10 @@ def get_locust_feedbackstr(scores: dict, threshold: int) -> tuple[bool, str]:
     feedbacks = []
 
     if scores.get("Body_Bone", 100) < threshold:
-        feedbacks.append("上半身應略為抬起，避免過高或過低")
+        feedbacks.append("上半身應略為抬起，與地面夾角約25度")
 
     if scores.get("Knee_Bone", 100) < threshold:
-        feedbacks.append("下半身應略為抬起，避免過高或過低")
+        feedbacks.append("下半身應略為抬起，抬離地面約20度")
 
     if scores.get("Armpit_Bone", 100) < threshold:
         feedbacks.append("雙臂向後舉與地面平行")
