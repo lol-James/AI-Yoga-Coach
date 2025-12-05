@@ -99,13 +99,43 @@ class ExportCharts(commands.Cog):
             else:
                 await ctx.reply(f"❌ {mention} Failed to generate charts.", ephemeral=True)
                 return
-        files = [discord.File(fp) for fp in chart_files]
-        if isinstance(ctx, discord.Interaction):
-            await ctx.followup.send(f"✅ {mention} Here are your exported charts:", files=files, ephemeral=True)
-        else:
-            await ctx.reply(
+
+        MAX_FILES = 10
+        first_message = True  # 計錄是否第一則訊息（只有第一則能 ephemeral）
+
+        for i in range(0, len(chart_files), MAX_FILES):
+            batch = chart_files[i:i+MAX_FILES]
+            files = [discord.File(fp) for fp in batch]
+            
+            content = (
                 f"✅ {mention} Here are your exported charts:\n"
                 f"Yoga Pose: {posture}\tMode: {mode}\tStart Date: {start_date}\tEnd Date: {end_date}"
-                , files=files, ephemeral=True)
-        
+                if first_message else None
+            )
+
+            # 修正 ephemeral：只在第一則訊息可用
+            ephemeral_flag = True if isinstance(ctx, discord.Interaction) and first_message else False
+
+            async def send_batch():
+                if isinstance(ctx, discord.Interaction):
+                    await ctx.followup.send(content, files=files, ephemeral=ephemeral_flag)
+                else:
+                    await ctx.reply(content, files=files)
+
+            try:
+                await send_batch()
+
+            except Exception as e:
+                print(f"Error sending charts (retrying in 2s): {e}")
+                await asyncio.sleep(2)  # 等待避免 rate limit
+
+                try:
+                    await send_batch()
+                except Exception as e2:
+                    print(f"Second attempt failed, skipping batch: {e2}")
+                    continue  # 真的送不出去才略過
+
+            first_message = False  # 下一批不再顯示文字，也不再 ephemeral
+
+
         

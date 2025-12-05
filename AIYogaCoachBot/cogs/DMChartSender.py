@@ -69,15 +69,31 @@ class DMChartSender(commands.Cog):
                     except Exception as e:
                         print("Error sending failed chart DM in DMChartSender:", e)
                         continue
-                files = [discord.File(fp) for fp in chart_files]
-                try:
-                    await user.send(
-                        content=f"📊 Here are your charts for posture '{posture}' in mode '{mode}' from {start_date} to {end_date}:",
-                        files=files
+
+                MAX_FILES = 10
+                print(f"Sending {len(chart_files)} chart files to user {discord_id} via DM.")
+                for i in range(0, len(chart_files), MAX_FILES):
+                    batch = chart_files[i:i+MAX_FILES]
+                    files = [discord.File(fp) for fp in batch]
+
+                    content = (
+                        f"📊 Here are your charts for posture '{posture}' "
+                        f"in mode '{mode}' from {start_date} to {end_date}:"
+                        if i == 0 else None
                     )
-                except Exception as e:
-                    print("Error sending charts DM in DMChartSender:", e)
-                    continue
+
+                    try:
+                        await user.send(content=content, files=files)
+
+                    except Exception as e:
+                        print("Error sending charts DM, retrying in 2s:", e)
+                        await asyncio.sleep(2) 
+                        try:
+                            await user.send(content=content, files=files)
+                        except Exception as e2:
+                            print("Second attempt failed, skip batch:", e2)
+                            continue
+                        
                 async with self.bot.db_lock:
                     async with self.bot.db.cursor() as cursor:
                         update_sql = """
@@ -87,7 +103,6 @@ class DMChartSender(commands.Cog):
                         """
                         await cursor.execute(update_sql, (discord_id, posture, mode, row['start_date'], row['end_date']))
                         await self.bot.db.commit()
-                
                 await asyncio.sleep(2)
             except Exception as e:
                 print("Error sending DM in DMChartSender:", e)
