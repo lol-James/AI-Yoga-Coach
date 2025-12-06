@@ -255,6 +255,10 @@ def save_group_charts(groups, user_id, posture_text, mode_text):
                     plt.xticks(range(x_max, x_min - 1, -2))
 
             plt.title(f"{title_main}\n{title_sub}", fontsize=14, fontweight="bold", loc="center", pad=15)
+            plt.text(1.0, 1.0125, "ID Format: Login Times - Complete Count - Page", 
+                     transform=plt.gca().transAxes, 
+                     ha='right', va='bottom', 
+                     fontsize=9, color='#555555')
             plt.grid(True, linestyle='--', alpha=0.7)
             plt.tight_layout()
 

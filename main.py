@@ -787,7 +787,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def closeEvent(self, event):
         try:
             if hasattr(self, 'logger') and self.logger:
-                self.logger.bump_count()  # Increase count before closing
                 self.logger.end_session()
         except Exception:
             pass
@@ -826,30 +825,11 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
             )
 
             if not groups:
-                # no DB groups found: try to find existing images in record_pic folder that match prefix
-                record_pic_dir = os.path.join(os.path.dirname(__file__), "record_pic")
-                safe_posture = posture_text.replace(" ", "_").replace("/", "-")
-                safe_mode = str(mode_text).upper()
-                prefix = f"{user_id}_{safe_mode}_{safe_posture}_"
-                found = []
-                if os.path.isdir(record_pic_dir):
-                    for f in sorted(os.listdir(record_pic_dir)):
-                        if f.startswith(prefix) and f.lower().endswith(('.png', '.jpg', '.jpeg')):
-                            # optional: filter by filename timestamp and date range if present
-                            found.append(os.path.join(record_pic_dir, f))
-                if not found:
-                    NotificationLabel(self, "No data found.", success=False)
-                    self.chart_groups = []
-                    self.chart_paths = []
-                    self.current_group_index = 0
-                    return
-                else:
-                    # Use existing images
-                    self.chart_groups = []
-                    self.chart_paths = found
-                    self.current_group_index = 0
-                    self.show_current_group()
-                    return
+                NotificationLabel(self, "No data found for the selected date range.", success=False)
+                self.chart_groups = []
+                self.chart_paths = []
+                self.current_group_index = 0
+                return
 
             # Save charts for each small group (this will create/overwrite image files)
             paths = generate_chart.save_group_charts(groups, self.account.user_id, posture_text, mode_text)
@@ -999,8 +979,6 @@ class AIYogaCoachApp(QMainWindow, Ui_MainWindow):
     def on_reset_clicked(self):
         """Handle reset button clicked."""
         try:
-            # Increase count when user resets
-            self.logger.bump_count()
             NotificationLabel(self, "Reset successful. Count increased.", success=True)
         except Exception as e:
             print("on_reset_clicked error:", e)

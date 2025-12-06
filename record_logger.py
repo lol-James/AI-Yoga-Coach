@@ -72,7 +72,7 @@ class RecordLogger:
             with self.db.cursor() as cursor:
                 cursor.execute("SELECT MAX(`count`) AS max_count FROM record_picture WHERE user_id=%s", (user_id,))
                 row = cursor.fetchone()
-                self.current_count = (row["max_count"] or 0)
+                self.current_count = (row["max_count"] or 0) + 1 
         except Exception as e:
             print("set_user_id load count error:", e)
             self.current_count = 0
