@@ -306,7 +306,6 @@ async def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date,
 
 #     return paths
 
-
 async def save_group_charts(groups, user_id, posture_text, mode_text):
     """
     Iterates through data groups and distributes data evenly across charts.
