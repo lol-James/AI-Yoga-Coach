@@ -253,57 +253,191 @@ async def fetch_and_group_data(user_id, mode_text, posture_text, db, start_date,
 
     return final_groups
 
+# async def save_group_charts(groups, user_id, posture_text, mode_text):
+#     output_dir = os.path.join(os.path.dirname(__file__), "record_pic")
+#     os.makedirs(output_dir, exist_ok=True)
+#     paths = []
+
+#     for g in groups:
+#         major, minor, rows = g["major"], g["minor"], g["rows"]
+#         rows.sort(key=lambda r: r["countdown"], reverse=True)
+
+#         page_size = 21
+#         num_pages = math.ceil(len(rows) / page_size)
+#         num_pages = min(num_pages, 3)
+
+#         for page in range(num_pages):
+#             chunk = rows[page * page_size:(page + 1) * page_size]
+#             if not chunk:
+#                 continue
+
+#             x_vals = [int(r["countdown"]) for r in chunk]
+#             y_vals = [float(r["accuracy"]) for r in chunk]
+#             times = [r["timestamp"] for r in chunk]
+
+#             times_sorted = sorted(times)
+#             t_start = times_sorted[0].strftime("%Y:%m:%d:%H:%M:%S")
+#             t_end = times_sorted[-1].strftime("%Y:%m:%d:%H:%M:%S")
+
+#             title_main = f"{mode_text.upper()}-{posture_text} ({major}-{minor}-{page + 1})"
+#             title_sub = f"{t_start} - {t_end}"
+
+#             plt.figure(figsize=(8, 5))
+#             plt.plot(x_vals, y_vals, marker="o", color="blue")
+
+#             for x, y in zip(x_vals, y_vals):
+#                 plt.text(x, y + 1, f"{y:.0f}", ha="center", va="bottom", fontsize=8, color="black")
+
+#             plt.xlabel("Countdown (seconds)")
+#             plt.ylabel("Accuracy (%)")
+#             plt.ylim(0, 100)
+#             plt.xlim(max(x_vals), min(x_vals))
+#             plt.xticks(range(max(x_vals), min(x_vals) - 1, -2))
+
+#             plt.title(f"{title_main}\n{title_sub}", fontsize=14, fontweight="bold", loc="center", pad=15)
+#             plt.grid(True)
+#             plt.tight_layout()
+
+#             filename = f"{user_id}_{mode_text.upper()}_{posture_text.replace(' ', '_')}({major}-{minor}-{page + 1}).png"
+#             filepath = os.path.join(output_dir, filename)
+#             plt.savefig(filepath, dpi=150)
+#             plt.close()
+#             paths.append(filepath)
+
+#     return paths
+
+
 async def save_group_charts(groups, user_id, posture_text, mode_text):
+    """
+    Iterates through data groups and distributes data evenly across charts.
+    - Count <= 21: 1 chart
+    - Count 22-42: 2 charts (split evenly)
+    - Count > 42: 3+ charts (split evenly)
+    
+    Saves files to 'record_pic' folder with format: 
+    {user_id}_{mode}_{posture}_{major}-{minor}-{page}.png
+    """
+    if not groups:
+        return []
+
+    # Ensure output directory exists
     output_dir = os.path.join(os.path.dirname(__file__), "record_pic")
-    os.makedirs(output_dir, exist_ok=True)
-    paths = []
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
+    chart_paths = []
+    base_capacity = 21  # Max points per chart if only 1 page
+
+    # Sanitize names for filename
+    safe_posture = posture_text.replace(" ", "_").replace("/", "-")
+    safe_mode = mode_text.upper()
+
+    # --- Outer Loop: Process each group (session/cycle) ---
     for g in groups:
-        major, minor, rows = g["major"], g["minor"], g["rows"]
-        rows.sort(key=lambda r: r["countdown"], reverse=True)
+        # Extract data from the group dictionary
+        # The dictionary structure comes from fetch_and_group_data
+        major = g.get("major", 0)
+        minor = g.get("minor", 0)
+        rows = g.get("rows", [])
+        
+        if not rows:
+            continue
 
-        page_size = 21
-        num_pages = math.ceil(len(rows) / page_size)
-        num_pages = min(num_pages, 3)
+        # Sort rows by countdown descending (start from max countdown)
+        # rows.sort(key=lambda r: r["countdown"], reverse=True) # Optional: depends on if you want time order or countdown order
 
+        total_count = len(rows)
+
+        # Calculate required pages (ceiling division)
+        if total_count == 0:
+            num_pages = 0
+        else:
+            num_pages = (total_count + base_capacity - 1) // base_capacity
+
+        current_idx = 0
+
+        # --- Inner Loop: Generate pages for this group ---
         for page in range(num_pages):
-            chunk = rows[page * page_size:(page + 1) * page_size]
+            # --- Dynamic Distribution Logic ---
+            items_remaining = total_count - current_idx
+            pages_remaining = num_pages - page
+            
+            # Calculate chunk size for this page
+            chunk_size = (items_remaining + pages_remaining - 1) // pages_remaining
+            
+            # Slice data for current page
+            end_idx = current_idx + chunk_size
+            chunk = rows[current_idx : end_idx]
+            current_idx = end_idx
+
             if not chunk:
                 continue
 
-            x_vals = [int(r["countdown"]) for r in chunk]
-            y_vals = [float(r["accuracy"]) for r in chunk]
-            times = [r["timestamp"] for r in chunk]
+            # Prepare plotting data
+            try:
+                x_vals = [int(r["countdown"]) for r in chunk]
+                y_vals = [float(r["accuracy"]) for r in chunk]
+                times = [r["timestamp"] for r in chunk]
+            except KeyError as e:
+                print(f"Data error in group {major}-{minor}: {e}")
+                continue
 
-            times_sorted = sorted(times)
-            t_start = times_sorted[0].strftime("%Y:%m:%d:%H:%M:%S")
-            t_end = times_sorted[-1].strftime("%Y:%m:%d:%H:%M:%S")
+            # Determine time range for title
+            # Filter out None timestamps just in case
+            valid_times = [t for t in times if t is not None]
+            if valid_times:
+                times_sorted = sorted(valid_times)
+                t_start = times_sorted[0].strftime("%Y/%m/%d %H:%M:%S")
+                t_end = times_sorted[-1].strftime("%Y/%m/%d %H:%M:%S")
+            else:
+                t_start = "N/A"
+                t_end = "N/A"
 
-            title_main = f"{mode_text.upper()}-{posture_text} ({major}-{minor}-{page + 1})"
+            # Title format: MODE-POSTURE (Major-Minor-Page)
+            # page + 1 makes it 1-based index
+            title_main = f"{safe_mode}-{posture_text} ({major}-{minor}-{page + 1})"
             title_sub = f"{t_start} - {t_end}"
 
+            # Setup plot
             plt.figure(figsize=(8, 5))
             plt.plot(x_vals, y_vals, marker="o", color="blue")
 
+            # Add value labels
             for x, y in zip(x_vals, y_vals):
                 plt.text(x, y + 1, f"{y:.0f}", ha="center", va="bottom", fontsize=8, color="black")
 
             plt.xlabel("Countdown (seconds)")
             plt.ylabel("Accuracy (%)")
             plt.ylim(0, 100)
-            plt.xlim(max(x_vals), min(x_vals))
-            plt.xticks(range(max(x_vals), min(x_vals) - 1, -2))
+            
+            # Standard scaling: fit to data range
+            if len(x_vals) > 0:
+                x_max = max(x_vals)
+                x_min = min(x_vals)
+                if x_max == x_min:
+                    # Handle single point case
+                    plt.xlim(x_max + 1, x_max - 1)
+                    plt.xticks([x_max])
+                else:
+                    plt.xlim(x_max, x_min)
+                    plt.xticks(range(x_max, x_min - 1, -2))
 
             plt.title(f"{title_main}\n{title_sub}", fontsize=14, fontweight="bold", loc="center", pad=15)
-            plt.grid(True)
+            plt.text(1.0, 1.0125, "ID Format: Login Times - Complete Count - Page", 
+                     transform=plt.gca().transAxes, 
+                     ha='right', va='bottom', 
+                     fontsize=9, color='#555555')
+            plt.grid(True, linestyle='--', alpha=0.7)
             plt.tight_layout()
 
-            filename = f"{user_id}_{mode_text.upper()}_{posture_text.replace(' ', '_')}({major}-{minor}-{page + 1}).png"
-            filepath = os.path.join(output_dir, filename)
-            plt.savefig(filepath, dpi=150)
+            # Save chart
+            # Filename includes major/minor to prevent overwriting
+            filename = f"{user_id}_{safe_mode}_{safe_posture}_{major}-{minor}-{page + 1}.png"
+            save_path = os.path.join(output_dir, filename)
+            
+            plt.savefig(save_path)
             plt.close()
-            paths.append(filepath)
 
-    return paths
+            chart_paths.append(save_path)
 
-
+    return chart_paths
