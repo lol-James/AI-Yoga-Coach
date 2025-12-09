@@ -1,0 +1,11 @@
+discord.py
+aiomysql
+opencv-python
+mediapipe
+numpy
+ultralytics
+PyQt5
+matplotlib
+Pillow
+secure-smtplib
+pymysql

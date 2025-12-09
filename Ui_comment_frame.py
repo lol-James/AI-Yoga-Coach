@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\code\zhuanti\app\AI-Yoga-Coach\comment_frame.ui'
+# Form implementation generated from reading ui file 'd:\Desktop\AIYogaCoach\AI-Yoga-Coach\comment_frame.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -118,7 +118,7 @@ class Ui_Frame(object):
 "")
         self.dislike_button_5.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("c:\\code\\zhuanti\\app\\AI-Yoga-Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("d:\\Desktop\\AIYogaCoach\\AI-Yoga-Coach\\icons/break-heart_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.dislike_button_5.setIcon(icon1)
         self.dislike_button_5.setObjectName("dislike_button_5")
         self.horizontalLayout_80.addWidget(self.dislike_button_5)
